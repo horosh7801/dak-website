@@ -16,10 +16,14 @@ const header = css`
 const stickyHeader = css`
   display: flex;
   flex-direction: row;
+  position: sticky;
+  top: 0px;
+  z-index: 10;
+  background-color: white;
 `
 
 const logoWrapper = css`
-  border:  4px black solid;
+  border:  3px black solid;
   margin-left: 30px;
 `
 
@@ -73,9 +77,10 @@ const menuBarFirst = css`
 `
 
 const menuBarLast = css`
-  flex-grow: 1;
+  flex-grow: 1.5;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 `
 
 const phoneNumber = css`
