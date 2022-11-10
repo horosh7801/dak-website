@@ -2,3 +2,8 @@ html,
 body {
   margin: 0;
 }
+
+.slideImage {
+  height: auto;
+  margin-top: -130px;
+}
