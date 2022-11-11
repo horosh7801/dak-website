@@ -6,6 +6,8 @@ import lamp3Image from '../public/lamp3.jpg'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 import { css } from '@emotion/css'
+import Button from '../lib/components/Button.js'
+
 
 const carouselHeight = 600;
 
@@ -35,7 +37,7 @@ const productTypes = css`
 const featuredProducts = css`
   display: flex;
   flex-direction: column;
-  margin-top: 40px;  
+  margin-top: 50px;  
   align-items: center;
 `  
 const featuredProductsTitle = css`
@@ -49,9 +51,26 @@ const featuredProductsList = css`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 25px;
+  justify-content: space-between;
+  width: 1183px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  gap: 30px;
 
+`
+
+const featuredProductsListWrapper = css`
+  width: 100em;
+  background-color: #dedede;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+const katalogButton = css`
+  font-size: 29px;
+  font-weight: 250;
+  margin-top: 10px;
 `
 
 export default function Home({ featuredItems }) {
@@ -90,9 +109,14 @@ export default function Home({ featuredItems }) {
         <div className={featuredProductsTitle}>
           РЕКОМЕНДОВАННЫЕ ТОВАРЫ
         </div>
-        <div className={featuredProductsList}>
-          {featuredItems.map((item, i) => <FeaturedProduct name={item[0]} url={item[1]} key={i} /> )}
-        </div>
+        <div className={featuredProductsListWrapper}>
+          <div className={featuredProductsList}>
+            {featuredItems.map((item, i) => <FeaturedProduct name={item[0]} url={item[1]} key={i} /> )}
+          </div>
+        </div> 
+        <div className={katalogButton}>
+          <Button label={'КАТАЛОГ'} width={210} height={70}/> 
+        </div>  
       </div>    
       <div className={css`height: 500px;`}>
       </div>
@@ -205,10 +229,34 @@ function ProductType({ type }) {
 }
 
 function FeaturedProduct({ name, url}) {
+  const productItem = css`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    color: black;
+    font-size: 26px;
+    font-weight: 441;
+    font-stretch: 35%;   
+    &:hover {
+      transform: scale(1.2, 1.2);
+      transition: 0.2s;
+    }      
+  `
+
+  const itemName = css`
+  `
 
   return (
-    <div>
-      <Image src={url} width={400} height={266.796875} />
+    <div className={productItem}>
+      <Image src={url} width={370} height={246.787109375} />
+      <div className={itemName}>
+        {name}
+      </div>
+      <div>
+      </div>
+      <div>
+      </div>
     </div>  
   )
 }

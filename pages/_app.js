@@ -121,7 +121,6 @@ function MyApp({ Component, pageProps }) {
           </div>    
           <div className={menuBarLast}>
             <div className={phoneNumber}>
-                +375(29)569-34-76
             </div>
             <div className={shoppingCart}>
             </div>
