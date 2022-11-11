@@ -12,6 +12,7 @@ const carouselHeight = 600;
 const mainWrapper = css`
   display: flex;
   flex-direction: column;
+  align-items: center;
 `
 
 const carousel = css`
@@ -27,16 +28,33 @@ const productTypes = css`
   align-self: center;
   justify-content: space-around;
   width: 1150px;
+  border-bottom: 1px solid black;
+  padding-bottom: 42px;  
 `
 
-const recommendedProducts = css`
-
+const featuredProducts = css`
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;  
+  align-items: center;
 `  
-const recommendedProductsTitle = css`
+const featuredProductsTitle = css`
   color: black;
+  font-size: 30px;
+  font-weight: 450;
+  font-stretch: 55%;
 ` 
 
-export default function Home() {
+const featuredProductsList = css`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 25px;
+
+`
+
+export default function Home({ featuredItems }) {
   return (
     <div className={mainWrapper}>
       <div className={carousel}>
@@ -66,12 +84,16 @@ export default function Home() {
         </Carousel>
       </div> 
       <div className={productTypes}>
-        {['ceiling', 'floor', 'wall', 'singular', 'wall3D', 'mirror'].map(type => <ProductType type={type} />)}
+        {['ceiling', 'floor', 'wall', 'singular', 'wall3D', 'mirror'].map((type, i) => <ProductType type={type} key={i} />)}
       </div> 
-      <div className={recommendedProducts}>
-        <div className={recommendedProductsTitle}>
+      <div className={featuredProducts}>
+        <div className={featuredProductsTitle}>
+          РЕКОМЕНДОВАННЫЕ ТОВАРЫ
         </div>
-      </div>      
+        <div className={featuredProductsList}>
+          {featuredItems.map((item, i) => <FeaturedProduct name={item[0]} url={item[1]} key={i} /> )}
+        </div>
+      </div>    
       <div className={css`height: 500px;`}>
       </div>
     </div>  
@@ -180,4 +202,31 @@ function ProductType({ type }) {
       </div>
     </div>
   )  
+}
+
+function FeaturedProduct({ name, url}) {
+
+  return (
+    <div>
+      <Image src={url} width={400} height={266.796875} />
+    </div>  
+  )
+}
+
+export async function getStaticProps() {
+  const fs = require('fs');
+
+  let data
+  try {
+    data = fs.readFileSync('json/featured_products.json', 'utf8');
+    console.log(data);
+  } catch (err) {
+    console.error(err);
+  }  
+
+  const featuredItems = JSON.parse(data)
+
+  return {
+    props: { featuredItems }
+  }  
 }
