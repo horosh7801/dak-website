@@ -1,17 +1,17 @@
 import '../styles/globals.css'
 import { css } from '@emotion/css'
-//import { Inter } from '@next/font/google'
 import { Roboto_Flex } from '@next/font/google'
 import Image from 'next/image'
 import logoImg from '../public/logo.jpg'
+import ShoppingBagSharpIcon from '@mui/icons-material/ShoppingBagSharp';
 
-//const roboto = Inter({display: 'optional', axes: ['YOPQ', 'YTUC', 'GRAD', 'wdth']})
 const roboto = Roboto_Flex({
   subsets: ['latin', 'cyrillic','numbers', 'punctuation'],
   axes: ['YOPQ', 'YTUC', 'GRAD', 'wdth']
 })
 
 const header = css`
+  max-width: 100vw;
 `
 const stickyHeader = css`
   display: flex;
@@ -25,6 +25,7 @@ const stickyHeader = css`
 const logoWrapper = css`
   border:  3px black solid;
   margin-left: 30px;
+  cursor: pointer;
 `
 
 const logo = css`
@@ -80,17 +81,11 @@ const menuBarLast = css`
   flex-grow: 1.5;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-`
-
-const phoneNumber = css`
-  font-size: 20px;
-  font-weight: 600;
+  justify-content: end;
 `
 
 const shoppingCart = css`
-  width: 10px;
-  height: 10px;
+  margin-left: 20px;
 `
 
 function MyApp({ Component, pageProps }) {
@@ -106,29 +101,44 @@ function MyApp({ Component, pageProps }) {
         </div>
         <div className={menuBar}>
           <div className={menuBarFirst}>
-            <div className={menuButton}>
-              КАТАЛОГ
-            </div>
-            <div className={menuButton}>  
-              ДОСТАВКА
-            </div>
-            <div className={menuButton}>  
-              КОНТАКТЫ
-            </div>
-            <div className={menuButton}>  
-              ФОТОГАЛЕРЕЯ
-            </div>
+            {['КАТАЛОГ', 'ДОСТАВКА', 'КОНТАКТЫ', 'ФОТОГАЛЕРЕЯ'].map((name, i) => <MenuBarButton name={name} key={i} />)}
           </div>    
           <div className={menuBarLast}>
-            <div className={phoneNumber}>
-            </div>
             <div className={shoppingCart}>
+              <ShoppingBagSharpIcon />
+            </div>
+            <div className={css`width: 50px`}>
             </div>
           </div>           
         </div> 
       </div>
       <Component {...pageProps} />
     </div>  
+  )
+}
+
+function MenuBarButton({ name }) {
+
+  const menuButton = css`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 5px white solid;
+    border-right: 5px white solid;
+    height: 41px;
+    cursor: pointer;
+    &:hover {
+      border-left: 5px black solid;
+      border-right: 5px black solid;
+      background-color: black;
+      color: white;
+    }
+  `
+
+  return (
+    <div className={menuButton}>
+      {name}
+    </div>
   )
 }
 

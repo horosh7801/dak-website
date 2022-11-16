@@ -45,6 +45,7 @@ const featuredProductsTitle = css`
   font-size: 30px;
   font-weight: 450;
   font-stretch: 55%;
+  margin-bottom: 25px;
 ` 
 
 const featuredProductsList = css`
@@ -53,24 +54,24 @@ const featuredProductsList = css`
   flex-wrap: wrap;
   justify-content: space-between;
   width: 1183px;
-  margin-top: 30px;
   margin-bottom: 30px;
   gap: 30px;
 
 `
 
 const featuredProductsListWrapper = css`
-  width: 100em;
+  width: 100vw;
   background-color: #dedede;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
 `
 
 const katalogButton = css`
   font-size: 29px;
   font-weight: 250;
-  margin-top: 10px;
+  margin-bottom: 20px;
 `
 
 export default function Home({ featuredItems }) {
@@ -101,10 +102,10 @@ export default function Home({ featuredItems }) {
             />
           </div>                
         </Carousel>
-      </div> 
+      </div>
       <div className={productTypes}>
         {['ceiling', 'floor', 'wall', 'singular', 'wall3D', 'mirror'].map((type, i) => <ProductType type={type} key={i} />)}
-      </div> 
+      </div>
       <div className={featuredProducts}>
         <div className={featuredProductsTitle}>
           РЕКОМЕНДОВАННЫЕ ТОВАРЫ
@@ -113,11 +114,11 @@ export default function Home({ featuredItems }) {
           <div className={featuredProductsList}>
             {featuredItems.map((item, i) => <FeaturedProduct name={item[0]} url={item[1]} key={i} /> )}
           </div>
-        </div> 
-        <div className={katalogButton}>
-          <Button label={'КАТАЛОГ'} width={210} height={70}/> 
-        </div>  
-      </div>    
+          <div className={katalogButton}>
+            <Button label={'КАТАЛОГ'} width={210} height={70}/> 
+          </div>           
+        </div>
+      </div>
       <div className={css`height: 500px;`}>
       </div>
     </div>  
