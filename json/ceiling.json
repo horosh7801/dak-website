@@ -1,0 +1,17 @@
+[
+	{"name": "Snake", "priceRUB": 22650, "img": "/products/ceiling/snake.jpg"},
+	{"name": "Wave", "priceRUB": 17700, "img": "/products/ceiling/wave.jpg"},
+	{"name": "Wave Plus", "priceRUB": 26250, "img": "/products/ceiling/wave_plus.jpg"},
+	{"name": "Roundevu", "priceRUB": 24300, "img": "/products/ceiling/roundevu.jpg"},
+	{"name": "Light Box", "priceRUB": 7500, "img": "/products/ceiling/light_box.jpg"},
+	{"name": "Skyline Slim", "priceRUB": 14400, "img": "/products/ceiling/skyline_slim.jpg"},
+	{"name": "Sota", "priceRUB": 24150, "img": "/products/ceiling/sota.jpg"},
+	{"name": "Raven", "priceRUB": 18900, "img": "/products/ceiling/raven.jpg"},
+	{"name": "Moon", "priceRUB": 24900, "img": "/products/ceiling/moon.jpg"},
+	{"name": "Mercury Fly", "priceRUB": 17100, "img": "/products/ceiling/mercury_fly.jpg"},
+	{"name": "Skyline", "priceRUB": 23100, "img": "/products/ceiling/skyline.jpg"},
+	{"name": "Ovalli", "priceRUB": 28500, "img": "/products/ceiling/ovalli.jpg"},
+	{"name": "Quadrat", "priceRUB": 22650, "img": "/products/ceiling/quadrat.jpg"},
+	{"name": "Ultra Slim", "priceRUB": 14400, "img": "/products/ceiling/ultra_slim.jpg"},
+	{"name": "Candle Lamp", "priceRUB": 0, "img": "/products/ceiling/candle_lamp.jpg"}
+]

@@ -6,7 +6,7 @@ import logoImg from '../public/logo.jpg'
 import ShoppingBagSharpIcon from '@mui/icons-material/ShoppingBagSharp';
 
 const roboto = Roboto_Flex({
-  subsets: ['latin', 'cyrillic','numbers', 'punctuation'],
+  subsets: ['latin', 'cyrillic','numbers', 'punctuation', 'currency'],
   axes: ['YOPQ', 'YTUC', 'GRAD', 'wdth']
 })
 
@@ -14,6 +14,7 @@ const header = css`
   max-width: 100vw;
 `
 const stickyHeader = css`
+  box-shadow: 0px 1px 3px -2px;
   display: flex;
   flex-direction: row;
   position: sticky;

@@ -6,7 +6,12 @@ import lamp3Image from '../public/lamp3.jpg'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 import { css } from '@emotion/css'
-import Button from '../lib/components/Button.js'
+//import Button from '../lib/components/Button.js'
+import Button from '@mui/material/Button';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import FormControl from '@mui/material/FormControl'
 
 
 const carouselHeight = 600;
@@ -34,11 +39,14 @@ const productTypes = css`
   padding-bottom: 42px;  
 `
 
-const featuredProducts = css`
+const catalog = css`
+  width: 100vw;
+  background-color: #ececec;
   display: flex;
   flex-direction: column;
-  margin-top: 50px;  
+  justify-content: space-between;
   align-items: center;
+  margin-top: 50px;
 `  
 const featuredProductsTitle = css`
   color: black;
@@ -48,24 +56,24 @@ const featuredProductsTitle = css`
   margin-bottom: 25px;
 ` 
 
-const featuredProductsList = css`
+const productsList = css`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
-  width: 1183px;
+  justify-content: start;
+  width: 1221px;
   margin-bottom: 30px;
-  gap: 30px;
+  gap: 10px;
+  padding-top: 10px;
 
 `
 
-const featuredProductsListWrapper = css`
-  width: 100vw;
-  background-color: #dedede;
+const productsListWrapper = css`
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+
 `
 
 const katalogButton = css`
@@ -74,7 +82,12 @@ const katalogButton = css`
   margin-bottom: 20px;
 `
 
-export default function Home({ featuredItems }) {
+const radioGroup = css`
+  display: flex;
+  justify-content: flex-start;
+`
+
+export default function Home({ productItems }) {
   return (
     <div className={mainWrapper}>
       <div className={carousel}>
@@ -103,21 +116,35 @@ export default function Home({ featuredItems }) {
           </div>                
         </Carousel>
       </div>
-      <div className={productTypes}>
-        {['ceiling', 'floor', 'wall', 'singular', 'wall3D', 'mirror'].map((type, i) => <ProductType type={type} key={i} />)}
-      </div>
-      <div className={featuredProducts}>
-        <div className={featuredProductsTitle}>
-          РЕКОМЕНДОВАННЫЕ ТОВАРЫ
-        </div>
-        <div className={featuredProductsListWrapper}>
-          <div className={featuredProductsList}>
-            {featuredItems.map((item, i) => <FeaturedProduct name={item[0]} url={item[1]} key={i} /> )}
+      <div className={catalog}>
+        <div className={productsListWrapper}>
+          <div className={radioGroup}>
+            <FormControl>
+              <RadioGroup 
+                defaultValue='ceiling' 
+                onChange={(event) => {
+                  
+
+                }}
+              >
+                <FormControlLabel value='ceiling' control={<Radio />} label='ПОДВЕСНЫЕ' />
+                <FormControlLabel value='floor' control={<Radio />} label='НАПОЛЬНЫЕ' />
+                <FormControlLabel value='wall' control={<Radio />} label='НАСТЕННЫЕ' />
+                <FormControlLabel value='point' control={<Radio />} label='ТОЧЕЧНЫЕ' />
+                <FormControlLabel value='wall3d' control={<Radio />} label='НАСТЕННЫЕ 3D' />
+                <FormControlLabel value='mirror' control={<Radio />} label='ЗЕРКАЛА' />
+              </RadioGroup>
+            </FormControl>  
           </div>
-          <div className={katalogButton}>
-            <Button label={'КАТАЛОГ'} width={210} height={70}/> 
-          </div>           
-        </div>
+          <div className={productsList}>
+            {productItems.map((item, i) => (<ProductItem 
+              name={item['name']} 
+              priceRUB={item['priceRUB'] + ' ₽'} 
+              url={item['img']} 
+              key={i} 
+            /> ))}
+          </div>
+        </div>     
       </div>
       <div className={css`height: 500px;`}>
       </div>
@@ -229,36 +256,75 @@ function ProductType({ type }) {
   )  
 }
 
-function FeaturedProduct({ name, url}) {
+function ProductItem({ name, priceRUB, url}) {
   const productItem = css`
+    box-shadow: 0px 0px 4px -1px;
+    width: 320px;
+    height: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-around;
     background-color: white;
     color: black;
-    font-size: 26px;
-    font-weight: 441;
-    font-stretch: 35%;   
+    border-radius: 2px;
     &:hover {
-      transform: scale(1.2, 1.2);
-      transition: 0.2s;
+      transform: scale(1.06, 1.06);
+      transition: 0.1s;
+      z-index: 1;
+      cursor: pointer;
     }      
+  `
+
+  const imageWrapper = css`
+    position: relative;
+    width: 280px;
+    height: 280px;   
   `
 
   const itemName = css`
   `
 
+  const itemPrice = css`
+  `
+
+  const textWrapper = css`
+    border-top: 2px solid black;
+    width: 160px;
+    font-size: 24px;
+    font-weight: 441;
+    font-stretch: 35%;   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  `
+
   return (
     <div className={productItem}>
-      <Image src={url} width={370} height={246.787109375} />
-      <div className={itemName}>
-        {name}
-      </div>
-      <div>
-      </div>
-      <div>
+      <div className={imageWrapper}>
+        <Image style={{objectFit: 'contain'}} src={url} fill={true} />
+      </div> 
+      <div className={textWrapper}>
+        <div className={itemName}>
+          {name}
+        </div>
+        <div className={itemPrice}>
+          {priceRUB}
+        </div>
       </div>
     </div>  
+  )
+}
+
+function productFilter() {
+
+  const wrapper = css`
+    
+  `
+
+  return (
+    <div>
+    </div>
   )
 }
 
@@ -266,16 +332,17 @@ export async function getStaticProps() {
   const fs = require('fs');
 
   let data
+
   try {
-    data = fs.readFileSync('json/featured_products.json', 'utf8');
+    data = fs.readFileSync('json/point.json', 'utf8');
     console.log(data);
   } catch (err) {
     console.error(err);
   }  
 
-  const featuredItems = JSON.parse(data)
+  const productItems = JSON.parse(data)
 
   return {
-    props: { featuredItems }
+    props: { productItems }
   }  
 }
