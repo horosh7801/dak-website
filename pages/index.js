@@ -12,6 +12,7 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import FormControl from '@mui/material/FormControl'
+import { useState, useEffect } from 'react'
 
 
 const carouselHeight = 600;
@@ -38,16 +39,6 @@ const productTypes = css`
   border-bottom: 1px solid black;
   padding-bottom: 42px;  
 `
-
-const catalog = css`
-  width: 100vw;
-  background-color: #ececec;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 50px;
-`  
 const featuredProductsTitle = css`
   color: black;
   font-size: 30px;
@@ -56,38 +47,13 @@ const featuredProductsTitle = css`
   margin-bottom: 25px;
 ` 
 
-const productsList = css`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: start;
-  width: 1221px;
-  margin-bottom: 30px;
-  gap: 10px;
-  padding-top: 10px;
-
-`
-
-const productsListWrapper = css`
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-
-`
-
 const katalogButton = css`
   font-size: 29px;
   font-weight: 250;
   margin-bottom: 20px;
 `
 
-const radioGroup = css`
-  display: flex;
-  justify-content: flex-start;
-`
-
-export default function Home({ productItems }) {
+export default function Home({ items }) {
   return (
     <div className={mainWrapper}>
       <div className={carousel}>
@@ -116,36 +82,7 @@ export default function Home({ productItems }) {
           </div>                
         </Carousel>
       </div>
-      <div className={catalog}>
-        <div className={productsListWrapper}>
-          <div className={radioGroup}>
-            <FormControl>
-              <RadioGroup 
-                defaultValue='ceiling' 
-                onChange={(event) => {
-                  
-
-                }}
-              >
-                <FormControlLabel value='ceiling' control={<Radio />} label='ПОДВЕСНЫЕ' />
-                <FormControlLabel value='floor' control={<Radio />} label='НАПОЛЬНЫЕ' />
-                <FormControlLabel value='wall' control={<Radio />} label='НАСТЕННЫЕ' />
-                <FormControlLabel value='point' control={<Radio />} label='ТОЧЕЧНЫЕ' />
-                <FormControlLabel value='wall3d' control={<Radio />} label='НАСТЕННЫЕ 3D' />
-                <FormControlLabel value='mirror' control={<Radio />} label='ЗЕРКАЛА' />
-              </RadioGroup>
-            </FormControl>  
-          </div>
-          <div className={productsList}>
-            {productItems.map((item, i) => (<ProductItem 
-              name={item['name']} 
-              priceRUB={item['priceRUB'] + ' ₽'} 
-              url={item['img']} 
-              key={i} 
-            /> ))}
-          </div>
-        </div>     
-      </div>
+      <Catalog items={items}/>
       <div className={css`height: 500px;`}>
       </div>
     </div>  
@@ -328,21 +265,115 @@ function productFilter() {
   )
 }
 
+function Catalog ({ items }) {
+
+  const [catalogState, setCatalogState] = useState('ceiling')
+
+  const catalog = css`
+    width: 100vw;
+    background-color: #ececec;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+  `
+
+  const productsListWrapper = css`
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  `
+
+  const radioGroup = css`
+    display: flex;
+    justify-content: flex-start;
+  `
+
+  const productsList = css`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: start;
+    width: 1221px;
+    margin-bottom: 30px;
+    gap: 10px;
+    padding-top: 10px;
+  `
+
+  return (
+    <div className={catalog}>
+      <div className={productsListWrapper}>
+        <div className={radioGroup}>
+          <FormControl>
+            <RadioGroup 
+              value={catalogState}
+              onChange={(event) => {
+                setCatalogState(event.target.value)         
+              }}
+            >
+              <FormControlLabel 
+                value='ceiling' 
+                control={<Radio />} 
+                label='ПОДВЕСНЫЕ' 
+              />
+              <FormControlLabel 
+                value='floor' 
+                control={<Radio />} 
+                label='НАПОЛЬНЫЕ' 
+              />
+              <FormControlLabel 
+                value='wall' 
+                control={<Radio />} 
+                label='НАСТЕННЫЕ' 
+              />
+              <FormControlLabel 
+                value='point' 
+                control={<Radio />} 
+                label='ТОЧЕЧНЫЕ' 
+              />
+              <FormControlLabel 
+                value='wall3d' 
+                control={<Radio />} 
+                label='НАСТЕННЫЕ 3D' 
+              />
+              <FormControlLabel 
+                value='mirror' 
+                control={<Radio />} 
+                label='ЗЕРКАЛА' 
+              />
+            </RadioGroup>
+          </FormControl>  
+        </div>
+        <div className={productsList}>
+          {items[catalogState].map((item, i) => (<ProductItem 
+            name={item['name']} 
+            priceRUB={item['priceRUB'] + ' ₽'} 
+            url={item['img']} 
+            key={i} 
+          /> ))}
+        </div>
+      </div>     
+    </div>
+  )
+}
+
 export async function getStaticProps() {
   const fs = require('fs');
 
-  let data
-
-  try {
-    data = fs.readFileSync('json/point.json', 'utf8');
-    console.log(data);
-  } catch (err) {
-    console.error(err);
-  }  
-
-  const productItems = JSON.parse(data)
-
+  const items = {ceiling: [], floor: [], wall: [], point: [], wall3d: [], mirror: []}
+  for (const itemType in items) {
+    try {
+      const data = fs.readFileSync(`json/${itemType}.json`, 'utf8')
+      const productItems = JSON.parse(data)
+      items[itemType] = productItems
+    } catch (err) {
+      console.log(err)
+    }
+  }
+  console.log(items['mirror'])
   return {
-    props: { productItems }
+    props: { items }
   }  
 }
