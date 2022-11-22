@@ -13,6 +13,8 @@ import RadioGroup from '@mui/material/RadioGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import FormControl from '@mui/material/FormControl'
 import { useState, useEffect } from 'react'
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import ToggleButton from '@mui/material/ToggleButton';
 
 
 const carouselHeight = 600;
@@ -283,12 +285,7 @@ function Catalog ({ items }) {
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-  `
-
-  const radioGroup = css`
-    display: flex;
-    justify-content: flex-start;
+    justify-content: center;
   `
 
   const productsList = css`
@@ -296,7 +293,7 @@ function Catalog ({ items }) {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: start;
-    width: 1221px;
+    width: 1310px;
     margin-bottom: 30px;
     gap: 10px;
     padding-top: 10px;
@@ -304,48 +301,35 @@ function Catalog ({ items }) {
 
   return (
     <div className={catalog}>
+
+      <ToggleButtonGroup
+        exclusive
+        value={catalogState}
+        onChange={(event) => {
+          setCatalogState(event.target.value)
+        }}
+      >
+        <ToggleButton value='ceiling'>
+          ПОДВЕСНЫЕ
+        </ToggleButton>
+        <ToggleButton value='floor'>
+          НАПОЛЬНЫЕ
+        </ToggleButton>
+        <ToggleButton value='wall'>
+          НАСТЕННЫЕ
+        </ToggleButton>
+        <ToggleButton value='point'>
+          ТОЧЕЧНЫЕ
+        </ToggleButton>
+        <ToggleButton value='wall3d'>
+          НАСТЕННЫЕ 3D
+        </ToggleButton>
+        <ToggleButton value='mirror'>
+          ЗЕРКАЛА
+        </ToggleButton>                                        
+      </ToggleButtonGroup>
+
       <div className={productsListWrapper}>
-        <div className={radioGroup}>
-          <FormControl>
-            <RadioGroup 
-              value={catalogState}
-              onChange={(event) => {
-                setCatalogState(event.target.value)         
-              }}
-            >
-              <FormControlLabel 
-                value='ceiling' 
-                control={<Radio />} 
-                label='ПОДВЕСНЫЕ' 
-              />
-              <FormControlLabel 
-                value='floor' 
-                control={<Radio />} 
-                label='НАПОЛЬНЫЕ' 
-              />
-              <FormControlLabel 
-                value='wall' 
-                control={<Radio />} 
-                label='НАСТЕННЫЕ' 
-              />
-              <FormControlLabel 
-                value='point' 
-                control={<Radio />} 
-                label='ТОЧЕЧНЫЕ' 
-              />
-              <FormControlLabel 
-                value='wall3d' 
-                control={<Radio />} 
-                label='НАСТЕННЫЕ 3D' 
-              />
-              <FormControlLabel 
-                value='mirror' 
-                control={<Radio />} 
-                label='ЗЕРКАЛА' 
-              />
-            </RadioGroup>
-          </FormControl>  
-        </div>
         <div className={productsList}>
           {items[catalogState].map((item, i) => (<ProductItem 
             name={item['name']} 
