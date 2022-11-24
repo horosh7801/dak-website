@@ -1,11 +1,11 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import lamp1Image from '../public/lamp1.jpg'
-import lamp2Image from '../public/lamp2.jpg'
-import lamp3Image from '../public/lamp3.jpg'
+import lampImage1 from '../public/featured_products/wave.jpg'
+import lampImage2 from '../public/featured_products/venera.jpg'
+import lampImage3 from '../public/featured_products/snake.jpg'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
-import { css } from '@emotion/css'
+import { cx, css } from '@emotion/css'
 //import Button from '../lib/components/Button.js'
 import Button from '@mui/material/Button';
 import Radio from '@mui/material/Radio';
@@ -55,35 +55,80 @@ const katalogButton = css`
   margin-bottom: 20px;
 `
 
+const imageSet = css`
+  display: flex;
+  flex-direction: column;
+`
+
+const imageSetItem = css`
+  width: 1024px;
+  height: 380px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 6px;
+` 
+
+const imageSetRow = css`
+  display: flex;
+  flex-direction: row;
+`
+
+const imageSetItem1 = css`
+  margin-right: 6px;
+  position: relative;
+`
+
+const imageCaption = css`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  height: 140px;
+  background-color: #0000008f;
+  top: 250px;
+  color: white;
+  font-size: 33px;
+`
+
+const imageCaptionText = css`
+  margin-left: 10px;
+`
+
 export default function Home({ items }) {
   return (
     <div className={mainWrapper}>
-      <div className={carousel}>
-        <Carousel 
-          height={carouselHeight}
-          showStatus={false}
-          autoPlay={true} 
-          infiniteLoop={true} 
-          showThumbs={false} 
-        >
-          <div>
-            <Slide 
-              img={lamp1Image} 
-              title={'DAK'} 
-              txt={'ДИЗАЙНЕРСКИЕ СВЕТИЛЬНИКИ ИЗ ДЕРЕВА КАК НУЖНО ИМЕННО ВАМ'} /> 
+      <div className={imageSet}>
+        <div className={imageSetItem}>
+          <Image style={{width: 1024, height: 'auto', position: 'absolute', top: -48}} src={lampImage1} />
+          <div className={cx(imageCaption, css`height: 160px; top: 230px`)}>
+            <div className={cx(css`font-weight: 700; font-size: 45px;`, imageCaptionText)}>
+              DAK
+            </div>
+            <div className={imageCaptionText}>
+              ДИЗАЙНЕРСКИЕ СВЕТИЛЬНИКИ ИЗ ДЕРЕВА КАК НУЖНО ИМЕННО ВАМ
+            </div>
           </div>
-          <div>
-            <Slide
-              img={lamp2Image}
-            />  
-          </div> 
-          <div>
-            <Slide
-              img={lamp3Image}
-            />
-          </div>                
-        </Carousel>
-      </div>
+        </div>
+        <div className={imageSetRow}>
+          <div className={imageSetItem1}>
+            <Image style={{width: 509, height: 'auto',}} src={lampImage2} />
+            <div className={cx(imageCaption, css`height: 110px; top: 228px;`)}>
+              <div className={cx(imageCaptionText, css`font-size: 30px;`)}>
+                КОНТАКТНАЯ ИНФОРМАЦИЯ
+              </div>            
+            </div>
+          </div>
+          <div className={css`position: relative;`}>
+            <Image style={{width: 509, height: 'auto',}} src={lampImage3} />
+            <div className={cx(imageCaption, css`height: 110px; top: 228px;`)}>
+              <div className={cx(imageCaptionText, css`font-size: 30px;`)}>
+                ДОСТАВКА И ОПЛАТА
+              </div>
+            </div>            
+          </div>          
+        </div>  
+      </div>  
       <Catalog items={items}/>
       <div className={css`height: 500px;`}>
       </div>
