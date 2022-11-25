@@ -12,9 +12,10 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import FormControl from '@mui/material/FormControl'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import ToggleButton from '@mui/material/ToggleButton';
+import LanguageContext from '../lib/context/language.js'
 
 
 const carouselHeight = 600;
@@ -58,6 +59,8 @@ const katalogButton = css`
 const imageSet = css`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  width: 100vw;
 `
 
 const imageSetItem = css`
@@ -66,6 +69,10 @@ const imageSetItem = css`
   position: relative;
   overflow: hidden;
   margin-bottom: 6px;
+  transition: 0.1s;
+  &:hover {
+    opacity: 0.9;
+  }
 ` 
 
 const imageSetRow = css`
@@ -76,6 +83,10 @@ const imageSetRow = css`
 const imageSetItem1 = css`
   margin-right: 6px;
   position: relative;
+  transition: 0.1s;
+  &:hover {
+    opacity: 0.9;
+  }
 `
 
 const imageCaption = css`
@@ -96,6 +107,9 @@ const imageCaptionText = css`
 `
 
 export default function Home({ items }) {
+
+  const language = useContext(LanguageContext)
+
   return (
     <div className={mainWrapper}>
       <div className={imageSet}>
@@ -106,7 +120,11 @@ export default function Home({ items }) {
               DAK
             </div>
             <div className={imageCaptionText}>
-              ДИЗАЙНЕРСКИЕ СВЕТИЛЬНИКИ ИЗ ДЕРЕВА КАК НУЖНО ИМЕННО ВАМ
+              {
+                (language === 'russian') && 'ДИЗАЙНЕРСКИЕ СВЕТИЛЬНИКИ ИЗ ДЕРЕВА КАК НУЖНО ИМЕННО ВАМ'
+                ||
+                (language === 'english') && 'DESIGNER WOODEN LAMPS MADE FOR YOU SPECIFICALLY'
+              }
             </div>
           </div>
         </div>
@@ -115,15 +133,23 @@ export default function Home({ items }) {
             <Image style={{width: 509, height: 'auto',}} src={lampImage2} />
             <div className={cx(imageCaption, css`height: 110px; top: 228px;`)}>
               <div className={cx(imageCaptionText, css`font-size: 30px;`)}>
-                КОНТАКТНАЯ ИНФОРМАЦИЯ
+                {
+                  (language === 'russian') && 'КОНТАКТНАЯ ИНФОРМАЦИЯ'
+                  ||
+                  (language === 'english') && 'CONTACT INFORMATION'
+                }
               </div>            
             </div>
           </div>
-          <div className={css`position: relative;`}>
+          <div className={css`position: relative; transition: 0.1s; &:hover {opacity: 0.9;}`}>
             <Image style={{width: 509, height: 'auto',}} src={lampImage3} />
             <div className={cx(imageCaption, css`height: 110px; top: 228px;`)}>
               <div className={cx(imageCaptionText, css`font-size: 30px;`)}>
-                ДОСТАВКА И ОПЛАТА
+                {
+                  (language === 'russian') && 'ДОСТАВКА И ОПЛАТА'
+                  ||
+                  (language === 'english') && 'PAYMENT AND DELIVERY'
+                }
               </div>
             </div>            
           </div>          
@@ -316,6 +342,8 @@ function Catalog ({ items }) {
 
   const [catalogState, setCatalogState] = useState('ceiling')
 
+  const language = useContext(LanguageContext)
+
   const catalog = css`
     width: 100vw;
     background-color: #ececec;
@@ -324,6 +352,12 @@ function Catalog ({ items }) {
     justify-content: space-between;
     align-items: center;
     margin-top: 50px;
+  `
+
+  const title = css`
+    font-size: 37px;
+    font-weight: 580;
+    margin-bottom: 10px;  
   `
 
   const productsListWrapper = css`
@@ -346,7 +380,13 @@ function Catalog ({ items }) {
 
   return (
     <div className={catalog}>
-
+      <div className={title}>
+        {
+          (language === 'russian') && 'КАТАЛОГ'
+          ||
+          (language === 'english') && 'CATALOG'
+        }
+      </div>
       <ToggleButtonGroup
         className={css`background-color: white; font-weight: 500;`}
         exclusive
@@ -356,22 +396,46 @@ function Catalog ({ items }) {
         }}
       >
         <ToggleButton value='ceiling'>
-          ПОДВЕСНЫЕ
+          {
+            (language === 'russian') && 'ПОДВЕСНЫЕ'
+            ||
+            (language === 'english') && 'CEILING'
+          }
         </ToggleButton>
         <ToggleButton value='floor'>
-          НАПОЛЬНЫЕ
+          {
+            (language === 'russian') && 'НАПОЛЬНЫЕ'
+            ||
+            (language === 'english') && 'FLOOR'
+          }
         </ToggleButton>
         <ToggleButton value='wall'>
-          НАСТЕННЫЕ
+          {
+            (language === 'russian') && 'НАСТЕННЫЕ'
+            ||
+            (language === 'english') && 'WALL'
+          }
         </ToggleButton>
         <ToggleButton value='point'>
-          ТОЧЕЧНЫЕ
+          {
+            (language === 'russian') && 'ТОЧЕЧНЫЕ'
+            ||
+            (language === 'english') && 'POINT'
+          }
         </ToggleButton>
         <ToggleButton value='wall3d'>
-          НАСТЕННЫЕ 3D
+          {
+            (language === 'russian') && 'НАСТЕННЫЕ 3D'
+            ||
+            (language === 'english') && 'WALL 3D'
+          }
         </ToggleButton>
         <ToggleButton value='mirror'>
-          ЗЕРКАЛА
+          {
+            (language === 'russian') && 'ЗЕРКАЛА'
+            ||
+            (language === 'english') && 'MIRRORS'
+          }
         </ToggleButton>                                        
       </ToggleButtonGroup>
 
