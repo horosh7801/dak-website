@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 import lampImage1 from '../public/featured_products/wave.jpg'
 import lampImage2 from '../public/featured_products/venera.jpg'
 import lampImage3 from '../public/featured_products/snake.jpg'
@@ -310,31 +311,21 @@ function ProductItem({ name, priceRUB, url}) {
   `
 
   return (
-    <div className={productItem}>
-      <div className={imageWrapper}>
-        <Image style={{objectFit: 'contain'}} src={url} fill={true} />
-      </div> 
-      <div className={textWrapper}>
-        <div className={itemName}>
-          {name}
+    <Link style={{textDecoration: 'none'}} href={`/products/${url.split('/')[3].split('.jpg')[0]}`}>
+      <div className={productItem}>
+        <div className={imageWrapper}>
+          <Image style={{objectFit: 'contain'}} src={url} fill={true} />
+        </div> 
+        <div className={textWrapper}>
+          <div className={itemName}>
+            {name}
+          </div>
+          <div className={itemPrice}>
+            {priceRUB}
+          </div>
         </div>
-        <div className={itemPrice}>
-          {priceRUB}
-        </div>
-      </div>
-    </div>  
-  )
-}
-
-function productFilter() {
-
-  const wrapper = css`
-    
-  `
-
-  return (
-    <div>
-    </div>
+      </div>  
+    </Link>  
   )
 }
 
@@ -466,7 +457,6 @@ export async function getStaticProps() {
       console.log(err)
     }
   }
-  console.log(items['mirror'])
   return {
     props: { items }
   }  

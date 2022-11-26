@@ -2,6 +2,7 @@ import '../styles/globals.css'
 import { css } from '@emotion/css'
 import { Roboto_Flex } from '@next/font/google'
 import Image from 'next/image'
+import Link from 'next/link'
 import logoImg from '../public/logo.jpg'
 import euImg from '../public/locale/european-union.png'
 import ruImg from '../public/locale/russia.png'
@@ -130,13 +131,15 @@ function StickyHeader({ setLanguage }) {
 
   return (
     <div className={stickyHeader}>
-      <div className={logoWrapper}>
-        <div className={logo}>
-          <div className={logoText}>
-            DAK
-          </div>  
+      <Link href='/'>
+        <div className={logoWrapper}>
+          <div className={logo}>
+            <div className={logoText}>
+              DAK
+            </div>  
+          </div>
         </div>
-      </div>
+      </Link>  
       <div className={menuBar}>
         <div className={menuBarFirst}>
           {
