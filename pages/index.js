@@ -267,7 +267,7 @@ function ProductType({ type }) {
   )  
 }
 
-function ProductItem({ name, priceRUB, url}) {
+function ProductItem({ name, priceRUB, url, type}) {
   const productItem = css`
     box-shadow: 0px 0px 4px -1px;
     width: 320px;
@@ -311,7 +311,7 @@ function ProductItem({ name, priceRUB, url}) {
   `
 
   return (
-    <Link style={{textDecoration: 'none'}} href={`/products/${url.split('/')[3].split('.jpg')[0]}`}>
+    <Link style={{textDecoration: 'none'}} href={`/products/${type}/${url.split('/')[3].split('.jpg')[0]}`}>
       <div className={productItem}>
         <div className={imageWrapper}>
           <Image style={{objectFit: 'contain'}} src={url} fill={true} />
@@ -432,7 +432,8 @@ function Catalog ({ items }) {
 
       <div className={productsListWrapper}>
         <div className={productsList}>
-          {items[catalogState].map((item, i) => (<ProductItem 
+          {items[catalogState].map((item, i) => (<ProductItem
+            type={catalogState} 
             name={item['name']} 
             priceRUB={item['priceRUB'] + ' ₽'} 
             url={item['img']} 
