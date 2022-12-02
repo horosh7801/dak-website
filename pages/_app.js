@@ -7,6 +7,7 @@ import logoImg from '../public/logo.jpg'
 import euImg from '../public/locale/european-union.png'
 import ruImg from '../public/locale/russia.png'
 import ShoppingBagSharpIcon from '@mui/icons-material/ShoppingBagSharp';
+import { ThemeProvider, createTheme } from '@mui/material/styles'
 import LanguageContext from '../lib/context/language.js'
 import { useState, useContext } from 'react'
 
@@ -15,6 +16,16 @@ const roboto = Roboto_Flex({
   axes: ['YOPQ', 'YTUC', 'GRAD', 'wdth']
 })
 
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#000'
+    },
+    secondary: {
+      main: '#ececec'
+    }
+  }
+})
 
 function MyApp({ Component, pageProps }) {
 
@@ -22,10 +33,12 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <LanguageContext.Provider value={languageState}>
-      <div className={roboto.className}>
-        <StickyHeader setLanguage={setLanguageState}/>
-        <Component {...pageProps} />
-      </div>
+      <ThemeProvider theme={theme}>
+        <div className={roboto.className}>
+          <StickyHeader setLanguage={setLanguageState}/>
+          <Component {...pageProps} />
+        </div>
+      </ThemeProvider>  
     </LanguageContext.Provider>    
   )
 }
