@@ -5,7 +5,8 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"
 import { Carousel } from 'react-responsive-carousel'
 import Button from '@mui/material/Button'
 import Slider from '@mui/material/Slider'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import LanguageContext from '../../../lib/context/language.js'
 
 
 const itemPage = css`
@@ -26,7 +27,6 @@ const actionButtonSet = css`
 	display: flex;
 	flex-direction: column;
 	row-gap: 10px;
-	width: 150px;
 `
 
 const productName = css`
@@ -56,6 +56,8 @@ export default function Item() {
 
 	const [lengthState, setLengthState] = useState(120)
 
+	const language = useContext(LanguageContext)
+
 	const router = useRouter()
 	const { item, type } = router.query
 
@@ -66,19 +68,31 @@ export default function Item() {
 					flex-direction: row;
 				`}>
 					<div className={itemImageSet}>
-						<div className={css`
-							position: relative;
-							width: 1024px;
-							height: 768px;
-						`}>
-							<Image src={`/products/${type}/${item}.jpg`} fill={true} style={{objectFit: 'contain'}} />
-						</div>	
-					</div>
+						<Carousel
+							showStatus={false}
+							width={'1024px'}
+						>
+							{Array(3).fill(1).map((element, index) => 
+								(
+									<div className={css`
+										position: relative;
+										width: 1024px;
+										height: 768px;
+									`}>
+										<Image src={`/products/${type}/${item}/item${index}.jpg`} fill={true} style={{objectFit: 'contain'}} />
+									</div>	
+								))	
+							}	
+						</Carousel>
+					</div>	
 					<div className={css`
 						display: flex;
 						flex-direction: column;
 						flex-grow: 1;
 						align-items: center;
+						position: sticky;
+						top: 47px;
+						height: calc(100vh - 47px);
 
 					`}>
 						<div className={productName}>
@@ -86,7 +100,11 @@ export default function Item() {
 						</div>
 						<div className={lengthSlider}>
 							<div>
-								ДЛИНА
+								{
+									(language === 'russian') && 'ДЛИНА'
+									||
+									(language === 'english') && 'LENGTH'
+								}
 							</div>
 							<Slider
 								step={null}
@@ -96,36 +114,32 @@ export default function Item() {
 								onChange={(event) => {
 									setLengthState(event.target.value)
 								}}
-								marks={[
+								marks={[120, 140, 160, 180, 200].map((element) => (
 									{
-										value: 120,
-										label: '120 см'
-									},
-									{
-										value: 140,
-										label: '140 см'
-									},
-									{
-										value: 160,
-										label: '160 см'
-									},		
-									{
-										value: 180,
-										label: '180 см'
-									},
-									{
-										value: 200,
-										label: '200 см'
-									},																						
-								]}
+										value: element,
+										label: `${element} ${(language === 'russian') && 'см' || (language === 'english') && 'cm'}`
+									}
+								))}
 							/>
 						</div>	
 						<div className={price}>
 							{`${prices[lengthState]} ₽`}
 						</div>
 						<div className={actionButtonSet}>
-							<Button variant="outlined">В КОРЗИНУ</Button>
-							<Button variant="outlined">ЗАКАЗАТЬ</Button>
+							<Button sx={{width: '216px', height: '50px', fontSize: '18px'}} size="large" variant="contained">
+								{
+									(language === 'russian') && 'В КОРЗИНУ'
+									||
+									(language === 'english') && 'ADD TO CART'
+								}
+							</Button>
+							<Button sx={{width: '216px', height: '50px', fontSize: '18px'}} size='large' variant="contained">
+								{
+									(language === 'russian') && 'ЗАКАЗАТЬ'
+									||
+									(language === 'english') && 'ORDER'
+								}
+							</Button>
 						</div>
 					</div>	
 				</div>	
@@ -142,17 +156,17 @@ export async function getStaticProps() {
 
 export async function getStaticPaths() {
 
-const fs = require('fs')
-//const products = JSON.parse(fs.readFileSync('json/total_products.json', 'utf-8'))
-const types = JSON.parse(fs.readFileSync('json/product_types.json', 'utf-8'))
+	const fs = require('fs')
+	//const products = JSON.parse(fs.readFileSync('json/total_products.json', 'utf-8'))
+	const types = JSON.parse(fs.readFileSync('json/product_types.json', 'utf-8'))
 
-const paths = []
-for (const type of types) {
-	const products = JSON.parse(fs.readFileSync(`json/${type}.json`))
-	for (const product of products) {
-		paths.push({params: {item: product['img'].split('/')[3].split('.jpg')[0], type: type}})
+	const paths = []
+	for (const type of types) {
+		const products = JSON.parse(fs.readFileSync(`json/${type}.json`))
+		for (const product of products) {
+			paths.push({params: {item: product['img'].split('/')[3].split('.jpg')[0], type: type}})
+		}
 	}
-}
 
 
 	return {

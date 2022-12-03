@@ -23,6 +23,12 @@ const theme = createTheme({
     },
     secondary: {
       main: '#ececec'
+    },
+    info: {
+      main: '#FFF'
+    },
+    neutral: {
+      main: '#FFF'
     }
   }
 })

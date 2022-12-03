@@ -381,7 +381,8 @@ function Catalog ({ items }) {
       <ToggleButtonGroup
         className={css`background-color: white; font-weight: 500;`}
         exclusive
-        value={catalogState}
+        color='primary'
+        value={catalogState}  
         onChange={(event) => {
           setCatalogState(event.target.value)
         }}
