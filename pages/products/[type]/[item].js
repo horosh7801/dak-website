@@ -50,6 +50,9 @@ const price = css`
 	font-size: 30px;
 `
 
+const shortWHRatio = 1024 / 683
+const longWHRatio = 513 / 768
+
 const prices = {120: 22650, 140: 23250, 160: 24900, 180: 25500, 200: 26850}
 
 export default function Item() {
@@ -71,8 +74,19 @@ export default function Item() {
 						<Carousel
 							showStatus={false}
 							width={'1024px'}
+							thumbWidth={'100px'}
+							showIndicators={false}
+							renderThumbs={(children) => (children.map((element, index) => (
+									<div className={css`
+										position: relative;
+										height: 90px;
+									`}>
+										<Image src={`/products/${type}/${item}/item${index}.jpg`} fill={true} style={{objectFit: 'contain'}} />		
+									</div>								
+								))
+							)}
 						>
-							{Array(3).fill(1).map((element, index) => 
+							{Array(10).fill(1).map((element, index) => 
 								(
 									<div className={css`
 										position: relative;
@@ -92,7 +106,7 @@ export default function Item() {
 						align-items: center;
 						position: sticky;
 						top: 47px;
-						height: calc(100vh - 47px);
+						height: 100vh;
 
 					`}>
 						<div className={productName}>
@@ -142,7 +156,7 @@ export default function Item() {
 							</Button>
 						</div>
 					</div>	
-				</div>	
+				</div>
 		</div>
 	)
 }
