@@ -11,16 +11,14 @@ import LanguageContext from '../../../lib/context/language.js'
 
 const itemPage = css`
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 `
 
 const itemImageSet = css`
+	position: relative;
 	width: 1120px;
 	height: 840px;
 	background-color: #ececec;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 `
 
 const actionButtonSet = css`
@@ -50,6 +48,23 @@ const price = css`
 	font-size: 30px;
 `
 
+const stickyPanel = css`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+`
+
+const leftSection = css`
+	width: 1120px;
+`
+
+const rightSection = css`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	flex-grow: 1;
+`
+
 const shortWHRatio = 1024 / 683
 const longWHRatio = 513 / 768
 
@@ -66,97 +81,61 @@ export default function Item() {
 
 	return (
 		<div className={itemPage}>
-				<div className={css`
-					display: flex;
-					flex-direction: row;
-				`}>
-					<div className={itemImageSet}>
-						<Carousel
-							showStatus={false}
-							width={'1024px'}
-							thumbWidth={'100px'}
-							showIndicators={false}
-							renderThumbs={(children) => (children.map((element, index) => (
-									<div className={css`
-										position: relative;
-										height: 90px;
-									`}>
-										<Image src={`/products/${type}/${item}/item${index}.jpg`} fill={true} style={{objectFit: 'contain'}} />		
-									</div>								
-								))
-							)}
-						>
-							{Array(10).fill(1).map((element, index) => 
-								(
-									<div className={css`
-										position: relative;
-										width: 1024px;
-										height: 768px;
-									`}>
-										<Image src={`/products/${type}/${item}/item${index}.jpg`} fill={true} style={{objectFit: 'contain'}} />
-									</div>	
-								))	
-							}	
-						</Carousel>
-					</div>	
-					<div className={css`
-						display: flex;
-						flex-direction: column;
-						flex-grow: 1;
-						align-items: center;
-						position: sticky;
-						top: 47px;
-						height: 100vh;
-
-					`}>
-						<div className={productName}>
-						{item}
-						</div>
-						<div className={lengthSlider}>
-							<div>
-								{
-									(language === 'russian') && 'ДЛИНА'
-									||
-									(language === 'english') && 'LENGTH'
-								}
-							</div>
-							<Slider
-								step={null}
-								min={120}
-								max={200}
-								value={lengthState}
-								onChange={(event) => {
-									setLengthState(event.target.value)
-								}}
-								marks={[120, 140, 160, 180, 200].map((element) => (
-									{
-										value: element,
-										label: `${element} ${(language === 'russian') && 'см' || (language === 'english') && 'cm'}`
-									}
-								))}
-							/>
-						</div>	
-						<div className={price}>
-							{`${prices[lengthState]} ₽`}
-						</div>
-						<div className={actionButtonSet}>
-							<Button sx={{width: '216px', height: '50px', fontSize: '18px'}} size="large" variant="contained">
-								{
-									(language === 'russian') && 'В КОРЗИНУ'
-									||
-									(language === 'english') && 'ADD TO CART'
-								}
-							</Button>
-							<Button sx={{width: '216px', height: '50px', fontSize: '18px'}} size='large' variant="contained">
-								{
-									(language === 'russian') && 'ЗАКАЗАТЬ'
-									||
-									(language === 'english') && 'ORDER'
-								}
-							</Button>
-						</div>
-					</div>	
+			<div className={leftSection}>
+				<div className={itemImageSet}>
+					<Image src={`/products/${type}/${item}/item${0}.jpg`} fill={true} style={{objectFit: 'contain'}} />		
 				</div>
+			</div>		
+			<div className={rightSection}>
+				<div className={stickyPanel}>
+					<div className={productName}>
+						{item}
+					</div>
+					<div className={lengthSlider}>
+						<div>
+							{
+								(language === 'russian') && 'ДЛИНА'
+								||
+								(language === 'english') && 'LENGTH'
+							}
+						</div>
+						<Slider
+							step={null}
+							min={120}
+							max={200}
+							value={lengthState}
+							onChange={(event) => {
+								setLengthState(event.target.value)
+							}}
+							marks={[120, 140, 160, 180, 200].map((element) => (
+								{
+									value: element,
+									label: `${element} ${(language === 'russian') && 'см' || (language === 'english') && 'cm'}`
+								}
+							))}
+						/>
+					</div>	
+					<div className={price}>
+						{`${prices[lengthState]} ₽`}
+					</div>
+					<div className={actionButtonSet}>
+						<Button sx={{width: '216px', height: '50px', fontSize: '18px'}} size="large" variant="contained">
+							{
+								(language === 'russian') && 'В КОРЗИНУ'
+								||
+								(language === 'english') && 'ADD TO CART'
+							}
+						</Button>
+						<Button sx={{width: '216px', height: '50px', fontSize: '18px'}} size='large' variant="contained">
+							{
+								(language === 'russian') && 'ЗАКАЗАТЬ'
+								||
+								(language === 'english') && 'ORDER'
+							}
+						</Button>
+					</div>
+				</div>	
+			</div>	
 		</div>
 	)
 }
