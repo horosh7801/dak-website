@@ -15,10 +15,8 @@ const itemPage = css`
 `
 
 const itemImageSet = css`
-	position: relative;
 	width: 1120px;
 	height: 840px;
-	background-color: #ececec;
 `
 
 const actionButtonSet = css`
@@ -52,10 +50,15 @@ const stickyPanel = css`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	position: sticky;
+	top: 47px;
+
 `
 
 const leftSection = css`
 	width: 1120px;
+	height: 1000px;
+	background-color: #ececec;
 `
 
 const rightSection = css`
@@ -83,7 +86,21 @@ export default function Item() {
 		<div className={itemPage}>
 			<div className={leftSection}>
 				<div className={itemImageSet}>
-					<Image src={`/products/${type}/${item}/item${0}.jpg`} fill={true} style={{objectFit: 'contain'}} />		
+					<Carousel
+						showStatus={false}
+						showIndicators={false}
+						renderThumbs={(children) => (children.map((element, index) => (
+							<div className={css`width: 80px; height: 80px; position: relative`}>
+								<Image src={`/products/${type}/${item}/item${index}.jpg`} fill={true} style={{objectFit: 'contain'}} />
+							</div>						
+						)))}
+					>
+						{Array(14).fill(1).map((element, index) => (
+							<div className={css`width: 1024px; height: 768px; position: relative;`}>
+								<Image src={`/products/${type}/${item}/item${index}.jpg`} fill={true} style={{objectFit: 'contain'}} />
+							</div>
+						))}	
+					</Carousel>		
 				</div>
 			</div>		
 			<div className={rightSection}>

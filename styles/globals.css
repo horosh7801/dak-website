@@ -3,7 +3,12 @@ body {
   margin: 0;
 }
 
-.slideImage {
-  height: auto;
-  margin-top: -130px;
+.slide.selected {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.thumbs.animated {
+  padding-left: 0;
+  margin: 0;
 }
