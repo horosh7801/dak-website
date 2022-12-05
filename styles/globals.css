@@ -9,6 +9,6 @@ body {
   justify-content: center;
 }
 .thumbs.animated {
-  padding-left: 0;
-  margin: 0;
+ /* padding-left: 0;
+  margin: 0;*/
 }

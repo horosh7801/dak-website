@@ -87,15 +87,17 @@ export default function Item() {
 			<div className={leftSection}>
 				<div className={itemImageSet}>
 					<Carousel
+						
 						showStatus={false}
 						showIndicators={false}
+						
 						renderThumbs={(children) => (children.map((element, index) => (
-							<div className={css`width: 80px; height: 80px; position: relative`}>
+							<div className={css`width: 70px; height: 70px; position: relative;`}>
 								<Image src={`/products/${type}/${item}/item${index}.jpg`} fill={true} style={{objectFit: 'contain'}} />
 							</div>						
 						)))}
 					>
-						{Array(14).fill(1).map((element, index) => (
+						{Array(20).fill(1).map((element, index) => (
 							<div className={css`width: 1024px; height: 768px; position: relative;`}>
 								<Image src={`/products/${type}/${item}/item${index}.jpg`} fill={true} style={{objectFit: 'contain'}} />
 							</div>
