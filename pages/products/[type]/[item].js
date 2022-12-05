@@ -86,11 +86,9 @@ export default function Item() {
 		<div className={itemPage}>
 			<div className={leftSection}>
 				<div className={itemImageSet}>
-					<Carousel
-						
+					<Carousel						
 						showStatus={false}
 						showIndicators={false}
-						
 						renderThumbs={(children) => (children.map((element, index) => (
 							<div className={css`width: 70px; height: 70px; position: relative;`}>
 								<Image src={`/products/${type}/${item}/item${index}.jpg`} fill={true} style={{objectFit: 'contain'}} />
