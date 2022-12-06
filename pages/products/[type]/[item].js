@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import Image from 'next/image'
-import { css } from '@emotion/css'
+import { css, cx } from '@emotion/css'
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 import { Carousel } from 'react-responsive-carousel'
 import Button from '@mui/material/Button'
@@ -17,6 +17,7 @@ const itemPage = css`
 const itemImageSet = css`
 	width: 1120px;
 	height: 840px;
+	margin-bottom: 111px;
 `
 
 const actionButtonSet = css`
@@ -56,8 +57,10 @@ const stickyPanel = css`
 `
 
 const leftSection = css`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	width: 1120px;
-	height: 1000px;
 	background-color: #ececec;
 `
 
@@ -68,12 +71,35 @@ const rightSection = css`
 	flex-grow: 1;
 `
 
+const characteristicsGrid = css`
+	border-top: 1px solid black;
+	display: flex;
+	flex-direction: row;
+	border-left: 1px solid black;
+	font-size: 20px;
+	background-color: white;
+	width: 1000px
+`
+
+const column = css`
+	display: flex;
+	flex-direction: column;
+	border-right: 1px solid black;
+
+`
+
+const row = css`
+	display: flex;
+	flex-direction: row;
+	border-bottom: 1px solid black;	
+`
+
 const shortWHRatio = 1024 / 683
 const longWHRatio = 513 / 768
 
 const prices = {120: 22650, 140: 23250, 160: 24900, 180: 25500, 200: 26850}
 
-export default function Item() {
+export default function Item({ characteristics, characteristicsValues }) {
 
 	const [lengthState, setLengthState] = useState(120)
 
@@ -101,6 +127,22 @@ export default function Item() {
 							</div>
 						))}	
 					</Carousel>		
+				</div>
+				<div className={characteristicsGrid}>
+					<div className={cx(column, css`font-weight: 680`)}>
+						{characteristics.map((value, index) => (
+							<div className={cx(row)}>
+								{value[Object.keys(value)[0]]}
+							</div>
+						))}
+					</div>
+					<div className={column}>
+						{characteristics.map((value, index) => (
+							<div className={row}>
+								{characteristicsValues[Object.keys(value)[0]]}
+							</div>
+						))}
+					</div>
 				</div>
 			</div>		
 			<div className={rightSection}>
@@ -159,8 +201,11 @@ export default function Item() {
 
 export async function getStaticProps() {
 
+	const fs = require('fs')
+	const characteristics = JSON.parse(fs.readFileSync('json/characteristics.json', 'utf-8'))
+	const characteristicsValues = JSON.parse(fs.readFileSync('json/product_characteristics.json', 'utf-8'))
 	return {
-		props: {}
+		props: { characteristics, characteristicsValues }
 	}
 }
 
