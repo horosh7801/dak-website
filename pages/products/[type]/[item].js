@@ -5,6 +5,12 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"
 import { Carousel } from 'react-responsive-carousel'
 import Button from '@mui/material/Button'
 import Slider from '@mui/material/Slider'
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
 import { useState, useContext } from 'react'
 import LanguageContext from '../../../lib/context/language.js'
 
@@ -94,6 +100,12 @@ const row = css`
 	border-bottom: 1px solid black;	
 `
 
+const tableTitle = css`
+	align-self: flex-start;
+	font-size: 28px;
+	margin-bottom: 10px;
+`
+
 const shortWHRatio = 1024 / 683
 const longWHRatio = 513 / 768
 
@@ -128,22 +140,36 @@ export default function Item({ characteristics, characteristicsValues }) {
 						))}	
 					</Carousel>		
 				</div>
-				<div className={characteristicsGrid}>
-					<div className={cx(column, css`font-weight: 680`)}>
-						{characteristics.map((value, index) => (
-							<div className={cx(row)}>
-								{value[Object.keys(value)[0]]}
-							</div>
-						))}
+				<div>
+					<div className={tableTitle}>
+						ХАРАКТЕРИСТИКИ
 					</div>
-					<div className={column}>
-						{characteristics.map((value, index) => (
-							<div className={row}>
-								{characteristicsValues[Object.keys(value)[0]]}
-							</div>
-						))}
-					</div>
-				</div>
+					<TableContainer sx={{width: '1000px'}} component={Paper}>
+						<Table>
+							<TableBody>
+								{characteristics.map((value, index) => (
+									<TableRow
+										key={index}
+									>
+										<TableCell
+											sx={{fontSize: '18px', fontWeight: '600'}}
+											align="left"
+										>
+											{value[Object.keys(value)[0]]}
+										</TableCell>
+										<TableCell
+											sx={{fontSize: '17px'}}
+											align="left"
+										>
+											{characteristicsValues[Object.keys(value)[0]]}
+										</TableCell>
+									</TableRow>
+								))}
+							</TableBody>
+						</Table>
+					</TableContainer>
+				</div>	
+
 			</div>		
 			<div className={rightSection}>
 				<div className={stickyPanel}>
