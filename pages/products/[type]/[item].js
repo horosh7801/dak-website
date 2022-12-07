@@ -110,6 +110,7 @@ const shortWHRatio = 1024 / 683
 const longWHRatio = 513 / 768
 
 const prices = {120: 22650, 140: 23250, 160: 24900, 180: 25500, 200: 26850}
+const power = {120: 28, 140: 33, 160: 36, 180: 40, 200: 45}
 
 export default function Item({ characteristics, characteristicsValues }) {
 
@@ -179,12 +180,13 @@ export default function Item({ characteristics, characteristicsValues }) {
 					<div className={lengthSlider}>
 						<div>
 							{
-								(language === 'russian') && 'ДЛИНА'
+								(language === 'russian') && 'ДЛИНА:'
 								||
-								(language === 'english') && 'LENGTH'
+								(language === 'english') && 'LENGTH:'
 							}
 						</div>
 						<Slider
+							sx={{marginBottom: '35px'}}
 							step={null}
 							min={120}
 							max={200}
@@ -199,6 +201,13 @@ export default function Item({ characteristics, characteristicsValues }) {
 								}
 							))}
 						/>
+						<div>
+							{
+								(language === 'russian') && `МОЩНОСТЬ: ${power[lengthState]} Вт`
+								||
+								(language === 'english') && `POWER: ${power[lengthState]} W`
+							}
+						</div>
 					</div>	
 					<div className={price}>
 						{`${prices[lengthState]} ₽`}
