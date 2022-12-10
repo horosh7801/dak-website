@@ -234,10 +234,13 @@ export default function Item({ characteristics, characteristicsValues }) {
 							onClick={() => {
 								if (!itemInCartState) {
 									const	newState = [...shoppingCart.shoppingCartState]
-									newState.push({name: item, length: lengthState})
-									console.log(newState)
+									newState.push({
+										name: item, 
+										length: lengthState, 
+										power: power[lengthState], 
+										price: prices[lengthState],
+										img: `/products/${type}/${item}.jpg`})
 									shoppingCart.setShoppingCartState(newState)
-									console.log(shoppingCart)
 									setItemInCartState(true)
 								}	
 							}}
