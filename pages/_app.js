@@ -7,8 +7,11 @@ import logoImg from '../public/logo.jpg'
 import euImg from '../public/locale/european-union.png'
 import ruImg from '../public/locale/russia.png'
 import ShoppingBagSharpIcon from '@mui/icons-material/ShoppingBagSharp';
+import IconButton from '@mui/material/IconButton'
+import Badge from '@mui/material/Badge'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import LanguageContext from '../lib/context/language.js'
+import ShoppingCartContext from '../lib/context/shoppingCart.js'
 import { useState, useContext } from 'react'
 
 const roboto = Roboto_Flex({
@@ -36,15 +39,18 @@ const theme = createTheme({
 function MyApp({ Component, pageProps }) {
 
   const [languageState, setLanguageState] = useState('russian')
+  const [shoppingCartState, setShoppingCartState] = useState([])
 
   return (
     <LanguageContext.Provider value={languageState}>
-      <ThemeProvider theme={theme}>
-        <div className={roboto.className}>
-          <StickyHeader setLanguage={setLanguageState}/>
-          <Component {...pageProps} />
-        </div>
-      </ThemeProvider>  
+      <ShoppingCartContext.Provider value={{ shoppingCartState, setShoppingCartState }}>
+        <ThemeProvider theme={theme}>
+          <div className={roboto.className}>
+            <StickyHeader setLanguage={setLanguageState}/>
+            <Component {...pageProps} />
+          </div>
+        </ThemeProvider>  
+      </ShoppingCartContext.Provider>  
     </LanguageContext.Provider>    
   )
 }
@@ -77,7 +83,8 @@ function MenuBarButton({ name }) {
 function StickyHeader({ setLanguage }) {
 
   const language = useContext(LanguageContext)
-  console.log(language)
+
+  const shoppingCart = useContext(ShoppingCartContext)
 
   const stickyHeader = css`
     box-shadow: 0px 1px 3px -2px;
@@ -137,10 +144,6 @@ function StickyHeader({ setLanguage }) {
     column-gap: 40px;
   `
 
-  const shoppingCart = css`
-    margin-left: 20px;
-  `
-
   const locale = css`
     display: flex;
     flex-direction: row;
@@ -168,8 +171,14 @@ function StickyHeader({ setLanguage }) {
           }
         </div>    
         <div className={menuBarLast}>
-          <div className={shoppingCart}>
-            <ShoppingBagSharpIcon />
+          <div>
+            <Link href='/cart'>
+                <IconButton color="primary">
+                  <Badge badgeContent={shoppingCart.shoppingCartState.length} color='secondary'>
+                    <ShoppingBagSharpIcon />
+                  </Badge>   
+                </IconButton>    
+            </Link>   
           </div>
           <div className={locale}>
             <Image style={{width: 28, height: 'auto'}} src={ruImg} onClick={() => setLanguage('russian')} />

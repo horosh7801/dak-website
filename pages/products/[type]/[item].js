@@ -11,8 +11,9 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import LanguageContext from '../../../lib/context/language.js'
+import ShoppingCartContext from '../../../lib/context/shoppingCart.js'
 
 
 const itemPage = css`
@@ -114,12 +115,25 @@ const power = {120: 28, 140: 33, 160: 36, 180: 40, 200: 45}
 
 export default function Item({ characteristics, characteristicsValues }) {
 
+	const [itemInCartState, setItemInCartState] = useState(false)
+
 	const [lengthState, setLengthState] = useState(120)
 
 	const language = useContext(LanguageContext)
 
+	const shoppingCart = useContext(ShoppingCartContext)
+
 	const router = useRouter()
 	const { item, type } = router.query
+
+	useEffect(() => {
+		for (const element of shoppingCart.shoppingCartState) {
+			if (element.name === item) {
+				setItemInCartState(true)
+				break
+			}
+		}
+	}, [])
 
 	return (
 		<div className={itemPage}>
@@ -213,7 +227,21 @@ export default function Item({ characteristics, characteristicsValues }) {
 						{`${prices[lengthState]} ₽`}
 					</div>
 					<div className={actionButtonSet}>
-						<Button sx={{width: '216px', height: '50px', fontSize: '18px'}} size="large" variant="contained">
+						<Button 
+							disabled={itemInCartState}
+							sx={{width: '216px', height: '50px', fontSize: '18px'}} 
+							size="large" variant="contained"
+							onClick={() => {
+								if (!itemInCartState) {
+									const	newState = [...shoppingCart.shoppingCartState]
+									newState.push({name: item, length: lengthState})
+									console.log(newState)
+									shoppingCart.setShoppingCartState(newState)
+									console.log(shoppingCart)
+									setItemInCartState(true)
+								}	
+							}}
+						>
 							{
 								(language === 'russian') && 'В КОРЗИНУ'
 								||
