@@ -3,7 +3,21 @@ body {
   margin: 0;
 }
 
-.slideImage {
-  height: auto;
-  margin-top: -130px;
+/* react-responsive-carousel customization */
+.slide.selected {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.thumbs.animated {
+ /* padding-left: 0;
+  margin: 0;*/
+}
+
+.carousel button.control-next.control-arrow::before {
+  border-left: 8px solid #000;
+}
+
+.carousel button.control-prev.control-arrow::before {
+  border-right: 8px solid #000;
 }

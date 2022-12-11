@@ -1,12 +1,22 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import lamp1Image from '../public/lamp1.jpg'
-import lamp2Image from '../public/lamp2.jpg'
-import lamp3Image from '../public/lamp3.jpg'
+import Link from 'next/link'
+import lampImage1 from '../public/featured_products/wave.jpg'
+import lampImage2 from '../public/featured_products/venera.jpg'
+import lampImage3 from '../public/featured_products/snake.jpg'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
-import { css } from '@emotion/css'
-import Button from '../lib/components/Button.js'
+import { cx, css } from '@emotion/css'
+//import Button from '../lib/components/Button.js'
+import Button from '@mui/material/Button';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import FormControl from '@mui/material/FormControl'
+import { useState, useEffect, useContext } from 'react'
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import ToggleButton from '@mui/material/ToggleButton';
+import LanguageContext from '../lib/context/language.js'
 
 
 const carouselHeight = 600;
@@ -33,13 +43,6 @@ const productTypes = css`
   border-bottom: 1px solid black;
   padding-bottom: 42px;  
 `
-
-const featuredProducts = css`
-  display: flex;
-  flex-direction: column;
-  margin-top: 50px;  
-  align-items: center;
-`  
 const featuredProductsTitle = css`
   color: black;
   font-size: 30px;
@@ -48,77 +51,112 @@ const featuredProductsTitle = css`
   margin-bottom: 25px;
 ` 
 
-const featuredProductsList = css`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  width: 1183px;
-  margin-bottom: 30px;
-  gap: 30px;
-
-`
-
-const featuredProductsListWrapper = css`
-  width: 100vw;
-  background-color: #dedede;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-`
-
 const katalogButton = css`
   font-size: 29px;
   font-weight: 250;
   margin-bottom: 20px;
 `
 
-export default function Home({ featuredItems }) {
+const imageSet = css`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+`
+
+const imageSetItem = css`
+  width: 1024px;
+  height: 380px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 6px;
+  transition: 0.1s;
+  &:hover {
+    opacity: 0.9;
+  }
+` 
+
+const imageSetRow = css`
+  display: flex;
+  flex-direction: row;
+`
+
+const imageSetItem1 = css`
+  margin-right: 6px;
+  position: relative;
+  transition: 0.1s;
+  &:hover {
+    opacity: 0.9;
+  }
+`
+
+const imageCaption = css`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  height: 140px;
+  background-color: #0000008f;
+  top: 250px;
+  color: white;
+  font-size: 33px;
+`
+
+const imageCaptionText = css`
+  margin-left: 10px;
+`
+
+export default function Home({ items }) {
+
+  const language = useContext(LanguageContext)
+
   return (
     <div className={mainWrapper}>
-      <div className={carousel}>
-        <Carousel 
-          height={carouselHeight}
-          showStatus={false}
-          autoPlay={true} 
-          infiniteLoop={true} 
-          showThumbs={false} 
-        >
-          <div>
-            <Slide 
-              img={lamp1Image} 
-              title={'DAK'} 
-              txt={'ДИЗАЙНЕРСКИЕ СВЕТИЛЬНИКИ ИЗ ДЕРЕВА КАК НУЖНО ИМЕННО ВАМ'} /> 
+      <div className={imageSet}>
+        <div className={imageSetItem}>
+          <Image style={{width: 1024, height: 'auto', position: 'absolute', top: -48}} src={lampImage1} />
+          <div className={cx(imageCaption, css`height: 160px; top: 230px`)}>
+            <div className={cx(css`font-weight: 700; font-size: 45px;`, imageCaptionText)}>
+              DAK
+            </div>
+            <div className={imageCaptionText}>
+              {
+                (language === 'russian') && 'ДИЗАЙНЕРСКИЕ СВЕТИЛЬНИКИ ИЗ ДЕРЕВА КАК НУЖНО ИМЕННО ВАМ'
+                ||
+                (language === 'english') && 'DESIGNER WOODEN LAMPS MADE FOR YOU SPECIFICALLY'
+              }
+            </div>
           </div>
-          <div>
-            <Slide
-              img={lamp2Image}
-            />  
-          </div> 
-          <div>
-            <Slide
-              img={lamp3Image}
-            />
-          </div>                
-        </Carousel>
-      </div>
-      <div className={productTypes}>
-        {['ceiling', 'floor', 'wall', 'singular', 'wall3D', 'mirror'].map((type, i) => <ProductType type={type} key={i} />)}
-      </div>
-      <div className={featuredProducts}>
-        <div className={featuredProductsTitle}>
-          РЕКОМЕНДОВАННЫЕ ТОВАРЫ
         </div>
-        <div className={featuredProductsListWrapper}>
-          <div className={featuredProductsList}>
-            {featuredItems.map((item, i) => <FeaturedProduct name={item[0]} url={item[1]} key={i} /> )}
+        <div className={imageSetRow}>
+          <div className={imageSetItem1}>
+            <Image style={{width: 509, height: 'auto',}} src={lampImage2} />
+            <div className={cx(imageCaption, css`height: 110px; top: 228px;`)}>
+              <div className={cx(imageCaptionText, css`font-size: 30px;`)}>
+                {
+                  (language === 'russian') && 'КОНТАКТНАЯ ИНФОРМАЦИЯ'
+                  ||
+                  (language === 'english') && 'CONTACT INFORMATION'
+                }
+              </div>            
+            </div>
           </div>
-          <div className={katalogButton}>
-            <Button label={'КАТАЛОГ'} width={210} height={70}/> 
-          </div>           
-        </div>
-      </div>
+          <div className={css`position: relative; transition: 0.1s; &:hover {opacity: 0.9;}`}>
+            <Image style={{width: 509, height: 'auto',}} src={lampImage3} />
+            <div className={cx(imageCaption, css`height: 110px; top: 228px;`)}>
+              <div className={cx(imageCaptionText, css`font-size: 30px;`)}>
+                {
+                  (language === 'russian') && 'ДОСТАВКА И ОПЛАТА'
+                  ||
+                  (language === 'english') && 'PAYMENT AND DELIVERY'
+                }
+              </div>
+            </div>            
+          </div>          
+        </div>  
+      </div>  
+      <Catalog items={items}/>
       <div className={css`height: 500px;`}>
       </div>
     </div>  
@@ -229,53 +267,199 @@ function ProductType({ type }) {
   )  
 }
 
-function FeaturedProduct({ name, url}) {
+function ProductItem({ name, priceRUB, url, type}) {
   const productItem = css`
+    box-shadow: 0px 0px 4px -1px;
+    width: 320px;
+    height: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-around;
     background-color: white;
     color: black;
-    font-size: 26px;
-    font-weight: 441;
-    font-stretch: 35%;   
+    border-radius: 2px;
     &:hover {
-      transform: scale(1.2, 1.2);
-      transition: 0.2s;
+      transform: scale(1.06, 1.06);
+      transition: 0.1s;
+      z-index: 1;
+      cursor: pointer;
     }      
+  `
+
+  const imageWrapper = css`
+    position: relative;
+    width: 280px;
+    height: 280px;   
   `
 
   const itemName = css`
   `
 
+  const itemPrice = css`
+  `
+
+  const textWrapper = css`
+    border-top: 2px solid black;
+    width: 160px;
+    font-size: 24px;
+    font-weight: 441;
+    font-stretch: 35%;   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  `
+
   return (
-    <div className={productItem}>
-      <Image src={url} width={370} height={246.787109375} />
-      <div className={itemName}>
-        {name}
+    <Link style={{textDecoration: 'none'}} href={`/products/${type}/${url.split('/')[3].split('.jpg')[0]}`}>
+      <div className={productItem}>
+        <div className={imageWrapper}>
+          <Image style={{objectFit: 'contain'}} src={url} fill={true} />
+        </div> 
+        <div className={textWrapper}>
+          <div className={itemName}>
+            {name}
+          </div>
+          <div className={itemPrice}>
+            {priceRUB}
+          </div>
+        </div>
+      </div>  
+    </Link>  
+  )
+}
+
+function Catalog ({ items }) {
+
+  const [catalogState, setCatalogState] = useState('ceiling')
+
+  const language = useContext(LanguageContext)
+
+  const catalog = css`
+    width: 100vw;
+    background-color: #ececec;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+  `
+
+  const title = css`
+    font-size: 37px;
+    font-weight: 580;
+    margin-bottom: 10px;  
+  `
+
+  const productsListWrapper = css`
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  `
+
+  const productsList = css`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: start;
+    width: 1310px;
+    margin-bottom: 30px;
+    gap: 10px;
+    padding-top: 10px;
+  `
+
+  return (
+    <div className={catalog}>
+      <div className={title}>
+        {
+          (language === 'russian') && 'КАТАЛОГ'
+          ||
+          (language === 'english') && 'CATALOG'
+        }
       </div>
-      <div>
-      </div>
-      <div>
-      </div>
-    </div>  
+      <ToggleButtonGroup
+        className={css`background-color: white; font-weight: 500;`}
+        exclusive
+        color='primary'
+        value={catalogState}  
+        onChange={(event) => {
+          setCatalogState(event.target.value)
+        }}
+      >
+        <ToggleButton value='ceiling'>
+          {
+            (language === 'russian') && 'ПОДВЕСНЫЕ'
+            ||
+            (language === 'english') && 'CEILING'
+          }
+        </ToggleButton>
+        <ToggleButton value='floor'>
+          {
+            (language === 'russian') && 'НАПОЛЬНЫЕ'
+            ||
+            (language === 'english') && 'FLOOR'
+          }
+        </ToggleButton>
+        <ToggleButton value='wall'>
+          {
+            (language === 'russian') && 'НАСТЕННЫЕ'
+            ||
+            (language === 'english') && 'WALL'
+          }
+        </ToggleButton>
+        <ToggleButton value='point'>
+          {
+            (language === 'russian') && 'ТОЧЕЧНЫЕ'
+            ||
+            (language === 'english') && 'POINT'
+          }
+        </ToggleButton>
+        <ToggleButton value='wall3d'>
+          {
+            (language === 'russian') && 'НАСТЕННЫЕ 3D'
+            ||
+            (language === 'english') && 'WALL 3D'
+          }
+        </ToggleButton>
+        <ToggleButton value='mirror'>
+          {
+            (language === 'russian') && 'ЗЕРКАЛА'
+            ||
+            (language === 'english') && 'MIRRORS'
+          }
+        </ToggleButton>                                        
+      </ToggleButtonGroup>
+
+      <div className={productsListWrapper}>
+        <div className={productsList}>
+          {items[catalogState].map((item, i) => (<ProductItem
+            type={catalogState} 
+            name={item['name']} 
+            priceRUB={item['priceRUB'] + ' ₽'} 
+            url={item['img']} 
+            key={i} 
+          /> ))}
+        </div>
+      </div>     
+    </div>
   )
 }
 
 export async function getStaticProps() {
   const fs = require('fs');
 
-  let data
-  try {
-    data = fs.readFileSync('json/featured_products.json', 'utf8');
-    console.log(data);
-  } catch (err) {
-    console.error(err);
-  }  
-
-  const featuredItems = JSON.parse(data)
-
+  const items = {ceiling: [], floor: [], wall: [], point: [], wall3d: [], mirror: []}
+  for (const itemType in items) {
+    try {
+      const data = fs.readFileSync(`json/${itemType}.json`, 'utf8')
+      const productItems = JSON.parse(data)
+      items[itemType] = productItems
+    } catch (err) {
+      console.log(err)
+    }
+  }
   return {
-    props: { featuredItems }
+    props: { items }
   }  
 }

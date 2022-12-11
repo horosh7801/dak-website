@@ -1,0 +1,20 @@
+[
+	{"name": "Konus XL", "priceRUB": 8850, "img": "/products/point/konus_xl.jpg"},
+	{"name": "Spot", "priceRUB": 6000, "img": "/products/point/spot.jpg"},
+	{"name": "Spot Q", "priceRUB": 6000, "img": "/products/point/spot_q.jpg"},
+	{"name": "HatLed", "priceRUB": 9600, "img": "/products/point/hatled.jpg"},
+	{"name": "Spot Tab (накладной)", "priceRUB": 2700, "img": "/products/point/spot_tab.jpg"},
+	{"name": "Konus", "priceRUB": 7350, "img": "/products/point/konus.jpg"},
+	{"name": "Spot XL", "priceRUB": 7800, "img": "/products/point/spot_xl.jpg"},
+	{"name": "Bird", "priceRUB": 9600, "img": "/products/point/bird.jpg"},
+	{"name": "Nut", "priceRUB": 7950, "img": "/products/point/nut.jpg"},
+	{"name": "Drop", "priceRUB": 10500, "img": "/products/point/drop.jpg"},
+	{"name": "Jupiter", "priceRUB": 8700, "img": "/products/point/jupiter.jpg"},
+	{"name": "Spot Box", "priceRUB": 5700, "img": "/products/point/spot_box.jpg"},
+	{"name": "Spot Fix-L", "priceRUB": 2550, "img": "/products/point/spot_fix_l.jpg"},
+	{"name": "Spot Fusion", "priceRUB": 6600, "img": "/products/point/spot_fusion.jpg"},
+	{"name": "Wineglass XL", "priceRUB": 7950, "img": "/products/point/wineglass_xl.jpg"},
+	{"name": "Spot XL Zebra", "priceRUB": 7950, "img": "/products/point/spot_xl_zebra.jpg"},
+	{"name": "Spot Zebra", "priceRUB": 6300, "img": "/products/point/spot_zebra.jpg"},
+	{"name": "Spot Inset (встраиваемый)", "priceRUB": 3000, "img": "/products/point/spot_inset.jpg"}
+]
