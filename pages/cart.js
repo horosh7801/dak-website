@@ -1,5 +1,5 @@
 import { css } from '@emotion/css'
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import ShoppingCartContext from '../lib/context/shoppingCart.js'
 import Image from 'next/image'
 import ClearSharpIcon from '@mui/icons-material/ClearSharp';
@@ -20,6 +20,9 @@ const rightSection = css`
 	flex-direction: column;
 	align-items: center;
 	flex-grow: 1;
+	position: sticky;
+	top: 47px;
+	
 `
 
 const imgContainer = css`
@@ -68,12 +71,30 @@ const clearIcon = css`
 	height: 100%;
 `
 
+const totalCostContainer = css`
+
+`
+
 export default function ShoppingCart() {
 
 	const shoppingCart = useContext(ShoppingCartContext)
 
+	const [totalCostState, setTotalCostState] = useState(0)
+
+	useEffect(() => {
+		let totalCost = 0
+		for (const element of shoppingCart.shoppingCartState) {
+			totalCost += element.price
+		}
+		setTotalCostState(totalCost)
+		console.log(totalCost)
+	}, [shoppingCart])
+
 	return (
-		<div>
+		<div className={css`
+			display: flex;
+			flex-direction: row;
+		`}>
 			<div className={leftSection}>
 				{shoppingCart.shoppingCartState.map((item, index) => (
 					<div className={itemRow}>
@@ -110,7 +131,7 @@ export default function ShoppingCart() {
 								<IconButton onClick={() => {
 									const newState = shoppingCart.shoppingCartState.slice(0, index)
 										.concat(shoppingCart.shoppingCartState.slice(index + 1, shoppingCart.shoppingCartState.length))
-									shoppingCart.setShoppingCartState(newState) 
+									shoppingCart.setShoppingCartState(newState)
 								}}>
 									<ClearSharpIcon/>
 								</IconButton>
@@ -120,6 +141,9 @@ export default function ShoppingCart() {
 				))}
 			</div>
 			<div className={rightSection}>
+				<div className={totalCostContainer}>
+					{totalCostState}
+				</div>
 			</div>
 		</div>
 	)

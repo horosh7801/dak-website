@@ -68,7 +68,7 @@ const leftSection = css`
 	flex-direction: column;
 	align-items: center;
 	width: 1120px;
-	background-color: #ececec;
+	background-color: #f7f7f7;
 `
 
 const rightSection = css`

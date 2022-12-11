@@ -337,7 +337,7 @@ function Catalog ({ items }) {
 
   const catalog = css`
     width: 100vw;
-    background-color: #ececec;
+    background-color: #f7f7f7;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
