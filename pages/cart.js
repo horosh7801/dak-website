@@ -174,32 +174,46 @@ export default function ShoppingCart() {
 					))}
 				</div>
 				<div className={rightSection}>
-					<div className={totalCostContainer}>
-						{`ИТОГ: ${totalCostState} ₽`}
-					</div>
-					<div>
-						<TextField
-							type='tel'
-							label='ТЕЛЕФОН' 
-							size='small'
-							sx={{
-								width: '200px',
-								marginLeft: '38px'
-							
-							}}/>
-					</div>		
-					<Button 
-						sx={{
-							alignSelf: 'center',
-							width: '216px', 
-							height: '50px', 
-							fontSize: '18px'
-						}} 
-						size='large' 
-						variant="contained"
-					>
-						ПОДТВЕРДИТЬ
-					</Button>
+					{
+						shoppingCart.shoppingCartState.length === 0
+							? 
+								<div className={css`
+									display: flex;
+									justify-content: center;
+									font-size: 30px;
+								`}>
+									КОРЗИНА ПУСТА
+								</div>
+							:
+								<>
+									<div className={totalCostContainer}>
+										{`ИТОГ: ${totalCostState} ₽`}
+									</div>
+									<div>
+										<TextField
+											type='tel'
+											label='ТЕЛЕФОН' 
+											size='small'
+											sx={{
+												width: '200px',
+												marginLeft: '38px'
+											
+											}}/>
+									</div>		
+									<Button 
+										sx={{
+											alignSelf: 'center',
+											width: '216px', 
+											height: '50px', 
+											fontSize: '18px'
+										}} 
+										size='large' 
+										variant="contained"
+									>
+										ПОДТВЕРДИТЬ
+									</Button>
+								</>	
+					}
 				</div>
 			</div>
 		</div>	
