@@ -308,22 +308,38 @@ function ProductItem({ name, priceRUB, url, type}) {
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: white;
   `
 
   return (
     <Link style={{textDecoration: 'none'}} href={`/products/${type}/${url.split('/')[3].split('.jpg')[0]}`}>
       <div className={productItem}>
-        <div className={imageWrapper}>
-          <Image style={{objectFit: 'contain'}} src={url} fill={true} />
-        </div> 
-        <div className={textWrapper}>
-          <div className={itemName}>
-            {name}
+        <div className={css`
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          padding-top: 10px;
+        `}>
+          <div className={imageWrapper}>
+            <Image style={{objectFit: 'contain'}} src={url} fill={true} />
+          </div> 
+        </div>  
+        <div className={css`
+          width: 100%;
+          background-color: black;
+          display: flex;
+          justify-content: center;
+        `}>
+          <div className={textWrapper}>
+            <div className={itemName}>
+              {name}
+            </div>
+            <div className={itemPrice}>
+              {priceRUB}
+            </div>
           </div>
-          <div className={itemPrice}>
-            {priceRUB}
-          </div>
-        </div>
+        </div>  
       </div>  
     </Link>  
   )
@@ -337,7 +353,6 @@ function Catalog ({ items }) {
 
   const catalog = css`
     width: 100vw;
-    background-color: #f7f7f7;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -346,9 +361,17 @@ function Catalog ({ items }) {
   `
 
   const title = css`
-    font-size: 37px;
-    font-weight: 580;
-    margin-bottom: 10px;  
+    width: 100%;
+    position: sticky;
+    top: 46px;
+    display: flex;
+    color: white;
+    background-color: black;
+    height: 35px;
+    align-items: center;
+    padding-left: 20px;
+    font-size: 20px;
+    z-index: 1;
   `
 
   const productsListWrapper = css`
@@ -379,9 +402,9 @@ function Catalog ({ items }) {
         }
       </div>
       <ToggleButtonGroup
-        className={css`background-color: white; font-weight: 500;`}
+        className={css`font-weight: 500;`}
         exclusive
-        color='primary'
+        
         value={catalogState}  
         onChange={(event) => {
           setCatalogState(event.target.value)
