@@ -4,8 +4,6 @@ import Link from 'next/link'
 import lampImage1 from '../public/featured_products/wave.jpg'
 import lampImage2 from '../public/featured_products/venera.jpg'
 import lampImage3 from '../public/featured_products/snake.jpg'
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from 'react-responsive-carousel';
 import { cx, css } from '@emotion/css'
 //import Button from '../lib/components/Button.js'
 import Button from '@mui/material/Button';
@@ -359,7 +357,7 @@ function Catalog ({ items }) {
   `
 
   const title = css`
-    width: 100%;
+    width: calc(100% - 10px);
     position: sticky;
     top: 46px;
     display: flex;
@@ -367,7 +365,7 @@ function Catalog ({ items }) {
     background-color: black;
     height: 35px;
     align-items: center;
-    padding-left: 20px;
+    padding-left: 10px;
     font-size: 20px;
     z-index: 1;
   `
@@ -392,6 +390,10 @@ function Catalog ({ items }) {
 
   return (
     <div className={catalog}>
+        <div id='catalog' className={css`
+          position: relative;
+          top: -46px;
+        `}></div> 
       <div className={title}>
         {
           (language === 'russian') && 'КАТАЛОГ'

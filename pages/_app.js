@@ -165,7 +165,18 @@ function StickyHeader({ setLanguage }) {
       <div className={menuBar}>
         <div className={menuBarFirst}>
           {
-            (language === 'russian') && ['КАТАЛОГ', 'ДОСТАВКА', 'КОНТАКТЫ', 'ФОТОГАЛЕРЕЯ'].map((name, i) => <MenuBarButton name={name} key={i} />)
+            (language === 'russian') && ['КАТАЛОГ', 'ДОСТАВКА', 'КОНТАКТЫ', 'ФОТОГАЛЕРЕЯ'].map((name, i) => {
+
+              return (
+                <>
+                  {(name === 'КАТАЛОГ'
+                    ? <Link href='/#catalog'> <MenuBarButton name={name} key={i} /> </Link>
+                    : <MenuBarButton name={name} key={i} />
+                  )}
+                
+                </>  
+              )
+            })
             ||
             (language === 'english') && ['CATALOG', 'DELIVERY', 'CONTACTS', 'PHOTOS'].map((name, i) => <MenuBarButton name={name} key={i} />)
           }
