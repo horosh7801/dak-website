@@ -9,8 +9,6 @@ import { Carousel } from 'react-responsive-carousel';
 import { cx, css } from '@emotion/css'
 //import Button from '../lib/components/Button.js'
 import Button from '@mui/material/Button';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import FormControl from '@mui/material/FormControl'
 import { useState, useEffect, useContext } from 'react'
@@ -404,7 +402,15 @@ function Catalog ({ items }) {
       <ToggleButtonGroup
         className={css`font-weight: 500;`}
         exclusive
-        
+        sx={{
+          '& button.MuiButtonBase-root.MuiToggleButton-root.Mui-selected.MuiToggleButton-sizeMedium.MuiToggleButton-standard.MuiToggleButtonGroup-grouped.MuiToggleButtonGroup-groupedHorizontal.css-ueukts-MuiButtonBase-root-MuiToggleButton-root': {
+            backgroundColor: 'black',
+            color: 'white',
+          },
+          '& .css-ueukts-MuiButtonBase-root-MuiToggleButton-root': {
+            borderRadius: 0
+          },
+        }}
         value={catalogState}  
         onChange={(event) => {
           setCatalogState(event.target.value)
