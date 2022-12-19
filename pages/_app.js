@@ -153,7 +153,12 @@ function StickyHeader({ setLanguage }) {
 
   return (
     <div className={stickyHeader}>
-      <Link href='/'>
+      <Link
+        className={css`
+          text-decoration: none;
+        `} 
+        href='/'
+      >
         <div className={logoWrapper}>
           <div className={logo}>
             <div className={logoText}>
@@ -170,8 +175,23 @@ function StickyHeader({ setLanguage }) {
               return (
                 <>
                   {(name === 'КАТАЛОГ'
-                    ? <Link href='/#catalog'> <MenuBarButton name={name} key={i} /> </Link>
-                    : <MenuBarButton name={name} key={i} />
+                    ? <Link 
+                        href='/#catalog'
+                        scroll={false}
+                        className={css`
+                          text-decoration: none;
+                          color: black;
+                        `}
+                      > 
+                        <MenuBarButton 
+                          name={name} 
+                          key={i} 
+                        /> 
+                      </Link>
+                    : <MenuBarButton 
+                        name={name} 
+                        key={i} 
+                      />
                   )}
                 
                 </>  

@@ -358,8 +358,6 @@ function Catalog ({ items }) {
 
   const title = css`
     width: calc(100% - 10px);
-    position: sticky;
-    top: 46px;
     display: flex;
     color: white;
     background-color: black;
