@@ -12,7 +12,8 @@ import Badge from '@mui/material/Badge'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import LanguageContext from '../lib/context/language.js'
 import ShoppingCartContext from '../lib/context/shoppingCart.js'
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect, useRef } from 'react'
+import { setCookie, getCookie, hasCookie, deleteCookie } from 'cookies-next'
 
 const roboto = Roboto_Flex({
   subsets: ['latin', 'cyrillic','numbers', 'punctuation', 'currency'],
@@ -40,6 +41,32 @@ function MyApp({ Component, pageProps }) {
 
   const [languageState, setLanguageState] = useState('russian')
   const [shoppingCartState, setShoppingCartState] = useState([])
+
+  const sessionRestored = useRef(false)                                             
+
+  useEffect(() => {
+    if (hasCookie('shopping_cart')) {
+      const shoppingCartCookie = getCookie('shopping_cart')
+      if (shoppingCartState.length === 0) {
+        if (sessionRestored.current === true) {
+          deleteCookie('shopping_cart')
+        } else {
+          setShoppingCartState(JSON.parse(shoppingCartCookie))
+        }
+      } else {
+        setCookie('shopping_cart', JSON.stringify(shoppingCartState))
+      }
+    } else {
+      if (shoppingCartState.length > 0) {
+        setCookie('shopping_cart', JSON.stringify(shoppingCartState))
+      }  
+    }
+
+    sessionRestored.current = true
+
+    console.log(shoppingCartState)
+
+  }, [shoppingCartState])
 
   return (
     <LanguageContext.Provider value={languageState}>

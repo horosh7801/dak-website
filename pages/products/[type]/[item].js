@@ -235,7 +235,8 @@ export default function Item({ characteristics, characteristicsValues }) {
 								if (!itemInCartState) {
 									const	newState = [...shoppingCart.shoppingCartState]
 									newState.push({
-										name: item, 
+										name: item,
+										type: type, 
 										length: lengthState, 
 										power: power[lengthState], 
 										price: prices[lengthState],

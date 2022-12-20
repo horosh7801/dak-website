@@ -135,11 +135,13 @@ export default function ShoppingCart() {
 								flex-grow: 0.2;
 							`}>
 								<div className={imgContainer}>
-									<Image
-										src={item.img} 
-										fill={true} 
-										style={{objectFit: 'contain'}}
-									/>
+									<Link href={`/products/${item.type}/${item.name}`}>
+										<Image
+											src={item.img} 
+											fill={true} 
+											style={{objectFit: 'contain'}}
+										/>
+									</Link>	
 								</div>
 							</div>	
 							<div className={itemName}>
@@ -180,7 +182,7 @@ export default function ShoppingCart() {
 								<div className={css`
 									display: flex;
 									justify-content: center;
-									font-size: 30px;
+									font-size: 30px;	
 								`}>
 									КОРЗИНА ПУСТА
 								</div>
@@ -200,6 +202,28 @@ export default function ShoppingCart() {
 											
 											}}/>
 									</div>		
+									<div>
+										<TextField
+											type='tel'
+											label='ИМЯ' 
+											size='small'
+											sx={{
+												width: '200px',
+												marginLeft: '38px'
+											
+											}}/>
+									</div>		
+									<div>
+										<TextField
+											type='tel'
+											label='EMAIL'
+											size='small'
+											sx={{
+												width: '200px',
+												marginLeft: '38px'
+											
+											}}/>
+									</div>																	
 									<Button 
 										sx={{
 											alignSelf: 'center',
