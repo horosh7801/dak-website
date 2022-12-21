@@ -134,7 +134,7 @@ export default function Item({ characteristics, characteristicsValues }) {
 				break
 			}
 		}
-	}, [])
+	}, [shoppingCart.shoppingCartState])
 
 	return (
 		<div className={itemPage}>

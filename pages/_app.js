@@ -46,18 +46,25 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     if (hasCookie('shopping_cart')) {
+      console.log(1)
       const shoppingCartCookie = getCookie('shopping_cart')
       if (shoppingCartState.length === 0) {
+        console.log(2)
         if (sessionRestored.current === true) {
+          console.log(3)
           deleteCookie('shopping_cart')
         } else {
+          console.log(4)
           setShoppingCartState(JSON.parse(shoppingCartCookie))
         }
       } else {
+        console.log(5)
         setCookie('shopping_cart', JSON.stringify(shoppingCartState))
       }
     } else {
+      console.log(6)
       if (shoppingCartState.length > 0) {
+        console.log(7)
         setCookie('shopping_cart', JSON.stringify(shoppingCartState))
       }  
     }
