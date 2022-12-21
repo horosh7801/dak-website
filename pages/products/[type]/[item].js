@@ -11,6 +11,8 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import IconButton from '@mui/material/IconButton'
+import ArrowForwardSharpIcon from '@mui/icons-material/ArrowForwardSharp';
 import { useState, useContext, useEffect } from 'react'
 import LanguageContext from '../../../lib/context/language.js'
 import ShoppingCartContext from '../../../lib/context/shoppingCart.js'
@@ -190,99 +192,132 @@ export default function Item({ characteristics, characteristicsValues }) {
 				</div>	
 
 			</div>		
-			{
-				checkoutState
-					?
-						<>
-	
-							<CheckoutForm totalCost={prices[lengthState]}/>
-						</>	
-					:	
-						<div className={rightSection}>
-							<div className={stickyPanel}>
-								<div className={productName}>
-									{item}
+			<div className={css`
+				position: sticky;
+				top: 47px;
+				display: flex;
+				flex-direction: column;
+				flex-grow: 1;
+				height: calc(100vh - 47px);
+			`}>
+				{
+					checkoutState
+						?
+							<>
+								<div className={css`
+									height: 33px;
+									background-color: black;
+									color: white;
+									display: flex;
+									align-items: center;
+									padding-left: 10px;
+									font-size: 20px;
+								`}>
+									ОФОРМЛЕНИЕ ЗАКАЗА
+									<div className={css`
+										flex-grow: 1;
+										display: flex;
+										justify-content: flex-end;
+									`}>
+										<IconButton 
+											disableRipple
+											onClick={() => {
+												setCheckoutState(!checkoutState)
+											}}
+										>
+											<ArrowForwardSharpIcon sx={{color: 'white', fontSize: '35px', fontWeight: 100}}/>
+										</IconButton>	
+									</div>	
 								</div>
-								<div className={lengthSlider}>
-									<div>
-										{
-											(language === 'russian') && 'ДЛИНА:'
-											||
-											(language === 'english') && 'LENGTH:'
-										}
+								<CheckoutForm totalCost={prices[lengthState]}/>
+							</>	
+						:	
+							<div className={rightSection}>
+								<div className={stickyPanel}>
+									<div className={productName}>
+										{item}
 									</div>
-									<Slider
-										sx={{marginBottom: '35px'}}
-										step={null}
-										min={120}
-										max={200}
-										value={lengthState}
-										onChange={(event) => {
-											setLengthState(event.target.value)
-										}}
-										marks={[120, 140, 160, 180, 200].map((element) => (
+									<div className={lengthSlider}>
+										<div>
 											{
-												value: element,
-												label: `${element} ${(language === 'russian') && 'см' || (language === 'english') && 'cm'}`
+												(language === 'russian') && 'ДЛИНА:'
+												||
+												(language === 'english') && 'LENGTH:'
 											}
-										))}
-									/>
-									<div>
-										{
-											(language === 'russian') && `МОЩНОСТЬ: ${power[lengthState]} Вт`
-											||
-											(language === 'english') && `POWER: ${power[lengthState]} W`
-										}
+										</div>
+										<Slider
+											sx={{marginBottom: '35px'}}
+											step={null}
+											min={120}
+											max={200}
+											value={lengthState}
+											onChange={(event) => {
+												setLengthState(event.target.value)
+											}}
+											marks={[120, 140, 160, 180, 200].map((element) => (
+												{
+													value: element,
+													label: `${element} ${(language === 'russian') && 'см' || (language === 'english') && 'cm'}`
+												}
+											))}
+										/>
+										<div>
+											{
+												(language === 'russian') && `МОЩНОСТЬ: ${power[lengthState]} Вт`
+												||
+												(language === 'english') && `POWER: ${power[lengthState]} W`
+											}
+										</div>
+									</div>	
+									<div className={price}>
+										{`${prices[lengthState]} ₽`}
+									</div>
+									<div className={actionButtonSet}>
+										<Button 
+											disabled={itemInCartState}
+											sx={{width: '216px', height: '50px', fontSize: '18px'}} 
+											size="large" variant="contained"
+											onClick={() => {
+												if (!itemInCartState) {
+													const	newState = [...shoppingCart.shoppingCartState]
+													newState.push({
+														name: item,
+														type: type, 
+														length: lengthState, 
+														power: power[lengthState], 
+														price: prices[lengthState],
+														img: `/products/${type}/${item}.jpg`
+													})
+													shoppingCart.setShoppingCartState(newState)
+													setItemInCartState(true)
+												}	
+											}}
+										>
+											{
+												(language === 'russian') && 'В КОРЗИНУ'
+												||
+												(language === 'english') && 'ADD TO CART'
+											}
+										</Button>
+										<Button
+											sx={{width: '216px', height: '50px', fontSize: '18px'}} 
+											size='large' 
+											variant="contained"
+											onClick={() => {
+											 	setCheckoutState(!checkoutState)
+											}}
+										>
+											{
+												(language === 'russian') && 'ЗАКАЗАТЬ'
+												||
+												(language === 'english') && 'ORDER'
+											}
+										</Button>
 									</div>
 								</div>	
-								<div className={price}>
-									{`${prices[lengthState]} ₽`}
-								</div>
-								<div className={actionButtonSet}>
-									<Button 
-										disabled={itemInCartState}
-										sx={{width: '216px', height: '50px', fontSize: '18px'}} 
-										size="large" variant="contained"
-										onClick={() => {
-											if (!itemInCartState) {
-												const	newState = [...shoppingCart.shoppingCartState]
-												newState.push({
-													name: item,
-													type: type, 
-													length: lengthState, 
-													power: power[lengthState], 
-													price: prices[lengthState],
-													img: `/products/${type}/${item}.jpg`
-												})
-												shoppingCart.setShoppingCartState(newState)
-												setItemInCartState(true)
-											}	
-										}}
-									>
-										{
-											(language === 'russian') && 'В КОРЗИНУ'
-											||
-											(language === 'english') && 'ADD TO CART'
-										}
-									</Button>
-									<Button
-										sx={{width: '216px', height: '50px', fontSize: '18px'}} 
-										size='large' 
-										variant="contained"
-										onClick={() => {
-										 	setCheckoutState(!checkoutState)
-										}}
-									>
-										{
-											(language === 'russian') && 'ЗАКАЗАТЬ'
-											||
-											(language === 'english') && 'ORDER'
-										}
-									</Button>
-								</div>
 							</div>	
-						</div>	
-					}
+						}
+					</div>	
 		</div>
 	)
 }
