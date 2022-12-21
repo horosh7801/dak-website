@@ -64,7 +64,6 @@ function MyApp({ Component, pageProps }) {
 
     sessionRestored.current = true
 
-    console.log(shoppingCartState)
 
   }, [shoppingCartState])
 

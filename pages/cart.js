@@ -7,6 +7,7 @@ import IconButton from '@mui/material/IconButton'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import Link from 'next/link'
+import CheckoutForm from '../lib/components/CheckoutForm.js'
 
 const leftSection = css`
 	display: flex;
@@ -113,7 +114,6 @@ export default function ShoppingCart() {
 			totalCost += element.price
 		}
 		setTotalCostState(totalCost)
-		console.log(totalCost)
 	}, [shoppingCart])
 
 	return (
@@ -187,56 +187,8 @@ export default function ShoppingCart() {
 									КОРЗИНА ПУСТА
 								</div>
 							:
-								<>
-									<div className={totalCostContainer}>
-										{`ИТОГ: ${totalCostState} ₽`}
-									</div>
-									<div>
-										<TextField
-											type='tel'
-											label='ТЕЛЕФОН' 
-											size='small'
-											sx={{
-												width: '200px',
-												marginLeft: '38px'
-											
-											}}/>
-									</div>		
-									<div>
-										<TextField
-											type='tel'
-											label='ИМЯ' 
-											size='small'
-											sx={{
-												width: '200px',
-												marginLeft: '38px'
-											
-											}}/>
-									</div>		
-									<div>
-										<TextField
-											type='tel'
-											label='EMAIL'
-											size='small'
-											sx={{
-												width: '200px',
-												marginLeft: '38px'
-											
-											}}/>
-									</div>																	
-									<Button 
-										sx={{
-											alignSelf: 'center',
-											width: '216px', 
-											height: '50px', 
-											fontSize: '18px'
-										}} 
-										size='large' 
-										variant="contained"
-									>
-										ПОДТВЕРДИТЬ
-									</Button>
-								</>	
+								<CheckoutForm totalCost={totalCostState}/>
+								
 					}
 				</div>
 			</div>

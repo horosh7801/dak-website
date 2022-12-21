@@ -14,6 +14,7 @@ import Paper from '@mui/material/Paper';
 import { useState, useContext, useEffect } from 'react'
 import LanguageContext from '../../../lib/context/language.js'
 import ShoppingCartContext from '../../../lib/context/shoppingCart.js'
+import { getCookie, hasCookie } from 'cookies-next'
 
 
 const itemPage = css`
