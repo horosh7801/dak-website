@@ -14,6 +14,7 @@ import Paper from '@mui/material/Paper';
 import { useState, useContext, useEffect } from 'react'
 import LanguageContext from '../../../lib/context/language.js'
 import ShoppingCartContext from '../../../lib/context/shoppingCart.js'
+import CheckoutForm from '../../../lib/components/CheckoutForm.js'
 import { getCookie, hasCookie } from 'cookies-next'
 
 
@@ -120,6 +121,8 @@ export default function Item({ characteristics, characteristicsValues }) {
 
 	const [lengthState, setLengthState] = useState(120)
 
+	const [checkoutState, setCheckoutState] = useState(false)
+
 	const language = useContext(LanguageContext)
 
 	const shoppingCart = useContext(ShoppingCartContext)
@@ -187,82 +190,99 @@ export default function Item({ characteristics, characteristicsValues }) {
 				</div>	
 
 			</div>		
-			<div className={rightSection}>
-				<div className={stickyPanel}>
-					<div className={productName}>
-						{item}
-					</div>
-					<div className={lengthSlider}>
-						<div>
-							{
-								(language === 'russian') && 'ДЛИНА:'
-								||
-								(language === 'english') && 'LENGTH:'
-							}
-						</div>
-						<Slider
-							sx={{marginBottom: '35px'}}
-							step={null}
-							min={120}
-							max={200}
-							value={lengthState}
-							onChange={(event) => {
-								setLengthState(event.target.value)
-							}}
-							marks={[120, 140, 160, 180, 200].map((element) => (
-								{
-									value: element,
-									label: `${element} ${(language === 'russian') && 'см' || (language === 'english') && 'cm'}`
-								}
-							))}
-						/>
-						<div>
-							{
-								(language === 'russian') && `МОЩНОСТЬ: ${power[lengthState]} Вт`
-								||
-								(language === 'english') && `POWER: ${power[lengthState]} W`
-							}
-						</div>
-					</div>	
-					<div className={price}>
-						{`${prices[lengthState]} ₽`}
-					</div>
-					<div className={actionButtonSet}>
-						<Button 
-							disabled={itemInCartState}
-							sx={{width: '216px', height: '50px', fontSize: '18px'}} 
-							size="large" variant="contained"
-							onClick={() => {
-								if (!itemInCartState) {
-									const	newState = [...shoppingCart.shoppingCartState]
-									newState.push({
-										name: item,
-										type: type, 
-										length: lengthState, 
-										power: power[lengthState], 
-										price: prices[lengthState],
-										img: `/products/${type}/${item}.jpg`})
-									shoppingCart.setShoppingCartState(newState)
-									setItemInCartState(true)
-								}	
-							}}
-						>
-							{
-								(language === 'russian') && 'В КОРЗИНУ'
-								||
-								(language === 'english') && 'ADD TO CART'
-							}
-						</Button>
-						<Button sx={{width: '216px', height: '50px', fontSize: '18px'}} size='large' variant="contained">
-							{
-								(language === 'russian') && 'ЗАКАЗАТЬ'
-								||
-								(language === 'english') && 'ORDER'
-							}
-						</Button>
-					</div>
-				</div>	
-			</div>	
+			{
+				checkoutState
+					?
+						<>
+	
+							<CheckoutForm totalCost={prices[lengthState]}/>
+						</>	
+					:	
+						<div className={rightSection}>
+							<div className={stickyPanel}>
+								<div className={productName}>
+									{item}
+								</div>
+								<div className={lengthSlider}>
+									<div>
+										{
+											(language === 'russian') && 'ДЛИНА:'
+											||
+											(language === 'english') && 'LENGTH:'
+										}
+									</div>
+									<Slider
+										sx={{marginBottom: '35px'}}
+										step={null}
+										min={120}
+										max={200}
+										value={lengthState}
+										onChange={(event) => {
+											setLengthState(event.target.value)
+										}}
+										marks={[120, 140, 160, 180, 200].map((element) => (
+											{
+												value: element,
+												label: `${element} ${(language === 'russian') && 'см' || (language === 'english') && 'cm'}`
+											}
+										))}
+									/>
+									<div>
+										{
+											(language === 'russian') && `МОЩНОСТЬ: ${power[lengthState]} Вт`
+											||
+											(language === 'english') && `POWER: ${power[lengthState]} W`
+										}
+									</div>
+								</div>	
+								<div className={price}>
+									{`${prices[lengthState]} ₽`}
+								</div>
+								<div className={actionButtonSet}>
+									<Button 
+										disabled={itemInCartState}
+										sx={{width: '216px', height: '50px', fontSize: '18px'}} 
+										size="large" variant="contained"
+										onClick={() => {
+											if (!itemInCartState) {
+												const	newState = [...shoppingCart.shoppingCartState]
+												newState.push({
+													name: item,
+													type: type, 
+													length: lengthState, 
+													power: power[lengthState], 
+													price: prices[lengthState],
+													img: `/products/${type}/${item}.jpg`
+												})
+												shoppingCart.setShoppingCartState(newState)
+												setItemInCartState(true)
+											}	
+										}}
+									>
+										{
+											(language === 'russian') && 'В КОРЗИНУ'
+											||
+											(language === 'english') && 'ADD TO CART'
+										}
+									</Button>
+									<Button
+										sx={{width: '216px', height: '50px', fontSize: '18px'}} 
+										size='large' 
+										variant="contained"
+										onClick={() => {
+										 	setCheckoutState(!checkoutState)
+										}}
+									>
+										{
+											(language === 'russian') && 'ЗАКАЗАТЬ'
+											||
+											(language === 'english') && 'ORDER'
+										}
+									</Button>
+								</div>
+							</div>	
+						</div>	
+					}
 		</div>
 	)
 }
