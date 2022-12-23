@@ -133,12 +133,14 @@ export default function Item({ characteristics, characteristicsValues }) {
 	const { item, type } = router.query
 
 	useEffect(() => {
+		let itemInCart = false
 		for (const element of shoppingCart.shoppingCartState) {
 			if (element.name === item) {
-				setItemInCartState(true)
+				itemInCart = true
 				break
 			}
 		}
+		setItemInCartState(itemInCart)
 	}, [shoppingCart.shoppingCartState])
 
 	return (
