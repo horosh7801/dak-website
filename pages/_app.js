@@ -42,36 +42,31 @@ function MyApp({ Component, pageProps }) {
   const [languageState, setLanguageState] = useState('russian')
   const [shoppingCartState, setShoppingCartState] = useState([])
 
-  const sessionRestored = useRef(false)                                             
+  const sessionInitiated = useRef(false)                                             
 
   useEffect(() => {
-    if (hasCookie('shopping_cart')) {
-      console.log(1)
-      const shoppingCartCookie = getCookie('shopping_cart')
-      if (shoppingCartState.length === 0) {
-        console.log(2)
-        if (sessionRestored.current === true) {
-          console.log(3)
-          deleteCookie('shopping_cart')
-        } else {
-          console.log(4)
-          setShoppingCartState(JSON.parse(shoppingCartCookie))
-        }
+    window.addEventListener('storage', (event) => {
+      if (event.key === 'shopping_cart') {
+        setShoppingCartState(JSON.parse(event.newValue))
+      }
+    })
+  }, [])
+
+  useEffect(() => {
+    const cartItems = window.localStorage.getItem('shopping_cart')
+    if (!sessionInitiated.current) {
+      if (cartItems === null) {
+        window.localStorage.setItem('shopping_cart', JSON.stringify([]))
       } else {
-        console.log(5)
-        setCookie('shopping_cart', JSON.stringify(shoppingCartState))
+        setShoppingCartState(JSON.parse(cartItems))
       }
     } else {
-      console.log(6)
-      if (shoppingCartState.length > 0) {
-        console.log(7)
-        setCookie('shopping_cart', JSON.stringify(shoppingCartState))
-      }  
+      const newCartItems = JSON.stringify(shoppingCartState)
+      if (cartItems !== newCartItems) {
+        window.localStorage.setItem('shopping_cart', newCartItems)
+      }
     }
-
-    sessionRestored.current = true
-
-
+    sessionInitiated.current = true
   }, [shoppingCartState])
 
   return (
