@@ -52,11 +52,11 @@ function MyApp({ Component, pageProps }) {
     })
   }, [])
 
-  useEffect(() => {
+/*  useEffect(() => {
     (async () => {
       const res = await fetch('/api/getLocale', {headers: {'X-Client-IP': '178.18.32.23'}})
     })()
-  }, [])
+  }, [])*/
 
   useEffect(() => {
     const cartItems = window.localStorage.getItem('shopping_cart')

@@ -13,6 +13,7 @@ import { useState, useEffect, useContext } from 'react'
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import ToggleButton from '@mui/material/ToggleButton';
 import LanguageContext from '../lib/context/language.js'
+import fetchCurrency from '../lib/modules/fetchCurrency.js'
 
 
 const carouselHeight = 600;
@@ -345,6 +346,22 @@ function Catalog ({ items }) {
 
   const [catalogState, setCatalogState] = useState('ceiling')
 
+  const [currencyState, setCurrencyState] = useState({currency: 'EUR', rate: 1})
+
+  useEffect(() => {
+
+    (async () => {
+      let currency = window.localStorage.getItem('currency')
+      if (!currency) {
+        const res = await fetchCurrency()
+        currency = await res.json()
+        window.localStorage.setItem('currency', currency)
+      }
+      setCurrencyState(currency)
+    })()
+
+  }, [])
+
   const language = useContext(LanguageContext)
 
   const catalog = css`
@@ -465,7 +482,7 @@ function Catalog ({ items }) {
           {items[catalogState].map((item, i) => (<ProductItem
             type={catalogState} 
             name={item['name']} 
-            priceRUB={item['priceRUB'] + ' ₽'} 
+            priceRUB={`${item['priceRUB'] * currencyState.rate} ${currencyState.currency}`} 
             url={item['img']} 
             key={i} 
           /> ))}
