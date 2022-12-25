@@ -17,10 +17,12 @@
     "@next/font": "^13.0.2",
     "cookies-next": "^2.1.1",
     "formik": "^2.2.9",
+    "geoip-lite": "^1.4.6",
     "next": "13.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-responsive-carousel": "^3.2.23",
+    "request-ip": "^3.3.0",
     "yup": "^0.32.11"
   }
 }
