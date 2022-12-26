@@ -8,6 +8,7 @@ import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import Link from 'next/link'
 import CheckoutForm from '../lib/components/CheckoutForm.js'
+import setCurrency from '../lib/modules/setCurrency.js'
 
 const leftSection = css`
 	display: flex;
@@ -108,6 +109,11 @@ export default function ShoppingCart() {
 
 	const [totalCostState, setTotalCostState] = useState(0)
 
+  const [currencyState, setCurrencyState] = useState({currency: 'EUR', rate: 1})
+	useEffect(() => {
+		setCurrency(setCurrencyState)
+	}, [])
+
 	useEffect(() => {
 		let totalCost = 0
 		for (const element of shoppingCart.shoppingCartState) {
@@ -159,7 +165,7 @@ export default function ShoppingCart() {
 								{`1 шт.`}
 							</div>
 							<div className={cost}>
-								{`${item.price} ₽`}
+								{`${Math.round(item.price * currencyState.rate)} ${currencyState.currency}`}
 							</div>
 							<div className={clearIcon}>
 								<div>
@@ -187,7 +193,7 @@ export default function ShoppingCart() {
 									КОРЗИНА ПУСТА
 								</div>
 							:
-								<CheckoutForm totalCost={totalCostState}/>
+								<CheckoutForm totalCost={Math.round(totalCostState * currencyState.rate)} currency={currencyState.currency}/>
 								
 					}
 				</div>

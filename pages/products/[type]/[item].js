@@ -18,6 +18,7 @@ import LanguageContext from '../../../lib/context/language.js'
 import ShoppingCartContext from '../../../lib/context/shoppingCart.js'
 import CheckoutForm from '../../../lib/components/CheckoutForm.js'
 import { getCookie, hasCookie } from 'cookies-next'
+import setCurrency from '../../../lib/modules/setCurrency.js'
 
 
 const itemPage = css`
@@ -132,6 +133,20 @@ export default function Item({ characteristics, characteristicsValues }) {
 	const router = useRouter()
 	const { item, type } = router.query
 
+  const [currencyState, setCurrencyState] = useState({currency: 'EUR', rate: 1})
+	useEffect(() => {
+		setCurrency(setCurrencyState)
+	}, [])
+
+	const[pricesState, setPricesState] = useState(prices)
+	useEffect(() => {
+		const newPrices = {}
+		for (const key of Object.keys(prices)) {
+			newPrices[key] = Math.round(prices[key] * currencyState.rate)
+		}
+		setPricesState(newPrices)
+	}, [currencyState])
+
 	useEffect(() => {
 		let itemInCart = false
 		for (const element of shoppingCart.shoppingCartState) {
@@ -231,7 +246,7 @@ export default function Item({ characteristics, characteristicsValues }) {
 										</IconButton>	
 									</div>	
 								</div>
-								<CheckoutForm totalCost={prices[lengthState]}/>
+								<CheckoutForm totalCost={pricesState[lengthState]} currency={currencyState.currency}/>
 							</>	
 						:	
 							<div className={rightSection}>
@@ -272,7 +287,7 @@ export default function Item({ characteristics, characteristicsValues }) {
 										</div>
 									</div>	
 									<div className={price}>
-										{`${prices[lengthState]} ₽`}
+										{`${pricesState[lengthState]} ${currencyState.currency}`}
 									</div>
 									<div className={actionButtonSet}>
 										<Button 
