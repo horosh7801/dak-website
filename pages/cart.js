@@ -136,49 +136,50 @@ export default function ShoppingCart() {
 			`}>
 				<div className={leftSection}>
 					{shoppingCart.shoppingCartState.map((item, index) => (
-						<div className={itemRow}>
-							<div className={css`
-								flex-grow: 0.2;
-							`}>
-								<div className={imgContainer}>
-									<Link href={`/products/${item.type}/${item.name}`}>
-										<Image
-											src={item.img} 
-											fill={true} 
-											style={{objectFit: 'contain'}}
-										/>
-									</Link>	
-								</div>
-							</div>	
-							<div className={itemName}>
-								{item.name}
-							</div>
-							<div className={specs}>
-								<div>
-									{`${item.length} см`}
-								</div>
-								<div>
-									{`${item.power} Вт`}
+							
+							<div className={itemRow}>
+								<div className={css`
+									flex-grow: 0.2;
+								`}>
+									<div className={imgContainer}>
+										<Link href={`/products/${item.type}/${item.name}`}>
+											<Image
+												src={item.img} 
+												fill={true} 
+												style={{objectFit: 'contain'}}
+											/>
+										</Link>	
+									</div>
 								</div>	
-							</div>
-							<div className={amount}>
-								{`1 шт.`}
-							</div>
-							<div className={cost}>
-								{`${Math.round(item.price * currencyState.rate)} ${currencyState.currency}`}
-							</div>
-							<div className={clearIcon}>
-								<div>
-									<IconButton onClick={() => {
-										const newState = shoppingCart.shoppingCartState.slice(0, index)
-											.concat(shoppingCart.shoppingCartState.slice(index + 1, shoppingCart.shoppingCartState.length))
-										shoppingCart.setShoppingCartState(newState)
-									}}>
-										<ClearSharpIcon/>
-									</IconButton>
+								<div className={itemName}>
+									{item.name}
+								</div>
+								<div className={specs}>
+									<div>
+										{`${item.length} см`}
+									</div>
+									<div>
+										{`${item.power} Вт`}
+									</div>	
+								</div>
+								<div className={amount}>
+									{`1 шт.`}
+								</div>
+								<div className={cost}>
+									{`${Math.round(item.price * currencyState.rate)} ${currencyState.currency}`}
+								</div>
+								<div className={clearIcon}>
+									<div>
+										<IconButton onClick={() => {
+											const newState = shoppingCart.shoppingCartState.slice(0, index)
+												.concat(shoppingCart.shoppingCartState.slice(index + 1, shoppingCart.shoppingCartState.length))
+											shoppingCart.setShoppingCartState(newState)
+										}}>
+											<ClearSharpIcon/>
+										</IconButton>
+									</div>	
 								</div>	
 							</div>	
-						</div>	
 					))}
 				</div>
 				<div className={rightSection}>

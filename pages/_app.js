@@ -14,6 +14,8 @@ import LanguageContext from '../lib/context/language.js'
 import ShoppingCartContext from '../lib/context/shoppingCart.js'
 import { useState, useContext, useEffect, useRef } from 'react'
 import { setCookie, getCookie, hasCookie, deleteCookie } from 'cookies-next'
+import TextField from '@mui/material/TextField'
+import Autocomplete from '@mui/material/Autocomplete'
 
 const roboto = Roboto_Flex({
   subsets: ['latin', 'cyrillic','numbers', 'punctuation', 'currency'],
@@ -245,6 +247,11 @@ function StickyHeader({ setLanguage }) {
                 </IconButton>    
             </Link>   
           </div>
+          <div>
+            <Autocomplete
+              renderInput={(params) => <TextField {...params} />}
+            /> 
+          </div>
           <div className={locale}>
             <Image style={{width: 28, height: 'auto'}} src={ruImg} onClick={() => setLanguage('russian')} />
             <Image style={{width: 28, height: 'auto'}} src={euImg} onClick={() => setLanguage('english')} />
@@ -256,3 +263,12 @@ function StickyHeader({ setLanguage }) {
 }
 
 export default MyApp
+
+export async function getStaticProps() {
+  const fs = require('fs');
+  const countryCurrency = JSON.parse(fs.readFileSync('json/countryCurrency.json'))
+  
+  return {
+    props: { items }
+  }  
+}
