@@ -1,5 +1,5 @@
 import '../styles/globals.css'
-import { css } from '@emotion/css'
+import { css, cx, keyframes } from '@emotion/css'
 import { Roboto_Flex } from '@next/font/google'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -187,6 +187,48 @@ function StickyHeader({ setLanguage }) {
     flex-grow: 0.025;
   `
 
+  const waveDuration = 1.3
+  const waveInterval = 2
+  const waveDelay = 0.5
+
+  const waveAnimation = keyframes`
+    from {
+      width: 20px;
+      height: 20px;
+    }
+
+    ${ Math.round((waveDuration / (waveInterval + waveDuration)) * 100) }% {
+      width: 55px;
+      height: 55px;
+      border-color: rgb(2, 253, 2, 0)
+    }
+
+    to {
+      border-color: rgb(2, 253, 2, 0)
+    }
+  `
+
+  const waveEffect = css`
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    border: 1px solid rgb(2, 253, 2, 1);
+    border-radius: 50%;
+    animation-name: ${waveAnimation};
+    animation-iteration-count: infinite;
+    animation-duration: ${waveDuration + waveInterval}s;
+
+  `
+
+  const cartButtonContainer = css`
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  `
+
   return (
     <div className={stickyHeader}>
       <Link
@@ -238,14 +280,18 @@ function StickyHeader({ setLanguage }) {
           }
         </div>    
         <div className={menuBarLast}>
-          <div>
-            <Link href='/cart'>
-                <IconButton color="primary">
+          <div className={cartButtonContainer}>
+              {shoppingCart.shoppingCartState.length > 0 && Array(2).fill(1).map((element, index) => (
+                <div className={cx(waveEffect, css`animation-delay: ${waveDelay * index}s`)}>
+                </div>   
+              ))}              
+              <Link href='/cart'>
+                <IconButton sx={{color: shoppingCart.shoppingCartState.length > 0 ? '#02fd02' : 'none'}} color="primary">
                   <Badge badgeContent={shoppingCart.shoppingCartState.length} color='secondary'>
                     <ShoppingBagSharpIcon />
                   </Badge>   
-                </IconButton>    
-            </Link>   
+                </IconButton>  
+              </Link>    
           </div>
           <div>
             <Autocomplete
