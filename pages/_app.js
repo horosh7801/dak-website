@@ -52,48 +52,41 @@ function MyApp({ Component, pageProps }) {
 
   const [languageState, setLanguageState] = useState('russian')
   const [currencyState, setCurrencyState] = useState(defaultCurrency)
-  const [localeState, setLocaleState] = useState({date: new Date(), ...defaultLocale})
+  const [localeState, setLocaleState] = useState({date: (new Date()).getTime(), ...defaultLocale})
   const [shoppingCartState, setShoppingCartState] = useState([])
 
   const sessionInitiated = useRef(false)                                             
 
   useEffect(() => {
     window.addEventListener('storage', (event) => {
-      if (event.key === 'shopping_cart') {
-        setShoppingCartState(JSON.parse(event.newValue))
-      } else if (event.key === 'currency') {
-        setCurrencyState(JSON.parse(event.newValue))
+      switch (event.key) {
+        case 'shopping_cart':
+          setShoppingCartState(JSON.parse(event.newValue))
+          break
+        case 'locale':
+          setLocaleState(JSON.parse(event.newValue))  
       }
     })
   }, [])
 
 
-  const localeRestored = useRef(false)
   useEffect(() => {
-    const locale = window.localStorage.getItem('locale')
-    if (!localeRestored.current) {
-      if (locale === null) {
-        window.localStorage.setItem('locale', JSON.stringify({date: new Date(), ...localeState}))
-      } else {
-        const restoredLocale = JSON.parse(locale)
-        let newLocale
-        if ((new Date() - restoredLocale.date) > 21600000) {
-          (async function() {
-            const res = await fetch(`/api/getLocale?lang=${event.target.value}`)
-            const parsedRes = await res.json()
-            newLocale = {date: new Date(), language: event.target.value, ...parsedRes}            
-          })()
-        }
+    const storedLocale = window.localStorage.getItem('locale')
+    if (storedLocale !== null) {
+      const parsedStoredLocale = JSON.parse(storedLocale)
+      if ((new Date()).getTime() - parsedStoredLocale.date <= 21600000) {
+        setLocaleState(parsedStoredLocale)
+      } else {(async function() {
+        const res = await fetch(`/api/getLocale?lang=${parsedStoredLocale.language}`)
+        const parsedRes = await res.json()
+        const newLocale = {date: (new Date()).getTime(), language: parsedStoredLocale.language, ...parsedRes}
+        window.localStorage.setItem('locale', JSON.stringify(newLocale))
         setLocaleState(newLocale)
-      }
-    } else {
-      const newLocale = JSON.stringify(localeState)
-      if (locale !== newLocale) {
-        window.localStorage.setItem('locale', newLocale)
-      }
-    }
-    localeRestored.current = true
-  }, [localeState])
+      })()}
+    } else {(async function() {
+      window.localStorage.setItem('locale', JSON.stringify(localeState))
+    })()}
+  }, [])
 
   const currencyRestored = useRef(false)
   useEffect(() => {
@@ -372,8 +365,10 @@ function StickyHeader({ setLanguage }) {
               onChange={async (event) => {
                 const res = await fetch(`/api/getLocale?lang=${event.target.value}`)
                 const parsedRes = await res.json()
-                const newLocale = {date: new Date(), language: event.target.value, ...parsedRes}
+                const newLocale = {date: (new Date()).getTime(), language: event.target.value, ...parsedRes}
+                window.localStorage.setItem('locale', JSON.stringify(newLocale))
                 locale.setLocaleState(newLocale)
+
               }}
             >
               <MenuItem 
