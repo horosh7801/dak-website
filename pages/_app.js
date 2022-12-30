@@ -6,16 +6,22 @@ import Link from 'next/link'
 import logoImg from '../public/logo.jpg'
 import euImg from '../public/locale/european-union.png'
 import ruImg from '../public/locale/russia.png'
+import mlImg from '../public/locale/moldova.png'
 import ShoppingBagSharpIcon from '@mui/icons-material/ShoppingBagSharp';
 import IconButton from '@mui/material/IconButton'
 import Badge from '@mui/material/Badge'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import LanguageContext from '../lib/context/language.js'
 import ShoppingCartContext from '../lib/context/shoppingCart.js'
+import CurrencyContext from '../lib/context/currency.js'
+import LocaleContext from '../lib/context/locale.js'
 import { useState, useContext, useEffect, useRef } from 'react'
 import { setCookie, getCookie, hasCookie, deleteCookie } from 'cookies-next'
 import TextField from '@mui/material/TextField'
 import Autocomplete from '@mui/material/Autocomplete'
+import MenuItem from '@mui/material/MenuItem'
+import Select from '@mui/material/Select'
+
 
 const roboto = Roboto_Flex({
   subsets: ['latin', 'cyrillic','numbers', 'punctuation', 'currency'],
@@ -39,9 +45,14 @@ const theme = createTheme({
   }
 })
 
+const defaultCurrency = {"currency": "EUR", "rate": 1}
+const defaultLocale = {language: 'EN', currency: 'EUR', 'rate': 1}
+
 function MyApp({ Component, pageProps }) {
 
   const [languageState, setLanguageState] = useState('russian')
+  const [currencyState, setCurrencyState] = useState(defaultCurrency)
+  const [localeState, setLocaleState] = useState({date: new Date(), ...defaultLocale})
   const [shoppingCartState, setShoppingCartState] = useState([])
 
   const sessionInitiated = useRef(false)                                             
@@ -50,15 +61,57 @@ function MyApp({ Component, pageProps }) {
     window.addEventListener('storage', (event) => {
       if (event.key === 'shopping_cart') {
         setShoppingCartState(JSON.parse(event.newValue))
+      } else if (event.key === 'currency') {
+        setCurrencyState(JSON.parse(event.newValue))
       }
     })
   }, [])
 
-/*  useEffect(() => {
-    (async () => {
-      const res = await fetch('/api/getLocale', {headers: {'X-Client-IP': '178.18.32.23'}})
-    })()
-  }, [])*/
+
+  const localeRestored = useRef(false)
+  useEffect(() => {
+    const locale = window.localStorage.getItem('locale')
+    if (!localeRestored.current) {
+      if (locale === null) {
+        window.localStorage.setItem('locale', JSON.stringify({date: new Date(), ...localeState}))
+      } else {
+        const restoredLocale = JSON.parse(locale)
+        let newLocale
+        if ((new Date() - restoredLocale.date) > 21600000) {
+          (async function() {
+            const res = await fetch(`/api/getLocale?lang=${event.target.value}`)
+            const parsedRes = await res.json()
+            newLocale = {date: new Date(), language: event.target.value, ...parsedRes}            
+          })()
+        }
+        setLocaleState(newLocale)
+      }
+    } else {
+      const newLocale = JSON.stringify(localeState)
+      if (locale !== newLocale) {
+        window.localStorage.setItem('locale', newLocale)
+      }
+    }
+    localeRestored.current = true
+  }, [localeState])
+
+  const currencyRestored = useRef(false)
+  useEffect(() => {
+    const currency = window.localStorage.getItem('currency')
+    if (!currencyRestored.current) {
+      if (currency === null) {
+        window.localStorage.setItem('currency', JSON.stringify(currencyState))
+      } else {
+        setCurrencyState(JSON.parse(currency))
+      }
+    } else {
+      const newCurrency = JSON.stringify(currencyState)
+      if (currency !== newCurrency) {
+        window.localStorage.setItem('currency', newCurrency)
+      }
+    }
+    currencyRestored.current = true
+  }, [currencyState])
 
   useEffect(() => {
     const cartItems = window.localStorage.getItem('shopping_cart')
@@ -78,16 +131,20 @@ function MyApp({ Component, pageProps }) {
   }, [shoppingCartState])
 
   return (
-    <LanguageContext.Provider value={languageState}>
-      <ShoppingCartContext.Provider value={{ shoppingCartState, setShoppingCartState }}>
-        <ThemeProvider theme={theme}>
-          <div className={roboto.className}>
-            <StickyHeader setLanguage={setLanguageState}/>
-            <Component {...pageProps} />
-          </div>
-        </ThemeProvider>  
-      </ShoppingCartContext.Provider>  
-    </LanguageContext.Provider>    
+    <LocaleContext.Provider value={{ localeState, setLocaleState }}>
+      <CurrencyContext.Provider value={currencyState}>
+        <LanguageContext.Provider value={languageState}>
+          <ShoppingCartContext.Provider value={{ shoppingCartState, setShoppingCartState }}>
+            <ThemeProvider theme={theme}>
+              <div className={roboto.className}>
+                <StickyHeader setLanguage={setLanguageState}/>
+                <Component {...pageProps} />
+              </div>
+            </ThemeProvider>  
+          </ShoppingCartContext.Provider>  
+        </LanguageContext.Provider>   
+      </CurrencyContext.Provider>   
+    </LocaleContext.Provider>  
   )
 }
 
@@ -121,6 +178,8 @@ function StickyHeader({ setLanguage }) {
   const language = useContext(LanguageContext)
 
   const shoppingCart = useContext(ShoppingCartContext)
+
+  const locale = useContext(LocaleContext)
 
   const stickyHeader = css`
     box-shadow: 0px 1px 3px -2px;
@@ -180,7 +239,7 @@ function StickyHeader({ setLanguage }) {
     column-gap: 40px;
   `
 
-  const locale = css`
+  const localeSelection = css`
     display: flex;
     flex-direction: row;
     column-gap: 10px;
@@ -189,7 +248,7 @@ function StickyHeader({ setLanguage }) {
 
   const waveDuration = 1.3
   const waveInterval = 2
-  const waveDelay = 0.5
+  const waveDelay = 0.3
 
   const waveAnimation = keyframes`
     from {
@@ -198,8 +257,8 @@ function StickyHeader({ setLanguage }) {
     }
 
     ${ Math.round((waveDuration / (waveInterval + waveDuration)) * 100) }% {
-      width: 55px;
-      height: 55px;
+      width: 50px;
+      height: 50px;
       border-color: rgb(2, 253, 2, 0)
     }
 
@@ -223,9 +282,16 @@ function StickyHeader({ setLanguage }) {
 
   const cartButtonContainer = css`
     width: 60px;
-    height: 60px;
+    height: 40px;
     display: flex;
     justify-content: center;
+    align-items: center;
+  `
+
+  const selectItemContainer = css`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
   `
 
@@ -293,12 +359,86 @@ function StickyHeader({ setLanguage }) {
                 </IconButton>  
               </Link>    
           </div>
-          <div>
-            <Autocomplete
-              renderInput={(params) => <TextField {...params} />}
-            /> 
+          <div className={css`
+            width: 100px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+          `}>
+            <Select
+              variant='standard'
+              sx={{width: 85, height: 30}}
+              value={locale.localeState.language}
+              onChange={async (event) => {
+                const res = await fetch(`/api/getLocale?lang=${event.target.value}`)
+                const parsedRes = await res.json()
+                const newLocale = {date: new Date(), language: event.target.value, ...parsedRes}
+                locale.setLocaleState(newLocale)
+              }}
+            >
+              <MenuItem 
+                value={'EN'}
+                disableGutters
+                sx={{
+                  '.css-iz83cf': {
+                  display: 'flex',
+                  justifyContent: 'center',
+                  columnGap: '13px' ,
+                  width: '100%'
+                }
+              }}>
+                <div className={selectItemContainer}>
+                  <div className={css`
+                    padding-top: 6px;
+                  `}>
+                    EN
+                  </div>
+                  <Image style={{width: 23, height: 'auto'}} src={euImg}/>
+                </div>    
+              </MenuItem>
+              <MenuItem 
+                value={'RU'}
+                disableGutters
+                sx={{
+                  '.css-iz83cf': {
+                  display: 'flex',
+                  justifyContent: 'center',
+                  columnGap: '13px' ,
+                  width: '100%'
+                }}}
+              >
+                <div className={selectItemContainer}>
+                  <div className={css`
+                    padding-top: 6px;
+                  `}>
+                    RU
+                  </div>
+                  <Image style={{width: 23, height: 'auto'}} src={ruImg}/>
+                </div>    
+              </MenuItem>
+              <MenuItem 
+                value={'RO'}
+                disableGutters
+                sx={{
+                  '.css-iz83cf': {
+                  display: 'flex',
+                  justifyContent: 'center',
+                  columnGap: '13px' ,
+                  width: '100%'
+                }}}
+              >
+                <div className={selectItemContainer}>
+                  <div className={css`
+                    padding-top: 6px;
+                  `}>
+                    RO
+                  </div>
+                  <Image style={{width: 23, height: 'auto'}} src={mlImg}/>
+                </div>    
+              </MenuItem>                            
+            </Select>
           </div>
-          <div className={locale}>
+          <div className={localeSelection}>
             <Image style={{width: 28, height: 'auto'}} src={ruImg} onClick={() => setLanguage('russian')} />
             <Image style={{width: 28, height: 'auto'}} src={euImg} onClick={() => setLanguage('english')} />
           </div>
@@ -309,12 +449,3 @@ function StickyHeader({ setLanguage }) {
 }
 
 export default MyApp
-
-export async function getStaticProps() {
-  const fs = require('fs');
-  const countryCurrency = JSON.parse(fs.readFileSync('json/countryCurrency.json'))
-  
-  return {
-    props: { items }
-  }  
-}

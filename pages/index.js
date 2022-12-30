@@ -13,6 +13,7 @@ import { useState, useEffect, useContext } from 'react'
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import ToggleButton from '@mui/material/ToggleButton';
 import LanguageContext from '../lib/context/language.js'
+import CurrencyContext from '../lib/context/currency.js'
 import setCurrency from '../lib/modules/setCurrency.js'
 
 
@@ -107,6 +108,7 @@ const imageCaptionText = css`
 export default function Home({ items }) {
 
   const language = useContext(LanguageContext)
+  const currency = useContext(CurrencyContext)
 
   return (
     <div className={mainWrapper}>
@@ -294,6 +296,8 @@ function ProductItem({ name, priceRUB, url, type}) {
   `
 
   const itemPrice = css`
+    font-size: 30px;
+    font-weight: 500;
   `
 
   const textWrapper = css`
@@ -346,11 +350,7 @@ function Catalog ({ items }) {
 
   const [catalogState, setCatalogState] = useState('ceiling')
 
-  const [currencyState, setCurrencyState] = useState({currency: 'EUR', rate: 1})
-
-  useEffect(() => {
-    setCurrency(setCurrencyState)
-  }, [])
+  const currency = useContext(CurrencyContext)
 
   const language = useContext(LanguageContext)
 
@@ -472,7 +472,7 @@ function Catalog ({ items }) {
           {items[catalogState].map((item, i) => (<ProductItem
             type={catalogState} 
             name={item['name']} 
-            priceRUB={`${Math.round(item['priceRUB'] * currencyState.rate)} ${currencyState.currency}`} 
+            priceRUB={`${Math.round(item['priceRUB'] * currency.rate)} ${currency.currency}`} 
             url={item['img']} 
             key={i} 
           /> ))}
