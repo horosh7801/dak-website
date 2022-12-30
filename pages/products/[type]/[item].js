@@ -15,10 +15,10 @@ import IconButton from '@mui/material/IconButton'
 import ArrowForwardSharpIcon from '@mui/icons-material/ArrowForwardSharp';
 import { useState, useContext, useEffect } from 'react'
 import LanguageContext from '../../../lib/context/language.js'
+import LocaleContext from '../../../lib/context/locale.js'
 import ShoppingCartContext from '../../../lib/context/shoppingCart.js'
 import CheckoutForm from '../../../lib/components/CheckoutForm.js'
 import { getCookie, hasCookie } from 'cookies-next'
-import setCurrency from '../../../lib/modules/setCurrency.js'
 
 
 const itemPage = css`
@@ -130,22 +130,19 @@ export default function Item({ characteristics, characteristicsValues }) {
 
 	const shoppingCart = useContext(ShoppingCartContext)
 
+	const locale = useContext(LocaleContext)
+
 	const router = useRouter()
 	const { item, type } = router.query
-
-  const [currencyState, setCurrencyState] = useState({currency: 'EUR', rate: 1})
-	useEffect(() => {
-		setCurrency(setCurrencyState)
-	}, [])
 
 	const[pricesState, setPricesState] = useState(prices)
 	useEffect(() => {
 		const newPrices = {}
 		for (const key of Object.keys(prices)) {
-			newPrices[key] = Math.round(prices[key] * currencyState.rate)
+			newPrices[key] = Math.round(prices[key] * locale.localeState.rate)
 		}
 		setPricesState(newPrices)
-	}, [currencyState])
+	}, [locale.localeState])
 
 	useEffect(() => {
 		let itemInCart = false
@@ -246,7 +243,10 @@ export default function Item({ characteristics, characteristicsValues }) {
 										</IconButton>	
 									</div>	
 								</div>
-								<CheckoutForm totalCost={pricesState[lengthState]} currency={currencyState.currency}/>
+								<CheckoutForm 
+									totalCost={pricesState[lengthState]} 
+									currency={locale.localeState.currency}
+								/>
 							</>	
 						:	
 							<div className={rightSection}>
@@ -287,7 +287,7 @@ export default function Item({ characteristics, characteristicsValues }) {
 										</div>
 									</div>	
 									<div className={price}>
-										{`${pricesState[lengthState]} ${currencyState.currency}`}
+										{`${pricesState[lengthState]} ${locale.localeState.currency}`}
 									</div>
 									<div className={actionButtonSet}>
 										<Button 

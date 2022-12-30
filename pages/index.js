@@ -13,7 +13,7 @@ import { useState, useEffect, useContext } from 'react'
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import ToggleButton from '@mui/material/ToggleButton';
 import LanguageContext from '../lib/context/language.js'
-import CurrencyContext from '../lib/context/currency.js'
+import LocaleContext from '../lib/context/locale.js'
 import setCurrency from '../lib/modules/setCurrency.js'
 
 
@@ -108,7 +108,6 @@ const imageCaptionText = css`
 export default function Home({ items }) {
 
   const language = useContext(LanguageContext)
-  const currency = useContext(CurrencyContext)
 
   return (
     <div className={mainWrapper}>
@@ -350,9 +349,9 @@ function Catalog ({ items }) {
 
   const [catalogState, setCatalogState] = useState('ceiling')
 
-  const currency = useContext(CurrencyContext)
-
   const language = useContext(LanguageContext)
+
+  const locale = useContext(LocaleContext)
 
   const catalog = css`
     width: 100vw;
@@ -472,7 +471,7 @@ function Catalog ({ items }) {
           {items[catalogState].map((item, i) => (<ProductItem
             type={catalogState} 
             name={item['name']} 
-            priceRUB={`${Math.round(item['priceRUB'] * currency.rate)} ${currency.currency}`} 
+            priceRUB={`${Math.round(item['priceRUB'] * locale.localeState.rate)} ${locale.localeState.currency}`} 
             url={item['img']} 
             key={i} 
           /> ))}

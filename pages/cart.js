@@ -1,6 +1,7 @@
 import { css } from '@emotion/css'
 import { useContext, useEffect, useState } from 'react'
 import ShoppingCartContext from '../lib/context/shoppingCart.js'
+import LocaleContext from '../lib/context/locale.js'
 import Image from 'next/image'
 import ClearSharpIcon from '@mui/icons-material/ClearSharp';
 import IconButton from '@mui/material/IconButton'
@@ -8,7 +9,6 @@ import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import Link from 'next/link'
 import CheckoutForm from '../lib/components/CheckoutForm.js'
-import setCurrency from '../lib/modules/setCurrency.js'
 
 const leftSection = css`
 	display: flex;
@@ -107,12 +107,9 @@ export default function ShoppingCart() {
 
 	const shoppingCart = useContext(ShoppingCartContext)
 
-	const [totalCostState, setTotalCostState] = useState(0)
+	const locale = useContext(LocaleContext)
 
-  const [currencyState, setCurrencyState] = useState({currency: 'EUR', rate: 1})
-	useEffect(() => {
-		setCurrency(setCurrencyState)
-	}, [])
+	const [totalCostState, setTotalCostState] = useState(0)
 
 	useEffect(() => {
 		let totalCost = 0
@@ -166,7 +163,7 @@ export default function ShoppingCart() {
 									{`1 шт.`}
 								</div>
 								<div className={cost}>
-									{`${Math.round(item.price * currencyState.rate)} ${currencyState.currency}`}
+									{`${Math.round(item.price * locale.localeState.rate)} ${locale.localeState.currency}`}
 								</div>
 								<div className={clearIcon}>
 									<div>
@@ -194,7 +191,7 @@ export default function ShoppingCart() {
 									КОРЗИНА ПУСТА
 								</div>
 							:
-								<CheckoutForm totalCost={Math.round(totalCostState * currencyState.rate)} currency={currencyState.currency}/>
+								<CheckoutForm totalCost={Math.round(totalCostState * locale.localeState.rate)} currency={locale.localeState.currency}/>
 								
 					}
 				</div>
