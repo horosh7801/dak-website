@@ -105,9 +105,11 @@ const imageCaptionText = css`
   margin-left: 10px;
 `
 
-export default function Home({ items }) {
+export default function Home({ items, locale }) {
 
   const language = useContext(LanguageContext)
+
+  useEffect(() => {console.log(locale)}, [])
 
   return (
     <div className={mainWrapper}>
@@ -481,7 +483,7 @@ function Catalog ({ items }) {
   )
 }
 
-export async function getStaticProps() {
+export async function getStaticProps({ locale }) {
   const fs = require('fs');
 
   const items = {ceiling: [], floor: [], wall: [], point: [], wall3d: [], mirror: []}
@@ -495,6 +497,6 @@ export async function getStaticProps() {
     }
   }
   return {
-    props: { items }
+    props: { items, locale }
   }  
 }

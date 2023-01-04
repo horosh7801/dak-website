@@ -349,17 +349,19 @@ export async function getStaticProps() {
 	}
 }
 
-export async function getStaticPaths() {
+export async function getStaticPaths({ locales }) {
 
 	const fs = require('fs')
 	//const products = JSON.parse(fs.readFileSync('json/total_products.json', 'utf-8'))
 	const types = JSON.parse(fs.readFileSync('json/product_types.json', 'utf-8'))
 
 	const paths = []
-	for (const type of types) {
-		const products = JSON.parse(fs.readFileSync(`json/${type}.json`))
-		for (const product of products) {
-			paths.push({params: {item: product['img'].split('/')[3].split('.jpg')[0], type: type}})
+	for (const locale of locales) {
+		for (const type of types) {
+			const products = JSON.parse(fs.readFileSync(`json/${type}.json`))
+			for (const product of products) {
+				paths.push({params: {item: product['img'].split('/')[3].split('.jpg')[0], type: type}, locale: locale})
+			}
 		}
 	}
 

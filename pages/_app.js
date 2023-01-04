@@ -3,6 +3,7 @@ import { css, cx, keyframes } from '@emotion/css'
 import { Roboto_Flex } from '@next/font/google'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import logoImg from '../public/logo.jpg'
 import euImg from '../public/locale/european-union.png'
 import ruImg from '../public/locale/russia.png'
@@ -173,6 +174,8 @@ function StickyHeader({ setLanguage }) {
   const shoppingCart = useContext(ShoppingCartContext)
 
   const locale = useContext(LocaleContext)
+
+  const router = useRouter()
 
   const stickyHeader = css`
     box-shadow: 0px 1px 3px -2px;
@@ -363,6 +366,8 @@ function StickyHeader({ setLanguage }) {
               sx={{width: 85, height: 30}}
               value={locale.localeState.language}
               onChange={async (event) => {
+                const { pathname, asPath, query } = router
+                router.push({ pathname, query }, asPath, { locale: event.target.value.toLowerCase(), scroll: false })
                 const res = await fetch(`/api/getLocale?lang=${event.target.value}`)
                 const parsedRes = await res.json()
                 const newLocale = {date: (new Date()).getTime(), language: event.target.value, ...parsedRes}
