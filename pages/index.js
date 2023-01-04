@@ -109,8 +109,6 @@ export default function Home({ items, locale }) {
 
   const language = useContext(LanguageContext)
 
-  useEffect(() => {console.log(locale)}, [])
-
   return (
     <div className={mainWrapper}>
       <div className={imageSet}>
@@ -485,6 +483,8 @@ function Catalog ({ items }) {
 
 export async function getStaticProps({ locale }) {
   const fs = require('fs');
+
+  const localizedText = fs.readFileSync(`json/localization/${locale}/index.json`)
 
   const items = {ceiling: [], floor: [], wall: [], point: [], wall3d: [], mirror: []}
   for (const itemType in items) {

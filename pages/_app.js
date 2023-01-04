@@ -255,7 +255,7 @@ function StickyHeader({ setLanguage }) {
     ${ Math.round((waveDuration / (waveInterval + waveDuration)) * 100) }% {
       width: 50px;
       height: 50px;
-      border-color: rgb(2, 253, 2, 0)
+      border-color: rgb(2, 253, 2, 0)-
     }
 
     to {
