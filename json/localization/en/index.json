@@ -1,12 +1,16 @@
-[
-	"DESIGNER WOODEN LAMPS MADE FOR YOU SPECIFICALLY",
-	"CONTACT INFORMATION",
-	"PAYMENT AND DELIVERY",
-	"CATALOG",
-	"CEILING",
-	"FLOOR",
-	"WALL",
-	"POINT",
-	"WALL 3D",
-	"MIRRORS"
-]
+{
+	"imageSet": {
+		"about": "DESIGNER WOODEN LAMPS MADE FOR YOU SPECIFICALLY",
+		"contactInfo": "CONTACT INFORMATION",
+		"paymentDelivery": "PAYMENT AND DELIVERY"
+	},
+	"catalog": {
+		"catalog": "CATALOG",
+		"ceiling": "CEILING",
+		"floor": "FLOOR",
+		"wall": "WALL",
+		"point": "POINT",
+		"wall3d": "WALL 3D",
+		"mirrors": "MIRRORS"
+	}
+}

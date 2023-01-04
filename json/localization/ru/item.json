@@ -1,0 +1,31 @@
+{
+	"characteristics": {
+		"characteristics": "ХАРАКТЕРИСТИКИ",
+		"material": "Материал",
+		"length": "Длина",
+		"height": "Высота",
+		"width": "Ширина",
+		"lampType": "Тип используемых ламп",
+		"power": "Мощность",
+		"lampEquivalent": "Аналог лампы накаливания",
+		"screenWidth": "Ширина экрана",
+		"plinth": "Тип цоколя",
+		"lampInclusion": "Комплектация лампочкой",
+		"colorTemp": "Цветовая температура",
+		"powerSupply": "Электропитание",
+		"coating": "Покрытие",
+		"color": "Цвет",
+		"fastening": "Фиксация",
+		"options": "Опции"
+	},
+	"checkoutPanel": {
+		"length": "ДЛИНА",
+		"power": "МОЩНОСТЬ",
+		"addToCart": "В КОРЗИНУ",
+		"order": "ЗАКАЗАТЬ"
+	},
+	"units": {
+		"length": "см",
+		"power": "Вт"
+	}	
+}

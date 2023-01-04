@@ -118,7 +118,7 @@ const longWHRatio = 513 / 768
 const prices = {120: 22650, 140: 23250, 160: 24900, 180: 25500, 200: 26850}
 const power = {120: 28, 140: 33, 160: 36, 180: 40, 200: 45}
 
-export default function Item({ characteristics, characteristicsValues }) {
+export default function Item({ characteristics, characteristicsValues, localizedText }) {
 
 	const [itemInCartState, setItemInCartState] = useState(false)
 
@@ -177,7 +177,7 @@ export default function Item({ characteristics, characteristicsValues }) {
 				</div>
 				<div>
 					<div className={tableTitle}>
-						ХАРАКТЕРИСТИКИ
+						{localizedText.characteristics.characteristics}
 					</div>
 					<TableContainer sx={{width: '1000px'}} component={Paper}>
 						<Table>
@@ -190,13 +190,13 @@ export default function Item({ characteristics, characteristicsValues }) {
 											sx={{fontSize: '18px', fontWeight: '600'}}
 											align="left"
 										>
-											{value[Object.keys(value)[0]]}
+											{localizedText.characteristics[value]}
 										</TableCell>
 										<TableCell
 											sx={{fontSize: '17px'}}
 											align="left"
 										>
-											{characteristicsValues[Object.keys(value)[0]]}
+											{characteristicsValues[value]}
 										</TableCell>
 									</TableRow>
 								))}
@@ -257,9 +257,7 @@ export default function Item({ characteristics, characteristicsValues }) {
 									<div className={lengthSlider}>
 										<div>
 											{
-												(language === 'russian') && 'ДЛИНА:'
-												||
-												(language === 'english') && 'LENGTH:'
+												localizedText.checkoutPanel.length
 											}
 										</div>
 										<Slider
@@ -274,15 +272,13 @@ export default function Item({ characteristics, characteristicsValues }) {
 											marks={[120, 140, 160, 180, 200].map((element) => (
 												{
 													value: element,
-													label: `${element} ${(language === 'russian') && 'см' || (language === 'english') && 'cm'}`
+													label: `${element} ${localizedText.units.length}`
 												}
 											))}
 										/>
 										<div>
 											{
-												(language === 'russian') && `МОЩНОСТЬ: ${power[lengthState]} Вт`
-												||
-												(language === 'english') && `POWER: ${power[lengthState]} W`
+												`${localizedText.checkoutPanel.power}: ${power[lengthState]} ${localizedText.units.power}`
 											}
 										</div>
 									</div>	
@@ -311,9 +307,7 @@ export default function Item({ characteristics, characteristicsValues }) {
 											}}
 										>
 											{
-												(language === 'russian') && 'В КОРЗИНУ'
-												||
-												(language === 'english') && 'ADD TO CART'
+												localizedText.checkoutPanel.addToCart
 											}
 										</Button>
 										<Button
@@ -325,9 +319,7 @@ export default function Item({ characteristics, characteristicsValues }) {
 											}}
 										>
 											{
-												(language === 'russian') && 'ЗАКАЗАТЬ'
-												||
-												(language === 'english') && 'ORDER'
+												localizedText.checkoutPanel.order
 											}
 										</Button>
 									</div>
@@ -339,13 +331,16 @@ export default function Item({ characteristics, characteristicsValues }) {
 	)
 }
 
-export async function getStaticProps() {
-
+export async function getStaticProps({ locale }) {
 	const fs = require('fs')
+
+	const localizedText = JSON.parse(fs.readFileSync(`json/localization/${locale}/item.json`))
+
 	const characteristics = JSON.parse(fs.readFileSync('json/characteristics.json', 'utf-8'))
 	const characteristicsValues = JSON.parse(fs.readFileSync('json/product_characteristics.json', 'utf-8'))
+
 	return {
-		props: { characteristics, characteristicsValues }
+		props: { characteristics, characteristicsValues, localizedText }
 	}
 }
 

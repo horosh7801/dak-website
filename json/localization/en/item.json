@@ -1,0 +1,31 @@
+{
+	"characteristics": {
+		"characteristics": "CHARACTERISTICS",
+		"material": "Material",
+		"length": "Length",
+		"height": "Height",
+		"width": "Width",
+		"lampType": "Lamp type",
+		"power": "Power",
+		"lampEquivalent": "Incandescent lamp equivalent",
+		"screenWidth": "Screen width",
+		"plinth": "Plinth",
+		"lampInclusion": "Light bulb inclusion",
+		"colorTemp": "Color temperature",
+		"powerSupply": "Power supply",
+		"coating": "Coating",
+		"color": "Color",
+		"fastening": "Fastening",
+		"options": "Options"
+	},
+	"checkoutPanel": {
+		"length": "LENGTH",
+		"power": "POWER",
+		"addToCart": "ADD TO CART",
+		"order": "ORDER"
+	},
+	"units": {
+		"length": "cm",
+		"power": "W"
+	}
+}

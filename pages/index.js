@@ -105,7 +105,7 @@ const imageCaptionText = css`
   margin-left: 10px;
 `
 
-export default function Home({ items, locale }) {
+export default function Home({ items, localizedText }) {
 
   const language = useContext(LanguageContext)
 
@@ -120,9 +120,7 @@ export default function Home({ items, locale }) {
             </div>
             <div className={imageCaptionText}>
               {
-                (language === 'russian') && 'ДИЗАЙНЕРСКИЕ СВЕТИЛЬНИКИ ИЗ ДЕРЕВА КАК НУЖНО ИМЕННО ВАМ'
-                ||
-                (language === 'english') && 'DESIGNER WOODEN LAMPS MADE FOR YOU SPECIFICALLY'
+                localizedText.imageSet.about
               }
             </div>
           </div>
@@ -133,9 +131,7 @@ export default function Home({ items, locale }) {
             <div className={cx(imageCaption, css`height: 110px; top: 228px;`)}>
               <div className={cx(imageCaptionText, css`font-size: 30px;`)}>
                 {
-                  (language === 'russian') && 'КОНТАКТНАЯ ИНФОРМАЦИЯ'
-                  ||
-                  (language === 'english') && 'CONTACT INFORMATION'
+                  localizedText.imageSet.contactInfo
                 }
               </div>            
             </div>
@@ -145,16 +141,14 @@ export default function Home({ items, locale }) {
             <div className={cx(imageCaption, css`height: 110px; top: 228px;`)}>
               <div className={cx(imageCaptionText, css`font-size: 30px;`)}>
                 {
-                  (language === 'russian') && 'ДОСТАВКА И ОПЛАТА'
-                  ||
-                  (language === 'english') && 'PAYMENT AND DELIVERY'
+                  localizedText.imageSet.paymentDelivery
                 }
               </div>
             </div>            
           </div>          
         </div>  
       </div>  
-      <Catalog items={items}/>
+      <Catalog items={items} localizedText={localizedText}/>
       <div className={css`height: 500px;`}>
       </div>
     </div>  
@@ -345,7 +339,7 @@ function ProductItem({ name, priceRUB, url, type}) {
   )
 }
 
-function Catalog ({ items }) {
+function Catalog ({ items, localizedText }) {
 
   const [catalogState, setCatalogState] = useState('ceiling')
 
@@ -400,9 +394,7 @@ function Catalog ({ items }) {
         `}></div> 
       <div className={title}>
         {
-          (language === 'russian') && 'КАТАЛОГ'
-          ||
-          (language === 'english') && 'CATALOG'
+          localizedText.catalog.catalog
         }
       </div>
       <ToggleButtonGroup
@@ -424,44 +416,32 @@ function Catalog ({ items }) {
       >
         <ToggleButton value='ceiling'>
           {
-            (language === 'russian') && 'ПОДВЕСНЫЕ'
-            ||
-            (language === 'english') && 'CEILING'
+            localizedText.catalog.ceiling
           }
         </ToggleButton>
         <ToggleButton value='floor'>
           {
-            (language === 'russian') && 'НАПОЛЬНЫЕ'
-            ||
-            (language === 'english') && 'FLOOR'
+            localizedText.catalog.floor
           }
         </ToggleButton>
         <ToggleButton value='wall'>
           {
-            (language === 'russian') && 'НАСТЕННЫЕ'
-            ||
-            (language === 'english') && 'WALL'
+            localizedText.catalog.wall
           }
         </ToggleButton>
         <ToggleButton value='point'>
           {
-            (language === 'russian') && 'ТОЧЕЧНЫЕ'
-            ||
-            (language === 'english') && 'POINT'
+            localizedText.catalog.point
           }
         </ToggleButton>
         <ToggleButton value='wall3d'>
           {
-            (language === 'russian') && 'НАСТЕННЫЕ 3D'
-            ||
-            (language === 'english') && 'WALL 3D'
+            localizedText.catalog.wall3d
           }
         </ToggleButton>
         <ToggleButton value='mirror'>
           {
-            (language === 'russian') && 'ЗЕРКАЛА'
-            ||
-            (language === 'english') && 'MIRRORS'
+            localizedText.catalog.mirrors
           }
         </ToggleButton>                                        
       </ToggleButtonGroup>
@@ -484,7 +464,7 @@ function Catalog ({ items }) {
 export async function getStaticProps({ locale }) {
   const fs = require('fs');
 
-  const localizedText = fs.readFileSync(`json/localization/${locale}/index.json`)
+  const localizedText = JSON.parse(fs.readFileSync(`json/localization/${locale}/index.json`))
 
   const items = {ceiling: [], floor: [], wall: [], point: [], wall3d: [], mirror: []}
   for (const itemType in items) {
@@ -497,6 +477,6 @@ export async function getStaticProps({ locale }) {
     }
   }
   return {
-    props: { items, locale }
+    props: { items, localizedText }
   }  
 }
