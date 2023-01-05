@@ -12,9 +12,7 @@ import ShoppingBagSharpIcon from '@mui/icons-material/ShoppingBagSharp';
 import IconButton from '@mui/material/IconButton'
 import Badge from '@mui/material/Badge'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
-import LanguageContext from '../lib/context/language.js'
 import ShoppingCartContext from '../lib/context/shoppingCart.js'
-import CurrencyContext from '../lib/context/currency.js'
 import LocaleContext from '../lib/context/locale.js'
 import { useState, useContext, useEffect, useRef } from 'react'
 import { setCookie, getCookie, hasCookie, deleteCookie } from 'cookies-next'
@@ -46,17 +44,18 @@ const theme = createTheme({
   }
 })
 
-const defaultCurrency = {"currency": "EUR", "rate": 1}
 const defaultLocale = {language: 'EN', currency: 'EUR', 'rate': 1}
 
 function MyApp({ Component, pageProps }) {
 
-  const [languageState, setLanguageState] = useState('russian')
-  const [currencyState, setCurrencyState] = useState(defaultCurrency)
   const [localeState, setLocaleState] = useState({date: (new Date()).getTime(), ...defaultLocale})
   const [shoppingCartState, setShoppingCartState] = useState([])
 
   const sessionInitiated = useRef(false)                                             
+
+  useEffect(() => {(async () => {
+
+  })()}, [])
 
   useEffect(() => {
     window.addEventListener('storage', (event) => {
@@ -65,23 +64,28 @@ function MyApp({ Component, pageProps }) {
           setShoppingCartState(JSON.parse(event.newValue))
           break
         case 'locale':
-          setLocaleState(JSON.parse(event.newValue))  
+          if (event.newValue === null) {
+            setLocaleState({date: (new Date()).getTime(), ...defaultLocale})
+          } else {
+            setLocaleState(JSON.parse(event.newValue))  
+          }  
       }
     })
   }, [])
-
 
   useEffect(() => {
     const storedLocale = window.localStorage.getItem('locale')
     if (storedLocale !== null) {
       const parsedStoredLocale = JSON.parse(storedLocale)
       if ((new Date()).getTime() - parsedStoredLocale.date <= 21600000) {
+        console.log(1)
         setLocaleState(parsedStoredLocale)
       } else {(async function() {
         const res = await fetch(`/api/getLocale?lang=${parsedStoredLocale.language}`)
         const parsedRes = await res.json()
         const newLocale = {date: (new Date()).getTime(), language: parsedStoredLocale.language, ...parsedRes}
         window.localStorage.setItem('locale', JSON.stringify(newLocale))
+        console.log(2)
         setLocaleState(newLocale)
       })()}
     } else {(async function() {
@@ -89,23 +93,13 @@ function MyApp({ Component, pageProps }) {
     })()}
   }, [])
 
-  const currencyRestored = useRef(false)
+  const router = useRouter()
+  const firstRender = useRef(true)
   useEffect(() => {
-    const currency = window.localStorage.getItem('currency')
-    if (!currencyRestored.current) {
-      if (currency === null) {
-        window.localStorage.setItem('currency', JSON.stringify(currencyState))
-      } else {
-        setCurrencyState(JSON.parse(currency))
-      }
-    } else {
-      const newCurrency = JSON.stringify(currencyState)
-      if (currency !== newCurrency) {
-        window.localStorage.setItem('currency', newCurrency)
-      }
-    }
-    currencyRestored.current = true
-  }, [currencyState])
+      console.log(localeState.language.toLowerCase())
+      const { pathname, asPath, query } = router
+      router.push({ pathname, query }, asPath, { locale: localeState.language.toLowerCase(), scroll: false })
+  }, [localeState])
 
   useEffect(() => {
     const cartItems = window.localStorage.getItem('shopping_cart')
@@ -126,18 +120,14 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <LocaleContext.Provider value={{ localeState, setLocaleState }}>
-      <CurrencyContext.Provider value={currencyState}>
-        <LanguageContext.Provider value={languageState}>
           <ShoppingCartContext.Provider value={{ shoppingCartState, setShoppingCartState }}>
             <ThemeProvider theme={theme}>
               <div className={roboto.className}>
-                <StickyHeader setLanguage={setLanguageState}/>
+                <StickyHeader/>
                 <Component {...pageProps} />
               </div>
             </ThemeProvider>  
           </ShoppingCartContext.Provider>  
-        </LanguageContext.Provider>   
-      </CurrencyContext.Provider>   
     </LocaleContext.Provider>  
   )
 }
@@ -167,9 +157,7 @@ function MenuBarButton({ name }) {
   )
 }
 
-function StickyHeader({ setLanguage }) {
-
-  const language = useContext(LanguageContext)
+function StickyHeader() {
 
   const shoppingCart = useContext(ShoppingCartContext)
 
@@ -310,24 +298,22 @@ function StickyHeader({ setLanguage }) {
       <div className={menuBar}>
         <div className={menuBarFirst}>
           {
-            (language === 'russian') && ['КАТАЛОГ', 'ДОСТАВКА', 'КОНТАКТЫ', 'ФОТОГАЛЕРЕЯ'].map((name, i) => {
+           ['КАТАЛОГ', 'ДОСТАВКА', 'КОНТАКТЫ', 'ФОТОГАЛЕРЕЯ'].map((name, i) => {
 
               return (
                 <>
                   {(name === 'КАТАЛОГ'
-                    ? <Link 
-                        href='/#catalog'
-                        scroll={false}
-                        className={css`
-                          text-decoration: none;
-                          color: black;
-                        `}
-                      > 
+                    ? <div
+                          onClick={() => {
+                                                    
+                          }}
+                      >
                         <MenuBarButton 
                           name={name} 
                           key={i} 
-                        /> 
-                      </Link>
+                        />
+                      </div>   
+                     
                     : <MenuBarButton 
                         name={name} 
                         key={i} 
@@ -338,7 +324,7 @@ function StickyHeader({ setLanguage }) {
               )
             })
             ||
-            (language === 'english') && ['CATALOG', 'DELIVERY', 'CONTACTS', 'PHOTOS'].map((name, i) => <MenuBarButton name={name} key={i} />)
+            ['CATALOG', 'DELIVERY', 'CONTACTS', 'PHOTOS'].map((name, i) => <MenuBarButton name={name} key={i} />)
           }
         </div>    
         <div className={menuBarLast}>
@@ -366,8 +352,6 @@ function StickyHeader({ setLanguage }) {
               sx={{width: 85, height: 30}}
               value={locale.localeState.language}
               onChange={async (event) => {
-                const { pathname, asPath, query } = router
-                router.push({ pathname, query }, asPath, { locale: event.target.value.toLowerCase(), scroll: false })
                 const res = await fetch(`/api/getLocale?lang=${event.target.value}`)
                 const parsedRes = await res.json()
                 const newLocale = {date: (new Date()).getTime(), language: event.target.value, ...parsedRes}
@@ -437,10 +421,6 @@ function StickyHeader({ setLanguage }) {
                 </div>    
               </MenuItem>                            
             </Select>
-          </div>
-          <div className={localeSelection}>
-            <Image style={{width: 28, height: 'auto'}} src={ruImg} onClick={() => setLanguage('russian')} />
-            <Image style={{width: 28, height: 'auto'}} src={euImg} onClick={() => setLanguage('english')} />
           </div>
         </div>           
       </div> 

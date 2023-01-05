@@ -14,7 +14,6 @@ import Paper from '@mui/material/Paper';
 import IconButton from '@mui/material/IconButton'
 import ArrowForwardSharpIcon from '@mui/icons-material/ArrowForwardSharp';
 import { useState, useContext, useEffect } from 'react'
-import LanguageContext from '../../../lib/context/language.js'
 import LocaleContext from '../../../lib/context/locale.js'
 import ShoppingCartContext from '../../../lib/context/shoppingCart.js'
 import CheckoutForm from '../../../lib/components/CheckoutForm.js'
@@ -126,7 +125,6 @@ export default function Item({ characteristics, characteristicsValues, localized
 
 	const [checkoutState, setCheckoutState] = useState(false)
 
-	const language = useContext(LanguageContext)
 
 	const shoppingCart = useContext(ShoppingCartContext)
 

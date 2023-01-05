@@ -12,9 +12,7 @@ import FormControl from '@mui/material/FormControl'
 import { useState, useEffect, useContext } from 'react'
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import ToggleButton from '@mui/material/ToggleButton';
-import LanguageContext from '../lib/context/language.js'
 import LocaleContext from '../lib/context/locale.js'
-import setCurrency from '../lib/modules/setCurrency.js'
 
 
 const carouselHeight = 600;
@@ -106,8 +104,6 @@ const imageCaptionText = css`
 `
 
 export default function Home({ items, localizedText }) {
-
-  const language = useContext(LanguageContext)
 
   return (
     <div className={mainWrapper}>
@@ -342,8 +338,6 @@ function ProductItem({ name, priceRUB, url, type}) {
 function Catalog ({ items, localizedText }) {
 
   const [catalogState, setCatalogState] = useState('ceiling')
-
-  const language = useContext(LanguageContext)
 
   const locale = useContext(LocaleContext)
 
