@@ -1,0 +1,16 @@
+{
+	"pageLabel": "ОФОРМЛЕНИЕ ЗАКАЗА",
+	"emptyCart": "КОРЗИНА ПУСТА",
+	"units": {
+		"quantity": "шт",
+		"length": "см",
+		"power": "Вт"
+	},
+	"checkoutPanel": {
+		"totalCost": "ИТОГ",
+		"phone": "ТЕЛЕФОН",
+		"name": "ИМЯ",
+		"email": "EMAIL",
+		"submit": "ПОДТВЕРДИТЬ"
+	}
+}

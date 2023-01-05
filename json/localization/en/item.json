@@ -22,7 +22,13 @@
 		"length": "LENGTH",
 		"power": "POWER",
 		"addToCart": "ADD TO CART",
-		"order": "ORDER"
+		"order": "ORDER",
+		"totalCost": "TOTAL",
+		"phone": "PHONE",
+		"name": "NAME",
+		"email": "EMAIL",
+		"submit": "SUBMIT",
+		"label": "CHECKOUT"		
 	},
 	"units": {
 		"length": "cm",

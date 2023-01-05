@@ -22,7 +22,13 @@
 		"length": "ДЛИНА",
 		"power": "МОЩНОСТЬ",
 		"addToCart": "В КОРЗИНУ",
-		"order": "ЗАКАЗАТЬ"
+		"order": "ЗАКАЗАТЬ",
+		"totalCost": "ИТОГ",
+		"phone": "ТЕЛЕФОН",
+		"name": "ИМЯ",
+		"email": "EMAIL",
+		"submit": "ПОДТВЕРДИТЬ",
+		"label": "ОФОРМЛЕНИЕ ЗАКАЗА"		
 	},
 	"units": {
 		"length": "см",

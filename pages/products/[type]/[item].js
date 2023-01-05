@@ -227,7 +227,7 @@ export default function Item({ characteristics, characteristicsValues, localized
 									padding-left: 10px;
 									font-size: 20px;
 								`}>
-									ОФОРМЛЕНИЕ ЗАКАЗА
+									{localizedText.checkoutPanel.label}
 									<div className={css`
 										flex-grow: 1;
 										display: flex;
@@ -246,6 +246,7 @@ export default function Item({ characteristics, characteristicsValues, localized
 								<CheckoutForm 
 									totalCost={pricesState[lengthState]} 
 									currency={locale.localeState.currency}
+									localizedText={localizedText}
 								/>
 							</>	
 						:	

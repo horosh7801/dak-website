@@ -103,7 +103,7 @@ const subHeader = css`
 	z-index: 1;
 `
 
-export default function ShoppingCart() {
+export default function ShoppingCart({ localizedText }) {
 
 	const shoppingCart = useContext(ShoppingCartContext)
 
@@ -125,7 +125,7 @@ export default function ShoppingCart() {
 			flex-direction: column;
 		`}>
 			<div className={subHeader}>
-				ОФОРМЛЕНИЕ ЗАКАЗА
+				{localizedText.pageLabel}
 			</div>
 			<div className={css`
 				display: flex;
@@ -153,14 +153,14 @@ export default function ShoppingCart() {
 								</div>
 								<div className={specs}>
 									<div>
-										{`${item.length} см`}
+										{`${item.length} ${localizedText.units.length}`}
 									</div>
 									<div>
-										{`${item.power} Вт`}
+										{`${item.power} ${localizedText.units.power}`}
 									</div>	
 								</div>
 								<div className={amount}>
-									{`1 шт.`}
+									{`1 ${localizedText.units.quantity}.`}
 								</div>
 								<div className={cost}>
 									{`${Math.round(item.price * locale.localeState.rate)} ${locale.localeState.currency}`}
@@ -188,10 +188,14 @@ export default function ShoppingCart() {
 									justify-content: center;
 									font-size: 30px;	
 								`}>
-									КОРЗИНА ПУСТА
+									{localizedText.emptyCart}
 								</div>
 							:
-								<CheckoutForm totalCost={Math.round(totalCostState * locale.localeState.rate)} currency={locale.localeState.currency}/>
+								<CheckoutForm 
+									totalCost={Math.round(totalCostState * locale.localeState.rate)} 
+									currency={locale.localeState.currency}
+									localizedText={localizedText}
+								/>
 								
 					}
 				</div>
@@ -200,3 +204,12 @@ export default function ShoppingCart() {
 	)
 }
 
+export async function getStaticProps({ locale }) {
+  const fs = require('fs');
+
+  const localizedText = JSON.parse(fs.readFileSync(`json/localization/${locale}/cart.json`))
+
+  return {
+    props: { localizedText }
+  }  
+}

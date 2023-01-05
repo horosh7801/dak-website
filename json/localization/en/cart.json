@@ -1,0 +1,16 @@
+{
+	"pageLabel": "CHECKOUT",
+	"emptyCart": "CART IS EMPTY",
+	"units": {
+		"quantity": "pcs",
+		"length": "cm",
+		"power": "W"
+	},
+	"checkoutPanel": {
+		"totalCost": "TOTAL",
+		"phone": "PHONE",
+		"name": "NAME",
+		"email": "EMAIL",
+		"submit": "SUBMIT"
+	}
+}
