@@ -298,39 +298,18 @@ function StickyHeader() {
       <div className={menuBar}>
         <div className={menuBarFirst}>
           {
-           ['КАТАЛОГ', 'ДОСТАВКА', 'КОНТАКТЫ', 'ФОТОГАЛЕРЕЯ'].map((name, i) => {
-
+           ['catalog', 'delivery', 'fawg', 'hjseh'].map((name, i) => {
               return (
-                <>
-                  {(name === 'КАТАЛОГ'
-                    ? <div
-                          onClick={() => {
-                                                    
-                          }}
-                      >
-                        <MenuBarButton 
-                          name={name} 
-                          key={i} 
-                        />
-                      </div>   
-                     
-                    : <MenuBarButton 
-                        name={name} 
-                        key={i} 
-                      />
-                  )}
-                
-                </>  
+        
+                  <MenuBarButton key={i} name={name} />    
               )
             })
-            ||
-            ['CATALOG', 'DELIVERY', 'CONTACTS', 'PHOTOS'].map((name, i) => <MenuBarButton name={name} key={i} />)
           }
         </div>    
         <div className={menuBarLast}>
           <div className={cartButtonContainer}>
               {shoppingCart.shoppingCartState.length > 0 && Array(2).fill(1).map((element, index) => (
-                <div className={cx(waveEffect, css`animation-delay: ${waveDelay * index}s`)}>
+                <div key={index} className={cx(waveEffect, css`animation-delay: ${waveDelay * index}s`)}>
                 </div>   
               ))}              
               <Link href='/cart'>
