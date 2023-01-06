@@ -53,10 +53,6 @@ function MyApp({ Component, pageProps }) {
 
   const sessionInitiated = useRef(false)                                             
 
-  useEffect(() => {(async () => {
-
-  })()}, [])
-
   useEffect(() => {
     window.addEventListener('storage', (event) => {
       switch (event.key) {
@@ -164,6 +160,10 @@ function StickyHeader() {
   const locale = useContext(LocaleContext)
 
   const router = useRouter()
+
+  useEffect(() => {(async () => {
+
+  })()}, [])
 
   const stickyHeader = css`
     box-shadow: 0px 1px 3px -2px;
@@ -378,27 +378,7 @@ function StickyHeader() {
                   </div>
                   <Image style={{width: 23, height: 'auto'}} src={ruImg}/>
                 </div>    
-              </MenuItem>
-              <MenuItem 
-                value={'RO'}
-                disableGutters
-                sx={{
-                  '.css-iz83cf': {
-                  display: 'flex',
-                  justifyContent: 'center',
-                  columnGap: '13px' ,
-                  width: '100%'
-                }}}
-              >
-                <div className={selectItemContainer}>
-                  <div className={css`
-                    padding-top: 6px;
-                  `}>
-                    RO
-                  </div>
-                  <Image style={{width: 23, height: 'auto'}} src={mlImg}/>
-                </div>    
-              </MenuItem>                            
+              </MenuItem>                         
             </Select>
           </div>
         </div>           
