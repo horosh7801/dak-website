@@ -50,6 +50,7 @@ function MyApp({ Component, pageProps }) {
 
   const [localeState, setLocaleState] = useState({date: (new Date()).getTime(), ...defaultLocale})
   const [shoppingCartState, setShoppingCartState] = useState([])
+  const [navbarTextState, setNavbarTextState] = useState()
 
   const sessionInitiated = useRef(false)                                             
 
@@ -74,14 +75,12 @@ function MyApp({ Component, pageProps }) {
     if (storedLocale !== null) {
       const parsedStoredLocale = JSON.parse(storedLocale)
       if ((new Date()).getTime() - parsedStoredLocale.date <= 21600000) {
-        console.log(1)
         setLocaleState(parsedStoredLocale)
       } else {(async function() {
         const res = await fetch(`/api/getLocale?lang=${parsedStoredLocale.language}`)
         const parsedRes = await res.json()
         const newLocale = {date: (new Date()).getTime(), language: parsedStoredLocale.language, ...parsedRes}
         window.localStorage.setItem('locale', JSON.stringify(newLocale))
-        console.log(2)
         setLocaleState(newLocale)
       })()}
     } else {(async function() {
@@ -91,11 +90,13 @@ function MyApp({ Component, pageProps }) {
 
   const router = useRouter()
   const firstRender = useRef(true)
-  useEffect(() => {
-      console.log(localeState.language.toLowerCase())
-      const { pathname, asPath, query } = router
-      router.push({ pathname, query }, asPath, { locale: localeState.language.toLowerCase(), scroll: false })
-  }, [localeState])
+  useEffect(() => {( async () => {
+    const res = await fetch(`/api/getNavbarLocalization?lang=${localeState.language}`)
+    const parsedRes = await res.json()
+    setNavbarTextState(parsedRes)
+    const { pathname, asPath, query } = router
+    router.push({ pathname, query }, asPath, { locale: localeState.language.toLowerCase(), scroll: false })
+  })()}, [localeState])
 
   useEffect(() => {
     const cartItems = window.localStorage.getItem('shopping_cart')
@@ -119,7 +120,7 @@ function MyApp({ Component, pageProps }) {
           <ShoppingCartContext.Provider value={{ shoppingCartState, setShoppingCartState }}>
             <ThemeProvider theme={theme}>
               <div className={roboto.className}>
-                <StickyHeader/>
+                <StickyHeader navbarText={navbarTextState}/>
                 <Component {...pageProps} />
               </div>
             </ThemeProvider>  
@@ -153,7 +154,7 @@ function MenuBarButton({ name }) {
   )
 }
 
-function StickyHeader() {
+function StickyHeader({ navbarText }) {
 
   const shoppingCart = useContext(ShoppingCartContext)
 
@@ -298,10 +299,9 @@ function StickyHeader() {
       <div className={menuBar}>
         <div className={menuBarFirst}>
           {
-           ['catalog', 'delivery', 'fawg', 'hjseh'].map((name, i) => {
+            navbarText && ['catalog', 'delivery', 'contacts', 'photos'].map((name, i) => {
               return (
-        
-                  <MenuBarButton key={i} name={name} />    
+                <MenuBarButton key={i} name={navbarText[name]} />    
               )
             })
           }
