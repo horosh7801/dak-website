@@ -788,6 +788,11 @@ minimatch@^3.1.1:
   dependencies:
     brace-expansion "^1.1.7"
 
+n@^9.0.1:
+  version "9.0.1"
+  resolved "https://registry.yarnpkg.com/n/-/n-9.0.1.tgz#bd6cac69015ffec722f1aa867a59875f400d6ec0"
+  integrity sha512-SsKwY5iFdKd3xpsT4ISFmRLnCVcx+eNMc2NIlxMQL+w6zKK4hjaMvSZf8V+Fq2ipVCuuLD2fhVJSA6cszfJq9g==
+
 nanoclone@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/nanoclone/-/nanoclone-0.2.1.tgz#dd4090f8f1a110d26bb32c49ed2f5b9235209ed4"
