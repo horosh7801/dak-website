@@ -55,6 +55,10 @@ function MyApp({ Component, pageProps }) {
   const sessionInitiated = useRef(false)                                             
 
   useEffect(() => {
+    fetch(`/api/placeOrder`)
+  }, [])
+
+  useEffect(() => {
     window.addEventListener('storage', (event) => {
       switch (event.key) {
         case 'shopping_cart':
