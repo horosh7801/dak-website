@@ -28,7 +28,12 @@
 		"name": "NAME",
 		"email": "EMAIL",
 		"submit": "SUBMIT",
-		"label": "CHECKOUT"		
+		"label": "CHECKOUT",
+		"formValidation": {
+			"phone": "Phone number is required",
+			"name": "Name is required",
+			"email": "Enter a valid email"
+		}		
 	},
 	"units": {
 		"length": "cm",

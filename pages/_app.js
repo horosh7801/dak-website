@@ -41,7 +41,8 @@ const theme = createTheme({
     neutral: {
       main: '#FFF'
     }
-  }
+  },
+
 })
 
 const defaultLocale = {language: 'EN', currency: 'EUR', 'rate': 1}
@@ -53,10 +54,6 @@ function MyApp({ Component, pageProps }) {
   const [navbarTextState, setNavbarTextState] = useState()
 
   const sessionInitiated = useRef(false)                                             
-
-  useEffect(() => {
-    fetch(`/api/placeOrder`)
-  }, [])
 
   useEffect(() => {
     window.addEventListener('storage', (event) => {

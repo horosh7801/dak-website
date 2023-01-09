@@ -6,6 +6,8 @@ import Image from 'next/image'
 import ClearSharpIcon from '@mui/icons-material/ClearSharp';
 import IconButton from '@mui/material/IconButton'
 import TextField from '@mui/material/TextField'
+import Paper from '@mui/material/Paper'
+import Dialog from '@mui/material/Dialog'
 import Button from '@mui/material/Button'
 import Link from 'next/link'
 import CheckoutForm from '../lib/components/CheckoutForm.js'
@@ -16,7 +18,9 @@ const leftSection = css`
 	align-items: center;
 	width: 1120px;
 	background-color: #f7f7f7;
-	min-height: 100vh;
+	min-height: calc(100vh - 100px);
+	row-gap: 10px;
+	padding-top: 20px;
 `
 
 const rightSection = css`
@@ -111,6 +115,8 @@ export default function ShoppingCart({ localizedText }) {
 
 	const [totalCostState, setTotalCostState] = useState(0)
 
+	const [dialogState, setDialogState] = useState(false)
+
 	useEffect(() => {
 		let totalCost = 0
 		for (const element of shoppingCart.shoppingCartState) {
@@ -124,6 +130,18 @@ export default function ShoppingCart({ localizedText }) {
 			display: flex;
 			flex-direction: column;
 		`}>
+				<Dialog onClose={() => {
+					console.log('close dialog')
+					setDialogState(false)}} open={dialogState && !(shoppingCart.shoppingCartState === [])}>
+					<Paper 
+						variant='outlined'
+						sx={{width: '200px', height: '300px'}}
+					>
+						<div>
+							ORDER SENT
+						</div>
+					</Paper>
+				</Dialog>				
 			<div className={subHeader}>
 				{localizedText.pageLabel}
 			</div>
@@ -133,7 +151,7 @@ export default function ShoppingCart({ localizedText }) {
 			`}>
 				<div className={leftSection}>
 					{shoppingCart.shoppingCartState.map((item, index) => (
-							
+						<Paper key={index} sx={{width: '1050px'}}>
 							<div className={itemRow}>
 								<div className={css`
 									flex-grow: 0.2;
@@ -177,6 +195,7 @@ export default function ShoppingCart({ localizedText }) {
 									</div>	
 								</div>	
 							</div>	
+						</Paper>	
 					))}
 				</div>
 				<div className={rightSection}>
@@ -186,18 +205,25 @@ export default function ShoppingCart({ localizedText }) {
 								<div className={css`
 									display: flex;
 									justify-content: center;
-									font-size: 30px;	
+									font-size: 30px;
+									margin-top: 20px;	
 								`}>
 									{localizedText.emptyCart}
 								</div>
 							:
 								<CheckoutForm 
 									totalCost={Math.round(totalCostState * locale.localeState.rate)} 
+									shoppingCart={shoppingCart}
 									currency={locale.localeState.currency}
-									localizedText={localizedText}
+									localizedText={localizedText.checkoutPanel}
+									setDialogState={setDialogState}
+									items={shoppingCart.shoppingCartState.map((item) => (
+										{name: item.name, length: item.length, amount: 1}
+									))}
 								/>
+
 								
-					}
+					}			
 				</div>
 			</div>
 		</div>	

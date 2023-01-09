@@ -244,7 +244,8 @@ export default function Item({ characteristics, characteristicsValues, localized
 								<CheckoutForm 
 									totalCost={pricesState[lengthState]} 
 									currency={locale.localeState.currency}
-									localizedText={localizedText}
+									localizedText={localizedText.checkoutPanel}
+									items={{name: item, length: lengthState, amount: 1}}
 								/>
 							</>	
 						:	

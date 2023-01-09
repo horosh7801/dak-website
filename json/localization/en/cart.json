@@ -11,6 +11,11 @@
 		"phone": "PHONE",
 		"name": "NAME",
 		"email": "EMAIL",
-		"submit": "SUBMIT"
+		"submit": "SUBMIT",
+		"formValidation": {
+			"phone": "Phone number is required",
+			"name": "Name is required",
+			"email": "Enter a valid email"
+		}			
 	}
 }
