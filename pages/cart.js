@@ -121,7 +121,7 @@ export default function ShoppingCart({ localizedText }) {
 	useEffect(() => {
 		let totalCost = 0
 		for (const element of shoppingCart.shoppingCartState) {
-			totalCost += element.price
+			totalCost += Math.round(element.price * locale.localeState.rate) * element.amount
 		}
 		setTotalCostState(totalCost)
 	}, [shoppingCart])
@@ -176,7 +176,7 @@ export default function ShoppingCart({ localizedText }) {
 									{`${item.amount} ${localizedText.units.quantity}.`}
 								</div>
 								<div className={cost}>
-									{`${Math.round(item.price * locale.localeState.rate)} ${locale.localeState.currency}`}
+									{`${Math.round(item.price * locale.localeState.rate) *  item.amount } ${locale.localeState.currency}`}
 								</div>
 								<div className={clearIcon}>
 									<div>
@@ -207,11 +207,14 @@ export default function ShoppingCart({ localizedText }) {
 								</div>
 							:
 								<CheckoutForm 
-									totalCost={Math.round(totalCostState * locale.localeState.rate)} 
+									totalCost={totalCostState} 
 									shoppingCart={shoppingCart}
 									currency={locale.localeState.currency}
 									localizedText={localizedText.checkoutPanel}
-									setDialogState={setDialogState}
+									onSuccess={() => {
+										setDialogState(true)
+										shoppingCart.setShoppingCartState([])
+									}}
 									items={shoppingCart.shoppingCartState.map((item) => (
 										{name: item.name, length: item.length, amount: item.amount}
 									))}

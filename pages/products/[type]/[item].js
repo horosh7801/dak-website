@@ -259,9 +259,9 @@ export default function Item({ characteristics, characteristicsValues, localized
 									totalCost={pricesState[lengthState]} 
 									currency={locale.localeState.currency}
 									localizedText={localizedText.checkoutPanel}
-									setDialogState={setDialogState}
 									items={{name: item, length: lengthState, amount: amountState}}
 									onSuccess={() => {
+										setDialogState(true)
 										setCheckoutState(false)
 									}}
 								/>
