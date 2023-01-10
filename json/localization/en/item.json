@@ -21,6 +21,7 @@
 	"checkoutPanel": {
 		"length": "LENGTH",
 		"power": "POWER",
+		"amount": "AMOUNT",
 		"addToCart": "ADD TO CART",
 		"order": "ORDER",
 		"totalCost": "TOTAL",

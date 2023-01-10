@@ -1,4 +1,4 @@
-import { css } from '@emotion/css'
+import { css, cx } from '@emotion/css'
 import { useContext, useEffect, useState } from 'react'
 import ShoppingCartContext from '../lib/context/shoppingCart.js'
 import LocaleContext from '../lib/context/locale.js'
@@ -9,8 +9,10 @@ import TextField from '@mui/material/TextField'
 import Paper from '@mui/material/Paper'
 import Dialog from '@mui/material/Dialog'
 import Button from '@mui/material/Button'
+import CheckSharpIcon from '@mui/icons-material/CheckSharp'
 import Link from 'next/link'
 import CheckoutForm from '../lib/components/CheckoutForm.js'
+import roboto from '../lib/modules/variableFont.js'
 
 const leftSection = css`
 	display: flex;
@@ -131,15 +133,32 @@ export default function ShoppingCart({ localizedText }) {
 			flex-direction: column;
 		`}>
 				<Dialog onClose={() => {
-					console.log('close dialog')
-					setDialogState(false)}} open={dialogState && !(shoppingCart.shoppingCartState === [])}>
+					setDialogState(false)}} open={dialogState && !(shoppingCart.shoppingCartState === [])
+				}>
 					<Paper 
 						variant='outlined'
-						sx={{width: '200px', height: '300px'}}
+						sx={{
+							width: '400px', 
+							height: '200px', 
+							display: 'flex', 
+							justifyContent: 'center', 
+							alignItems: 'center', 
+							flexDirection: 'column',
+						}}
 					>
-						<div>
-							ORDER SENT
+						<CheckSharpIcon sx={{fontSize: '80px', color: '#52ab1d'}}/>
+						<div className={cx(roboto, css`
+							margin-top: 5px;
+							font-size: 30px;
+							font-weight: 456;
+							color: #52ab1d;
+							text-align: center;
+							line-height: 1.4;
+							margin-bottom: 10px;
+						`)}>
+							{localizedText.checkoutPanel.orderConfirmation}
 						</div>
+					
 					</Paper>
 				</Dialog>				
 			<div className={subHeader}>

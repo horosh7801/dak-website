@@ -21,6 +21,7 @@
 	"checkoutPanel": {
 		"length": "ДЛИНА",
 		"power": "МОЩНОСТЬ",
+		"amount": "КОЛИЧЕСТВО",
 		"addToCart": "В КОРЗИНУ",
 		"order": "ЗАКАЗАТЬ",
 		"totalCost": "ИТОГ",

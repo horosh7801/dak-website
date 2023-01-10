@@ -5,6 +5,9 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"
 import { Carousel } from 'react-responsive-carousel'
 import Button from '@mui/material/Button'
 import Slider from '@mui/material/Slider'
+import Select from '@mui/material/Select'
+import MuiInput from '@mui/material/Input'
+import MenuItem from '@mui/material/MenuItem'
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -18,6 +21,7 @@ import LocaleContext from '../../../lib/context/locale.js'
 import ShoppingCartContext from '../../../lib/context/shoppingCart.js'
 import CheckoutForm from '../../../lib/components/CheckoutForm.js'
 import { getCookie, hasCookie } from 'cookies-next'
+import roboto from '../../../lib/modules/variableFont.js'
 
 
 const itemPage = css`
@@ -125,6 +129,8 @@ export default function Item({ characteristics, characteristicsValues, localized
 
 	const [checkoutState, setCheckoutState] = useState(false)
 
+	const [amountState, setAmountState] = useState(1)
+
 
 	const shoppingCart = useContext(ShoppingCartContext)
 
@@ -161,13 +167,13 @@ export default function Item({ characteristics, characteristicsValues, localized
 						showStatus={false}
 						showIndicators={false}
 						renderThumbs={(children) => (children.map((element, index) => (
-							<div className={css`width: 70px; height: 70px; position: relative;`}>
+							<div key={index} className={css`width: 70px; height: 70px; position: relative;`}>
 								<Image src={`/products/${type}/${item}/item${index}.jpg`} fill={true} style={{objectFit: 'contain'}} />
 							</div>						
 						)))}
 					>
 						{Array(20).fill(1).map((element, index) => (
-							<div className={css`width: 1024px; height: 768px; position: relative;`}>
+							<div key={index} className={css`width: 1024px; height: 768px; position: relative;`}>
 								<Image src={`/products/${type}/${item}/item${index}.jpg`} fill={true} style={{objectFit: 'contain'}} />
 							</div>
 						))}	
@@ -280,6 +286,34 @@ export default function Item({ characteristics, characteristicsValues, localized
 											{
 												`${localizedText.checkoutPanel.power}: ${power[lengthState]} ${localizedText.units.power}`
 											}
+										</div>
+										<div className={css`
+											display: flex;
+											flex-direction: row;
+											align-items: center;
+											column-gap: 5px;
+										`}>
+											<div>
+												{`${localizedText.checkoutPanel.amount}:`}
+											</div>
+											<MuiInput
+												className={roboto}
+												sx={{
+													width: '50px',
+													'.css-1x51dt5-MuiInputBase-input-MuiInput-input': {
+														padding: '0px'
+													}
+												}}
+												value={amountState}
+												onChange={(event) => {
+													setAmountState(event.target.value)
+												}}
+												inputProps={{
+													type: 'number',
+													min: 1,
+													step: 1,
+												}}
+											/>
 										</div>
 									</div>	
 									<div className={price}>

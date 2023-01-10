@@ -1,6 +1,5 @@
 import '../styles/globals.css'
 import { css, cx, keyframes } from '@emotion/css'
-import { Roboto_Flex } from '@next/font/google'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -17,15 +16,9 @@ import LocaleContext from '../lib/context/locale.js'
 import { useState, useContext, useEffect, useRef } from 'react'
 import { setCookie, getCookie, hasCookie, deleteCookie } from 'cookies-next'
 import TextField from '@mui/material/TextField'
-import Autocomplete from '@mui/material/Autocomplete'
 import MenuItem from '@mui/material/MenuItem'
 import Select from '@mui/material/Select'
-
-
-const roboto = Roboto_Flex({
-  subsets: ['latin', 'cyrillic','numbers', 'punctuation', 'currency'],
-  axes: ['YOPQ', 'YTUC', 'GRAD', 'wdth']
-})
+import roboto from '../lib/modules/variableFont.js'
 
 const theme = createTheme({
   palette: {
@@ -67,6 +60,9 @@ function MyApp({ Component, pageProps }) {
           } else {
             setLocaleState(JSON.parse(event.newValue))  
           }  
+    window.addEventListener('popstate', (event) => {
+      console.log(event)
+    })      
       }
     })
   }, [])
@@ -118,14 +114,14 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <LocaleContext.Provider value={{ localeState, setLocaleState }}>
-          <ShoppingCartContext.Provider value={{ shoppingCartState, setShoppingCartState }}>
-            <ThemeProvider theme={theme}>
-              <div className={roboto.className}>
-                <StickyHeader navbarText={navbarTextState}/>
-                <Component {...pageProps} />
-              </div>
-            </ThemeProvider>  
-          </ShoppingCartContext.Provider>  
+      <ShoppingCartContext.Provider value={{ shoppingCartState, setShoppingCartState }}>
+        <ThemeProvider theme={theme}>
+          <div className={roboto}>
+            <StickyHeader navbarText={navbarTextState}/>
+            <Component {...pageProps} />
+          </div>
+        </ThemeProvider>  
+      </ShoppingCartContext.Provider>  
     </LocaleContext.Provider>  
   )
 }
