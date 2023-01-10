@@ -7,11 +7,10 @@ import ClearSharpIcon from '@mui/icons-material/ClearSharp';
 import IconButton from '@mui/material/IconButton'
 import TextField from '@mui/material/TextField'
 import Paper from '@mui/material/Paper'
-import Dialog from '@mui/material/Dialog'
 import Button from '@mui/material/Button'
-import CheckSharpIcon from '@mui/icons-material/CheckSharp'
 import Link from 'next/link'
 import CheckoutForm from '../lib/components/CheckoutForm.js'
+import OrderNotification from '../lib/components/OrderNotification.js'
 import roboto from '../lib/modules/variableFont.js'
 
 const leftSection = css`
@@ -132,35 +131,12 @@ export default function ShoppingCart({ localizedText }) {
 			display: flex;
 			flex-direction: column;
 		`}>
-				<Dialog onClose={() => {
-					setDialogState(false)}} open={dialogState && !(shoppingCart.shoppingCartState === [])
-				}>
-					<Paper 
-						variant='outlined'
-						sx={{
-							width: '400px', 
-							height: '200px', 
-							display: 'flex', 
-							justifyContent: 'center', 
-							alignItems: 'center', 
-							flexDirection: 'column',
-						}}
-					>
-						<CheckSharpIcon sx={{fontSize: '80px', color: '#52ab1d'}}/>
-						<div className={cx(roboto, css`
-							margin-top: 5px;
-							font-size: 30px;
-							font-weight: 456;
-							color: #52ab1d;
-							text-align: center;
-							line-height: 1.4;
-							margin-bottom: 10px;
-						`)}>
-							{localizedText.checkoutPanel.orderConfirmation}
-						</div>
-					
-					</Paper>
-				</Dialog>				
+			<OrderNotification 
+				state={dialogState} 
+				setState={setDialogState} 
+				shoppingCart={shoppingCart.shoppingCartState} 
+				localizedText={localizedText.checkoutPanel.orderConfirmation}					
+			/>
 			<div className={subHeader}>
 				{localizedText.pageLabel}
 			</div>
@@ -197,7 +173,7 @@ export default function ShoppingCart({ localizedText }) {
 									</div>	
 								</div>
 								<div className={amount}>
-									{`1 ${localizedText.units.quantity}.`}
+									{`${item.amount} ${localizedText.units.quantity}.`}
 								</div>
 								<div className={cost}>
 									{`${Math.round(item.price * locale.localeState.rate)} ${locale.localeState.currency}`}
@@ -237,7 +213,7 @@ export default function ShoppingCart({ localizedText }) {
 									localizedText={localizedText.checkoutPanel}
 									setDialogState={setDialogState}
 									items={shoppingCart.shoppingCartState.map((item) => (
-										{name: item.name, length: item.length, amount: 1}
+										{name: item.name, length: item.length, amount: item.amount}
 									))}
 								/>
 

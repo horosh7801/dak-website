@@ -20,6 +20,7 @@ import { useState, useContext, useEffect } from 'react'
 import LocaleContext from '../../../lib/context/locale.js'
 import ShoppingCartContext from '../../../lib/context/shoppingCart.js'
 import CheckoutForm from '../../../lib/components/CheckoutForm.js'
+import OrderNotification from '../../../lib/components/OrderNotification.js'
 import { getCookie, hasCookie } from 'cookies-next'
 import roboto from '../../../lib/modules/variableFont.js'
 
@@ -131,6 +132,7 @@ export default function Item({ characteristics, characteristicsValues, localized
 
 	const [amountState, setAmountState] = useState(1)
 
+	const [dialogState, setDialogState] = useState(false)
 
 	const shoppingCart = useContext(ShoppingCartContext)
 
@@ -161,6 +163,12 @@ export default function Item({ characteristics, characteristicsValues, localized
 
 	return (
 		<div className={itemPage}>
+			<OrderNotification 
+				state={dialogState} 
+				setState={setDialogState} 
+				shoppingCart={shoppingCart.shoppingCartState} 
+				localizedText={localizedText.checkoutPanel.orderConfirmation}					
+			/>		
 			<div className={leftSection}>
 				<div className={itemImageSet}>
 					<Carousel						
@@ -251,7 +259,11 @@ export default function Item({ characteristics, characteristicsValues, localized
 									totalCost={pricesState[lengthState]} 
 									currency={locale.localeState.currency}
 									localizedText={localizedText.checkoutPanel}
-									items={{name: item, length: lengthState, amount: 1}}
+									setDialogState={setDialogState}
+									items={{name: item, length: lengthState, amount: amountState}}
+									onSuccess={() => {
+										setCheckoutState(false)
+									}}
 								/>
 							</>	
 						:	
@@ -288,6 +300,7 @@ export default function Item({ characteristics, characteristicsValues, localized
 											}
 										</div>
 										<div className={css`
+											margin-top: 10px;
 											display: flex;
 											flex-direction: row;
 											align-items: center;
@@ -299,25 +312,35 @@ export default function Item({ characteristics, characteristicsValues, localized
 											<MuiInput
 												className={roboto}
 												sx={{
-													width: '50px',
+													width: '45px',
 													'.css-1x51dt5-MuiInputBase-input-MuiInput-input': {
-														padding: '0px'
+														padding: '0px',
+														textAlign: 'center',
 													}
 												}}
 												value={amountState}
 												onChange={(event) => {
-													setAmountState(event.target.value)
+													let value
+													if (event.target.value < 1) {
+														value = 1
+													} else if (event.target.value > 99) {
+														value = 99
+													} else {
+														value = event.target.value
+													}
+													setAmountState(value)
 												}}
 												inputProps={{
 													type: 'number',
 													min: 1,
 													step: 1,
+													max: 99
 												}}
 											/>
 										</div>
 									</div>	
 									<div className={price}>
-										{`${pricesState[lengthState]} ${locale.localeState.currency}`}
+										{`${(pricesState[lengthState] * amountState)} ${locale.localeState.currency}`}
 									</div>
 									<div className={actionButtonSet}>
 										<Button 
@@ -333,6 +356,7 @@ export default function Item({ characteristics, characteristicsValues, localized
 														length: lengthState, 
 														power: power[lengthState], 
 														price: prices[lengthState],
+														amount: amountState,
 														img: `/products/${type}/${item}.jpg`
 													})
 													shoppingCart.setShoppingCartState(newState)

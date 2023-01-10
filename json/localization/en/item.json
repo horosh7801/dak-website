@@ -34,7 +34,8 @@
 			"phone": "Phone number is required",
 			"name": "Name is required",
 			"email": "Enter a valid email"
-		}		
+		},
+		"orderConfirmation": "ORDER SUCCESSFULLY SUBMITTED"		
 	},
 	"units": {
 		"length": "cm",
