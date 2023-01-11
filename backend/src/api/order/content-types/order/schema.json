@@ -4,7 +4,8 @@
   "info": {
     "singularName": "order",
     "pluralName": "orders",
-    "displayName": "order"
+    "displayName": "Order",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -14,9 +15,6 @@
     "name": {
       "type": "string"
     },
-    "phone": {
-      "type": "integer"
-    },
     "email": {
       "type": "email"
     },
@@ -25,6 +23,24 @@
     },
     "item": {
       "type": "json"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "accepted",
+        "fulfilled"
+      ],
+      "default": "pending",
+      "required": true
+    },
+    "phone": {
+      "type": "string"
+    },
+    "order_items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::order-item.order-item"
     }
   }
 }
