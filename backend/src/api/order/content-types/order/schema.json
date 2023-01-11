@@ -13,34 +13,34 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "email": {
-      "type": "email"
+      "type": "email",
+      "required": false
     },
     "date": {
-      "type": "datetime"
+      "type": "datetime",
+      "required": true
     },
     "item": {
-      "type": "json"
+      "type": "json",
+      "required": true
+    },
+    "phone": {
+      "type": "string",
+      "required": true
     },
     "status": {
       "type": "enumeration",
       "enum": [
-        "pending",
-        "accepted",
-        "fulfilled"
+        "PENDING",
+        "ACCEPTED",
+        "FULFILLED"
       ],
-      "default": "pending",
-      "required": true
-    },
-    "phone": {
-      "type": "string"
-    },
-    "order_items": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::order-item.order-item"
+      "required": true,
+      "default": "PENDING"
     }
   }
 }

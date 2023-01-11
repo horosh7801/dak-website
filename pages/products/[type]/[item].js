@@ -132,7 +132,7 @@ export default function Item({ characteristics, characteristicsValues, localized
 
 	const [amountState, setAmountState] = useState(1)
 
-	const [dialogState, setDialogState] = useState(false)
+	const [dialogState, setDialogState] = useState(null)
 
 	const shoppingCart = useContext(ShoppingCartContext)
 
@@ -259,10 +259,13 @@ export default function Item({ characteristics, characteristicsValues, localized
 									totalCost={pricesState[lengthState] * amountState} 
 									currency={locale.localeState.currency}
 									localizedText={localizedText.checkoutPanel}
-									items={{name: item, length: lengthState, amount: amountState}}
+									items={[{name: item, length: lengthState, amount: amountState}]}
 									onSuccess={() => {
-										setDialogState(true)
+										setDialogState('success')
 										setCheckoutState(false)
+									}}
+									onFailure={() => {
+										setDialogState('failure')
 									}}
 								/>
 							</>	

@@ -116,7 +116,7 @@ export default function ShoppingCart({ localizedText }) {
 
 	const [totalCostState, setTotalCostState] = useState(0)
 
-	const [dialogState, setDialogState] = useState(false)
+	const [dialogState, setDialogState] = useState(null)
 
 	useEffect(() => {
 		let totalCost = 0
@@ -212,8 +212,11 @@ export default function ShoppingCart({ localizedText }) {
 									currency={locale.localeState.currency}
 									localizedText={localizedText.checkoutPanel}
 									onSuccess={() => {
-										setDialogState(true)
+										setDialogState('success')
 										shoppingCart.setShoppingCartState([])
+									}}
+									onFailure={() => {
+										setDialogState('failure')
 									}}
 									items={shoppingCart.shoppingCartState.map((item) => (
 										{name: item.name, length: item.length, amount: item.amount}

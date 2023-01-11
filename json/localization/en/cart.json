@@ -14,10 +14,15 @@
 		"submit": "SUBMIT",
 		"formValidation": {
 			"phone": "Phone number is required",
+			"phoneChar": "Only digits allowed",
 			"name": "Name is required",
+			"nameChar": "Only latin characters allowed",
 			"email": "Enter a valid email"
 		},
-		"orderConfirmation": "ORDER SUCCESSFULLY SUBMITTED"
+		"orderConfirmation": {
+			"success": "ORDER SUCCESSFULLY SUBMITTED",
+			"failure": "FAILED TO SUBMIT ORDER"
+		}	
 
 	}
 }
