@@ -1,6 +1,6 @@
 [
-	{"name": "Модель 1", "priceRUB": 11850, "img": "/products/mirror/model1.jpg"},
-	{"name": "Модель 2", "priceRUB": 17250, "img": "/products/mirror/model2.jpg"},
-	{"name": "Модель 3", "priceRUB": 19500, "img": "/products/mirror/model3.jpg"},
-	{"name": "Модель 4", "priceRUB": 12900, "img": "/products/mirror/model4.jpg"}
+	{"name": "Model 1", "priceRUB": 11850, "img": "/products/mirror/model1.jpg"},
+	{"name": "Model 2", "priceRUB": 17250, "img": "/products/mirror/model2.jpg"},
+	{"name": "Model 3", "priceRUB": 19500, "img": "/products/mirror/model3.jpg"},
+	{"name": "Model 4", "priceRUB": 12900, "img": "/products/mirror/model4.jpg"}
 ]
