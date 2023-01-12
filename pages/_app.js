@@ -60,9 +60,6 @@ function MyApp({ Component, pageProps }) {
           } else {
             setLocaleState(JSON.parse(event.newValue))  
           }  
-    window.addEventListener('popstate', (event) => {
-      console.log(event)
-    })      
       }
     })
   }, [])
@@ -209,8 +206,9 @@ function StickyHeader({ navbarText }) {
 
   const menuBarFirst = css`
     display: flex;
-    justify-content: space-around;
+    column-gap: 50px;
     flex-grow: 1;
+    padding-left: 20px;
   `
 
   const menuBarLast = css`
@@ -296,7 +294,7 @@ function StickyHeader({ navbarText }) {
       <div className={menuBar}>
         <div className={menuBarFirst}>
           {
-            navbarText && ['catalog', 'delivery', 'contacts', 'photos'].map((name, i) => {
+            navbarText && ['catalog', 'delivery', 'contacts'].map((name, i) => {
               return (
                 <MenuBarButton key={i} name={navbarText[name]} />    
               )

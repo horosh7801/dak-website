@@ -122,7 +122,7 @@ const longWHRatio = 513 / 768
 const prices = {120: 22650, 140: 23250, 160: 24900, 180: 25500, 200: 26850}
 const power = {120: 28, 140: 33, 160: 36, 180: 40, 200: 45}
 
-export default function Item({ characteristics, characteristicsValues, localizedText }) {
+export default function Item({ characteristics, characteristicsValues, localizedText, imgCount }) {
 
 	const [itemInCartState, setItemInCartState] = useState(false)
 
@@ -180,7 +180,7 @@ export default function Item({ characteristics, characteristicsValues, localized
 							</div>						
 						)))}
 					>
-						{Array(20).fill(1).map((element, index) => (
+						{Array(imgCount).fill(1).map((element, index) => (
 							<div key={index} className={css`width: 1024px; height: 768px; position: relative;`}>
 								<Image src={`/products/${type}/${item}/item${index}.jpg`} fill={true} style={{objectFit: 'contain'}} />
 							</div>
@@ -392,7 +392,7 @@ export default function Item({ characteristics, characteristicsValues, localized
 	)
 }
 
-export async function getStaticProps({ locale }) {
+export async function getStaticProps({ locale, params }) {
 	const fs = require('fs')
 
 	const localizedText = JSON.parse(fs.readFileSync(`json/localization/${locale}/item.json`))
@@ -400,8 +400,19 @@ export async function getStaticProps({ locale }) {
 	const characteristics = JSON.parse(fs.readFileSync('json/characteristics.json', 'utf-8'))
 	const characteristicsValues = JSON.parse(fs.readFileSync('json/product_characteristics.json', 'utf-8'))
 
+	let imgCount = 0
+	while (true) {
+		try {
+			fs.readFileSync(`public/products/${params.type}/${params.item}/item${imgCount}.jpg`)
+		}
+		catch(err) {
+			break
+		}
+		imgCount = imgCount + 1
+	}
+
 	return {
-		props: { characteristics, characteristicsValues, localizedText }
+		props: { characteristics, characteristicsValues, localizedText, imgCount }
 	}
 }
 

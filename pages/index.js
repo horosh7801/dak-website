@@ -373,7 +373,7 @@ function Catalog ({ items, localizedText }) {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: start;
+    justify-content: center;
     width: 1310px;
     margin-bottom: 30px;
     gap: 10px;
