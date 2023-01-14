@@ -194,68 +194,7 @@ function Slide({ img, title, txt }) {
   )
 }
 
-function ProductType({ type }) {
-  let title
-  switch (type) {
-    case 'ceiling':
-      title = 'ПОДВЕСНЫЕ'
-      break
-    case 'floor':
-        title = 'НАПОЛЬНЫЕ'
-        break
-    case 'singular':
-      title = 'ТОЧЕЧНЫЕ'
-      break
-    case 'wall':
-      title = 'НАСТЕННЫЕ'
-      break
-    case 'wall3D':
-      title = 'НАСТЕННЫЕ 3D'
-      break
-    case 'mirror':
-      title = 'ЗЕРКАЛА'
-      break          
-  }
-
-  const wrapper = css`
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-  `
-
-  const button = css`
-    border: 1px solid white;
-    margin-top: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 125px;
-    height: 33px;
-    background-color: black;
-    color: white;
-    font-size: 15px;
-    vertical-align: center;
-    transition: 0.2s;
-    &:hover {
-      background-color: white;
-      border: 1px solid black;
-      color: black; 
-    }  
-  `
-
-  return (
-    <div className={wrapper}>
-      <Image src={`/${type}Type.png`} height={70} width={70} />
-      <div className={button}>
-        <div>
-          {title}
-        </div> 
-      </div>
-    </div>
-  )  
-}
-
-function ProductItem({ name, priceRUB, url, type}) {
+function ProductItem({ itemID, name, price, url, type}) {
   const productItem = css`
     box-shadow: 0px 0px 4px -1px;
     width: 320px;
@@ -302,7 +241,10 @@ function ProductItem({ name, priceRUB, url, type}) {
   `
 
   return (
-    <Link style={{textDecoration: 'none'}} href={`/products/${type}/${url.split('/')[3].split('.jpg')[0]}`}>
+    <Link 
+      style={{textDecoration: 'none'}} 
+      href={`/products/${type}/${name.toLowerCase().replace(/[\s-]/g, '_')}`}
+    >
       <div className={productItem}>
         <div className={css`
           width: 100%;
@@ -326,7 +268,7 @@ function ProductItem({ name, priceRUB, url, type}) {
               {name}
             </div>
             <div className={itemPrice}>
-              {priceRUB}
+              {price}
             </div>
           </div>
         </div>  
@@ -443,10 +385,11 @@ function Catalog ({ items, localizedText }) {
       <div className={productsListWrapper}>
         <div className={productsList}>
           {items[catalogState].map((item, i) => (<ProductItem
+            itemID={item.id}
             type={catalogState} 
-            name={item['name']} 
-            priceRUB={`${Math.round(item['priceRUB'] * locale.localeState.rate)} ${locale.localeState.currency}`} 
-            url={item['img']} 
+            name={item.name} 
+            price={`${Math.round(item.price * locale.localeState.rate)} ${locale.localeState.currency}`} 
+            url={item.img} 
             key={i} 
           /> ))}
         </div>
@@ -460,16 +403,20 @@ export async function getStaticProps({ locale }) {
 
   const localizedText = JSON.parse(fs.readFileSync(`json/localization/${locale}/index.json`))
 
-  const items = {ceiling: [], floor: [], wall: [], point: [], wall3d: [], mirror: []}
-  for (const itemType in items) {
-    try {
-      const data = fs.readFileSync(`json/${itemType}.json`, 'utf8')
-      const productItems = JSON.parse(data)
-      items[itemType] = productItems
-    } catch (err) {
-      console.log(err)
-    }
+  const itemTypes = JSON.parse(fs.readFileSync('json/product_types.json'))
+
+  const items = {}
+  for (const itemType of itemTypes) {
+    items[itemType] = []
   }
+
+  const parsedItems = JSON.parse(fs.readFileSync('json/items.json'))
+  for (const itemID in parsedItems) {
+    const item = parsedItems[itemID]
+    const { name, price, img, type } = item
+    items[itemTypes[type]].push({ id: itemID, name, price, img })    
+  }
+
   return {
     props: { items, localizedText }
   }  

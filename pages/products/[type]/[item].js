@@ -122,7 +122,7 @@ const longWHRatio = 513 / 768
 const prices = {120: 22650, 140: 23250, 160: 24900, 180: 25500, 200: 26850}
 const power = {120: 28, 140: 33, 160: 36, 180: 40, 200: 45}
 
-export default function Item({ characteristics, characteristicsValues, localizedText, imgCount }) {
+export default function Item({ id, item, itemType, localizedText, imgCount }) {
 
 	const [itemInCartState, setItemInCartState] = useState(false)
 
@@ -139,7 +139,6 @@ export default function Item({ characteristics, characteristicsValues, localized
 	const locale = useContext(LocaleContext)
 
 	const router = useRouter()
-	const { item, type } = router.query
 
 	const[pricesState, setPricesState] = useState(prices)
 	useEffect(() => {
@@ -153,7 +152,7 @@ export default function Item({ characteristics, characteristicsValues, localized
 	useEffect(() => {
 		let itemInCart = false
 		for (const element of shoppingCart.shoppingCartState) {
-			if (element.name === item) {
+			if (element.name === item.name) {
 				itemInCart = true
 				break
 			}
@@ -176,13 +175,13 @@ export default function Item({ characteristics, characteristicsValues, localized
 						showIndicators={false}
 						renderThumbs={(children) => (children.map((element, index) => (
 							<div key={index} className={css`width: 70px; height: 70px; position: relative;`}>
-								<Image src={`/products/${type}/${item}/item${index}.jpg`} fill={true} style={{objectFit: 'contain'}} />
+								<Image src={`/products/${itemType}/${item.name.toLowerCase().replace(/[\s-]/g, '_')}/item${index}.jpg`} fill={true} style={{objectFit: 'contain'}} />
 							</div>						
 						)))}
 					>
 						{Array(imgCount).fill(1).map((element, index) => (
 							<div key={index} className={css`width: 1024px; height: 768px; position: relative;`}>
-								<Image src={`/products/${type}/${item}/item${index}.jpg`} fill={true} style={{objectFit: 'contain'}} />
+								<Image src={`/products/${itemType}/${item.name.toLowerCase().replace(/[\s-]/g, '_')}/item${index}.jpg`} fill={true} style={{objectFit: 'contain'}} />
 							</div>
 						))}	
 					</Carousel>		
@@ -194,7 +193,7 @@ export default function Item({ characteristics, characteristicsValues, localized
 					<TableContainer sx={{width: '1000px'}} component={Paper}>
 						<Table>
 							<TableBody>
-								{characteristics.map((value, index) => (
+								{Object.keys(item.features).map((value, index) => (
 									<TableRow
 										key={index}
 									>
@@ -208,7 +207,7 @@ export default function Item({ characteristics, characteristicsValues, localized
 											sx={{fontSize: '17px'}}
 											align="left"
 										>
-											{characteristicsValues[value]}
+											{item.features[value]}
 										</TableCell>
 									</TableRow>
 								))}
@@ -259,7 +258,7 @@ export default function Item({ characteristics, characteristicsValues, localized
 									totalCost={pricesState[lengthState] * amountState} 
 									currency={locale.localeState.currency}
 									localizedText={localizedText.checkoutPanel}
-									items={[{name: item, length: lengthState, amount: amountState}]}
+									items={[{name: item.name, length: lengthState, amount: amountState}]}
 									onSuccess={() => {
 										setDialogState('success')
 										setCheckoutState(false)
@@ -273,7 +272,7 @@ export default function Item({ characteristics, characteristicsValues, localized
 							<div className={rightSection}>
 								<div className={stickyPanel}>
 									<div className={productName}>
-										{item}
+										{item.name}
 									</div>
 									<div className={lengthSlider}>
 										<div>
@@ -354,13 +353,13 @@ export default function Item({ characteristics, characteristicsValues, localized
 												if (!itemInCartState) {
 													const	newState = [...shoppingCart.shoppingCartState]
 													newState.push({
-														name: item,
-														type: type, 
+														name: item.name,
+														type: itemType, 
 														length: lengthState, 
 														power: power[lengthState], 
 														price: prices[lengthState],
 														amount: amountState,
-														img: `/products/${type}/${item}.jpg`
+														img: `/products/${itemType}/${item.name.toLowerCase().replace(/[\s-]/g, '_')}.jpg`
 													})
 													shoppingCart.setShoppingCartState(newState)
 													setItemInCartState(true)
@@ -395,15 +394,33 @@ export default function Item({ characteristics, characteristicsValues, localized
 export async function getStaticProps({ locale, params }) {
 	const fs = require('fs')
 
+	const itemName = params.item
+	const itemType = params.type
+
+	console.log(itemName)
+
 	const localizedText = JSON.parse(fs.readFileSync(`json/localization/${locale}/item.json`))
 
-	const characteristics = JSON.parse(fs.readFileSync('json/characteristics.json', 'utf-8'))
-	const characteristicsValues = JSON.parse(fs.readFileSync('json/product_characteristics.json', 'utf-8'))
+	const itemTypes = JSON.parse(fs.readFileSync('json/product_types.json'))
 
+	const parsedItems = JSON.parse(fs.readFileSync('json/items.json'))
+
+	let id
+	for (const itemID in parsedItems) {
+		const item = parsedItems[itemID]
+		if (itemName === item.name.toLowerCase().replace(/[\s-]/g, '_')) {
+			id = itemID
+			break
+		}
+	}
+
+	const item = parsedItems[id]
+
+//count how many images there is for each item
 	let imgCount = 0
 	while (true) {
 		try {
-			fs.readFileSync(`public/products/${params.type}/${params.item}/item${imgCount}.jpg`)
+			fs.readFileSync(`public/products/${itemType}/${itemName}/item${imgCount}.jpg`)
 		}
 		catch(err) {
 			break
@@ -411,27 +428,31 @@ export async function getStaticProps({ locale, params }) {
 		imgCount = imgCount + 1
 	}
 
+	console.log(`total images: ${imgCount}`)
+
 	return {
-		props: { characteristics, characteristicsValues, localizedText, imgCount }
+		props: { item, id, itemType, localizedText, imgCount }
 	}
 }
 
 export async function getStaticPaths({ locales }) {
 
 	const fs = require('fs')
-	//const products = JSON.parse(fs.readFileSync('json/total_products.json', 'utf-8'))
+
+	const items = JSON.parse(fs.readFileSync('json/product_types.json', 'utf-8'))
+
 	const types = JSON.parse(fs.readFileSync('json/product_types.json', 'utf-8'))
 
-	const paths = []
-	for (const locale of locales) {
-		for (const type of types) {
-			const products = JSON.parse(fs.readFileSync(`json/${type}.json`))
-			for (const product of products) {
-				paths.push({params: {item: product['img'].split('/')[3].split('.jpg')[0], type: type}, locale: locale})
-			}
-		}
-	}
+	const parsedItems = JSON.parse(fs.readFileSync('json/items.json'))
 
+	const paths = []
+
+	for (const locale of locales) {
+		for (const itemID in parsedItems) {
+			const item = parsedItems[itemID]
+			paths.push({ 'params': { item: item.name.toLowerCase().replace(/[\s-]/g, '_'), type: types[item.type]}, 'locale': locale })
+		}	
+	}
 
 	return {
 		paths: paths,
