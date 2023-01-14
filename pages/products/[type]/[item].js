@@ -397,8 +397,6 @@ export async function getStaticProps({ locale, params }) {
 	const itemName = params.item
 	const itemType = params.type
 
-	console.log(itemName)
-
 	const localizedText = JSON.parse(fs.readFileSync(`json/localization/${locale}/item.json`))
 
 	const itemTypes = JSON.parse(fs.readFileSync('json/product_types.json'))
@@ -427,8 +425,6 @@ export async function getStaticProps({ locale, params }) {
 		}
 		imgCount = imgCount + 1
 	}
-
-	console.log(`total images: ${imgCount}`)
 
 	return {
 		props: { item, id, itemType, localizedText, imgCount }
