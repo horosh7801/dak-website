@@ -401,7 +401,18 @@ export async function getStaticProps({ locale, params }) {
 
 	const itemTypes = JSON.parse(fs.readFileSync('json/product_types.json'))
 
-	const parsedItems = JSON.parse(fs.readFileSync('json/items.json'))
+//	const parsedItems = JSON.parse(fs.readFileSync('json/items.json'))
+
+	let parsedItems
+	switch (locale) {
+		case 'en':
+			parsedItems = JSON.parse(fs.readFileSync('json/itemsEN.json'))
+			break
+		case 'ru':
+			JSON.parse(fs.readFileSync('json/itemsRU.json'))
+		default: 
+			JSON.parse(fs.readFileSync('json/itemsEN.json'))	
+	}
 
 	let id
 	for (const itemID in parsedItems) {

@@ -2,9 +2,7 @@
 	"characteristics": {
 		"characteristics": "CHARACTERISTICS",
 		"material": "Material",
-		"length": "Length",
-		"height": "Height",
-		"width": "Width",
+		"dimensions": "Dimensions",
 		"lampType": "Lamp type",
 		"power": "Power",
 		"lampEquivalent": "Incandescent lamp equivalent",
@@ -13,8 +11,7 @@
 		"lampInclusion": "Light bulb inclusion",
 		"colorTemp": "Color temperature",
 		"powerSupply": "Power supply",
-		"coating": "Coating",
-		"color": "Color",
+		"coating": "Coating and color",
 		"fastening": "Fastening",
 		"options": "Options"
 	},
