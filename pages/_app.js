@@ -172,7 +172,8 @@ function StickyHeader({ navbarText }) {
 
   const logoWrapper = css`
     border:  3px black solid;
-    margin-left: 30px;
+    margin: 6px;
+    margin-left: 40px;
     cursor: pointer;
   `
 
@@ -209,6 +210,7 @@ function StickyHeader({ navbarText }) {
     column-gap: 50px;
     flex-grow: 1;
     padding-left: 20px;
+    margin-left: 40px;
   `
 
   const menuBarLast = css`
@@ -224,6 +226,7 @@ function StickyHeader({ navbarText }) {
     flex-direction: row;
     column-gap: 10px;
     flex-grow: 0.025;
+
   `
 
   const waveDuration = 1.3
@@ -320,6 +323,7 @@ function StickyHeader({ navbarText }) {
             height: 45px;
             display: flex;
             align-items: center;
+            margin-right: 35px;
           `}>
             <Select
               variant='standard'

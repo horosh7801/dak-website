@@ -2,9 +2,7 @@
 	"characteristics": {
 		"characteristics": "ХАРАКТЕРИСТИКИ",
 		"material": "Материал",
-		"length": "Длина",
-		"height": "Высота",
-		"width": "Ширина",
+		"dimensions": "Размеры",
 		"lampType": "Тип используемых ламп",
 		"power": "Мощность",
 		"lampEquivalent": "Аналог лампы накаливания",
@@ -13,8 +11,7 @@
 		"lampInclusion": "Комплектация лампочкой",
 		"colorTemp": "Цветовая температура",
 		"powerSupply": "Электропитание",
-		"coating": "Покрытие",
-		"color": "Цвет",
+		"coating": "Покрытие и цвет",
 		"fastening": "Фиксация",
 		"options": "Опции"
 	},

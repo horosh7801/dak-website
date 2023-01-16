@@ -19,7 +19,7 @@ const leftSection = css`
 	align-items: center;
 	width: 1120px;
 	background-color: #f7f7f7;
-	min-height: calc(100vh - 100px);
+	min-height: calc(100vh - 112px);
 	row-gap: 10px;
 	padding-top: 20px;
 `
@@ -30,8 +30,8 @@ const rightSection = css`
 	align-items: left;
 	flex-grow: 1;
 	position: sticky;
-	top: 80px;
-	height: calc(100vh - 80px);
+	top: 92px;
+	height: calc(100vh - 92px);
 	row-gap: 20px;
 	
 `
@@ -50,7 +50,6 @@ const itemRow = css`
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	gap: 50px;
 	border-bottom: 2px solid white;
 	font-size: 20px;
 `
@@ -97,7 +96,7 @@ const phoneContainer = css`
 
 const subHeader = css`
 	position: sticky;
-	top: 47px;
+	top: 59px;
 	display: flex;
 	color: white;
 	background-color: black;
@@ -106,6 +105,12 @@ const subHeader = css`
 	padding-left: 10px;
 	font-size: 20px;
 	z-index: 1;
+`
+
+const paramContainer = css`
+	display: flex;
+	flex-direction: column;
+	justify-content:  center;
 `
 
 export default function ShoppingCart({ localizedText }) {
@@ -149,33 +154,30 @@ export default function ShoppingCart({ localizedText }) {
 						<Paper key={index} sx={{width: '1050px'}}>
 							<div className={itemRow}>
 								<div className={css`
-									flex-grow: 0.2;
+									flex-grow: 1;
 								`}>
 									<div className={imgContainer}>
-										<Link href={`/products/${item.type}/${item.name}`}>
+										<Link href={`/products/${item.type}/${item.name.toLowerCase().replace(/[\s-]/g, '_')}`}>
 											<Image
-												src={item.img} 
+												src={`/products/${item.type}/${item.name.toLowerCase().replace(/[\s-]/g, '_')}/item0.jpg`} 
 												fill={true} 
 												style={{objectFit: 'contain'}}
 											/>
 										</Link>	
 									</div>
 								</div>	
-								<div className={itemName}>
+								<div className={cx(paramContainer, itemName)}>
 									{item.name}
 								</div>
-								<div className={specs}>
+								<div className={cx(paramContainer, specs)}>
 									<div>
-										{`${item.length} ${localizedText.units.length}`}
+										{`${item.params.toLowerCase()}`}
 									</div>
-									<div>
-										{`${item.power} ${localizedText.units.power}`}
-									</div>	
 								</div>
-								<div className={amount}>
+								<div className={cx(paramContainer, amount)}>
 									{`${item.amount} ${localizedText.units.quantity}.`}
 								</div>
-								<div className={cost}>
+								<div className={cx(paramContainer, cost)}>
 									{`${Math.round(item.price * locale.localeState.rate) *  item.amount } ${locale.localeState.currency}`}
 								</div>
 								<div className={clearIcon}>

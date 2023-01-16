@@ -15,6 +15,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import IconButton from '@mui/material/IconButton'
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import ToggleButton from '@mui/material/ToggleButton';
 import ArrowForwardSharpIcon from '@mui/icons-material/ArrowForwardSharp';
 import { useState, useContext, useEffect } from 'react'
 import LocaleContext from '../../../lib/context/locale.js'
@@ -128,6 +130,8 @@ export default function Item({ id, item, itemType, localizedText, imgCount }) {
 
 	const [lengthState, setLengthState] = useState(120)
 
+	const [priceState, setPriceState] = useState(0)
+
 	const [checkoutState, setCheckoutState] = useState(false)
 
 	const [amountState, setAmountState] = useState(1)
@@ -139,15 +143,6 @@ export default function Item({ id, item, itemType, localizedText, imgCount }) {
 	const locale = useContext(LocaleContext)
 
 	const router = useRouter()
-
-	const[pricesState, setPricesState] = useState(prices)
-	useEffect(() => {
-		const newPrices = {}
-		for (const key of Object.keys(prices)) {
-			newPrices[key] = Math.round(prices[key] * locale.localeState.rate)
-		}
-		setPricesState(newPrices)
-	}, [locale.localeState])
 
 	useEffect(() => {
 		let itemInCart = false
@@ -219,11 +214,11 @@ export default function Item({ id, item, itemType, localizedText, imgCount }) {
 			</div>		
 			<div className={css`
 				position: sticky;
-				top: 47px;
+				top: 59px;
 				display: flex;
 				flex-direction: column;
 				flex-grow: 1;
-				height: calc(100vh - 47px);
+				height: calc(100vh - 59px);
 			`}>
 				{
 					checkoutState
@@ -255,10 +250,10 @@ export default function Item({ id, item, itemType, localizedText, imgCount }) {
 									</div>	
 								</div>
 								<CheckoutForm 
-									totalCost={pricesState[lengthState] * amountState} 
+									totalCost={item.price[priceState].price * amountState} 
 									currency={locale.localeState.currency}
 									localizedText={localizedText.checkoutPanel}
-									items={[{name: item.name, length: lengthState, amount: amountState}]}
+									items={[{name: item.name, amount: amountState}]}
 									onSuccess={() => {
 										setDialogState('success')
 										setCheckoutState(false)
@@ -274,33 +269,58 @@ export default function Item({ id, item, itemType, localizedText, imgCount }) {
 									<div className={productName}>
 										{item.name}
 									</div>
-									<div className={lengthSlider}>
-										<div>
-											{
-												localizedText.checkoutPanel.length
-											}
-										</div>
-										<Slider
-											sx={{marginBottom: '35px'}}
-											step={null}
-											min={120}
-											max={200}
-											value={lengthState}
-											onChange={(event) => {
-												setLengthState(event.target.value)
-											}}
-											marks={[120, 140, 160, 180, 200].map((element) => (
-												{
-													value: element,
-													label: `${element} ${localizedText.units.length}`
-												}
-											))}
-										/>
-										<div>
-											{
-												`${localizedText.checkoutPanel.power}: ${power[lengthState]} ${localizedText.units.power}`
-											}
-										</div>
+									<div className={lengthSlider}>	
+										<div className={css`
+											overflow: scroll;
+											height: 200px;
+										`}>
+											<ToggleButtonGroup 
+												orientation='vertical' 
+												exclusive 
+												value={priceState}
+												sx={{
+													alignSelf: 'center	',
+								          '& .css-ueukts-MuiButtonBase-root-MuiToggleButton-root.Mui-selected': {
+								            backgroundColor: 'black',
+								            color: 'white',
+								          },
+								          '& .css-ueukts-MuiButtonBase-root-MuiToggleButton-root': {
+								            borderRadius: 0
+								          },
+								          '.css-ueukts-MuiButtonBase-root-MuiToggleButton-root.Mui-selected:hover': {
+								          									            backgroundColor: 'black',
+								            color: 'white',
+								          }												
+											}}>
+												{item.price.map((value, index) => (
+													<ToggleButton key={index} value={index} onClick={() => {setPriceState(index)}}>
+														<div className={cx(roboto, css`
+															display: flex;
+															column-gap: 5px;
+															align-items: center;
+
+														`)}>
+															<div>
+																{value.desc}
+															</div>	
+															<div className={css`
+																font-size: 20px;
+																font-weight: 550;
+																display: flex;
+																column-gap: 5px;
+															`}>
+																<div>
+																	{Math.round(value.price * locale.localeState.rate)}
+																</div>	
+																<div>
+																	{locale.localeState.currency}
+																</div>	
+															</div>
+														</div>
+													</ToggleButton>
+												)) }
+											</ToggleButtonGroup>	
+										</div>									
 										<div className={css`
 											margin-top: 10px;
 											display: flex;
@@ -342,9 +362,10 @@ export default function Item({ id, item, itemType, localizedText, imgCount }) {
 										</div>
 									</div>	
 									<div className={price}>
-										{`${(pricesState[lengthState] * amountState)} ${locale.localeState.currency}`}
+										{`${(Math.round(item.price[priceState].price * locale.localeState.rate) * amountState)} ${locale.localeState.currency}`}
 									</div>
 									<div className={actionButtonSet}>
+									{/* add to cart button */}
 										<Button 
 											disabled={itemInCartState}
 											sx={{width: '216px', height: '50px', fontSize: '18px'}} 
@@ -355,11 +376,9 @@ export default function Item({ id, item, itemType, localizedText, imgCount }) {
 													newState.push({
 														name: item.name,
 														type: itemType, 
-														length: lengthState, 
-														power: power[lengthState], 
-														price: prices[lengthState],
+														params: item.price[priceState].desc,
+														price: item.price[priceState].price,
 														amount: amountState,
-														img: `/products/${itemType}/${item.name.toLowerCase().replace(/[\s-]/g, '_')}.jpg`
 													})
 													shoppingCart.setShoppingCartState(newState)
 													setItemInCartState(true)
@@ -409,9 +428,10 @@ export async function getStaticProps({ locale, params }) {
 			parsedItems = JSON.parse(fs.readFileSync('json/itemsEN.json'))
 			break
 		case 'ru':
-			JSON.parse(fs.readFileSync('json/itemsRU.json'))
+			parsedItems = JSON.parse(fs.readFileSync('json/itemsRU.json'))
+			break
 		default: 
-			JSON.parse(fs.readFileSync('json/itemsEN.json'))	
+		parsedItems =	JSON.parse(fs.readFileSync('json/itemsEN.json'))	
 	}
 
 	let id

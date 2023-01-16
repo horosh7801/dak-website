@@ -151,50 +151,7 @@ export default function Home({ items, localizedText }) {
   )
 }
 
-
-function Slide({ img, title, txt }) {
-
-  const slide = css`
-    position: relative;
-    overflow: hidden;
-    height: ${carouselHeight}px;   
-  `
-
-  const slideTitle = css`
-    margin-bottom: 6px;
-    color: white;
-    font-size: 70px;
-    font-weight: 795;
-    font-variation-settings: "wdth" 151, "GRAD" -200, "YOPQ" 85, "YTUC" 760;  
-  `
-
-  const slideText = css`
-    text-align: left;
-    position: absolute;
-    color: white;
-    top: 163px;
-    left: 100px;
-    font-size: 40px;
-    font-weight: 250;
-    width: 827px;
-  `
-
-  return (
-    <div className={slide}>
-      <Image className='slideImage' src={img} />  
-      <div className={slideText}>
-        <div className={slideTitle}>
-          {title}
-        </div>
-        <div>
-          {txt}
-        </div>
-      </div>       
-    </div>
-  )
-}
-
-function ProductItem({ itemID, name, price, url, type}) {
+function ProductItem({ itemID, name, price, type}) {
   const productItem = css`
     box-shadow: 0px 0px 4px -1px;
     width: 320px;
@@ -254,7 +211,10 @@ function ProductItem({ itemID, name, price, url, type}) {
           padding-top: 10px;
         `}>
           <div className={imageWrapper}>
-            <Image style={{objectFit: 'contain'}} src={url} fill={true} />
+            <Image 
+              style={{objectFit: 'contain'}} 
+              src={`/products/${type}/${name.toLowerCase().replace(/[\s-]/g, '_')}/item0.jpg`} 
+              fill={true} />
           </div> 
         </div>  
         <div className={css`
@@ -388,8 +348,7 @@ function Catalog ({ items, localizedText }) {
             itemID={item.id}
             type={catalogState} 
             name={item.name} 
-            price={`${Math.round(item.price * locale.localeState.rate)} ${locale.localeState.currency}`} 
-            url={item.img} 
+            price={`${Math.round(item.price[0].price * locale.localeState.rate)} ${locale.localeState.currency}`} 
             key={i} 
           /> ))}
         </div>
@@ -410,11 +369,22 @@ export async function getStaticProps({ locale }) {
     items[itemType] = []
   }
 
-  const parsedItems = JSON.parse(fs.readFileSync('json/items.json'))
+  let parsedItems
+  switch (locale) {
+    case 'en':
+      parsedItems = JSON.parse(fs.readFileSync('json/itemsEN.json'))
+      break
+    case 'ru': 
+      parsedItems = JSON.parse(fs.readFileSync('json/itemsRU.json'))  
+      break
+    default:
+      parsedItems = JSON.parse(fs.readFileSync('json/itemsEN.json'))  
+  }
+
   for (const itemID in parsedItems) {
     const item = parsedItems[itemID]
     const { name, price, img, type } = item
-    items[itemTypes[type]].push({ id: itemID, name, price, img })    
+    items[itemTypes[type]].push({ id: itemID, name, price })    
   }
 
   return {
