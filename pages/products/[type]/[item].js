@@ -270,57 +270,59 @@ export default function Item({ id, item, itemType, localizedText, imgCount }) {
 										{item.name}
 									</div>
 									<div className={lengthSlider}>	
-										<div className={css`
-											overflow: scroll;
-											height: 200px;
-										`}>
-											<ToggleButtonGroup 
-												orientation='vertical' 
-												exclusive 
-												value={priceState}
-												sx={{
-													alignSelf: 'center	',
-								          '& .css-ueukts-MuiButtonBase-root-MuiToggleButton-root.Mui-selected': {
-								            backgroundColor: 'black',
-								            color: 'white',
-								          },
-								          '& .css-ueukts-MuiButtonBase-root-MuiToggleButton-root': {
-								            borderRadius: 0
-								          },
-								          '.css-ueukts-MuiButtonBase-root-MuiToggleButton-root.Mui-selected:hover': {
-								          									            backgroundColor: 'black',
-								            color: 'white',
-								          }												
-											}}>
-												{item.price.map((value, index) => (
-													<ToggleButton key={index} value={index} onClick={() => {setPriceState(index)}}>
-														<div className={cx(roboto, css`
-															display: flex;
-															column-gap: 5px;
-															align-items: center;
-
-														`)}>
-															<div>
-																{value.desc}
-															</div>	
-															<div className={css`
-																font-size: 20px;
-																font-weight: 550;
+										{item.price.length > 1 &&
+											<div className={css`
+												overflow: scroll;
+												height: 200px;
+											`}>
+												<ToggleButtonGroup 
+													orientation='vertical' 
+													exclusive 
+													value={priceState}
+													sx={{
+														alignSelf: 'center	',
+									          '& .css-ueukts-MuiButtonBase-root-MuiToggleButton-root.Mui-selected': {
+									            backgroundColor: 'black',
+									            color: 'white',
+									          },
+									          '& .css-ueukts-MuiButtonBase-root-MuiToggleButton-root': {
+									            borderRadius: 0
+									          },
+									          '.css-ueukts-MuiButtonBase-root-MuiToggleButton-root.Mui-selected:hover': {
+									          									            backgroundColor: 'black',
+									            color: 'white',
+									          }												
+												}}>
+													{item.price.map((value, index) => (
+														<ToggleButton key={index} value={index} onClick={() => {setPriceState(index)}}>
+															<div className={cx(roboto, css`
 																display: flex;
 																column-gap: 5px;
-															`}>
+																align-items: center;
+
+															`)}>
 																<div>
-																	{Math.round(value.price * locale.localeState.rate)}
+																	{value.desc}
 																</div>	
-																<div>
-																	{locale.localeState.currency}
-																</div>	
+																<div className={css`
+																	font-size: 20px;
+																	font-weight: 550;
+																	display: flex;
+																	column-gap: 5px;
+																`}>
+																	<div>
+																		{Math.round(value.price * locale.localeState.rate)}
+																	</div>	
+																	<div>
+																		{locale.localeState.currency}
+																	</div>	
+																</div>
 															</div>
-														</div>
-													</ToggleButton>
-												)) }
-											</ToggleButtonGroup>	
-										</div>									
+														</ToggleButton>
+													)) }
+												</ToggleButtonGroup>	
+											</div>						
+										}				
 										<div className={css`
 											margin-top: 10px;
 											display: flex;

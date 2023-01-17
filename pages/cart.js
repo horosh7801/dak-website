@@ -40,44 +40,60 @@ const imgContainer = css`
 	position: relative;
 	width: 150px;
 	height: 150px;
-	margin-left: 20px;
+	margin-left: 10px;
+	top: -8px;
 `
 
 const itemRow = css`
 	width: 100%;
-	height: 170px;
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	border-bottom: 2px solid white;
+	width: 450px;
 	font-size: 20px;
 `
 
 const itemName = css`
-	font-size: 26px;
-	flex-grow: 1;
+	display: flex;
+	justify-content: center;
+	font-size: 21px;
+	margin-top: 15px;
 `
 
 const specs = css`
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
+	justify-content: flex-start;
+	color: #000000a3;
+	font-weight: 200;
+	font-size: 17px;
 	flex-grow: 1;
 `
 
 const cost = css`
 	display: flex;
-	flex-grow: 1;
-	margin-right: 10px;
+	justify-content: flex-end;
+	font-weight: 550;
+	font-size: 21px;
+	margin-right: 5px;
 `
 
 const amount = css`
 	display: flex;
-	flex-grow: 1;
+	justify-content: flex-start;
+	flex-direction: row;
+	align-self: end;
+	margin-left: 5px;
+	font-weight: 300;
+	width: 65px;
+	margin-bottom: 5px;
 `
 
 const clearIcon = css`
 	display: flex;
+	align-self: start;
 	height: 100%;
 `
 
@@ -105,12 +121,6 @@ const subHeader = css`
 	padding-left: 10px;
 	font-size: 20px;
 	z-index: 1;
-`
-
-const paramContainer = css`
-	display: flex;
-	flex-direction: column;
-	justify-content:  center;
 `
 
 export default function ShoppingCart({ localizedText }) {
@@ -151,11 +161,29 @@ export default function ShoppingCart({ localizedText }) {
 			`}>
 				<div className={leftSection}>
 					{shoppingCart.shoppingCartState.map((item, index) => (
-						<Paper key={index} sx={{width: '1050px'}}>
+						<Paper key={index}>
 							<div className={itemRow}>
 								<div className={css`
-									flex-grow: 1;
+									display: flex;
+									flex-direction: row;
+									justify-content: flex-end;
+									width: 100%;
 								`}>
+									<IconButton sx={{justifySelf: 'flex-end'}} onClick={() => {
+										const newState = shoppingCart.shoppingCartState.slice(0, index)
+											.concat(shoppingCart.shoppingCartState.slice(index + 1, shoppingCart.shoppingCartState.length))
+										shoppingCart.setShoppingCartState(newState)
+									}}>
+										<ClearSharpIcon/>
+									</IconButton>
+								</div>
+
+								<div className={css`
+									display: flex;
+									flex-direction: row;
+									width: 100%;
+									column-gap: 10px;
+								`}>												
 									<div className={imgContainer}>
 										<Link href={`/products/${item.type}/${item.name.toLowerCase().replace(/[\s-]/g, '_')}`}>
 											<Image
@@ -164,33 +192,40 @@ export default function ShoppingCart({ localizedText }) {
 												style={{objectFit: 'contain'}}
 											/>
 										</Link>	
-									</div>
-								</div>	
-								<div className={cx(paramContainer, itemName)}>
-									{item.name}
-								</div>
-								<div className={cx(paramContainer, specs)}>
-									<div>
-										{`${item.params.toLowerCase()}`}
-									</div>
-								</div>
-								<div className={cx(paramContainer, amount)}>
-									{`${item.amount} ${localizedText.units.quantity}.`}
-								</div>
-								<div className={cx(paramContainer, cost)}>
-									{`${Math.round(item.price * locale.localeState.rate) *  item.amount } ${locale.localeState.currency}`}
-								</div>
-								<div className={clearIcon}>
-									<div>
-										<IconButton onClick={() => {
-											const newState = shoppingCart.shoppingCartState.slice(0, index)
-												.concat(shoppingCart.shoppingCartState.slice(index + 1, shoppingCart.shoppingCartState.length))
-											shoppingCart.setShoppingCartState(newState)
-										}}>
-											<ClearSharpIcon/>
-										</IconButton>
 									</div>	
-								</div>	
+									<div className={css`
+										display: flex;
+										flex-direction: column;
+										width: calc(100% - 150px);
+									`}>
+										<div className={css`
+											display: flex;
+											flex-direction: row;
+										`}>
+											<div className={itemName}>
+												{item.name}	
+											</div>
+										</div>
+										<div className={specs}>
+											<div>
+												{`${item.params.toLowerCase()}`}
+											</div>
+										</div>	
+									</div>
+								</div>								
+								<div className={css`
+									display: flex;
+									flex-direction: row;
+									width: 100%;
+									justify-content: space-between;
+								`}>
+									<div className={amount}>
+										{`${item.amount} ${localizedText.units.quantity}.`}
+									</div>										
+									<div className={cost}>
+										{`${Math.round(item.price * locale.localeState.rate) *  item.amount } ${locale.localeState.currency}`}
+									</div>		
+								</div>
 							</div>	
 						</Paper>	
 					))}
