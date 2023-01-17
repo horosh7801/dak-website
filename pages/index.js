@@ -275,7 +275,7 @@ function Catalog ({ items, localizedText }) {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     width: 1310px;
     margin-bottom: 30px;
     gap: 10px;

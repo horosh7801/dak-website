@@ -15,13 +15,13 @@ import roboto from '../lib/modules/variableFont.js'
 
 const leftSection = css`
 	display: flex;
-	flex-direction: column;
-	align-items: center;
+	flex-direction: row;
+	justify-content: center;
 	width: 1120px;
 	background-color: #f7f7f7;
 	min-height: calc(100vh - 112px);
-	row-gap: 10px;
 	padding-top: 20px;
+	gap: 10px;
 `
 
 const rightSection = css`
@@ -160,75 +160,84 @@ export default function ShoppingCart({ localizedText }) {
 				flex-direction: row;
 			`}>
 				<div className={leftSection}>
-					{shoppingCart.shoppingCartState.map((item, index) => (
-						<Paper key={index}>
-							<div className={itemRow}>
-								<div className={css`
-									display: flex;
-									flex-direction: row;
-									justify-content: flex-end;
-									width: 100%;
-								`}>
-									<IconButton sx={{justifySelf: 'flex-end'}} onClick={() => {
-										const newState = shoppingCart.shoppingCartState.slice(0, index)
-											.concat(shoppingCart.shoppingCartState.slice(index + 1, shoppingCart.shoppingCartState.length))
-										shoppingCart.setShoppingCartState(newState)
-									}}>
-										<ClearSharpIcon/>
-									</IconButton>
-								</div>
-
-								<div className={css`
-									display: flex;
-									flex-direction: row;
-									width: 100%;
-									column-gap: 10px;
-								`}>												
-									<div className={imgContainer}>
-										<Link href={`/products/${item.type}/${item.name.toLowerCase().replace(/[\s-]/g, '_')}`}>
-											<Image
-												src={`/products/${item.type}/${item.name.toLowerCase().replace(/[\s-]/g, '_')}/item0.jpg`} 
-												fill={true} 
-												style={{objectFit: 'contain'}}
-											/>
-										</Link>	
-									</div>	
+					<div className={css`
+						display: flex;
+						flex-direction: row;
+						flex-wrap: wrap;
+						justify-content: flex-start;
+						width: 910px;
+						gap: 10px;
+					`}>
+						{shoppingCart.shoppingCartState.map((item, index) => (
+							<Paper key={index}>
+								<div className={itemRow}>
 									<div className={css`
 										display: flex;
-										flex-direction: column;
-										width: calc(100% - 150px);
+										flex-direction: row;
+										justify-content: flex-end;
+										width: 100%;
 									`}>
+										<IconButton sx={{justifySelf: 'flex-end'}} onClick={() => {
+											const newState = shoppingCart.shoppingCartState.slice(0, index)
+												.concat(shoppingCart.shoppingCartState.slice(index + 1, shoppingCart.shoppingCartState.length))
+											shoppingCart.setShoppingCartState(newState)
+										}}>
+											<ClearSharpIcon/>
+										</IconButton>
+									</div>
+
+									<div className={css`
+										display: flex;
+										flex-direction: row;
+										width: 100%;
+										column-gap: 10px;
+									`}>												
+										<div className={imgContainer}>
+											<Link href={`/products/${item.type}/${item.name.toLowerCase().replace(/[\s-]/g, '_')}`}>
+												<Image
+													src={`/products/${item.type}/${item.name.toLowerCase().replace(/[\s-]/g, '_')}/item0.jpg`} 
+													fill={true} 
+													style={{objectFit: 'contain'}}
+												/>
+											</Link>	
+										</div>	
 										<div className={css`
 											display: flex;
-											flex-direction: row;
+											flex-direction: column;
+											width: calc(100% - 150px);
 										`}>
-											<div className={itemName}>
-												{item.name}	
+											<div className={css`
+												display: flex;
+												flex-direction: row;
+											`}>
+												<div className={itemName}>
+													{item.name}	
+												</div>
 											</div>
+											<div className={specs}>
+												<div>
+													{`${item.params.toLowerCase()}`}
+												</div>
+											</div>	
 										</div>
-										<div className={specs}>
-											<div>
-												{`${item.params.toLowerCase()}`}
-											</div>
-										</div>	
+									</div>								
+									<div className={css`
+										display: flex;
+										flex-direction: row;
+										width: 100%;
+										justify-content: space-between;
+									`}>
+										<div className={amount}>
+											{`${item.amount} ${localizedText.units.quantity}.`}
+										</div>										
+										<div className={cost}>
+											{`${Math.round(item.price * locale.localeState.rate) *  item.amount } ${locale.localeState.currency}`}
+										</div>		
 									</div>
-								</div>								
-								<div className={css`
-									display: flex;
-									flex-direction: row;
-									width: 100%;
-									justify-content: space-between;
-								`}>
-									<div className={amount}>
-										{`${item.amount} ${localizedText.units.quantity}.`}
-									</div>										
-									<div className={cost}>
-										{`${Math.round(item.price * locale.localeState.rate) *  item.amount } ${locale.localeState.currency}`}
-									</div>		
-								</div>
-							</div>	
-						</Paper>	
-					))}
+								</div>	
+							</Paper>	
+						))}
+					</div>	
 				</div>
 				<div className={rightSection}>
 					{
