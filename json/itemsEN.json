@@ -27,7 +27,7 @@
 		"features": {
 		  "material": "solid oak",
 		  "dimensions": "Length 140, 160, 180, 200 cm, Height ~7 cm, Width ~4.5 cm",
-		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum strip",
+		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum strip",
 		  "power": "33-45 W",
 		  "lampEquivalent": "230 W",
 		  "screenWidth": "25 mm",
@@ -46,33 +46,33 @@
 		"name": "Moon",
 		"price": [
 			{
-				"desc": "СТОИМОСТЬ ЗА ДЛИНУ 120, ШИРИНУ ЭКРАНА 32 СМ, 36 ВТ",
+				"desc": "COST FOR Length 120 Width 32 CM, 36 W",
 				"price": "830"
 			},
 			{
-				"desc": "СТОИМОСТЬ ЗА ДЛИНУ 140, ШИРИНУ ЭКРАНА 52 СМ, 40 ВТ",
+				"desc": "COST FOR Length 140 Width 52 CM, 40 W",
 				"price": "850"
 			},
 			{
-				"desc": "СТОИМОСТЬ ЗА ДЛИНУ 160, ШИРИНУ ЭКРАНА 47 СМ, 45 ВТ",
-				"price": "830"
+				"desc": "COST FOR Length 160 Width 47 CM, 45 W",
+				"price": "895"
 			}					
 		],
 		"type": 0,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "Длина 120, 140, 160 см (на заказ возможна другая длина), Высота  ~6 см, Ширина ~5 см",
-		  "lampType": "светодиодная лента, LED. Сертификат ЕАС, СЕ. Лента крепится на встроенную алюминиевую полосу",
-		  "power": "от 36 Вт",
-		  "lampEquivalent": "220 Вт",
-		  "screenWidth": "25 мм",
+		  "material": "solid oak",
+		  "dimensions": "Length 120, 140, 160 cm (other lengths available on request), Height ~6 cm, Width ~5 cm",
+		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum strip",
+		  "power": "from 36 W",
+		  "lampEquivalent": "220 W",
+		  "screenWidth": "25 mm",
 		  "plinth": "",		  
-		  "lampInclusion": "да, установлена светодиодная лента",
-		  "colorTemp": "на выбор: теплый (3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в потолке. Соединение закрывается потолочной деревянной чашей. Блок питания от 36 Вт (сертификат ЕАС, СЕ) находится в корпусе светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны. Шнур 2х-жильный прозрачный / черный / цветной в двойной изоляции, длина 1,5 метр, либо другая длина по желанию заказчика",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "на металлические подвесы – это 3 троса, от 150 см с возможностью регулировки по высоте. Место крепления подвеса к потолку можно закрыть деревянным круглым пятачком 5 см",
-		  "options": "Возможно комплектовать светильник пультом управления или панелью с функцией изменения яркости"
+		  "lampInclusion": "yes, LED strip is installed",
+		  "colorTemp": "warm (3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the ceiling. The connection is closed by a ceiling wooden bowl. Power supply from 36 W (certificate EAC, CE) is located in the luminaire body. The power of the block is calculated based on the power of the tape plus 20% in order to favorably load the block. All connections are soldered. Cord 2-core transparent / black / colored in double insulation, length 1.5 meters, or other length at the request of the customer",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "on metal suspensions - these are 3 cables, from 150 cm with the ability to adjust in height. The place of attachment of the suspension to the ceiling can be closed with a wooden round patch 5 cm",
+		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
 	},
@@ -81,57 +81,57 @@
 		"name": "Roundevu",
 		"price": [
 			{
-				"desc": "СТОИМОСТЬ ЗА КРУГ ДИАМЕТР 50 СМ, 37 ВТ",
+				"desc": "COST FOR A CIRCLE DIAMETER 50 CM, 37 W",
 				"price": "810"
 			},
 			{
-				"desc": "СТОИМОСТЬ ЗА КРУГ ДИАМЕТР 60 СМ, 45 ВТ",
+				"desc": "COST FOR A CIRCLE DIAMETER 60 CM, 45 W",
 				"price": "865"
 			},
 			{
-				"desc": "СТОИМОСТЬ ЗА КРУГ ДИАМЕТР 70 СМ, 52 ВТ",
+				"desc": "COST FOR A CIRCLE DIAMETER 70 CM, 52 W",
 				"price": "895"
 			},
 			{
-				"desc": "СТОИМОСТЬ ЗА КРУГ ДИАМЕТР 80 СМ, 60 ВТ",
+				"desc": "COST FOR A CIRCLE DIAMETER 80 CM, 60 W",
 				"price": "905"
 			},
 			{
-				"desc": "СТОИМОСТЬ ЗА КРУГ ДИАМЕТР 90 СМ, 68 ВТ",
+				"desc": "COST FOR A CIRCLE DIAMETER 90 CM, 68 W",
 				"price": "1040"
 			},
 			{
-				"desc": "СТОИМОСТЬ ЗА КРУГ ДИАМЕТР 100 СМ, 75 ВТ",
+				"desc": "COST FOR A CIRCLE DIAMETER 100 CM, 75 W",
 				"price": "1130"
 			},
 			{
-				"desc": "СТОИМОСТЬ ЗА КРУГ ДИАМЕТР 120 СМ, 90 ВТ",
+				"desc": "COST FOR A CIRCLE DIAMETER 120 CM, 90 W",
 				"price": "1415"
 			},
 			{
-				"desc": "СТОИМОСТЬ ЗА КРУГ ДИАМЕТР 140 СМ, 105 ВТ",
+				"desc": "COST FOR A CIRCLE DIAMETER 140 CM, 105 W",
 				"price": "1885"
 			},
 			{
-				"desc": "СТОИМОСТЬ ЗА КРУГ ДИАМЕТР 160 СМ, 120 ВТ",
+				"desc": "COST FOR A CIRCLE DIAMETER 160 CM, 120 W",
 				"price": "2250"
 			}
 		],
 		"type": 0,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "на выбор: Диаметр 50, 60, 70, 80, 90, 100, 120, 140 см и другой, Высота 6 см, Толщина 4 см, Либо другие размеры по желанию заказчика",
-		  "lampType": "светодиодная лента, LED. Сертификат ЕАС, СЕ. Лента крепится на встроенную алюминиевую полосу",
-		  "power": "50 см - 37 Вт, 60 см - 45 Вт, 70 см - 52 Вт, 80 см – 60 Вт, 90 см - 68 Вт, 100 см - 75 Вт, 120 см - 90 Вт, 140 см - 105 Вт Либо другая по желанию заказчика",
-		  "lampEquivalent": "230 Вт, 260 Вт, 280 Вт, 300 Вт, 310 Вт, 330 Вт, 370 Вт, 400 Вт  либо другая",
-		  "screenWidth": "25 мм",
+		  "material": "solid oak",
+		  "dimensions": "Diameter 50, 60, 70, 80, 90, 100, 120, 140 cm and other, Height 6 cm, Thickness 4cm, Or other sizes at the request of the customer",
+		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum strip",
+		  "power": "50 cm - 37 W, 60 cm - 45 W, 70 cm - 52 W, 80 cm - 60 W, 90 cm - 68 W, 100 cm - 75 W, 120 cm - 90 W, 140 cm - 105 W Or other according to customer's request",
+		  "lampEquivalent": "230W, 260W, 280W, 300W, 310W, 330W, 370W, 400W or other",
+		  "screenWidth": "25 mm",
 		  "plinth": "",		  
-		  "lampInclusion": "да, установлена светодиодная лента",
-		  "colorTemp": "на выбор теплый (3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в потолке. Блок питания от 35 Вт (сертификат ЕАС, СЕ) находится в потолочной деревянной чаше. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны. Шнур 2х-жильный прозрачный / черный / цветной в двойной изоляции, длина 1,5 метр, либо другая длина по желанию заказчика",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "на металлические подвесы – это 3 троса, от 150 см с возможностью регулировки по высоте. Тросы могут сходиться в потолочной чаше либо крепиться напрямую в потолок",
-		  "options": "Возможно комплектовать светильник пультом управления или панелью с функцией изменения яркости"
+		  "lampInclusion": "yes, LED strip is installed",
+		  "colorTemp": "warm (3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the ceiling. The power supply from 35 W (certificate EAC, CE) is located in the ceiling wooden bowl. The power of the block is calculated based on the power of the tape plus 20% in order to favorably load the block. All connections are soldered. Cord 2-core transparent / black / colored in double insulation, length 1.5 meters, or other length at the request of the customer",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "on metal suspensions - these are 3 cables, from 150 cm with the ability to adjust in height. The place of attachment of the suspension to the ceiling can be closed with a wooden round patch 5 cm",
+		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
 	},	
@@ -140,45 +140,45 @@
 		"name": "Sota",
 		"price": [
 			{
-				"desc": "Стоимость за диаметр 600мм, ширина экрана 23мм, 18вт",
+				"desc": "cost for a circle diameter 600 mm, screen width 23 mm, 18 W",
 				"price": "805"
 			},
 			{
-				"desc": "Стоимость за диаметр 600мм, ширина экрана 30мм, 24вт",
+				"desc": "cost for a circle diameter 600 mm, screen width 30 mm, 24 W",
 				"price": "845"
 			},
 			{
-				"desc": "Стоимость за диаметр 800мм, ширина экрана 23мм, 18вт",
+				"desc": "cost for a circle diameter 800 mm, screen width 23 mm, 18 W",
 				"price": "860"
 			},
 			{
-				"desc": "Стоимость за диаметр 800мм, ширина экрана 30мм, 24вт",
+				"desc": "cost for a circle diameter 800 mm, screen width 30 mm, 24 W",
 				"price": "905"
 			},
 			{
-				"desc": "Стоимость за диаметр 1000мм, ширина экрана 23мм, 18вт",
+				"desc": "cost for a circle diameter 1000 mm, screen width 23 mm, 18 W",
 				"price": "925"
 			},
 			{
-				"desc": "Стоимость за диаметр 1000мм, ширина экрана 30мм, 24вт",
+				"desc": "cost for a circle diameter 1000 mm, screen width 30 mm, 24 W",
 				"price": "985"
 			}							
 		],
 		"type": 0,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "на выбор: Диаметр 60 – 100 см либо другой по желанию заказчика, Высота стороны 4,5 см, Ширина стороны 4,5 см",
-		  "lampType": "светодиодная лента, LED. Сертификат ЕАС, СЕ. Лента крепится на встроенный алюминиевый профиль",
-		  "power": "от 18 Вт/м",
-		  "lampEquivalent": "170 Вт либо другая",
-		  "screenWidth": "23, 30 мм",
+		  "material": "solid oak",
+		  "dimensions": "Diameter 60 - 100 cm or other at the request of the customer, Side height 4.5cm, Side width 4.5 cm",
+		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum profile",
+		  "power": "from 18 W/m",
+		  "lampEquivalent": "170 W or other",
+		  "screenWidth": "23, 30 mm",
 		  "plinth": "",		  
-		  "lampInclusion": "да, установлена светодиодная лента",
-		  "colorTemp": "на выбор теплый (3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в потолке. Соединение закрывается потолочной деревянной чашей. Блок питания от 35 Вт (сертификат ЕАС, СЕ) находится в потолочной чаше. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны. Шнур 2х-жильный прозрачный (по умолчанию) / черный / белый/ цветной в двойной изоляции, длина 1 метр, либо другая длина по желанию заказчика",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "на металлические подвесы – это 3 троса, от 150 см с возможностью регулировки по высоте. Место крепления подвеса к потолку можно закрыть деревянным пятачком. Возможно все тросы свести на потолочную чашу, и уже она будет держать светильник на потолке",
-		  "options": "Возможно комплектовать светильник пультом управления или панелью с функцией изменения яркости"
+		  "lampInclusion": "yes, LED strip is installed",
+		  "colorTemp": "warm (3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the ceiling. The connection is closed by a ceiling wooden bowl. The power supply from 35 W (certificate EAC, CE) is located in the ceiling bowl. The power of the block is calculated based on the power of the tape plus 20% in order to favorably load the block. All connections are soldered. Cord 2-core transparent (by default) / black / white / colored  in double insulation, length 1 meter, or other length at the request of the customer",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "on metal suspensions - these are 3 cables, from 150 cm with the ability to adjust in height. The place of attachment of the suspension to the ceiling can be closed with a wooden round patch 5 cm",
+		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
 	},	
@@ -187,33 +187,33 @@
 		"name": "Wave Plus",
 		"price": [
 			{
-				"desc": "Стоимость за длину 120 СМ, 34 ВТ",
+				"desc": "COST FOR Diameter 120 CM, 34 W, 34 W",
 				"price": "875"
 			},
 			{
-				"desc": "Стоимость за длину 150 СМ, 43 ВТ",
+				"desc": "COST FOR Diameter 150 CM, 43 W, 34 W",
 				"price": "940"
 			},
 			{
-				"desc": "Стоимость за длину 200 СМ, 58 ВТ",
+				"desc": "COST FOR Diameter 200 CM, 58 W, 34 W",
 				"price": "860"
 			}					
 		],
 		"type": 0,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "Длина 120 - 200 см, Высота  ~7 см, Ширина ~9 см",
-		  "lampType": "светодиодная лента, LED. Сертификат ЕАС, СЕ. Лента крепится на встроенную алюминиевую полосу",
-		  "power": "от 30 Вт",
-		  "lampEquivalent": "230 Вт",
-		  "screenWidth": "60 мм",
+		  "material": "solid oak",
+		  "dimensions": "Length 120 - 200 cm, Height ~7 cm, Width ~9 cm",
+		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum strip",
+		  "power": "from 30 W",
+		  "lampEquivalent": "230 W",
+		  "screenWidth": "60mm",
 		  "plinth": "",		  
-		  "lampInclusion": "да, установлена светодиодная лента",
-		  "colorTemp": "на выбор теплый (3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в потолке. Соединение закрывается потолочной деревянной чашей. Блок питания от 36 Вт (сертификат ЕАС, СЕ) находится в корпусе светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны. Шнур 2х-жильный прозрачный / черный / цветной в двойной изоляции, длина 1,5 метр, либо другая длина по желанию заказчика",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "на металлические подвесы – это 2 троса, от 150 см с возможностью регулировки по высоте. Расположение тросов 35 см от края светильника, либо по желанию заказчика другой размер. Место крепления подвеса к потолку можно закрыть деревянным круглым пятачком 5 см",
-		  "options": "Возможно комплектовать светильник пультом управления или панелью с функцией изменения яркости"
+		  "lampInclusion": "yes, LED strip is installed",
+		  "colorTemp": "warm (3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the ceiling. The connection is closed by a ceiling wooden bowl. Power supply from 36 W (certificate EAC, CE) is located in the luminaire housing. The power of the block is calculated based on the power of the tape plus 20% in order to favorably load the block. All connections are soldered. Cord 2-core transparent / black / colored in double insulation, length 1.5 meters, or other length at the request of the customer",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "on metal suspensions - these are 2 cables, from 150 cm with the ability to adjust in height. The location of the cables is 35 cm from the edge of the lamp, or another size at the request of the customer. The place of attachment of the suspension to the ceiling can be closed with a wooden round patch 5 cm",
+		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
 	},	
@@ -222,45 +222,45 @@
 		"name": "Wave",
 		"price": [
 			{
-				"desc": "Длина 1200 мм, мощность 18 вт, ширина экрана 23мм",
+				"desc": "length 1200 mm, power 18 W, screen width 23 mm",
 				"price": "590"
 			},
 			{
-				"desc": "Длина 1200 мм, мощность 24 вт, ширина экрана 30мм",
+				"desc": "length 1200 mm, power 24 W, screen width 30 mm",
 				"price": "615"
 			},
 			{
-				"desc": "Длина 1500 мм, мощность 18 вт, ширина экрана 23мм",
+				"desc": "length 1500 mm, power 18 W, screen width 23 mm",
 				"price": "630"
 			},
 			{
-				"desc": "Длина 1500 мм, мощность 24 вт, ширина экрана 30мм",
+				"desc": "length 1500 mm, power 24 W, screen width 20 mm",
 				"price": "660"
 			},		
 			{
-				"desc": "Длина 2000 мм, мощность 18 вт, ширина экрана 23мм",
+				"desc": "length 2000 mm, power 18 W, screen width 23 mm",
 				"price": "670"
 			},		
 			{
-				"desc": "Длина 2000 мм, мощность 24 вт, ширина экрана 30мм",
+				"desc": "length 2000 mm, power 24 W, screen width 30 mm",
 				"price": "700"
 			}																
 		],
 		"type": 0,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "Длина 120 – 250 см либо другая по желанию заказчика, Высота  5 см, Ширина 5 см",
-		  "lampType": "светодиодная лента, LED. Сертификат ЕАС, СЕ. Лента крепится на встроенный алюминиевый профиль",
-		  "power": "от 18 Вт/м",
-		  "lampEquivalent": "170 Вт либо другая",
-		  "screenWidth": "23,  30 мм",
+		  "material": "solid oak",
+		  "dimensions": "Length 120 - 250 cm or other at the request of the customer, Height 5 cm, Width 5cm",
+		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum profile",
+		  "power": "from 18 W/m",
+		  "lampEquivalent": "170 W or other",
+		  "screenWidth": "optional, 23.30mm",
 		  "plinth": "",		  
-		  "lampInclusion": "да, установлена светодиодная лента",
-		  "colorTemp": "на выбор теплый (3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в потолке. Соединение закрывается потолочной деревянной чашей. Блок питания от 25 Вт (сертификат ЕАС, СЕ) находится в корпусе светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны. Шнур 2х-жильный прозрачный (по умолчанию) / черный / белый / цветной в двойной изоляции, длина 1 метр, либо другая длина по желанию заказчика",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "на металлические подвесы – это 2 троса, от 150 см с возможностью регулировки по высоте. Место крепления подвеса к потолку можно закрыть деревянной чашей",
-		  "options": "Возможно комплектовать светильник пультом управления или панелью с функцией изменения яркости"
+		  "lampInclusion": "yes, LED strip is installed",
+		  "colorTemp": "warm (3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the ceiling. The connection is closed by a ceiling wooden bowl. The power supply from 25 W (certificate EAC, CE) is located in the luminaire housing. The power of the block is calculated based on the power of the tape plus 20% in order to favorably load the block. All connections are soldered. Cord 2-core transparent (by default) / black / white / colored in double insulation, length 1 meter, or other length at the request of the customer",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "on metal suspensions - these are 2 cables, from 150 cm with the ability to adjust in height. The place of attachment of the suspension to the ceiling can be closed with a wooden bowl",
+		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
 	},	
@@ -269,45 +269,45 @@
 		"name": "Quadrat",
 		"price": [
 			{
-				"desc": "Стоимость за квадрат 60*60 СМ, 18 ВТ, ширина экрана 23 ММ",
+				"desc": "cost for square 60*60 cm, 18 w, screen width 23 mm",
 				"price": "755"
 			},
 			{
-				"desc": "Стоимость за квадрат 60*60 СМ, 24 ВТ, ширина экрана 30 ММ",
+				"desc": "cost for square 60*60 cm, 24 w, screen width 30 mm",
 				"price": "805"
 			},
 			{
-				"desc": "Стоимость за квадрат 80*80 СМ, 18 ВТ, ширина экрана 23 ММ",
+				"desc": "cost for square 80*80 cm, 18 w, screen width 23 mm",
 				"price": "815"
 			},
 			{
-				"desc": "Стоимость за квадрат 80*80 СМ, 24 ВТ, ширина экрана 30 ММ",
+				"desc": "cost for square 80*80 cm, 24 w, screen width 30 mm",
 				"price": "890"
 			},		
 			{
-				"desc": "Стоимость за квадрат 100*100 СМ, 18 ВТ, ширина экрана 23 ММ",
+				"desc": "cost for square 100*100 cm, 18 w, screen width 23 mm",
 				"price": "875"
 			},		
 			{
-				"desc": "Стоимость за квадрат 100*100 СМ, 24 ВТ, ширина экрана 30 ММ",
+				"desc": "cost for square 100*100 cm, 24 w, screen width 30 mm",
 				"price": "960"
 			}																	
 		],
 		"type": 0,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "Длина стороны 50 – 200 см либо другая по желанию заказчика, Высота стороны 5,5 см, Ширина стороны 5,5 см",
-		  "lampType": "светодиодная лента, LED. Сертификат ЕАС, СЕ. Лента крепится на встроенный алюминиевый профиль",
-		  "power": "от 18 Вт/м",
-		  "lampEquivalent": "170 Вт либо другая",
-		  "screenWidth": "23, 30 мм ",
+		  "material": "solid oak",
+		  "dimensions": "optional, Side length 50 - 200 cm or other at the request of the customer, Side height 5.5cm, Side width 5.5 cm",
+		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum profile",
+		  "power": "from 18 W/m",
+		  "lampEquivalent": "170 W or other",
+		  "screenWidth": "optional, 23.30mm",
 		  "plinth": "",		  
-		  "lampInclusion": "да, установлена светодиодная лента",
-		  "colorTemp": "на выбор теплый (3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в потолке. Соединение закрывается потолочной деревянной чашей. Блок питания от 45 Вт (сертификат ЕАС, СЕ) находится в корпусе светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны. Шнур 2х-жильный прозрачный (по умолчанию) / черный / белый/ цветной в двойной изоляции, длина 1 метр, либо другая длина по желанию заказчика",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "на металлические подвесы – это 4 троса, от 150 см с возможностью регулировки по высоте. Место крепления подвеса к потолку можно закрыть деревянной чашей. Возможно все тросы свести на потолочную чашу, и уже она будет держать светильник на потолке",
-		  "options": "Возможно комплектовать светильник пультом управления или панелью с функцией изменения яркости"
+		  "lampInclusion": "yes, LED strip is installed",
+		  "colorTemp": "warm (3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the ceiling. The connection is closed by a ceiling wooden bowl. The power supply from 45 W (certificate EAC, CE) is located in the luminaire housing. The power of the block is calculated based on the power of the tape plus 20% in order to favorably load the block. All connections are soldered. Cord 2-core transparent (by default) / black / white / colored in double insulation, length 1 meter, or other length at the request of the customer",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "on metal suspensions - these are 4 cables, from 150 cm with the ability to adjust in height. The place where the suspension is attached to the ceiling can be closed with a wooden bowl. It is possible to bring all the cables to the ceiling bowl, and it will already hold the lamp on the ceiling",
+		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
 	},	
@@ -316,33 +316,33 @@
 		"name": "Ovalli",
 		"price": [
 			{
-				"desc": "Стоимость за овал 80*50 СМ, 50 ВТ",
+				"desc": "COST FOR OVAL 80*50 CM, 50 W",
 				"price": "950"
 			},
 			{
-				"desc": "Стоимость за овал 100*70 СМ, 60 ВТ",
+				"desc": "COST FOR OVAL 100*70 CM, 60 W",
 				"price": "1070"
 			},
 			{
-				"desc": "Стоимость за овал 130*90 СМ, 80 ВТ",
+				"desc": "COST FOR OVAL 130*90 CM, 80 W",
 				"price": "1255"
 			}															
 		],
 		"type": 0,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "Длина*ширина 100*70 см, 130*90 см и другие, Высота 6 см, Толщина 4 см, Либо другие размеры по желанию заказчика",
-		  "lampType": "светодиодная лента, LED. Сертификат ЕАС, СЕ. Лента крепится на встроенную алюминиевую полосу",
-		  "power": "100*70 см - 60 Вт, 130*90 см – 80 Вт, Либо другая по желанию заказчика",
-		  "lampEquivalent": "300 Вт, 350 Вт либо другая",
-		  "screenWidth": "25 мм",
+		  "material": "solid oak",
+		  "dimensions": "optional, Length*width 100*70 cm, 130*90 cm and others, Height 6 cm, Thickness 4cm, Or other sizes at the request of the customer",
+		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum strip",
+		  "power": "100*70 cm - 60 W, 130*90 cm - 80 W Or other according to customer's request",
+		  "lampEquivalent": "300 W, 350 W or other",
+		  "screenWidth": "25 mm",
 		  "plinth": "",		  
-		  "lampInclusion": "да, установлена светодиодная лента",
-		  "colorTemp": "на выбор теплый (3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в потолке. Блок питания от 75 Вт (сертификат ЕАС, СЕ) находится в потолочной деревянной чаше. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны. Шнур 2х-жильный прозрачный / черный / цветной в двойной изоляции, длина 1,5 метр, либо другая длина по желанию заказчика",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "на металлические подвесы – это 4 троса, от 150 см с возможностью регулировки по высоте. Тросы могут сходиться в потолочной чаше либо крепиться напрямую в потолок",
-		  "options": "Возможно комплектовать светильник пультом управления или панелью с функцией изменения яркости"
+		  "lampInclusion": "yes, LED strip is installed",
+		  "colorTemp": "warm (3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the ceiling. The power supply from 75 W (certificate EAC, CE) is located in the ceiling wooden bowl. The power of the block is calculated based on the power of the tape plus 20% in order to favorably load the block. All connections are soldered. Cord 2-core transparent / black / colored in double insulation, length 1.5 meters, or other length at the request of the customer",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "on metal suspensions - these are 4 cables, from 150 cm with the ability to adjust in height. Cables can converge in the ceiling bowl or fasten directly to the ceiling",
+		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
 	},	
@@ -351,33 +351,33 @@
 		"name": "Skyline",
 		"price": [
 			{
-				"desc": "Стоимость за длину 100 СМ, 30 ВТ",
+				"desc": "COST FOR length 100 CM, 30 W",
 				"price": "770"
 			},
 			{
-				"desc": "Стоимость за длину 150 СМ, 43 ВТ",
+				"desc": "COST FOR length 150 CM, 43 W",
 				"price": "850"
 			},
 			{
-				"desc": "Стоимость за длину 200 СМ, 58 ВТ",
+				"desc": "COST FOR length 200 CM, 58 W",
 				"price": "925"
 			}															
 		],
 		"type": 0,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "Длина 80 - 300 см, Высота 10 - 15 см, Ширина 9 см",
-		  "lampType": "светодиодная лента, LED. Сертификат ЕАС, СЕ. Лента крепится на встроенную алюминиевую полосу",
-		  "power": "от 24 Вт",
-		  "lampEquivalent": "200 Вт",
-		  "screenWidth": "60 мм",
+		  "material": "solid oak",
+		  "dimensions": "Length 80 - 300 cm, Height 10 - 15 cm, Width 9 cm",
+		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum strip",
+		  "power": "from 24 W",
+		  "lampEquivalent": "200 W",
+		  "screenWidth": "60 mm",
 		  "plinth": "",		  
-		  "lampInclusion": "да, установлена светодиодная лента",
-		  "colorTemp": "на выбор теплый (3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в потолке. Соединение закрывается потолочной деревянной чашей. Блок питания от 30 Вт (сертификат ЕАС, СЕ) находится в корпусе светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны. Шнур 2х-жильный прозрачный / черный / цветной в двойной изоляции, длина 1,5 метр, либо другая длина по желанию заказчика",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "на металлические подвесы – это 2 троса, от 150 см с возможностью регулировки по высоте. Расположение тросов 35 см от края светильника, либо по желанию заказчика другой размер. Место крепления подвеса к потолку можно закрыть деревянным круглым пятачком 5 см",
-		  "options": "Возможно комплектовать светильник пультом управления или панелью с функцией изменения яркости"
+		  "lampInclusion": "yes, LED strip is installed",
+		  "colorTemp": "warm (3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the ceiling. The connection is closed by a ceiling wooden bowl. The power supply from 30 W (certificate EAC, CE) is located in the luminaire body. The power of the block is calculated based on the power of the tape plus 20% in order to favorably load the block. All connections are soldered. Cord 2-core transparent / black / colored in double insulation, length 1.5 meters, or other length at the request of the customer",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "on metal suspensions - these are 2 cables, from 150 cm with the ability to adjust in height. The location of the cables is 35 cm from the edge of the lamp, or another size at the request of the customer. The place of attachment of the suspension to the ceiling can be closed with a wooden round patch 5 cm",
+		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
 	},	
@@ -386,45 +386,45 @@
 		"name": "Skyline Slim",
 		"price": [
 			{
-				"desc": "Стоимость за длину 1000мм, ширина экрана 23мм, 18вт",
+				"desc": "cost for length 1000mm, screen width 23mm, 18W",
 				"price": "480"
 			},
 			{
-				"desc": "Стоимость за длину 1000мм, ширина экрана 30мм, 24вт",
+				"desc": "cost for length 1000mm, screen width 30mm, 24W",
 				"price": "505"
 			},
 			{
-				"desc": "Стоимость за длину 1500мм, ширина экрана 23мм, 18вт",
+				"desc": "cost for length 1500mm, screen width 23mm, 18W",
 				"price": "555"
 			},							
 			{
-				"desc": "Стоимость за длину 1500мм, ширина экрана 30мм, 24вт",
+				"desc": "cost for length 1500mm, screen width 30mm, 24W",
 				"price": "585"
 			},	
 			{
-				"desc": "Стоимость за длину 2000мм, ширина экрана 23мм, 18вт",
+				"desc": "cost for length 2000mm, screen width 23mm, 18W",
 				"price": "625"
 			},	
 			{
-				"desc": "Стоимость за длину 2000мм, ширина экрана 30мм, 24вт",
+				"desc": "cost for length 2000mm, screen width 30mm, 24W",
 				"price": "660"
 			}																		
 		],
 		"type": 0,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "Длина 80 – 300 см либо другая по желанию заказчика, Высота  6 – 20 см, Ширина 5,5 см",
-		  "lampType": "светодиодная лента, LED. Сертификат ЕАС, СЕ. Лента крепится на встроенный алюминиевый профиль",
-		  "power": "от 18 Вт/м",
-		  "lampEquivalent": "170 Вт либо другая",
-		  "screenWidth": "23, 30 мм",
+		  "material": "solid oak",
+		  "dimensions": "optional, Length 80 - 300 cm or other at the request of the customer, Height 6 – 20 cm, Width 5.5cm",
+		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum profile",
+		  "power": "from 18 W/m",
+		  "lampEquivalent": "170 W or other",
+		  "screenWidth": "optional, 23, 30 mm",
 		  "plinth": "",		  
-		  "lampInclusion": "да, установлена светодиодная лента",
-		  "colorTemp": "на выбор теплый (3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в потолке. Соединение закрывается потолочной деревянной чашей. Блок питания от 20 Вт (сертификат ЕАС, СЕ) находится в корпусе светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны. Шнур 2х-жильный прозрачный (по умолчанию) / черный / белый/ цветной в двойной изоляции, длина 1 метр, либо другая длина по желанию заказчика",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "на металлические подвесы – это 2 троса, от 150 см с возможностью регулировки по высоте. Место крепления подвеса к потолку можно закрыть деревянной чашей и пятачком 5 см",
-		  "options": "Возможно комплектовать светильник пультом управления или панелью с функцией изменения яркости"
+		  "lampInclusion": "yes, LED strip is installed",
+		  "colorTemp": "warm (3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the ceiling. The connection is closed by a ceiling wooden bowl. The power supply from 20 W (certificate EAC, CE) is located in the luminaire body. The power of the block is calculated based on the power of the tape plus 20% in order to favorably load the block. All connections are soldered. Cord 2-core transparent (by default) / black / white / colored in double insulation, length 1 meter, or other length at the request of the customer",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "on metal suspensions - these are 2 cables, from 150 cm with the ability to adjust in height. The location of the cables is 35 cm from the edge of the lamp, or another size at the request of the customer. The place of attachment of the suspension to the ceiling can be closed with a wooden round patch 5 cm",
+		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
 	},		
@@ -433,45 +433,45 @@
 		"name": "Ultra Slim",
 		"price": [
 			{
-				"desc": "Стоимость за длину 100 СМ, 18 ВТ, ширина экрана 23 ММ",
+				"desc": "cost for length 100 cm, 18 w, screen width 23 mm",
 				"price": "480"
 			},
 			{
-				"desc": "Стоимость за квадрат 100 СМ, 24 ВТ, ширина экрана 30 ММ",
+				"desc": "cost for square 100 cm, 24 w, screen width 30 mm",
 				"price": "505"
 			},
 			{
-				"desc": "Стоимость за квадрат 150 СМ, 18 ВТ, ширина экрана 23 ММ",
+				"desc": "cost for square 150 cm, 18 w, screen width 23 mm",
 				"price": "555"
 			},							
 			{
-				"desc": "Стоимость за квадрат 150 СМ, 24 ВТ, ширина экрана 30 ММ",
+				"desc": "cost for square 150 cm, 24 w, screen width 30 mm",
 				"price": "580"
 			},	
 			{
-				"desc": "Стоимость за квадрат 200 СМ, 18 ВТ, ширина экрана 23 ММ",
+				"desc": "cost for square 200 cm, 18 w, screen width 23 mm",
 				"price": "620"
 			},	
 			{
-				"desc": "Стоимость за квадрат 200 СМ, 24 ВТ, ширина экрана 30 ММ",
+				"desc": "cost for square 200 cm, 24 w, screen width 30 mm",
 				"price": "650"
 			}																		
 		],
 		"type": 0,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "Длина 80 – 300 см либо другая по желанию заказчика, Высота  5,5 см, Ширина 5,5 см",
-		  "lampType": "светодиодная лента, LED. Сертификат ЕАС, СЕ. Лента крепится на встроенный алюминиевый профиль",
-		  "power": "от 18 Вт/м",
-		  "lampEquivalent": "170 Вт либо другая",
-		  "screenWidth": "23, 30 мм",
+		  "material": "solid oak",
+		  "dimensions": "length 80 – 300 cm or other at the request of the customer, Height 5.5 cm, Width 5.5cm",
+		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum profile",
+		  "power": "from 18 W/m",
+		  "lampEquivalent": "170 W or other",
+		  "screenWidth": "23, 30 mm",
 		  "plinth": "",		  
-		  "lampInclusion": "да, установлена светодиодная лента",
-		  "colorTemp": "на выбор теплый (3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в потолке. Соединение закрывается потолочной деревянной чашей. Блок питания от 20 Вт (сертификат ЕАС, СЕ) находится в корпусе светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны. Шнур 2х-жильный прозрачный (по умолчанию) / черный / белый/ цветной в двойной изоляции, длина 1 метр, либо другая длина по желанию заказчика",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "на металлические подвесы – это 2 троса, от 150 см с возможностью регулировки по высоте. Место крепления подвеса к потолку можно закрыть деревянной чашей и пятачком 5 см",
-		  "options": "Возможно комплектовать светильник пультом управления или панелью с функцией изменения яркости"
+		  "lampInclusion": "yes, LED strip is installed",
+		  "colorTemp": "warm (3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the ceiling. The connection is closed by a ceiling wooden bowl. The power supply from 20 W (certificate EAC, CE) is located in the luminaire body. The power of the block is calculated based on the power of the tape plus 20% in order to favorably load the block. All connections are soldered. Cord 2-core transparent (by default) / black / white / colored in double insulation, length 1 meter, or other length at the request of the customer",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "on metal suspensions - these are 2 cables, from 150 cm with the ability to adjust in height. The place of attachment of the suspension to the ceiling can be closed with a wooden bowl",
+		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
 	},	
@@ -480,45 +480,45 @@
 		"name": "Ultra Slim",
 		"price": [
 			{
-				"desc": "Стоимость за длину 100 СМ, 18 ВТ, ширина экрана 23 ММ",
+				"desc": "cost for length 100 cm, 18 w, screen width 23 mm",
 				"price": "480"
 			},
 			{
-				"desc": "Стоимость за квадрат 100 СМ, 24 ВТ, ширина экрана 30 ММ",
+				"desc": "cost for square 100 cm, 24 w, screen width 30 mm",
 				"price": "505"
 			},
 			{
-				"desc": "Стоимость за квадрат 150 СМ, 18 ВТ, ширина экрана 23 ММ",
+				"desc": "cost for square 150 cm, 18 w, screen width 23 mm",
 				"price": "555"
 			},							
 			{
-				"desc": "Стоимость за квадрат 150 СМ, 24 ВТ, ширина экрана 30 ММ",
+				"desc": "cost for square 150 cm, 24 w, screen width 30 mm",
 				"price": "580"
 			},	
 			{
-				"desc": "Стоимость за квадрат 200 СМ, 18 ВТ, ширина экрана 23 ММ",
+				"desc": "cost for square 200 cm, 18 w, screen width 23 mm",
 				"price": "620"
 			},	
 			{
-				"desc": "Стоимость за квадрат 200 СМ, 24 ВТ, ширина экрана 30 ММ",
+				"desc": "cost for square 200 cm, 24 w, screen width 30 mm",
 				"price": "650"
 			}																			
 		],
 		"type": 0,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "Длина 80 – 300 см либо другая по желанию заказчика, Высота  5,5 см, Ширина 5,5 см",
-		  "lampType": "светодиодная лента, LED. Сертификат ЕАС, СЕ. Лента крепится на встроенный алюминиевый профиль",
-		  "power": "от 18 Вт/м",
-		  "lampEquivalent": "170 Вт либо другая",
-		  "screenWidth": "23, 30 мм",
+		  "material": "solid oak",
+		  "dimensions": "length 80 – 300 cm or other at the request of the customer, height  5,5 cm, width 5,5 cm",
+		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum profile",
+		  "power": "from 18 W/m",
+		  "lampEquivalent": "170 W or other",
+		  "screenWidth": "23, 30 mm",
 		  "plinth": "",		  
-		  "lampInclusion": "да, установлена светодиодная лента",
-		  "colorTemp": "на выбор теплый (3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в потолке. Соединение закрывается потолочной деревянной чашей. Блок питания от 20 Вт (сертификат ЕАС, СЕ) находится в корпусе светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны. Шнур 2х-жильный прозрачный (по умолчанию) / черный / белый/ цветной в двойной изоляции, длина 1 метр, либо другая длина по желанию заказчика",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "на металлические подвесы – это 2 троса, от 150 см с возможностью регулировки по высоте. Место крепления подвеса к потолку можно закрыть деревянной чашей и пятачком 5 см",
-		  "options": "Возможно комплектовать светильник пультом управления или панелью с функцией изменения яркости"
+		  "lampInclusion": "yes, LED strip is installed",
+		  "colorTemp": "warm (3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the ceiling. The connection is closed by a ceiling wooden bowl. The power supply from 20 W (certificate EAC, CE) is located in the luminaire body. The power of the block is calculated based on the power of the tape plus 20% in order to favorably load the block. All connections are soldered. Cord 2-core transparent (by default) / black / white / colored in double insulation, length 1 meter, or other length at the request of the customer",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "on metal suspensions - these are 2 cables, from 150 cm with the ability to adjust in height. The place of attachment of the suspension to the ceiling can be closed with a wooden bowl",
+		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
 	},	
@@ -527,45 +527,45 @@
 		"name": "Raven",
 		"price": [
 			{
-				"desc": "Стоимость за длину 1200мм, ширина экрана 23мм, 18вт",
+				"desc": "cost for length 1200mm, screen width 23mm, 18w",
 				"price": "630"
 			},
 			{
-				"desc": "Стоимость за длину 1200мм, ширина экрана 30мм, 24вт",
+				"desc": "cost for length 1200mm, screen width 30mm, 24w",
 				"price": "655"
 			},
 			{
-				"desc": "Стоимость за длину 1500мм, ширина экрана 23мм, 18вт",
+				"desc": "cost for length 1500mm, screen width 23mm, 18w",
 				"price": "670"
 			},							
 			{
-				"desc": "Стоимость за длину 1500мм, ширина экрана 30мм, 24вт",
+				"desc": "cost for length 1500mm, screen width 30mm, 24w",
 				"price": "700"
 			},	
 			{
-				"desc": "Стоимость за длину 2000мм, ширина экрана 23мм, 18вт",
+				"desc": "cost for length 2000mm, screen width 23mm, 18w",
 				"price": "710"
 			},	
 			{
-				"desc": "Стоимость за длину 2000мм, ширина экрана 30мм, 24вт",
+				"desc": "cost for length 2000mm, screen width 30mm, 24w",
 				"price": "740"
 			}																	
 		],
 		"type": 0,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "Длина 120 – 250 см либо другая по желанию заказчика Высота  5 см Ширина 5 см",
-		  "lampType": "светодиодная лента, LED. Сертификат ЕАС, СЕ. Лента крепится на встроенный алюминиевый профиль",
-		  "power": "от 18 Вт/м",
-		  "lampEquivalent": "170 Вт либо другая",
-		  "screenWidth": "23, 30 мм",
+		  "material": "solid oak",
+		  "dimensions": "length 120 – 250 cm or other at the request of the customer, height, 5 cm width 5 cm",
+		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum profile",
+		  "power": "from 18 W/m",
+		  "lampEquivalent": "170 W or other",
+		  "screenWidth": "23, 30 mm",
 		  "plinth": "",		  
-		  "lampInclusion": "да, установлена светодиодная лента",
-		  "colorTemp": "на выбор теплый (3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в потолке. Соединение закрывается потолочной деревянной чашей. Блок питания от 20 Вт (сертификат ЕАС, СЕ) находится в корпусе светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны. Шнур 2х-жильный прозрачный (по умолчанию) / черный / белый/ цветной в двойной изоляции, длина 1 метр, либо другая длина по желанию заказчика",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "на металлические подвесы – это 2 троса, от 150 см с возможностью регулировки по высоте. Место крепления подвеса к потолку можно закрыть деревянной чашей и пятачком 5 см",
-		  "options": "Возможно комплектовать светильник пультом управления или панелью с функцией изменения яркости"
+		  "lampInclusion": "yes, LED strip is installed",
+		  "colorTemp": "warm (3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the ceiling. The connection is closed by a ceiling wooden bowl. The power supply from 20 W (certificate EAC, CE) is located in the luminaire body. The power of the block is calculated based on the power of the tape plus 20% in order to favorably load the block. All connections are soldered. Cord 2-core transparent (by default) / black / white / colored in double insulation, length 1 meter, or other length at the request of the customer",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "on metal suspensions - these are 2 cables, from 150 cm with the ability to adjust in height. The place of attachment of the suspension to the ceiling can be closed with a wooden bowl",
+		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
 	},	
@@ -574,37 +574,37 @@
 		"name": "Mercury Fly",
 		"price": [
 			{
-				"desc": "Стоимость за диаметр 100 СМ, 19 ВТ",
+				"desc": "cost for diameter 100 cm, 19 w",
 				"price": "570"
 			},
 			{
-				"desc": "Стоимость за диаметр 120 СМ, 23ВТ",
+				"desc": "cost for diameter 120 cm, 23w",
 				"price": "590"
 			},
 			{
-				"desc": "Стоимость за диаметр 150 СМ, 29ВТ",
+				"desc": "cost for diameter 150 cm, 29w",
 				"price": "630"
 			},							
 			{
-				"desc": "Стоимость за диаметр 200 СМ, 39ВТ",
+				"desc": "cost for diameter 200 cm, 39w",
 				"price": "670"
 			}															
 		],
 		"type": 0,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "Длина 100 – 200 см либо другая по желанию заказчика, Высота  9 см, Ширина 4 см",
-		  "lampType": "светодиодная лента, LED. Сертификат ЕАС, СЕ. Лента крепится на встроенный алюминиевый профиль",
-		  "power": "от 19 Вт/м",
-		  "lampEquivalent": "170 Вт либо другая",
-		  "screenWidth": "23 мм",
+		  "material": "solid oak",
+		  "dimensions": "length 100 – 200 cm or other at the request of the customer, height  9 cm, width 4 cm",
+		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum profile",
+		  "power": "from 19 W/m",
+		  "lampEquivalent": "170 W or other",
+		  "screenWidth": "23 mm",
 		  "plinth": "",		  
-		  "lampInclusion": "да, установлена светодиодная лента",
-		  "colorTemp": "на выбор теплый (3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в потолке. Соединение закрывается потолочной деревянной чашей. Блок питания от 20 Вт (сертификат ЕАС, СЕ) находится в корпусе светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны. Шнур 2х-жильный прозрачный (по умолчанию) / черный / белый/ цветной в двойной изоляции, длина 1 метр, либо другая длина по желанию заказчика",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "на металлические подвесы – это 2 троса, от 150 см с возможностью регулировки по высоте. Место крепления подвеса к потолку можно закрыть деревянной чашей и пятачком 5 см",
-		  "options": "Возможно комплектовать светильник пультом управления или панелью с функцией изменения яркости"
+		  "lampInclusion": "yes, LED strip is installed",
+		  "colorTemp": "warm (3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the ceiling. The connection is closed by a ceiling wooden bowl. The power supply from 20 W (certificate EAC, CE) is located in the luminaire body. The power of the block is calculated based on the power of the tape plus 20% in order to favorably load the block. All connections are soldered. Cord 2-core transparent (by default) / black / white / colored in double insulation, length 1 meter, or other length at the request of the customer",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "on metal suspensions - these are 2 cables, from 150 cm with the ability to adjust in height. The place of attachment of the suspension to the ceiling can be closed with a wooden bowl",
+		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
 	},		
@@ -613,45 +613,45 @@
 		"name": "Light Box",
 		"price": [
 			{
-				"desc": "СТОИМОСТЬ ЗА 15х15 СМ, 6 ВТ",
+				"desc": "cost for 15х15 cm, 6 w",
 				"price": "250"
 			},
 			{
-				"desc": "СТОИМОСТЬ ЗА 20х20 СМ, 12 ВТ",
+				"desc": "cost for 20х20 cm, 12 w",
 				"price": "280"
 			},
 			{
-				"desc": "СТОИМОСТЬ ЗА 30х30 СМ, 33 ВТ",
+				"desc": "cost for 30х30 cm, 33 w",
 				"price": "360"
 			},							
 			{
-				"desc": "СТОИМОСТЬ ЗА 40х40 СМ, 57 ВТ",
+				"desc": "cost for 40х40 cm, 57 w",
 				"price": "450"
 			},				
 			{
-				"desc": "СТОИМОСТЬ ЗА 50х50 СМ, 90 ВТ",
+				"desc": "cost for 50х50 cm, 90 w",
 				"price": "560"
 			},							
 			{
-				"desc": "СТОИМОСТЬ ЗА 15х40 СМ, 20 ВТ",
+				"desc": "cost for 15х40 cm, 20 w",
 				"price": "340"
 			}																
 		],
 		"type": 0,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "Длина 15 - 80 см, Ширина 15 - 80 см, Высота 8-9 см",
-		  "lampType": "светодиодная лента, LED. Сертификат ЕАС, СЕ. Лента крепится на встроенную алюминиевую полосу",
-		  "power": "от 8 Вт",
-		  "lampEquivalent": "80 Вт",
+		  "material": "solid oak",
+		  "dimensions": "length 15 - 80 cm, width 15 - 80 cm, height 8-9 cm",
+		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum strip",
+		  "power": "от 8 W",
+		  "lampEquivalent": "80 W",
 		  "screenWidth": "",
 		  "plinth": "",		  
-		  "lampInclusion": "да, установлена светодиодная лента",
-		  "colorTemp": "на выбор теплый (3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в потолке. Соединение закрывается потолочной деревянной чашей. Блок питания от 30 Вт (сертификат ЕАС, СЕ) находится в корпусе светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "скрытые крепления",
-		  "options": "Возможно комплектовать светильник пультом управления или панелью с функцией изменения яркости"
+		  "lampInclusion": "yes, LED strip is installed",
+		  "colorTemp": "warm (3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the ceiling. The connection is closed by a ceiling wooden bowl. The power supply from 30 W (certificate EAC, CE) is located in the luminaire body. The power of the block is calculated based on the power of the tape plus 20% in order to favorably load the block. All connections are soldered. ",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "hidden fastenings",
+		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
 	},		
@@ -660,25 +660,25 @@
 		"name": "Candle Lamp",
 		"price": [
 			{
-				"desc": "ПО ЗАПРОСУ",
+				"desc": "ON REQUEST",
 				"price": "0"
 			}														
 		],
 		"type": 0,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "Длина 30 – 200 см, Высота 12 см, Ширина 30 см, Либо другие размеры по желанию заказчика",
-		  "lampType": "светодиодные лампы, LED. Сертификат ЕАС, СЕ",
-		  "power": "до 100 Вт",
-		  "lampEquivalent": "до 600 Вт",
+		  "material": "solid oak",
+		  "dimensions": "length 30 – 200 cm, height 12 cm, width 30 cm, Or other sizes at the request of the customer",
+		  "lampType": "LED lamps, LED. EAC, CE certificate",
+		  "power": "up to 100 W",
+		  "lampEquivalent": "up to 600 W",
 		  "screenWidth": "",
 		  "plinth": "Е27, Е14",		  
-		  "lampInclusion": "нет",
-		  "colorTemp": "на выбор теплый (3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в потолке. Соединение закрывается потолочной деревянной чашей",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "на металлическиеподвесы – это 4 троса, от 150 см с возможностью регулировки по высоте. Место крепления подвеса к потолку можно закрыть деревянной чашей",
-		  "options": "Возможно комплектовать светильник пультом управления или панелью с функцией изменения яркости"
+		  "lampInclusion": "no",
+		  "colorTemp": "warm (3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the ceiling. The connection is closed by a ceiling wooden bowl",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "on metal hangers - these are 4 cables, from 150 cm with the ability to adjust in height. The place of attachment of the suspension to the ceiling can be closed with a wooden bowl",
+		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
 	},		
@@ -693,19 +693,19 @@
 		],
 		"type": 1,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "Высота 165 см, Глубина ~5 см, Толщина ~5 см",
-		  "lampType": "светодиодная лента, LED. Сертификат ЕАС, СЕ. Лента крепится на встроенный алюминиевый профиль",
-		  "power": "10 Вт/м либо другая по желанию заказчика",
-		  "lampEquivalent": "60 Вт либо другая",
-		  "screenWidth": "16 мм",
+		  "material": "solid oak",
+		  "dimensions": "height 165 cm, depth ~5 cm, thickness ~5 cm",
+		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum profile",
+		  "power": "10 W/м or other at the request of the customer",
+		  "lampEquivalent": "60 W or other",
+		  "screenWidth": "16 mm",
 		  "plinth": "",		  
-		  "lampInclusion": "да, установлена светодиодная лента",
-		  "colorTemp": "на выбор теплый (3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Шнур с вилкой, с ножным выключателем, длина 2,5 м. Базовый цвет – чёрный (по желанию заказчика устанавливается белый).  Блок питания 18 Вт (сертификат ЕАС, СЕ) находится в корпусе светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "ножка 30х20 см, сделана из массива дуба в цвет светильника. Снизу установлены силиконовые подушечки для комфорта",
-		  "options": "Возможно комплектовать светильник пультом управления или панелью с функцией изменения яркости"
+		  "lampInclusion": "yes, LED strip is installed",
+		  "colorTemp": "warm (3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Cord with plug, with foot switch, length 2.5 m. Basic color - black (white on request). Power supply 18 W (certificate EAC, CE) is located in the luminaire housing. The power of the block is calculated based on the power of the tape plus 20% in order to favorably load the block. All connections are soldered.",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "leg 30x20 cm, made of solid oak in the color of the lamp. Silicone pads on the bottom for comfort",
+		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
 	},		
@@ -720,19 +720,19 @@
 		],
 		"type": 1,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "Высота 175 см, Глубина ~2.5 см, Толщина ~5.5 см",
-		  "lampType": "светодиодная лента, LED. Сертификат ЕАС, СЕ. Лента крепится на встроенный алюминиевый профиль",
-		  "power": "10 Вт/м либо другая по желанию заказчика",
-		  "lampEquivalent": "60 Вт либо другая",
-		  "screenWidth": "16 мм",
+		  "material": "solid oak",
+		  "dimensions": "height 175 cm, depth ~2.5 cm, thickness ~5.5 cm",
+		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum profile",
+		  "power": "10 W/м or other at the request of the customer",
+		  "lampEquivalent": "60 W or other",
+		  "screenWidth": "16 mm",
 		  "plinth": "",		  
-		  "lampInclusion": "да, установлена светодиодная лента",
-		  "colorTemp": "на выбор теплый (3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Шнур с вилкой, с ножным выключателем, длина 2,5 м. Базовый цвет – чёрный (по желанию заказчика устанавливается белый).  Блок питания 18 Вт (сертификат ЕАС, СЕ) находится в корпусе светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "ножка овальная 32х23 см, сделана из массива дуба в цвет светильника. Снизу установлены силиконовые подушечки для комфорта",
-		  "options": "Возможно комплектовать светильник пультом управления или панелью с функцией изменения яркости"
+		  "lampInclusion": "yes, LED strip is installed",
+		  "colorTemp": "warm (3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Cord with plug, with foot switch, length 2.5 m. Basic color - black (white on request). Power supply 18 W (certificate EAC, CE) is located in the luminaire housing. The power of the block is calculated based on the power of the tape plus 20% in order to favorably load the block. All connections are soldered.",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "oval leg 32x23 cm, made of solid oak in the color of the lamp . Silicone pads on the bottom for comfort",
+		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
 	},	
@@ -747,19 +747,19 @@
 		],
 		"type": 1,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "Высота 165 см, Глубина ~13 см, Толщина ~4 см",
-		  "lampType": "светодиодная лента, LED. Сертификат ЕАС, СЕ. Лента крепится на встроенный алюминиевый профиль",
-		  "power": "10 Вт/м либо другая по желанию заказчика",
-		  "lampEquivalent": "60 Вт либо другая",
-		  "screenWidth": "16 мм",
+		  "material": "solid oak",
+		  "dimensions": "height 165 cm, depth ~13 cm, thickness ~4 cm",
+		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum profile",
+		  "power": "10 W/м or other at the request of the customer",
+		  "lampEquivalent": "60 W or other",
+		  "screenWidth": "16 mm",
 		  "plinth": "",		  
-		  "lampInclusion": "да, установлена светодиодная лента",
-		  "colorTemp": "на выбор теплый (3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Шнур с вилкой, с ножным выключателем, длина 2,5 м. Базовый цвет – чёрный (по желанию заказчика устанавливается белый).  Блок питания 18 Вт (сертификат ЕАС, СЕ) находится в корпусе светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "ножка 34х22 см, сделана из массива дуба. Снизу установлены силиконовые подушечки для комфорта",
-		  "options": "Возможно комплектовать светильник пультом управления или панелью с функцией изменения яркости"
+		  "lampInclusion": "yes, LED strip is installed",
+		  "colorTemp": "warm (3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Cord with plug, with foot switch, length 2.5 m. Basic color - black (white on request). Power supply 18 W (certificate EAC, CE) is located in the luminaire housing. The power of the block is calculated based on the power of the tape plus 20% in order to favorably load the block. All connections are soldered.",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "leg 34х22 cm, made of solid oak. Silicone pads on the bottom for comfort",
+		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
 	},	
@@ -774,19 +774,19 @@
 		],
 		"type": 1,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "Высота 165 см, Глубина ~13 см, Толщина ~4 см",
-		  "lampType": "светодиодная лента, LED. Сертификат ЕАС, СЕ. Лента крепится на встроенный алюминиевый профиль",
-		  "power": "10 Вт/м либо другая по желанию заказчика",
-		  "lampEquivalent": "60 Вт либо другая",
-		  "screenWidth": "16 мм",
+		  "material": "solid oak",
+		  "dimensions": "height 165 cm, depth ~13 cm, thickness ~4 cm",
+		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum profile",
+		  "power": "10 W/м or other at the request of the customer",
+		  "lampEquivalent": "60 W or other",
+		  "screenWidth": "16 mm",
 		  "plinth": "",		  
-		  "lampInclusion": "да, установлена светодиодная лента",
-		  "colorTemp": "на выбор теплый (3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Шнур с вилкой, с ножным выключателем, длина 2,5 м. Базовый цвет – чёрный (по желанию заказчика устанавливается белый).  Блок питания 18 Вт (сертификат ЕАС, СЕ) находится в корпусе светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "ножка 30х20 см, сделана из массива дуба. Снизу установлены силиконовые подушечки для комфорта",
-		  "options": "Возможно комплектовать светильник пультом управления или панелью с функцией изменения яркости"
+		  "lampInclusion": "yes, LED strip is installed",
+		  "colorTemp": "warm (3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Cord with plug, with foot switch, length 2.5 m. Basic color - black (white on request). Power supply 18 W (certificate EAC, CE) is located in the luminaire housing. The power of the block is calculated based on the power of the tape plus 20% in order to favorably load the block. All connections are soldered.",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "leg 30х20 cm, made of solid oak. Silicone pads on the bottom for comfort",
+		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
 	},	
@@ -801,19 +801,19 @@
 		],
 		"type": 1,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "Высота 165 см, Глубина ~5 см, Толщина ~5 см",
-		  "lampType": "светодиодная лента Helios, LED. Сертификат ЕАС, СЕ. Лента крепится на встроенный алюминиевый профиль",
-		  "power": "10 Вт/м либо другая по желанию заказчика",
-		  "lampEquivalent": "60 Вт либо другая",
-		  "screenWidth": "16 мм",
+		  "material": "solid oak",
+		  "dimensions": "height 165 cm, depth ~5 cm, thickness ~5 cm",
+		  "lampType": "LED strip Helios, LED. EAC, CE certificate. The tape is attached to the built-in aluminum profile",
+		  "power": "10 W/м or other at the request of the customer",
+		  "lampEquivalent": "60 W or other",
+		  "screenWidth": "16 mm",
 		  "plinth": "",		  
-		  "lampInclusion": "да, установлена светодиодная лента",
-		  "colorTemp": "на выбор теплый (3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Шнур с вилкой, с ножным выключателем, длина 1,8 м. Базовый цвет – чёрный (по желанию заказчика устанавливается белый).  Блок питания 18 Вт (сертификат ЕАС, СЕ) находится в корпусе светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "ножка овальная, сделана из массива дуба. Снизу установлены силиконовые подушечки для комфорта",
-		  "options": "Возможно комплектовать светильник пультом управления или панелью с функцией изменения яркости"
+		  "lampInclusion": "yes, LED strip is installed",
+		  "colorTemp": "warm (3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Cord with plug, with foot switch, length 1.8 m. Basic color - black (white on request). Power supply 18 W (certificate EAC, CE) is located in the luminaire housing. The power of the block is calculated based on the power of the tape plus 20% in order to favorably load the block. All connections are soldered.",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "oval leg, made of solid oak. Silicone pads on the bottom for comfort",
+		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
 	},	
@@ -822,29 +822,29 @@
 		"name": "Oskar",
 		"price": [
 			{
-				"desc": "Стоимость за высоту 120 СМ",
+				"desc": "cost for height 120 cm",
 				"price": "560"
 			},		
 			{
-				"desc": "Стоимость за высоту 200 СМ",
+				"desc": "cost for height 200 cm",
 				"price": "630"
 			}															
 		],
 		"type": 1,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "Высота 120-200 см, Глубина ~5 см, Толщина ~5 см, Высота, глубина, толщина может быть другая по желанию заказчика",
-		  "lampType": "светодиодная лента, LED. Сертификат ЕАС, СЕ. Лента крепится на встроенный алюминиевый профиль",
-		  "power": "10 Вт/м либо другая по желанию заказчика",
-		  "lampEquivalent": "60 Вт либо другая",
-		  "screenWidth": "16 мм",
+		  "material": "solid oak",
+		  "dimensions": "height 120-200 cm, depth ~5 cm, thickness ~5 cm, Высота, глубина, толщина может быть другая по желанию заказчика",
+		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum profile",
+		  "power": "10 W/м or other at the request of the customer",
+		  "lampEquivalent": "60 W or other",
+		  "screenWidth": "16 mm",
 		  "plinth": "",		  
-		  "lampInclusion": "да, установлена светодиодная лента",
-		  "colorTemp": "на выбор теплый (3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Шнур с вилкой, с ножным выключателем, длина 2,5 м. Базовый цвет – чёрный (по желанию заказчика устанавливается белый).  Блок питания 20 Вт либо мощнее (сертификат ЕАС, СЕ) находится в корпусе светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "ножка 25х25 см, сделана из стали с полимерным покрытием. Цвет – матовый черный. Либо из Дуба в цвет изделия. Снизу установлены силиконовые подушечки для комфорта",
-		  "options": "Возможно комплектовать светильник пультом управления или панелью с функцией изменения яркости"
+		  "lampInclusion": "yes, LED strip is installed",
+		  "colorTemp": "warm (3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Cord with plug, with foot switch, length 2.5 m. Basic color - black (white on request). The power supply unit 20 W or more powerful (EAC, CE certificate) is located in the luminaire housing. The power of the block is calculated based on the power of the tape plus 20% in order to favorably load the block. All connections are soldered.",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "leg 25х25 cm, made of steel with a polymer coating. Color - matte black. Or from Oak in the color of the product. Silicone pads on the bottom for comfort",
+		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
 	},	
@@ -853,33 +853,33 @@
 		"name": "Bird WL",
 		"price": [
 			{
-				"desc": "Стоимость за высоту 120 СМ",
+				"desc": "cost for height 120 cm",
 				"price": "495"
 			},		
 			{
-				"desc": "Стоимость за высоту 150 СМ",
+				"desc": "cost for height 150 cm",
 				"price": "545"
 			},	
 			{
-				"desc": "Стоимость за высоту 200 СМ",
+				"desc": "cost for height 200 cm",
 				"price": "595"
 			}																				
 		],
 		"type": 2,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "Высота ~120-200 см либо другая по желанию заказчика, Глубина ~4 см, Толщина ~5 см",
-		  "lampType": "светодиодная лента, LED. Сертификат ЕАС, СЕ. Лента крепится на встроенный алюминиевый профиль",
-		  "power": "10 Вт/м либо другая по желанию заказчика",
-		  "lampEquivalent": "60 Вт либо другая",
-		  "screenWidth": "16 мм",
+		  "material": "solid oak",
+		  "dimensions": "height ~120-200 cm or other at the request of the customer, Глубина ~4 cm, Толщина ~5 cm",
+		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum profile",
+		  "power": "10 W/м or other at the request of the customer",
+		  "lampEquivalent": "60 W or other",
+		  "screenWidth": "16 mm",
 		  "plinth": "",		  
-		  "lampInclusion": "да, установлена светодиодная лента",
-		  "colorTemp": "на выбор теплый (3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в стене. Соединение прячется в круглой полости на задней стенке светильника. Блок питания от 18 Вт (сертификат ЕАС, СЕ) находится в средней части светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "крепление на стену на 2 кронштейна по типу «замочная скважина»",
-		  "options": "Возможно комплектовать светильник пультом управления или панелью с функцией изменения яркости"
+		  "lampInclusion": "yes, LED strip is installed",
+		  "colorTemp": "warm (3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the rear wall of the lamp. The power supply from 18 W (certificate EAC, CE) is located in the middle part of the luminaire. The power of the block is calculated based on the power of the tape plus 20% in order to favorably load the block. All connections are soldered.",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "wall mount on 2 keyhole brackets",
+		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
 	},	
@@ -888,33 +888,33 @@
 		"name": "Italia",
 		"price": [
 			{
-				"desc": "Стоимость за высоту 60 СМ",
+				"desc": "cost for height 60 cm",
 				"price": "360"
 			},		
 			{
-				"desc": "Стоимость за высоту 80 СМ",
+				"desc": "cost for height 80 cm",
 				"price": "440"
 			},	
 			{
-				"desc": "Стоимость за высоту 100 СМ",
+				"desc": "cost for height 100 cm",
 				"price": "495"
 			}																			
 		],
 		"type": 2,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "Высота 60-100 см, Ширина ~28 см, Глубина ~4 см, Высота, ширина, глубина может быть другая по желанию заказчика",
-		  "lampType": "светодиодная лента, LED. Сертификат ЕАС, СЕ. Лента крепится на встроенный алюминиевый профиль",
-		  "power": "10 Вт/м либо другая по желанию заказчика",
-		  "lampEquivalent": "60 Вт либо другая",
-		  "screenWidth": "16 мм",
+		  "material": "solid oak",
+		  "dimensions": "height 60-100 cm, width ~28 cm, depth ~4 cm, Height, width, depth can be different at the request of the customer",
+		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum profile",
+		  "power": "10 W/м or other at the request of the customer",
+		  "lampEquivalent": "60 W or other",
+		  "screenWidth": "16 mm",
 		  "plinth": "",		  
-		  "lampInclusion": "да, установлена светодиодная лента",
-		  "colorTemp": "на выбор теплый (3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в стене. Соединение прячется в круглой полости на задней стенке светильника. Блок питания от 18 Вт (сертификат ЕАС, СЕ) находится в задней части светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "крепление на стену на 2 кронштейна по типу «замочная скважина»",
-		  "options": "Возможно комплектовать светильник пультом управления или панелью с функцией изменения яркости"
+		  "lampInclusion": "yes, LED strip is installed",
+		  "colorTemp": "warm (3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the rear wall of the lamp. The power supply from 18 W (certificate EAC, CE) is located at the rear of the luminaire. The power of the block is calculated based on the power of the tape plus 20% in order to favorably load the block. All connections are soldered.",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "wall mount on 2 keyhole brackets",
+		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
 	},	
@@ -923,37 +923,37 @@
 		"name": "Oskar WL",
 		"price": [
 			{
-				"desc": "Стоимость за высоту 50 СМ",
+				"desc": "cost for height 50 cm",
 				"price": "275"
 			},		
 			{
-				"desc": "Стоимость за высоту 100 СМ",
+				"desc": "cost for height 100 cm",
 				"price": "320"
 			},	
 			{
-				"desc": "Стоимость за высоту 150 СМ",
+				"desc": "cost for height 150 cm",
 				"price": "400"
 			},				
 			{
-				"desc": "Стоимость за высоту 200 СМ",
+				"desc": "cost for height 200 cm",
 				"price": "455"
 			}																				
 		],
 		"type": 2,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "Высота ~30-200 см, Ширина ~7 см, Глубина ~4,5 см, Высота, ширина, глубина может быть другая по желанию заказчика",
-		  "lampType": "светодиодная лента, LED. Сертификат ЕАС, СЕ. Лента крепится на встроенный алюминиевый профиль",
-		  "power": "10 Вт/м либо другая по желанию заказчика",
-		  "lampEquivalent": "60 Вт либо другая",
-		  "screenWidth": "16 мм",
+		  "material": "solid oak",
+		  "dimensions": "height ~30-200 cm, width ~7 cm, depth ~4,5 cm, Height, width, depth can be different at the request of the customer",
+		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum profile",
+		  "power": "10 W/м or other at the request of the customer",
+		  "lampEquivalent": "60 W or other",
+		  "screenWidth": "16 mm",
 		  "plinth": "",		  
-		  "lampInclusion": "да, установлена светодиодная лента",
-		  "colorTemp": "на выбор теплый (3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт.Подключение к проводу в стене. Соединение прячется в круглой полости на задней стенке светильника. Блок питания от 18 Вт либо мощнее (сертификат ЕАС, СЕ) находится в задней части светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "крепление на стену на 2 кронштейна по типу «замочная скважина»",
-		  "options": "Возможно комплектовать светильник пультом управления или панелью с функцией изменения яркости"
+		  "lampInclusion": "yes, LED strip is installed",
+		  "colorTemp": "warm (3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the rear wall of the lamp. The power supply from 18 W (certificate EAC, CE) is located at the rear of the luminaire. The power of the block is calculated based on the power of the tape plus 20% in order to favorably load the block. All connections are soldered.",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "wall mount on 2 keyhole brackets",
+		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
 	},
@@ -968,19 +968,19 @@
 		],
 		"type": 2,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "высота 30 см, диаметр 7 см",
-		  "lampType": "светодиодная лента, LED. Сертификат ЕАС, СЕ. Лента крепится на встроенный алюминиевый профиль",
-		  "power": "10 Вт/м либо другая по желанию заказчика",
-		  "lampEquivalent": "55 Вт",
+		  "material": "solid oak",
+		  "dimensions": "height 30 cm, diameter 7 cm",
+		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum profile",
+		  "power": "10 W/м or other at the request of the customer",
+		  "lampEquivalent": "55 W",
 		  "screenWidth": "",
 		  "plinth": "GU10",		  
-		  "lampInclusion": "да, 2 лампочки по 5 Вт",
-		  "colorTemp": "на выбор теплый (2700-3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в стене. Соединение прячется в круглой полости на задней стенке светильника",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "крепление на стену на 2 кронштейна по типу «замочная скважина»",
-		  "options": "Возможно комплектовать светильник пультом управления или панелью с функцией изменения яркости"
+		  "lampInclusion": "yes, 2 bulbs of 5 W",
+		  "colorTemp": "warm (2700 - 3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the back of the lamp",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "wall mount on 2 keyhole brackets",
+		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
 	},
@@ -995,19 +995,19 @@
 		],
 		"type": 2,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "диаметр 14 см либо другой по желанию заказчика",
-		  "lampType": "светодиодная лента, LED. Сертификат ЕАС, СЕ. Лента крепится на встроенный алюминиевый профиль",
-		  "power": "10 Вт/м либо другая по желанию заказчика",
-		  "lampEquivalent": "60 Вт",
+		  "material": "solid oak",
+		  "dimensions": "diameter 14 cm or other at the request of the customer",
+		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum profile",
+		  "power": "10 W/м or other at the request of the customer",
+		  "lampEquivalent": "60 W",
 		  "screenWidth": "",
 		  "plinth": "GU10",		  
-		  "lampInclusion": "да, 2 лампочки по 5 Вт",
-		  "colorTemp": "на выбор теплый (2700-3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в стене. Соединение прячется в круглой полости на задней стенке светильника",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "крепление на стену на 2 кронштейна по типу «замочная скважина»",
-		  "options": "Возможно комплектовать светильник пультом управления или панелью с функцией изменения яркости"
+		  "lampInclusion": "yes, 2 bulbs of 5 W",
+		  "colorTemp": "warm (2700 - 3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the back of the lamp",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "wall mount on 2 keyhole brackets",
+		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
 	},
@@ -1016,29 +1016,29 @@
 		"name": "Spot WL",
 		"price": [
 			{
-				"desc": "Стоимость за высоту до 30 СМ",
+				"desc": "cost for height up to 30 cm",
 				"price": "265"
 			},				
 			{
-				"desc": "Стоимость за высоту 40 СМ",
+				"desc": "cost for height 40 cm",
 				"price": "290"
 			}																					
 		],
 		"type": 2,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "высота 20-40 см либо другая по желанию заказчика, диаметр 7 см либо другой по желанию заказчика",
-		  "lampType": "светодиодная лента, LED. Сертификат ЕАС, СЕ. Лента крепится на встроенный алюминиевый профиль",
-		  "power": "10 Вт/м либо другая по желанию заказчика",
-		  "lampEquivalent": "60 Вт",
+		  "material": "solid oak",
+		  "dimensions": "height 20-40 cm or other at the request of the customer, diameter 7 cm or other at the request of the customer",
+		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum profile",
+		  "power": "10 W/м or other at the request of the customer",
+		  "lampEquivalent": "60 W",
 		  "screenWidth": "",
 		  "plinth": "GU10",		  
-		  "lampInclusion": "да, 2 лампочки по 5 Вт",
-		  "colorTemp": "на выбор теплый (2700-3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в стене. Соединение прячется в круглой полости на задней стенке светильника",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "крепление на стену на 2 кронштейна по типу «замочная скважина»",
-		  "options": "Возможно комплектовать светильник пультом управления или панелью с функцией изменения яркости"
+		  "lampInclusion": "yes, 2 bulbs of 5 W",
+		  "colorTemp": "warm (2700 - 3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the back of the lamp",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "wall mount on 2 keyhole brackets",
+		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
 	},
@@ -1047,33 +1047,33 @@
 		"name": "Eclipse",
 		"price": [
 			{
-				"desc": "Стоимость за диаметр 22 СМ",
+				"desc": "cost for diameter 22 cm",
 				"price": "285"
 			},				
 			{
-				"desc": "Стоимость за диаметр 28 СМ",
+				"desc": "cost for diameter 28 cm",
 				"price": "305"
 			},				
 			{
-				"desc": "Стоимость за диаметр 40 СМ",
+				"desc": "cost for diameter 40 cm",
 				"price": "350"
 			}																						
 		],
 		"type": 2,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "Диаметр 22 см, 28 см, 40 см либо другой по желанию заказчика",
-		  "lampType": "светодиодная лента, LED. Сертификат ЕАС, СЕ. Лента крепится на встроенную алюминиевую пластину",
-		  "power": "5 Вт",
-		  "lampEquivalent": "40 Вт",
-		  "screenWidth": "16 мм",
+		  "material": "solid oak",
+		  "dimensions": "diameter 22 cm, 28 cm, 40 cm or other at the request of the customer",
+		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is mounted on a built-in aluminum plate",
+		  "power": "5 W",
+		  "lampEquivalent": "40 W",
+		  "screenWidth": "16 mm",
 		  "plinth": "",		  
-		  "lampInclusion": "да, установлена светодиодная лента",
-		  "colorTemp": "на выбор теплый (2700-3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в стене. Соединение прячется в круглой полости на задней стенке светильника. Блок питания от 12 Вт (сертификат ЕАС, СЕ) находится в задней части светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "крепление на стену на 2 кронштейна по типу «замочная скважина»",
-		  "options": "Возможно комплектовать светильник пультом управления или панелью с функцией изменения яркости"
+		  "lampInclusion": "yes, LED strip is installed",
+		  "colorTemp": "warm (2700 - 3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the back of the lamp. Блок питания от 12 W (сертификат ЕАС, СЕ) находится в задней части светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "wall mount on 2 keyhole brackets",
+		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
 	},
@@ -1088,19 +1088,19 @@
 		],
 		"type": 2,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "высота 60 см, ширина 7 см",
-		  "lampType": "светодиодная, LED. Сертификат ЕАС, СЕ",
-		  "power": "10 Вт",
-		  "lampEquivalent": "60 Вт",
+		  "material": "solid oak",
+		  "dimensions": "height 60 cm, width 7 cm",
+		  "lampType": "LED, LED. EAC, CE certificate",
+		  "power": "10 W",
+		  "lampEquivalent": "60 W",
 		  "screenWidth": "",
 		  "plinth": "G9",		  
-		  "lampInclusion": "да, 2 лампочки по 5 Вт",
-		  "colorTemp": "на выбор теплый (2700-3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в стене. Соединение прячется в круглой полости на задней стенке светильника. Блок питания от 12 Вт (сертификат ЕАС, СЕ) находится в задней части светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "крепление на стену на 2 кронштейна по типу «замочная скважина»",
-		  "options": "Возможно комплектовать светильник пультом управления или панелью с функцией изменения яркости"
+		  "lampInclusion": "yes, 2 bulbs of 5 W",
+		  "colorTemp": "warm (2700 - 3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the back of the lamp. Блок питания от 12 W (сертификат ЕАС, СЕ) находится в задней части светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "wall mount on 2 keyhole brackets",
+		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
 	},
@@ -1115,19 +1115,19 @@
 		],
 		"type": 2,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "высота 70 см, ширина 7 см",
-		  "lampType": "светодиодная, LED. Сертификат ЕАС, СЕ",
-		  "power": "7 Вт",
-		  "lampEquivalent": "50 Вт",
+		  "material": "solid oak",
+		  "dimensions": "height 70 cm, width 7 cm",
+		  "lampType": "LED, LED. EAC, CE certificate",
+		  "power": "7 W",
+		  "lampEquivalent": "50 W",
 		  "screenWidth": "",
 		  "plinth": "G9",		  
-		  "lampInclusion": "да, 1 лампочка 7 Вт",
-		  "colorTemp": "на выбор теплый (2700-3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в стене. Соединение прячется в круглой полости на задней стенке светильника. Блок питания от 12 Вт (сертификат ЕАС, СЕ) находится в задней части светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "крепление на стену на 2 кронштейна по типу «замочная скважина»",
-		  "options": "Возможно комплектовать светильник пультом управления или панелью с функцией изменения яркости"
+		  "lampInclusion": "yes, 1 bulb 7W",
+		  "colorTemp": "warm (2700 - 3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the back of the lamp. Блок питания от 12 W (сертификат ЕАС, СЕ) находится в задней части светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "wall mount on 2 keyhole brackets",
+		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
 	},
@@ -1142,19 +1142,19 @@
 		],
 		"type": 2,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "высота 15 либо другая по желанию клиента, ширина 12 см, глубина 12 см",
-		  "lampType": "светодиодная, LED. Сертификат ЕАС, СЕ",
-		  "power": "7 Вт",
-		  "lampEquivalent": "50 Вт",
+		  "material": "solid oak",
+		  "dimensions": "height 15 or other at the request of the client, width 12 cm, depth 12 cm",
+		  "lampType": "LED, LED. EAC, CE certificate",
+		  "power": "7 W",
+		  "lampEquivalent": "50 W",
 		  "screenWidth": "",
 		  "plinth": "G9",		  
-		  "lampInclusion": "да, 1 лампочка 7 Вт",
-		  "colorTemp": "на выбор теплый (2700-3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в стене. Соединение прячется в круглой полости на задней стенке светильника. Блок питания от 12 Вт (сертификат ЕАС, СЕ) находится в задней части светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "крепление на стену на 2 кронштейна по типу «замочная скважина»",
-		  "options": "Возможно комплектовать светильник пультом управления или панелью с функцией изменения яркости"
+		  "lampInclusion": "yes, 1 bulb 7W",
+		  "colorTemp": "warm (2700 - 3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the back of the lamp. Блок питания от 12 W (сертификат ЕАС, СЕ) находится в задней части светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "wall mount on 2 keyhole brackets",
+		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
 	},
@@ -1163,33 +1163,33 @@
 		"name": "Kubik",
 		"price": [
 			{
-				"desc": "Стоимость за высоту 15 СМ",
+				"desc": "cost for height 15 cm",
 				"price": "200"
 			},		
 			{
-				"desc": "Стоимость за высоту 20 СМ",
+				"desc": "cost for height 20 cm",
 				"price": "210"
 			},
 			{
-				"desc": "Стоимость за высоту 25 СМ",
+				"desc": "cost for height 25 cm",
 				"price": "220"
 			}																									
 		],
 		"type": 2,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "высота 15, 20, 25 см, ширина 12 см, глубина 12 см",
-		  "lampType": "светодиодная, LED. Сертификат ЕАС, СЕ",
-		  "power": "7 Вт",
-		  "lampEquivalent": "50 Вт",
+		  "material": "solid oak",
+		  "dimensions": "height 15, 20, 25 cm, width 12 cm, depth 12 cm",
+		  "lampType": "LED, LED. EAC, CE certificate",
+		  "power": "7 W",
+		  "lampEquivalent": "50 W",
 		  "screenWidth": "",
 		  "plinth": "G9",		  
-		  "lampInclusion": "да, 1 лампочка 7 Вт",
-		  "colorTemp": "на выбор теплый (2700-3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в стене. Соединение прячется в круглой полости на задней стенке светильника. Блок питания от 12 Вт (сертификат ЕАС, СЕ) находится в задней части светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "крепление на стену на 2 кронштейна по типу «замочная скважина»",
-		  "options": "Возможно комплектовать светильник пультом управления или панелью с функцией изменения яркости"
+		  "lampInclusion": "yes, 1 bulb 7W",
+		  "colorTemp": "warm (2700 - 3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the back of the lamp. Блок питания от 12 W (сертификат ЕАС, СЕ) находится в задней части светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "wall mount on 2 keyhole brackets",
+		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
 	},
@@ -1198,29 +1198,29 @@
 		"name": "Eclipse R",
 		"price": [
 			{
-				"desc": "Стоимость за диаметр 22 СМ",
+				"desc": "cost for diameter 22 cm",
 				"price": "340"
 			},		
 			{
-				"desc": "Стоимость за диаметр 28 СМ",
+				"desc": "cost for diameter 28 cm",
 				"price": "370"
 			}																									
 		],
 		"type": 2,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "Диаметр 22 см, 28 см либо другой по желанию заказчика",
-		  "lampType": "светодиодная лента, LED. Сертификат ЕАС, СЕ. Лента крепится на встроенную алюминиевую пластину",
-		  "power": "5 Вт",
-		  "lampEquivalent": "40 Вт",
-		  "screenWidth": "16 мм",
+		  "material": "solid oak",
+		  "dimensions": "diameter 22 cm, 28 cm or other at the request of the customer",
+		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is mounted on a built-in aluminum plate",
+		  "power": "5 W",
+		  "lampEquivalent": "40 W",
+		  "screenWidth": "16 mm",
 		  "plinth": "",		  
-		  "lampInclusion": "да, 1 лампочка 7 Вт",
-		  "colorTemp": "на выбор теплый (3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в стене. Соединение прячется в круглой полости на задней стенке светильника. Блок питания 12 Вт (сертификат ЕАС, СЕ) находится в задней части светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "крепление на стену на 2 кронштейна по типу «замочная скважина»",
-		  "options": "Возможно комплектовать светильник пультом управления или панелью с функцией изменения яркости"
+		  "lampInclusion": "yes, 1 bulb 7W",
+		  "colorTemp": "warm (3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the back of the lamp. Блок питания 12 W (сертификат ЕАС, СЕ) находится в задней части светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "wall mount on 2 keyhole brackets",
+		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
 	},
@@ -1235,19 +1235,19 @@
 		],
 		"type": 2,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "Высота 30 см, Ширина 20 см, Либо другой размер по желанию заказчика",
-		  "lampType": "светодиодная, LED. Сертификат ЕАС, СЕ",
-		  "power": "14 Вт",
-		  "lampEquivalent": "80 Вт",
+		  "material": "solid oak",
+		  "dimensions": "height 30 cm, width 20 cm, Or other size according to customer's request",
+		  "lampType": "LED, LED. EAC, CE certificate",
+		  "power": "14 W",
+		  "lampEquivalent": "80 W",
 		  "screenWidth": "",
 		  "plinth": "G9",		  
-		  "lampInclusion": "да, 2 лампочки по 7 Вт",
-		  "colorTemp": "на выбор теплый (2700-3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в стене. Соединение прячется в круглой полости на задней стенке светильника ",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "крепление на стену на 2 кронштейна по типу «замочная скважина»",
-		  "options": "Возможно комплектовать светильник пультом управления или панелью с функцией изменения яркости"
+		  "lampInclusion": "yes, 2 bulbs of 7 W",
+		  "colorTemp": "warm (2700 - 3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the back of the lamp ",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "wall mount on 2 keyhole brackets",
+		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
 	},
@@ -1262,19 +1262,19 @@
 		],
 		"type": 2,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "Высота 30 см, Ширина 13.5 см, Либо другой размер по желанию заказчика",
-		  "lampType": "светодиодная, LED. Сертификат ЕАС, СЕ",
-		  "power": "14 Вт",
-		  "lampEquivalent": "80 Вт",
+		  "material": "solid oak",
+		  "dimensions": "height 30 cm, width 13.5 cm, Or other size according to customer's request",
+		  "lampType": "LED, LED. EAC, CE certificate",
+		  "power": "14 W",
+		  "lampEquivalent": "80 W",
 		  "screenWidth": "",
 		  "plinth": "G9",		  
-		  "lampInclusion": "да, 2 лампочки по 7 Вт",
-		  "colorTemp": "на выбор теплый (2700-3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в стене. Соединение прячется в круглой полости на задней стенке светильника ",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "крепление на стену на 2 кронштейна по типу «замочная скважина»",
-		  "options": "Возможно комплектовать светильник пультом управления или панелью с функцией изменения яркости"
+		  "lampInclusion": "yes, 2 bulbs of 7 W",
+		  "colorTemp": "warm (2700 - 3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the back of the lamp ",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "wall mount on 2 keyhole brackets",
+		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
 	},
@@ -1289,19 +1289,19 @@
 		],
 		"type": 2,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "высота 40 см, ширина 6 см",
-		  "lampType": "светодиодная, LED. Сертификат ЕАС, СЕ",
-		  "power": "5 Вт",
-		  "lampEquivalent": "40 Вт",
+		  "material": "solid oak",
+		  "dimensions": "height 40 cm, width 6 cm",
+		  "lampType": "LED, LED. EAC, CE certificate",
+		  "power": "5 W",
+		  "lampEquivalent": "40 W",
 		  "screenWidth": "",
 		  "plinth": "G9",		  
-		  "lampInclusion": "да, 1 лампочка 5 Вт",
-		  "colorTemp": "на выбор теплый (2700-3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в стене. Соединение прячется в круглой полости на задней стенке светильника ",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "крепление на стену на 2 кронштейна по типу «замочная скважина»",
-		  "options": "Возможно комплектовать светильник пультом управления или панелью с функцией изменения яркости"
+		  "lampInclusion": "yes, 1 bulb 5W",
+		  "colorTemp": "warm (2700 - 3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the back of the lamp ",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "wall mount on 2 keyhole brackets",
+		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
 	},
@@ -1316,19 +1316,19 @@
 		],
 		"type": 2,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "высота 40 см, ширина 6 см",
-		  "lampType": "светодиодная, LED. Сертификат ЕАС, СЕ",
-		  "power": "5 Вт",
-		  "lampEquivalent": "40 Вт",
+		  "material": "solid oak",
+		  "dimensions": "height 40 cm, width 6 cm",
+		  "lampType": "LED, LED. EAC, CE certificate",
+		  "power": "5 W",
+		  "lampEquivalent": "40 W",
 		  "screenWidth": "",
 		  "plinth": "G9",		  
-		  "lampInclusion": "да, 1 лампочка 5 Вт",
-		  "colorTemp": "на выбор теплый (2700-3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в стене. Соединение прячется в круглой полости на задней стенке светильника ",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "крепление на стену на 2 кронштейна по типу «замочная скважина»",
-		  "options": "Возможно комплектовать светильник пультом управления или панелью с функцией изменения яркости"
+		  "lampInclusion": "yes, 1 bulb 5W",
+		  "colorTemp": "warm (2700 - 3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the back of the lamp ",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "wall mount on 2 keyhole brackets",
+		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
 	},
@@ -1337,29 +1337,29 @@
 		"name": "Eclipse Art",
 		"price": [
 			{
-				"desc": "Стоимость за диаметр 22 СМ",
+				"desc": "cost for diameter 22 cm",
 				"price": "345"
 			},
 			{
-				"desc": "Стоимость за диаметр 28 СМ",
+				"desc": "cost for diameter 28 cm",
 				"price": "355"
 			}																											
 		],
 		"type": 2,
 		"features": {
-		  "material": "березовая фанера, эпоксидная смола",
-		  "dimensions": "22, 28 см либо другой по желанию заказчика",
-		  "lampType": "светодиодная лента Helios, LED. Сертификат ЕАС, СЕ. Лента крепится на встроенную алюминиевую пластину",
-		  "power": "5 Вт",
-		  "lampEquivalent": "40 Вт",
-		  "screenWidth": "16 мм",
+		  "material": "birch plywood, epoxy resin",
+		  "dimensions": "22, 28 cm or other at the request of the customer",
+		  "lampType": "LED strip Helios, LED. EAC, CE certificate. The tape is mounted on a built-in aluminum plate",
+		  "power": "5 W",
+		  "lampEquivalent": "40 W",
+		  "screenWidth": "16 mm",
 		  "plinth": "",		  
-		  "lampInclusion": "да, 1 лампочка 5 Вт",
-		  "colorTemp": "на выбор теплый (3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в стене. Соединение прячется в круглой полости на задней стенке светильника. Блок питания 12 Вт (сертификат ЕАС, СЕ) находится в задней части светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "крепление на стену на 2 кронштейна по типу «замочная скважина»",
-		  "options": "Возможно комплектовать светильник пультом управления или панелью с функцией изменения яркости"
+		  "lampInclusion": "yes, LED strip is installed",
+		  "colorTemp": "warm (3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the back of the lamp. Блок питания 12 W (сертификат ЕАС, СЕ) находится в задней части светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "wall mount on 2 keyhole brackets",
+		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
 	},	
@@ -1368,33 +1368,33 @@
 		"name": "Wow",
 		"price": [
 			{
-				"desc": "Стоимость за высоту 65 СМ",
+				"desc": "cost for height 65 cm",
 				"price": "265"
 			},
 			{
-				"desc": "Стоимость за высоту 125 СМ",
+				"desc": "cost for height 125 cm",
 				"price": "360"
 			},					
 			{
-				"desc": "Стоимость за высоту 155 СМ",
+				"desc": "cost for height 155 cm",
 				"price": "390"
 			}																										
 		],
 		"type": 2,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "высота 65, 125, 155 см, глубина 9 см, ширина 9 см",
-		  "lampType": "светодиодная, LED. Сертификат ЕАС, СЕ",
-		  "power": "9 Вт (высота 65 см), 18 Вт (высота 125 см), 23 Вт (высота 155 см)",
-		  "lampEquivalent": "55 Вт, 130 Вт, 160 Вт",
+		  "material": "solid oak",
+		  "dimensions": "height 65, 125, 155 cm, depth 9 cm, width 9 cm",
+		  "lampType": "LED, LED. EAC, CE certificate",
+		  "power": "9 W (height 65 cm), 18 W (height 125 cm), 23 W (height 155 cm)",
+		  "lampEquivalent": "55 W, 130 W, 160 W",
 		  "screenWidth": "",
 		  "plinth": "G13",		  
-		  "lampInclusion": "да, 1 лампа",
-		  "colorTemp": "на выбор теплый (2700-3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в стене. Соединение прячется в круглой полости на задней стенке светильника",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "крепление на стену на 2 кронштейна по типу «замочная скважина»",
-		  "options": "Возможно комплектовать светильник пультом управления или панелью с функцией изменения яркости"
+		  "lampInclusion": "yes, 1 bulb",
+		  "colorTemp": "warm (2700 - 3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the back of the lamp",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "wall mount on 2 keyhole brackets",
+		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
 	},	
@@ -1409,18 +1409,18 @@
 		],
 		"type": 3,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "высота ~17 см, диаметр ~17 см, Либо другие по желанию заказчика",
-		  "lampType": "светодиодная, LED. Сертификат ЕАС, СЕ",
-		  "power": "7 Вт либо другая по желанию заказчика",
-		  "lampEquivalent": "50 Вт либо другая",
+		  "material": "solid oak",
+		  "dimensions": "height ~17 cm, diameter ~17 cm, Or others at the request of the customer",
+		  "lampType": "LED, LED. EAC, CE certificate",
+		  "power": "7 W or other at the request of the customer",
+		  "lampEquivalent": "50 W or other",
 		  "screenWidth": "",
-		  "plinth": "GX53 (по умолчанию), E27, E14",		  
-		  "lampInclusion": "да, если GX53. 1 лампочка. нет, если E27, E14",
-		  "colorTemp": "на выбор теплый (2700-3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Провод-подвес 2х-жильный черный (по умолчанию) / белый / прозрачный / цветной в двойной изоляции, длина до 1 метра, либо другой размер по желанию заказчика",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "деревянная чаша фиксируется к потолку через металлическую скобу. На чаше зафиксирован провод-подвес, с возможностью регулировки длины»",
+		  "plinth": "GX 53 (default), E 27, E14",		  
+		  "lampInclusion": " yes, if GX 53. 1 bulb. no if E 27 , E14",
+		  "colorTemp": "warm (2700 - 3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Suspension wire 2-core black (default) / white / transparent / colored in double insulation, length up to 1 meter, or other size at the request of the customer",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "the wooden bowl is fixed to the ceiling through a metal bracket. A wire-suspension is fixed on the bowl, with the possibility of adjusting the length»",
 		  "options": ""
 		},
 		"desc": ""
@@ -1436,18 +1436,18 @@
 		],
 		"type": 3,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "диаметр ~13 см",
-		  "lampType": "светодиодная, LED. Сертификат ЕАС, СЕ",
-		  "power": "7 Вт либо другая по желанию заказчика",
-		  "lampEquivalent": "50 Вт либо другая",
+		  "material": "solid oak",
+		  "dimensions": "diameter ~13 cm",
+		  "lampType": "LED, LED. EAC, CE certificate",
+		  "power": "7 W or other at the request of the customer",
+		  "lampEquivalent": "50 W or other",
 		  "screenWidth": "",
 		  "plinth": "E14",		  
 		  "lampInclusion": "нет",
-		  "colorTemp": "на выбор теплый (2700-3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Провод-подвес 2х-жильный черный (по умолчанию) / белый / прозрачный / цветной в двойной изоляции, длина до 1 метра, либо другой размер по желанию заказчика",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "деревянная чаша фиксируется к потолку через металлическую скобу. На чаше зафиксирован провод-подвес, с возможностью регулировки длины",
+		  "colorTemp": "warm (2700 - 3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Suspension wire 2-core black (default) / white / transparent / colored in double insulation, length up to 1 meter, or other size at the request of the customer",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "the wooden bowl is fixed to the ceiling through a metal bracket. A wire-suspension is fixed on the bowl, with the possibility of adjusting the length",
 		  "options": ""
 		},
 		"desc": ""
@@ -1463,18 +1463,18 @@
 		],
 		"type": 3,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "высота 20 см, диаметр ~14 см либо другой по желанию заказчика",
-		  "lampType": "светодиодная, LED. Сертификат ЕАС, СЕ",
-		  "power": "7 Вт либо другая по желанию заказчика",
-		  "lampEquivalent": "50 Вт либо другая",
+		  "material": "solid oak",
+		  "dimensions": "height 20 cm, diameter ~14 cm or other at the request of the customer",
+		  "lampType": "LED, LED. EAC, CE certificate",
+		  "power": "7 W or other at the request of the customer",
+		  "lampEquivalent": "50 W or other",
 		  "screenWidth": "",
 		  "plinth": "E14",		  
-		  "lampInclusion": "нет",
-		  "colorTemp": "на выбор теплый (2700-3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Провод-подвес 2х-жильный черный (по умолчанию) / белый / прозрачный / цветной в двойной изоляции, длина до 1 метра, либо другой размер по желанию заказчика",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "еревянная чаша фиксируется к потолку через металлическую скобу. На чаше зафиксирован провод-подвес, с возможностью регулировки длины",
+		  "lampInclusion": "no",
+		  "colorTemp": "warm (2700 - 3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Suspension wire 2-core black (default) / white / transparent / colored in double insulation, length up to 1 meter, or other size at the request of the customer",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "the wooden bowl is fixed to the ceiling through a metal bracket. A wire-suspension is fixed on the bowl, with the possibility of adjusting the length",
 		  "options": ""
 		},
 		"desc": ""
@@ -1490,18 +1490,18 @@
 		],
 		"type": 3,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "высота 20 см, диаметр ~14 см либо другой по желанию заказчика",
-		  "lampType": "светодиодная, LED. Сертификат ЕАС, СЕ",
-		  "power": "7 Вт либо другая по желанию заказчика",
-		  "lampEquivalent": "50 Вт либо другая",
+		  "material": "solid oak",
+		  "dimensions": "height 20 cm, diameter ~14 cm or other at the request of the customer",
+		  "lampType": "LED, LED. EAC, CE certificate",
+		  "power": "7 W or other at the request of the customer",
+		  "lampEquivalent": "50 W or other",
 		  "screenWidth": "",
-		  "plinth": "GX53 (по умолчанию), E27, Е14",		  
-		  "lampInclusion": "да, если GX53. 1 лампочка. нет, если E27, Е14",
-		  "colorTemp": "на выбор теплый (2700-3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Провод-подвес 2х-жильный черный (по умолчанию) / белый / прозрачный / цветной в двойной изоляции, длина до 1 метра, либо другой размер по желанию заказчика",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "еревянная чаша фиксируется к потолку через металлическую скобу. На чаше зафиксирован провод-подвес, с возможностью регулировки длины",
+		  "plinth": "GX53 (default), E27, Е14",		  
+		  "lampInclusion": "yes, if GX53. 1 light bulb. no if E27, E14",
+		  "colorTemp": "warm (2700 - 3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Suspension wire 2-core black (default) / white / transparent / colored in double insulation, length up to 1 meter, or other size at the request of the customer",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "the wooden bowl is fixed to the ceiling through a metal bracket. A wire-suspension is fixed on the bowl, with the possibility of adjusting the length",
 		  "options": ""
 		},
 		"desc": ""
@@ -1517,18 +1517,18 @@
 		],
 		"type": 3,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "длина 70 см, ширина 8 см либо другие по желанию заказчика",
-		  "lampType": "светодиодная, LED. Сертификат ЕАС, СЕ",
-		  "power": "5 Вт либо другая по желанию заказчика",
-		  "lampEquivalent": "40 Вт либо другая",
+		  "material": "solid oak",
+		  "dimensions": "length 70 cm, width 8 cm Or others at the request of the customer",
+		  "lampType": "LED, LED. EAC, CE certificate",
+		  "power": "5 W or other at the request of the customer",
+		  "lampEquivalent": "40 W or other",
 		  "screenWidth": "",
 		  "plinth": "GU10",		  
-		  "lampInclusion": "да, 5 Вт",
-		  "colorTemp": "на выбор теплый (2700-3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Провод-подвес 2х-жильный черный (по умолчанию) / белый / прозрачный / цветной в двойной изоляции, длина до 1 метра, либо другой размер по желанию заказчика",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "еревянная чаша фиксируется к потолку через металлическую скобу. На чаше зафиксирован провод-подвес, с возможностью регулировки длины",
+		  "lampInclusion": "yes, 5 W",
+		  "colorTemp": "warm (2700 - 3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Suspension wire 2-core black (default) / white / transparent / colored in double insulation, length up to 1 meter, or other size at the request of the customer",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "the wooden bowl is fixed to the ceiling through a metal bracket. A wire-suspension is fixed on the bowl, with the possibility of adjusting the length",
 		  "options": ""
 		},
 		"desc": ""
@@ -1538,32 +1538,32 @@
 		"name": "Spot",
 		"price": [
 			{
-				"desc": "Стоимость за высоту ДО 30 СМ",
+				"desc": "cost for height up to 30 cm",
 				"price": "200"
 			},					
 			{
-				"desc": "Стоимость за высоту 40 СМ",
+				"desc": "cost for height 40 cm",
 				"price": "215"
 			},		
 			{
-				"desc": "Стоимость за высоту 50 СМ",
+				"desc": "cost for height 50 cm",
 				"price": "225"
 			}																											
 		],
 		"type": 3,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "Высота 30-50 см либо другая по желанию заказчика,  Диаметр 7 см",
-		  "lampType": "светодиодная, LED. Сертификат ЕАС, СЕ",
-		  "power": "5 Вт либо другая по желанию заказчика",
-		  "lampEquivalent": "40 Вт либо другая",
+		  "material": "solid oak",
+		  "dimensions": "height 30-50 cm or other at the request of the customer,  diameter 7 cm",
+		  "lampType": "LED, LED. EAC, CE certificate",
+		  "power": "5 W or other at the request of the customer",
+		  "lampEquivalent": "40 W or other",
 		  "screenWidth": "",
 		  "plinth": "GU10",		  
-		  "lampInclusion": "да, 5 Вт",
-		  "colorTemp": "на выбор теплый (2700-3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Провод-подвес 2х-жильный черный (по умолчанию) / белый / прозрачный / цветной в двойной изоляции, длина до 1 метра, либо другой размер по желанию заказчика",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "еревянная чаша фиксируется к потолку через металлическую скобу. На чаше зафиксирован провод-подвес, с возможностью регулировки длины",
+		  "lampInclusion": "yes, 5 W",
+		  "colorTemp": "warm (2700 - 3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Suspension wire 2-core black (default) / white / transparent / colored in double insulation, length up to 1 meter, or other size at the request of the customer",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "the wooden bowl is fixed to the ceiling through a metal bracket. A wire-suspension is fixed on the bowl, with the possibility of adjusting the length",
 		  "options": ""
 		},
 		"desc": ""
@@ -1573,32 +1573,32 @@
 		"name": "Spot Q",
 		"price": [
 			{
-				"desc": "Стоимость за высоту ДО 30 СМ",
+				"desc": "cost for height up to 30 cm",
 				"price": "200"
 			},					
 			{
-				"desc": "Стоимость за высоту 40 СМ",
+				"desc": "cost for height 40 cm",
 				"price": "215"
 			},		
 			{
-				"desc": "Стоимость за высоту 50 СМ",
+				"desc": "cost for height 50 cm",
 				"price": "225"
 			}																												
 		],
 		"type": 3,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "Высота 30-50 см либо другая по желанию заказчика,  Диаметр 7 см",
-		  "lampType": "светодиодная, LED. Сертификат ЕАС, СЕ",
-		  "power": "5 Вт либо другая по желанию заказчика",
-		  "lampEquivalent": "40 Вт либо другая",
+		  "material": "solid oak",
+		  "dimensions": "height 30-50 cm or other at the request of the customer,  diameter 7 cm",
+		  "lampType": "LED, LED. EAC, CE certificate",
+		  "power": "5 W or other at the request of the customer",
+		  "lampEquivalent": "40 W or other",
 		  "screenWidth": "",
 		  "plinth": "GU10",		  
-		  "lampInclusion": "да, 1 лампочка 5 Вт",
-		  "colorTemp": "на выбор теплый (3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Провод-подвес 2х-жильный черный (по умолчанию) / белый / прозрачный / цветной в двойной изоляции, длина до 1 метра, либо другой размер по желанию заказчика",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "еревянная чаша фиксируется к потолку через металлическую скобу. На чаше зафиксирован провод-подвес, с возможностью регулировки длины",
+		  "lampInclusion": "yes, 1 bulb 5W",
+		  "colorTemp": "warm (3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Suspension wire 2-core black (default) / white / transparent / colored in double insulation, length up to 1 meter, or other size at the request of the customer",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "the wooden bowl is fixed to the ceiling through a metal bracket. A wire-suspension is fixed on the bowl, with the possibility of adjusting the length",
 		  "options": ""
 		},
 		"desc": ""
@@ -1608,32 +1608,32 @@
 		"name": "Spot Fusion",
 		"price": [
 			{
-				"desc": "Стоимость за высоту ДО 30 СМ",
+				"desc": "cost for height up to 30 cm",
 				"price": "220"
 			},					
 			{
-				"desc": "Стоимость за высоту 40 СМ",
+				"desc": "cost for height 40 cm",
 				"price": "235"
 			},		
 			{
-				"desc": "Стоимость за высоту 50 СМ",
+				"desc": "cost for height 50 cm",
 				"price": "250"
 			}																											
 		],
 		"type": 3,
 		"features": {
-		  "material": "массив дуба + металлический плафон",
-		  "dimensions": "Высота 30-50 см либо другая по желанию заказчика,  Диаметр 5 см",
-		  "lampType": "светодиодная, LED. Сертификат ЕАС, СЕ",
-		  "power": "5 Вт либо другая по желанию заказчика",
-		  "lampEquivalent": "40 Вт либо другая",
+		  "material": "solid oak + metal shade",
+		  "dimensions": "height 30-50 cm or other at the request of the customer,  diameter 5 cm",
+		  "lampType": "LED, LED. EAC, CE certificate",
+		  "power": "5 W or other at the request of the customer",
+		  "lampEquivalent": "40 W or other",
 		  "screenWidth": "",
 		  "plinth": "GU10",		  
-		  "lampInclusion": "да, 1 лампочка 5 Вт",
-		  "colorTemp": "на выбор теплый (2700-3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Провод-подвес 2х-жильный черный (по умолчанию) / белый / прозрачный / цветной в двойной изоляции, длина до 1 метра, либо другой размер по желанию заказчика",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "еревянная чаша фиксируется к потолку через металлическую скобу. На чаше зафиксирован провод-подвес, с возможностью регулировки длины",
+		  "lampInclusion": "yes, 1 bulb 5W",
+		  "colorTemp": "warm (2700 - 3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Suspension wire 2-core black (default) / white / transparent / colored in double insulation, length up to 1 meter, or other size at the request of the customer",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "the wooden bowl is fixed to the ceiling through a metal bracket. A wire-suspension is fixed on the bowl, with the possibility of adjusting the length",
 		  "options": ""
 		},
 		"desc": ""
@@ -1643,28 +1643,28 @@
 		"name": "Konus",
 		"price": [
 			{
-				"desc": "Стоимость за высоту ДО 30 СМ",
+				"desc": "cost for height up to 30 cm",
 				"price": "245"
 			},					
 			{
-				"desc": "Стоимость за высоту 40 СМ",
+				"desc": "cost for height 40 cm",
 				"price": "265"
 			}																												
 		],
 		"type": 3,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "Высота 30, 40 см либо другая по желанию заказчика,   Диаметр нижний 7 см",
-		  "lampType": "светодиодная, LED. Сертификат ЕАС, СЕ",
-		  "power": "5 Вт либо другая по желанию заказчика",
-		  "lampEquivalent": "30 Вт либо другая",
+		  "material": "solid oak",
+		  "dimensions": "height 30, 40 cm or other at the request of the customer, bottom diameter 7 cm",
+		  "lampType": "LED, LED. EAC, CE certificate",
+		  "power": "5 W or other at the request of the customer",
+		  "lampEquivalent": "30 W or other",
 		  "screenWidth": "",
 		  "plinth": "GU10",		  
-		  "lampInclusion": "да, 1 лампочка 5 Вт",
-		  "colorTemp": "на выбор теплый (2700-3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Провод-подвес 2х-жильный черный (по умолчанию) / белый / прозрачный / цветной в двойной изоляции, длина до 1 метра, либо другой размер по желанию заказчика",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "еревянная чаша фиксируется к потолку через металлическую скобу. На чаше зафиксирован провод-подвес, с возможностью регулировки длины",
+		  "lampInclusion": "yes, 1 bulb 5W",
+		  "colorTemp": "warm (2700 - 3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Suspension wire 2-core black (default) / white / transparent / colored in double insulation, length up to 1 meter, or other size at the request of the customer",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "the wooden bowl is fixed to the ceiling through a metal bracket. A wire-suspension is fixed on the bowl, with the possibility of adjusting the length",
 		  "options": ""
 		},
 		"desc": ""
@@ -1680,18 +1680,18 @@
 		],
 		"type": 3,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "диаметр 15 см, высота 35 см, Или другие размеры по желанию заказчика",
-		  "lampType": "светодиодная, LED. Сертификат ЕАС, СЕ",
-		  "power": "5 Вт либо другая по желанию заказчика",
-		  "lampEquivalent": "40 Вт либо другая",
+		  "material": "solid oak",
+		  "dimensions": "diameter 15 cm, height 35 cm, Or other sizes according to customer's request",
+		  "lampType": "LED, LED. EAC, CE certificate",
+		  "power": "5 W or other at the request of the customer",
+		  "lampEquivalent": "40 W or other",
 		  "screenWidth": "",
 		  "plinth": "GU10",		  
-		  "lampInclusion": "да, 1 лампочка 5 Вт",
-		  "colorTemp": "на выбор теплый (2700-3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Провод-подвес 2х-жильный черный (по умолчанию) / белый / прозрачный / цветной в двойной изоляции, длина до 1 метра, либо другой размер по желанию заказчика",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "еревянная чаша фиксируется к потолку через металлическую скобу. На чаше зафиксирован провод-подвес, с возможностью регулировки длины",
+		  "lampInclusion": "yes, 1 bulb 5W",
+		  "colorTemp": "warm (2700 - 3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Suspension wire 2-core black (default) / white / transparent / colored in double insulation, length up to 1 meter, or other size at the request of the customer",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "the wooden bowl is fixed to the ceiling through a metal bracket. A wire-suspension is fixed on the bowl, with the possibility of adjusting the length",
 		  "options": ""
 		},
 		"desc": ""
@@ -1707,18 +1707,18 @@
 		],
 		"type": 3,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "диаметр 13 см либо другой по желанию заказчика",
-		  "lampType": "светодиодная, LED. Сертификат ЕАС, СЕ",
-		  "power": "5 Вт либо другая по желанию заказчика",
-		  "lampEquivalent": "40 Вт либо другая",
+		  "material": "solid oak",
+		  "dimensions": "diameter 13 cm or other at the request of the customer",
+		  "lampType": "LED, LED. EAC, CE certificate",
+		  "power": "5 W or other at the request of the customer",
+		  "lampEquivalent": "40 W or other",
 		  "screenWidth": "",
 		  "plinth": "GU10",		  
-		  "lampInclusion": "да, 1 лампочка 5 Вт",
-		  "colorTemp": "на выбор теплый (2700-3000 К) нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Провод-подвес 2х-жильный черный (по умолчанию) / белый / прозрачный / цветной в двойной изоляции, длина до 1 метра, либо другой размер по желанию заказчика",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "еревянная чаша фиксируется к потолку через металлическую скобу. На чаше зафиксирован провод-подвес, с возможностью регулировки длины",
+		  "lampInclusion": "yes, 1 bulb 5W",
+		  "colorTemp": "warm (2700 - 3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Suspension wire 2-core black (default) / white / transparent / colored in double insulation, length up to 1 meter, or other size at the request of the customer",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "the wooden bowl is fixed to the ceiling through a metal bracket. A wire-suspension is fixed on the bowl, with the possibility of adjusting the length",
 		  "options": ""
 		},
 		"desc": ""
@@ -1734,18 +1734,18 @@
 		],
 		"type": 3,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "Высота 15 см либо другая по желанию заказчика, Ширина 12 см, Глубина 12 см",
-		  "lampType": "светодиодная, LED. Сертификат ЕАС, СЕ",
-		  "power": "до 10 Вт",
-		  "lampEquivalent": "80 Вт",
+		  "material": "solid oak",
+		  "dimensions": "height 15 cm or other at the request of the customer, width 12 cm, depth 12 cm",
+		  "lampType": "LED, LED. EAC, CE certificate",
+		  "power": "до 10 W",
+		  "lampEquivalent": "80 W",
 		  "screenWidth": "",
 		  "plinth": "E14",		  
-		  "lampInclusion": "нет",
+		  "lampInclusion": "no",
 		  "colorTemp": "",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в потолке. Соединение прячется в круглой полости на задней стенке светильника",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "фиксируется к потолку 2мя шурупами напрямую или через дюбель с внутренней стороны",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the ceiling. The connection is hidden in a round cavity on the back of the lamp",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "fixed to the ceiling with 2 screws directly or through a dowel from the inside",
 		  "options": ""
 		},
 		"desc": ""
@@ -1761,18 +1761,18 @@
 		],
 		"type": 3,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "высота ~21 см, диаметр ~14 см",
-		  "lampType": "светодиодная, LED. Сертификат ЕАС, СЕ",
-		  "power": "5 Вт либо другая по желанию заказчика",
-		  "lampEquivalent": "40 Вт либо другая",
+		  "material": "solid oak",
+		  "dimensions": "height ~21 cm, diameter ~14 cm",
+		  "lampType": "LED, LED. EAC, CE certificate",
+		  "power": "5 W or other at the request of the customer",
+		  "lampEquivalent": "40 W or other",
 		  "screenWidth": "",
 		  "plinth": "GU10",		  
-		  "lampInclusion": "да, 1 лампочка 5 Вт",
-		  "colorTemp": "теплый (2700-3000 К), нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Провод-подвес 2х-жильный черный (по умолчанию) / белый / прозрачный / цветной в двойной изоляции, длина до 1 метра, либо другой размер по желанию заказчика",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "деревянная чаша фиксируется к потолку через металлическую скобу. На чаше зафиксирован провод-подвес, с возможностью регулировки длины",
+		  "lampInclusion": "yes, 1 bulb 5W",
+		  "colorTemp": "warm (2700 - 3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Suspension wire 2-core black (default) / white / transparent / colored in double insulation, length up to 1 meter, or other size at the request of the customer",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "the wooden bowl is fixed to the ceiling through a metal bracket. A wire-suspension is fixed on the bowl, with the possibility of adjusting the length",
 		  "options": ""
 		},
 		"desc": ""
@@ -1788,18 +1788,18 @@
 		],
 		"type": 3,
 		"features": {
-		  "material": "массив дуба и клёна",
-		  "dimensions": "высота ~15 см, диаметр ~12 см , Либо другие по желанию заказчика",
-		  "lampType": "светодиодная, LED. Сертификат ЕАС, СЕ",
-		  "power": "7 Вт либо другая по желанию заказчика",
-		  "lampEquivalent": "50 Вт либо другая",
+		  "material": "solid oak and maple",
+		  "dimensions": "height ~15 cm, diameter ~12 cm , Or others at the request of the customer",
+		  "lampType": "LED, LED. EAC, CE certificate",
+		  "power": "7 W or other at the request of the customer",
+		  "lampEquivalent": "50 W or other",
 		  "screenWidth": "",
 		  "plinth": "GX53",		  
-		  "lampInclusion": "да, 1 лампочка 5 Вт",
-		  "colorTemp": "теплый (2700-3000 К), нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Провод-подвес 2х-жильный черный (по умолчанию) / белый / прозрачный / цветной в двойной изоляции, длина до 1 метра, либо другой размер по желанию заказчика",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "деревянная чаша фиксируется к потолку через металлическую скобу. На чаше зафиксирован провод-подвес, с возможностью регулировки длины",
+		  "lampInclusion": "yes, 1 bulb 5W",
+		  "colorTemp": "warm (2700 - 3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Suspension wire 2-core black (default) / white / transparent / colored in double insulation, length up to 1 meter, or other size at the request of the customer",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "the wooden bowl is fixed to the ceiling through a metal bracket. A wire-suspension is fixed on the bowl, with the possibility of adjusting the length",
 		  "options": ""
 		},
 		"desc": ""
@@ -1809,32 +1809,32 @@
 		"name": "Spot Zebra",
 		"price": [
 			{
-				"desc": "Стоимость за высоту ДО 30 СМ",
+				"desc": "cost for height up to 30 cm",
 				"price": "210"
 			},			
 			{
-				"desc": "Стоимость за высоту 40 СМ",
+				"desc": "cost for height 40 cm",
 				"price": "220"
 			},	
 			{
-				"desc": "Стоимость за высоту 50 СМ",
+				"desc": "cost for height 50 cm",
 				"price": "235"
 			}																																				
 		],
 		"type": 3,
 		"features": {
-		  "material": "массив дуба и клёна",
-		  "dimensions": "Высота 30-50 см либо другая по желанию заказчика,  Диаметр 7 см",
-		  "lampType": "светодиодная, LED. Сертификат ЕАС, СЕ",
-		  "power": "5 Вт либо другая по желанию заказчика",
-		  "lampEquivalent": "40 Вт либо другая",
+		  "material": "solid oak and maple",
+		  "dimensions": "height 30-50 cm or other at the request of the customer,  diameter 7 cm",
+		  "lampType": "LED, LED. EAC, CE certificate",
+		  "power": "5 W or other at the request of the customer",
+		  "lampEquivalent": "40 W or other",
 		  "screenWidth": "",
 		  "plinth": "GU10",		  
-		  "lampInclusion": "да, 1 лампочка 5 Вт",
-		  "colorTemp": "теплый (2700-3000 К), нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Провод-подвес 2х-жильный черный (по умолчанию) / белый / прозрачный / цветной в двойной изоляции, длина до 1 метра, либо другой размер по желанию заказчика",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "деревянная чаша фиксируется к потолку через металлическую скобу. На чаше зафиксирован провод-подвес, с возможностью регулировки длины",
+		  "lampInclusion": "yes, 1 bulb 5W",
+		  "colorTemp": "warm (2700 - 3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Suspension wire 2-core black (default) / white / transparent / colored in double insulation, length up to 1 meter, or other size at the request of the customer",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "the wooden bowl is fixed to the ceiling through a metal bracket. A wire-suspension is fixed on the bowl, with the possibility of adjusting the length",
 		  "options": ""
 		},
 		"desc": ""
@@ -1844,36 +1844,36 @@
 		"name": "Spot Fix-L",
 		"price": [
 			{
-				"desc": "Стоимость за высоту 7 СМ",
+				"desc": "cost for height 7 cm",
 				"price": "85"
 			},			
 			{
-				"desc": "Стоимость за высоту 10 СМ",
+				"desc": "cost for height 10 cm",
 				"price": "90"
 			},	
 			{
-				"desc": "Стоимость за высоту 15 СМ",
+				"desc": "cost for height 15 cm",
 				"price": "100"
 			},				
 			{
-				"desc": "Стоимость за высоту 20 СМ",
+				"desc": "cost for height 20 cm",
 				"price": "110"
 			}																																					
 		],
 		"type": 3,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "Высота 7-20 см, Длина 7 см, Ширина 7 см, Либо другие размеры по желанию заказчика",
-		  "lampType": "светодиодная, LED. Сертификат ЕАС, СЕ",
-		  "power": "5 Вт либо другая по желанию заказчика",
-		  "lampEquivalent": "40 Вт либо другая",
+		  "material": "solid oak",
+		  "dimensions": "height 7-20 cm, length 7 cm, width 7 cm, Or other sizes at the request of the customer",
+		  "lampType": "LED, LED. EAC, CE certificate",
+		  "power": "5 W or other at the request of the customer",
+		  "lampEquivalent": "40 W or other",
 		  "screenWidth": "",
 		  "plinth": "GU10",		  
-		  "lampInclusion": "да, 1 лампочка 5 Вт",
-		  "colorTemp": "теплый (2700-3000 К), нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в потолке",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "крепление на потолок – металлическая П-образная скоба крепится на потолок 2мя шурупами напрямую или через дюбель. Светильник фиксируется на эту скобу двумя винтиками (скоба и винтики в комплекте)",
+		  "lampInclusion": "yes, 1 bulb 5W",
+		  "colorTemp": "warm (2700 - 3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connecting to the wire in the ceiling",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "ceiling mount - a metal U-shaped bracket is fixed to the ceiling with 2 screws directly or through a dowel. The luminaire is fixed to this bracket with two screws (bracket and screws included)",
 		  "options": ""
 		},
 		"desc": ""
@@ -1889,18 +1889,18 @@
 		],
 		"type": 3,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "Диаметр / длина / ширина 14 см, Высота 4,5 см, Или другие размеры по желанию заказчика",
-		  "lampType": "светодиодная, LED. Сертификат ЕАС, СЕ",
-		  "power": "5 Вт либо другая по желанию заказчика",
-		  "lampEquivalent": "50 Вт либо другая",
+		  "material": "solid oak",
+		  "dimensions": "diameter / length / width 14 cm, height 4,5 cm, Or other sizes according to customer's request",
+		  "lampType": "LED, LED. EAC, CE certificate",
+		  "power": "5 W or other at the request of the customer",
+		  "lampEquivalent": "50 W or other",
 		  "screenWidth": "",
 		  "plinth": "GX53",		  
-		  "lampInclusion": "да, 1 лампочка 7 Вт",
-		  "colorTemp": "теплый (2700-3000 К), нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в потолке. Соединение прячется в круглой полости на задней стенке светильника",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "фиксируется к потолку 2мя потайными шурупами напрямую или через дюбель",
+		  "lampInclusion": "yes, 1 bulb 7W",
+		  "colorTemp": "warm (2700 - 3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the ceiling. The connection is hidden in a round cavity on the back of the lamp",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "fixed to the ceiling with 2 countersunk screws directly or through a dowel",
 		  "options": ""
 		},
 		"desc": ""
@@ -1916,18 +1916,18 @@
 		],
 		"type": 3,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "длина / ширина / диаметр 12 см, Либо другие по желанию заказчика",
-		  "lampType": "светодиодная, LED. Сертификат ЕАС, СЕ",
-		  "power": "5 Вт либо другая по желанию заказчика",
-		  "lampEquivalent": "40 Вт либо другая",
+		  "material": "solid oak",
+		  "dimensions": "length / width / diameter 12 cm, Or others at the request of the customer",
+		  "lampType": "LED, LED. EAC, CE certificate",
+		  "power": "5 W or other at the request of the customer",
+		  "lampEquivalent": "40 W or other",
 		  "screenWidth": "",
 		  "plinth": "GU10",		  
-		  "lampInclusion": "да, 1 лампочка 5 Вт",
-		  "colorTemp": "теплый (2700-3000 К), нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в потолке",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "Крепление на потолок – поворотный способ",
+		  "lampInclusion": "yes, 1 bulb 5W",
+		  "colorTemp": "warm (2700 - 3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connecting to the wire in the ceiling",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "Ceiling mount - swivel method",
 		  "options": ""
 		},
 		"desc": ""
@@ -1937,32 +1937,32 @@
 		"name": "Eclipse Dry",
 		"price": [
 			{
-				"desc": "Стоимость за диаметр 22 СМ",
+				"desc": "cost for diameter 22 cm",
 				"price": "395"
 			},				
 			{
-				"desc": "Стоимость за диаметр 28 СМ",
+				"desc": "cost for diameter 28 cm",
 				"price": "410"
 			},	
 			{
-				"desc": "Стоимость за диаметр 40 СМ",
+				"desc": "cost for diameter 40 cm",
 				"price": "485"
 			}																																											
 		],
 		"type": 4,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "Диаметр 22 см, 28 см, 40 см либо другой по желанию заказчика",
-		  "lampType": "светодиодная лента, LED. Сертификат ЕАС, СЕ. Лента крепится на встроенную алюминиевую пластину",
-		  "power": "5 Вт",
-		  "lampEquivalent": "40 Вт",
-		  "screenWidth": "16 мм",
+		  "material": "solid oak",
+		  "dimensions": "diameter 22 cm, 28 cm, 40 cm or other at the request of the customer",
+		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is mounted on a built-in aluminum plate",
+		  "power": "5 W",
+		  "lampEquivalent": "40 W",
+		  "screenWidth": "16 mm",
 		  "plinth": "",		  
-		  "lampInclusion": "да, установлена светодиодная лента",
-		  "colorTemp": "теплый (3000 К), нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в стене. Соединение прячется в круглой полости на задней стенке светильника. Блок питания 12 Вт (сертификат ЕАС, СЕ) находится в задней части светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "крепление на стену на 2 кронштейна по типу «замочная скважина»",
+		  "lampInclusion": "yes, LED strip is installed",
+		  "colorTemp": "warm (3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the back of the lamp. Блок питания 12 W (сертификат ЕАС, СЕ) находится в задней части светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "wall mount on 2 keyhole brackets",
 		  "options": ""
 		},
 		"desc": ""
@@ -1972,32 +1972,32 @@
 		"name": "Eclipse Stone",
 		"price": [
 			{
-				"desc": "Стоимость за диаметр 22 СМ",
+				"desc": "cost for diameter 22 cm",
 				"price": "395"
 			},				
 			{
-				"desc": "Стоимость за диаметр 28 СМ",
+				"desc": "cost for diameter 28 cm",
 				"price": "410"
 			},	
 			{
-				"desc": "Стоимость за диаметр 40 СМ",
+				"desc": "cost for diameter 40 cm",
 				"price": "485"
 			}																																											
 		],
 		"type": 4,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "Диаметр 22 см, 28 см, 40 см либо другой по желанию заказчика",
-		  "lampType": "светодиодная лента, LED. Сертификат ЕАС, СЕ. Лента крепится на встроенную алюминиевую пластину",
-		  "power": "5 Вт",
-		  "lampEquivalent": "40 Вт",
-		  "screenWidth": "16 мм",
+		  "material": "solid oak",
+		  "dimensions": "diameter 22 cm, 28 cm, 40 cm or other at the request of the customer",
+		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is mounted on a built-in aluminum plate",
+		  "power": "5 W",
+		  "lampEquivalent": "40 W",
+		  "screenWidth": "16 mm",
 		  "plinth": "",		  
-		  "lampInclusion": "да, установлена светодиодная лента",
-		  "colorTemp": "теплый (3000 К), нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в стене. Соединение прячется в круглой полости на задней стенке светильника. Блок питания 12 Вт (сертификат ЕАС, СЕ) находится в задней части светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "крепление на стену на 2 кронштейна по типу «замочная скважина»",
+		  "lampInclusion": "yes, LED strip is installed",
+		  "colorTemp": "warm (3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the back of the lamp. Блок питания 12 W (сертификат ЕАС, СЕ) находится в задней части светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "wall mount on 2 keyhole brackets",
 		  "options": ""
 		},
 		"desc": ""
@@ -2007,32 +2007,32 @@
 		"name": "Eclipse Hills",
 		"price": [
 			{
-				"desc": "Стоимость за диаметр 22 СМ",
+				"desc": "cost for diameter 22 cm",
 				"price": "395"
 			},				
 			{
-				"desc": "Стоимость за диаметр 28 СМ",
+				"desc": "cost for diameter 28 cm",
 				"price": "410"
 			},	
 			{
-				"desc": "Стоимость за диаметр 40 СМ",
+				"desc": "cost for diameter 40 cm",
 				"price": "485"
 			}																																											
 		],
 		"type": 4,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "Диаметр 22 см, 28 см, 40 см либо другой по желанию заказчика",
-		  "lampType": "светодиодная лента, LED. Сертификат ЕАС, СЕ. Лента крепится на встроенную алюминиевую пластину",
-		  "power": "5 Вт",
-		  "lampEquivalent": "40 Вт",
-		  "screenWidth": "16 мм",
+		  "material": "solid oak",
+		  "dimensions": "diameter 22 cm, 28 cm, 40 cm or other at the request of the customer",
+		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is mounted on a built-in aluminum plate",
+		  "power": "5 W",
+		  "lampEquivalent": "40 W",
+		  "screenWidth": "16 mm",
 		  "plinth": "",		  
-		  "lampInclusion": "да, установлена светодиодная лента",
-		  "colorTemp": "теплый (3000 К), нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в стене. Соединение прячется в круглой полости на задней стенке светильника. Блок питания 12 Вт (сертификат ЕАС, СЕ) находится в задней части светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "крепление на стену на 2 кронштейна по типу «замочная скважина»",
+		  "lampInclusion": "yes, LED strip is installed",
+		  "colorTemp": "warm (3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the back of the lamp. Блок питания 12 W (сертификат ЕАС, СЕ) находится в задней части светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "wall mount on 2 keyhole brackets",
 		  "options": ""
 		},
 		"desc": ""
@@ -2042,32 +2042,32 @@
 		"name": "Eclipse Wispa",
 		"price": [
 			{
-				"desc": "Стоимость за диаметр 22 СМ",
+				"desc": "cost for diameter 22 cm",
 				"price": "420"
 			},				
 			{
-				"desc": "Стоимость за диаметр 28 СМ",
+				"desc": "cost for diameter 28 cm",
 				"price": "440"
 			},	
 			{
-				"desc": "Стоимость за диаметр 40 СМ",
+				"desc": "cost for diameter 40 cm",
 				"price": "510"
 			}																																										
 		],
 		"type": 4,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "Диаметр 22 см, 28 см, 40 см либо другой по желанию заказчика",
-		  "lampType": "светодиодная лента, LED. Сертификат ЕАС, СЕ. Лента крепится на встроенную алюминиевую пластину",
-		  "power": "5 Вт",
-		  "lampEquivalent": "40 Вт",
-		  "screenWidth": "16 мм",
+		  "material": "solid oak",
+		  "dimensions": "diameter 22 cm, 28 cm, 40 cm or other at the request of the customer",
+		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is mounted on a built-in aluminum plate",
+		  "power": "5 W",
+		  "lampEquivalent": "40 W",
+		  "screenWidth": "16 mm",
 		  "plinth": "",		  
-		  "lampInclusion": "да, установлена светодиодная лента",
-		  "colorTemp": "теплый (3000 К), нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в стене. Соединение прячется в круглой полости на задней стенке светильника. Блок питания 12 Вт (сертификат ЕАС, СЕ) находится в задней части светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "крепление на стену на 2 кронштейна по типу «замочная скважина»",
+		  "lampInclusion": "yes, LED strip is installed",
+		  "colorTemp": "warm (3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the back of the lamp. Блок питания 12 W (сертификат ЕАС, СЕ) находится в задней части светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "wall mount on 2 keyhole brackets",
 		  "options": ""
 		},
 		"desc": ""
@@ -2077,48 +2077,48 @@
 		"name": "Model 1",
 		"price": [
 			{
-				"desc": "За диаметр 45 СМ",
+				"desc": "cost for diameter 45 cm",
 				"price": "510"
 			},				
 			{
-				"desc": "За диаметр 57 СМ",
+				"desc": "cost for diameter 57 cm",
 				"price": "540"
 			},	
 			{
-				"desc": "За диаметр 65 СМ",
+				"desc": "cost for diameter 65 cm",
 				"price": "600"
 			},					
 			{
-				"desc": "За диаметр 77 СМ",
+				"desc": "cost for diameter 77 cm",
 				"price": "615"
 			},				
 			{
-				"desc": "За диаметр 85 СМ",
+				"desc": "cost for diameter 85 cm",
 				"price": "665"
 			},	
 			{
-				"desc": "За диаметр 94 СМ",
+				"desc": "cost for diameter 94 cm",
 				"price": "715"
 			},		
 			{
-				"desc": "За диаметр 114 СМ",
+				"desc": "cost for diameter 114 cm",
 				"price": "765"
 			}																																												
 		],
 		"type": 5,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "глубина 65 мм, диаметр на выбор",
-		  "lampType": "светодиодная лента, LED. Сертификат ЕАС, СЕ. Лента крепится на встроенный алюминиевый профиль",
-		  "power": "5 Вт либо другая по желанию заказчика",
-		  "lampEquivalent": "40 Вт либо другая",
-		  "screenWidth": "16 мм",
+		  "material": "solid oak",
+		  "dimensions": "depth 65 mm, diameter to choose from",
+		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum profile",
+		  "power": "5 W or other at the request of the customer",
+		  "lampEquivalent": "40 W or other",
+		  "screenWidth": "16 mm",
 		  "plinth": "",		  
-		  "lampInclusion": "да, установлена светодиодная лента",
-		  "colorTemp": "теплый (3000 К), нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в стене через клеммник (в комплекте). Блок питания 18 Вт (сертификат ЕАС, СЕ) находится на задней стороне зеркала. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "монтажная пластина для зеркал 2 шт, находится на задней стороне зеркала",
+		  "lampInclusion": "yes, LED strip is installed",
+		  "colorTemp": "warm (3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall through the terminal block (included). The 18W power supply (EAC, CE approved) is located on the back of the mirror. The power of the block is calculated based on the power of the tape plus 20% in order to favorably load the block. All connections are soldered",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "mirror mounting plate 2 pcs, located on the back side of the mirror",
 		  "options": ""
 		},
 		"desc": ""
@@ -2128,79 +2128,79 @@
 		"name": "Model 2",
 		"price": [
 			{
-				"desc": "За диаметр 92*70 СМ",
+				"desc": "cost for diameter 92*70 cm",
 				"price": "575"
 			},				
 			{
-				"desc": "За диаметр 127*87 СМ",
+				"desc": "cost for diameter 127*87 cm",
 				"price": "660"
 			}																																												
 		],
 		"type": 5,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "Размеры: глубина 45-65 мм, диаметр на выбор",
-		  "lampType": "светодиодная лента, LED. Сертификат ЕАС, СЕ. Лента крепится на встроенный алюминиевый профиль",
-		  "power": "5 Вт либо другая по желанию заказчика",
-		  "lampEquivalent": "40 Вт либо другая",
-		  "screenWidth": "16 мм",
+		  "material": "solid oak",
+		  "dimensions": "Размеры: depth 45-65 mm, diameter to choose from",
+		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum profile",
+		  "power": "5 W or other at the request of the customer",
+		  "lampEquivalent": "40 W or other",
+		  "screenWidth": "16 mm",
 		  "plinth": "",		  
-		  "lampInclusion": "да, установлена светодиодная лента",
-		  "colorTemp": "теплый (3000 К), нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в стене через клеммник (в комплекте). Блок питания 18 Вт либо мощнее (сертификат ЕАС, СЕ) находится на задней стороне зеркала. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "монтажная пластина для зеркал 2 шт, находится на задней стороне зеркала",
-		  "options": "Опционально интегрируем подсветку"
+		  "lampInclusion": "yes, LED strip is installed",
+		  "colorTemp": "warm (3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall through the terminal block (included). Power supply 18W or higher (EAC, CE certified) is located on the back of the mirror. The power of the block is calculated based on the power of the tape plus 20% in order to favorably load the block. All connections are soldered",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "mirror mounting plate 2 pcs, located on the back side of the mirror",
+		  "options": "Optionally integrate illumination"
 		},
 		"desc": ""
 	},	
 
 	"63": {
-		"name": "Model 2",
+		"name": "Model 3",
 		"price": [
 			{
-				"desc": "За диаметр 45 СМ",
+				"desc": "cost for diameter 45 cm",
 				"price": "650"
 			},				
 			{
-				"desc": "За диаметр 57 СМ",
+				"desc": "cost for diameter 57 cm",
 				"price": "680"
 			},									{
-				"desc": "За диаметр 65 СМ",
+				"desc": "cost for diameter 65 cm",
 				"price": "715"
 			},				
 			{
-				"desc": "За диаметр 77 СМ",
+				"desc": "cost for diameter 77 cm",
 				"price": "790"
 			},	
 			{
-				"desc": "За диаметр 85 СМ",
+				"desc": "cost for diameter 85 cm",
 				"price": "835"
 			},				
 			{
-				"desc": "За диаметр 94 СМ",
+				"desc": "cost for diameter 94 cm",
 				"price": "880"
 			},						
 			{
-				"desc": "За диаметр 114 СМ",
+				"desc": "cost for diameter 114 cm",
 				"price": "995"
 			}																																									
 		],
 		"type": 5,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "глубина 65 мм, диаметр на выбор",
+		  "material": "solid oak",
+		  "dimensions": "depth 65 mm, diameter to choose from",
 		  "lampType": "светодиодная лента, LED. Сертификат ЕАС, СЕ. Лента крепится на алюминиевую ленту",
-		  "power": "12 Вт/м либо другая по желанию заказчика",
-		  "lampEquivalent": "90 Вт и более",
-		  "screenWidth": "40 мм",
+		  "power": "12 W/м or other at the request of the customer",
+		  "lampEquivalent": "90 W and more",
+		  "screenWidth": "40 mm",
 		  "plinth": "",		  
-		  "lampInclusion": "да, установлена светодиодная лента",
-		  "colorTemp": "теплый (3000 К), нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в стене через клеммник (в комплекте). Блок питания 18 Вт либо мощнее (сертификат ЕАС, СЕ) находится на задней стороне зеркала. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "монтажная пластина для зеркал 2 шт, находится на задней стороне зеркала",
-		  "options": "Опционально интегрируем подсветку"
+		  "lampInclusion": "yes, LED strip is installed",
+		  "colorTemp": "warm (3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall through the terminal block (included). Power supply 18W or higher (EAC, CE certified) is located on the back of the mirror. The power of the block is calculated based on the power of the tape plus 20% in order to favorably load the block. All connections are soldered",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "mirror mounting plate 2 pcs, located on the back side of the mirror",
+		  "options": "Optionally integrate illumination"
 		},
 		"desc": ""
 	},	
@@ -2209,44 +2209,44 @@
 		"name": "Model 4",
 		"price": [
 			{
-				"desc": "За шир/выс 70*70 СМ",
+				"desc": "cost for width/length 70*70 cm",
 				"price": "640"
 			},				
 			{
-				"desc": "За шир/выс 80*80 СМ",
+				"desc": "cost for width/length 80*80 cm",
 				"price": "680"
 			},									{
-				"desc": "За шир/выс 90*90 СМ",
+				"desc": "cost for width/length 90*90 cm",
 				"price": "715"
 			},				
 			{
-				"desc": "За шир/выс 100*100",
+				"desc": "cost for width/length 100*100 cm",
 				"price": "755"
 			},	
 			{
-				"desc": "За шир/выс 80*60 СМ",
+				"desc": "cost for width/length 80*60 cm",
 				"price": "640"
 			},				
 			{
-				"desc": "За шир/выс 120*100 ",
+				"desc": "cost for width/length 120*100 cm",
 				"price": "795"
 			}																																												
 		],
 		"type": 5,
 		"features": {
-		  "material": "массив дуба",
-		  "dimensions": "Ширина и высота любая, глубина и ширина рамки 45 мм, либо по желанию клиента, ",
-		  "lampType": "светодиодная лента, LED. Сертификат ЕАС, СЕ. Лента крепится на встроенный алюминиевый профиль",
-		  "power": "от 10 Вт либо другая по желанию клиента",
-		  "lampEquivalent": "от 80 Вт либо другая",
-		  "screenWidth": "16 мм",
+		  "material": "solid oak",
+		  "dimensions": "Any width and height, depth and width of the frame 45 mm, or at the request of the client",
+		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum profile",
+		  "power": "от 10 W or other at the request of the client",
+		  "lampEquivalent": "от 80 W or other",
+		  "screenWidth": "16 mm",
 		  "plinth": "",		  
-		  "lampInclusion": "да, установлена светодиодная лента",
-		  "colorTemp": "теплый (3000 К), нейтральный (4000 К)",
-		  "powerSupply": "от сети 100-240 Вольт. Подключение к проводу в стене через клеммник (в комплекте). Блок питания от 18 Вт (сертификат ЕАС, СЕ) находится на задней стороне зеркала. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны",
-		  "coating": "покраска Биомаслом Sigmar (Италия). Выбор цвета согласно пожеланию заказчика. Возможен подбор цвета под интерьер заказчика по RAL",
-		  "fastening": "монтажная пластина для зеркал 2 шт, находится на задней стороне зеркала",
-		  "options": "Опционально интегрируем подсветку"
+		  "lampInclusion": "yes, LED strip is installed",
+		  "colorTemp": "warm (3000 K), neutral (4000 K)",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall through the terminal block (included). The power supply from 18 W (certificate EAC, CE) is located on the rear side of the mirror. The power of the block is calculated based on the power of the tape plus 20% in order to favorably load the block. All connections are soldered",
+		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
+		  "fastening": "mirror mounting plate 2 pcs, located on the back side of the mirror",
+		  "options": "Optionally integrate illumination"
 		},
 		"desc": ""
 	}
