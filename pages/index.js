@@ -13,6 +13,7 @@ import { useState, useEffect, useContext } from 'react'
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import ToggleButton from '@mui/material/ToggleButton';
 import LocaleContext from '../lib/context/locale.js'
+import currencyFormat from '../lib/modules/currencyFormat.js'
 
 
 const carouselHeight = 600;
@@ -151,7 +152,7 @@ export default function Home({ items, localizedText }) {
   )
 }
 
-function ProductItem({ itemID, name, price, type}) {
+function ProductItem({ itemID, name, price, type, locale}) {
   const productItem = css`
     box-shadow: 0px 0px 4px -1px;
     width: 320px;
@@ -228,7 +229,7 @@ function ProductItem({ itemID, name, price, type}) {
               {name}
             </div>
             <div className={itemPrice}>
-              {price}
+              {currencyFormat(price, locale.language)}
             </div>
           </div>
         </div>  
@@ -350,6 +351,7 @@ function Catalog ({ items, localizedText }) {
             name={item.name} 
             price={`${Math.round(item.price[0].price * locale.localeState.rate)} ${locale.localeState.currency}`} 
             key={i} 
+            locale={locale.localeState}
           /> ))}
         </div>
       </div>     

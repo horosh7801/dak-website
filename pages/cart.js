@@ -12,6 +12,7 @@ import Link from 'next/link'
 import CheckoutForm from '../lib/components/CheckoutForm.js'
 import OrderNotification from '../lib/components/OrderNotification.js'
 import roboto from '../lib/modules/variableFont.js'
+import currencyFormat from '../lib/modules/currencyFormat.js'
 
 const leftSection = css`
 	display: flex;
@@ -169,7 +170,7 @@ export default function ShoppingCart({ localizedText }) {
 						gap: 10px;
 					`}>
 						{shoppingCart.shoppingCartState.map((item, index) => (
-							<Paper key={index}>
+							<Paper sx={{height: '221px'}} key={index}>
 								<div className={itemRow}>
 									<div className={css`
 										display: flex;
@@ -231,7 +232,7 @@ export default function ShoppingCart({ localizedText }) {
 											{`${item.amount} ${localizedText.units.quantity}.`}
 										</div>										
 										<div className={cost}>
-											{`${Math.round(item.price * locale.localeState.rate) *  item.amount } ${locale.localeState.currency}`}
+											{currencyFormat(Math.round(item.price * locale.localeState.rate) *  item.amount, locale.localeState.language)}
 										</div>		
 									</div>
 								</div>	
@@ -255,7 +256,7 @@ export default function ShoppingCart({ localizedText }) {
 								<CheckoutForm 
 									totalCost={totalCostState} 
 									shoppingCart={shoppingCart}
-									currency={locale.localeState.currency}
+									locale={locale.localeState}
 									localizedText={localizedText.checkoutPanel}
 									onSuccess={() => {
 										setDialogState('success')

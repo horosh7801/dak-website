@@ -25,6 +25,7 @@ import CheckoutForm from '../../../lib/components/CheckoutForm.js'
 import OrderNotification from '../../../lib/components/OrderNotification.js'
 import { getCookie, hasCookie } from 'cookies-next'
 import roboto from '../../../lib/modules/variableFont.js'
+import currencyFormat from '../../../lib/modules/currencyFormat.js'
 
 
 const itemPage = css`
@@ -120,9 +121,6 @@ const tableTitle = css`
 
 const shortWHRatio = 1024 / 683
 const longWHRatio = 513 / 768
-
-const prices = {120: 22650, 140: 23250, 160: 24900, 180: 25500, 200: 26850}
-const power = {120: 28, 140: 33, 160: 36, 180: 40, 200: 45}
 
 export default function Item({ id, item, itemType, localizedText, imgCount }) {
 
@@ -251,9 +249,9 @@ export default function Item({ id, item, itemType, localizedText, imgCount }) {
 								</div>
 								<CheckoutForm 
 									totalCost={item.price[priceState].price * amountState} 
-									currency={locale.localeState.currency}
 									localizedText={localizedText.checkoutPanel}
 									items={[{name: item.name, amount: amountState}]}
+									locale={locale.localeState}
 									onSuccess={() => {
 										setDialogState('success')
 										setCheckoutState(false)
@@ -311,10 +309,7 @@ export default function Item({ id, item, itemType, localizedText, imgCount }) {
 																	column-gap: 5px;
 																`}>
 																	<div>
-																		{Math.round(value.price * locale.localeState.rate)}
-																	</div>	
-																	<div>
-																		{locale.localeState.currency}
+																		{currencyFormat(Math.round(value.price * locale.localeState.rate), locale.localeState.language)}
 																	</div>	
 																</div>
 															</div>
@@ -364,7 +359,7 @@ export default function Item({ id, item, itemType, localizedText, imgCount }) {
 										</div>
 									</div>	
 									<div className={price}>
-										{`${(Math.round(item.price[priceState].price * locale.localeState.rate) * amountState)} ${locale.localeState.currency}`}
+										{currencyFormat(Math.round(item.price[priceState].price * locale.localeState.rate) * amountState, locale.localeState.language)}
 									</div>
 									<div className={actionButtonSet}>
 									{/* add to cart button */}
