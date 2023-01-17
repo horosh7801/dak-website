@@ -613,27 +613,27 @@
 		"name": "Light Box",
 		"price": [
 			{
-				"desc": "cost for 15х15 cm, 6 w",
+				"desc": "cost for 15x15 cm, 6 w",
 				"price": "250"
 			},
 			{
-				"desc": "cost for 20х20 cm, 12 w",
+				"desc": "cost for 20x20 cm, 12 w",
 				"price": "280"
 			},
 			{
-				"desc": "cost for 30х30 cm, 33 w",
+				"desc": "cost for 30x30 cm, 33 w",
 				"price": "360"
 			},							
 			{
-				"desc": "cost for 40х40 cm, 57 w",
+				"desc": "cost for 40x40 cm, 57 w",
 				"price": "450"
 			},				
 			{
-				"desc": "cost for 50х50 cm, 90 w",
+				"desc": "cost for 50x50 cm, 90 w",
 				"price": "560"
 			},							
 			{
-				"desc": "cost for 15х40 cm, 20 w",
+				"desc": "cost for 15x40 cm, 20 w",
 				"price": "340"
 			}																
 		],
@@ -642,7 +642,7 @@
 		  "material": "solid oak",
 		  "dimensions": "length 15 - 80 cm, width 15 - 80 cm, height 8-9 cm",
 		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum strip",
-		  "power": "от 8 W",
+		  "power": "up to 8 W",
 		  "lampEquivalent": "80 W",
 		  "screenWidth": "",
 		  "plinth": "",		  
@@ -672,7 +672,7 @@
 		  "power": "up to 100 W",
 		  "lampEquivalent": "up to 600 W",
 		  "screenWidth": "",
-		  "plinth": "Е27, Е14",		  
+		  "plinth": "E27, E14",		  
 		  "lampInclusion": "no",
 		  "colorTemp": "warm (3000 K), neutral (4000 K)",
 		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the ceiling. The connection is closed by a ceiling wooden bowl",
@@ -696,7 +696,7 @@
 		  "material": "solid oak",
 		  "dimensions": "height 165 cm, depth ~5 cm, thickness ~5 cm",
 		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum profile",
-		  "power": "10 W/м or other at the request of the customer",
+		  "power": "10 W/m or other at the request of the customer",
 		  "lampEquivalent": "60 W or other",
 		  "screenWidth": "16 mm",
 		  "plinth": "",		  
@@ -723,7 +723,7 @@
 		  "material": "solid oak",
 		  "dimensions": "height 175 cm, depth ~2.5 cm, thickness ~5.5 cm",
 		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum profile",
-		  "power": "10 W/м or other at the request of the customer",
+		  "power": "10 W/m or other at the request of the customer",
 		  "lampEquivalent": "60 W or other",
 		  "screenWidth": "16 mm",
 		  "plinth": "",		  
@@ -750,7 +750,7 @@
 		  "material": "solid oak",
 		  "dimensions": "height 165 cm, depth ~13 cm, thickness ~4 cm",
 		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum profile",
-		  "power": "10 W/м or other at the request of the customer",
+		  "power": "10 W/m or other at the request of the customer",
 		  "lampEquivalent": "60 W or other",
 		  "screenWidth": "16 mm",
 		  "plinth": "",		  
@@ -758,7 +758,7 @@
 		  "colorTemp": "warm (3000 K), neutral (4000 K)",
 		  "powerSupply": "from a network of 100-240 Volts. Cord with plug, with foot switch, length 2.5 m. Basic color - black (white on request). Power supply 18 W (certificate EAC, CE) is located in the luminaire housing. The power of the block is calculated based on the power of the tape plus 20% in order to favorably load the block. All connections are soldered.",
 		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
-		  "fastening": "leg 34х22 cm, made of solid oak. Silicone pads on the bottom for comfort",
+		  "fastening": "leg 34x22 cm, made of solid oak. Silicone pads on the bottom for comfort",
 		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
@@ -777,7 +777,7 @@
 		  "material": "solid oak",
 		  "dimensions": "height 165 cm, depth ~13 cm, thickness ~4 cm",
 		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum profile",
-		  "power": "10 W/м or other at the request of the customer",
+		  "power": "10 W/m or other at the request of the customer",
 		  "lampEquivalent": "60 W or other",
 		  "screenWidth": "16 mm",
 		  "plinth": "",		  
@@ -785,7 +785,7 @@
 		  "colorTemp": "warm (3000 K), neutral (4000 K)",
 		  "powerSupply": "from a network of 100-240 Volts. Cord with plug, with foot switch, length 2.5 m. Basic color - black (white on request). Power supply 18 W (certificate EAC, CE) is located in the luminaire housing. The power of the block is calculated based on the power of the tape plus 20% in order to favorably load the block. All connections are soldered.",
 		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
-		  "fastening": "leg 30х20 cm, made of solid oak. Silicone pads on the bottom for comfort",
+		  "fastening": "leg 30x20 cm, made of solid oak. Silicone pads on the bottom for comfort",
 		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
@@ -804,7 +804,7 @@
 		  "material": "solid oak",
 		  "dimensions": "height 165 cm, depth ~5 cm, thickness ~5 cm",
 		  "lampType": "LED strip Helios, LED. EAC, CE certificate. The tape is attached to the built-in aluminum profile",
-		  "power": "10 W/м or other at the request of the customer",
+		  "power": "10 W/m or other at the request of the customer",
 		  "lampEquivalent": "60 W or other",
 		  "screenWidth": "16 mm",
 		  "plinth": "",		  
@@ -833,9 +833,9 @@
 		"type": 1,
 		"features": {
 		  "material": "solid oak",
-		  "dimensions": "height 120-200 cm, depth ~5 cm, thickness ~5 cm, Высота, глубина, толщина может быть другая по желанию заказчика",
+		  "dimensions": "height 120-200 cm, depth ~5 cm, thickness ~5 cm, height, depth, thickness can be different at the request of the customer",
 		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum profile",
-		  "power": "10 W/м or other at the request of the customer",
+		  "power": "10 W/m or other at the request of the customer",
 		  "lampEquivalent": "60 W or other",
 		  "screenWidth": "16 mm",
 		  "plinth": "",		  
@@ -843,7 +843,7 @@
 		  "colorTemp": "warm (3000 K), neutral (4000 K)",
 		  "powerSupply": "from a network of 100-240 Volts. Cord with plug, with foot switch, length 2.5 m. Basic color - black (white on request). The power supply unit 20 W or more powerful (EAC, CE certificate) is located in the luminaire housing. The power of the block is calculated based on the power of the tape plus 20% in order to favorably load the block. All connections are soldered.",
 		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
-		  "fastening": "leg 25х25 cm, made of steel with a polymer coating. Color - matte black. Or from Oak in the color of the product. Silicone pads on the bottom for comfort",
+		  "fastening": "leg 25x25 cm, made of steel with a polymer coating. Color - matte black. Or from Oak in the color of the product. Silicone pads on the bottom for comfort",
 		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
 		},
 		"desc": ""
@@ -868,9 +868,9 @@
 		"type": 2,
 		"features": {
 		  "material": "solid oak",
-		  "dimensions": "height ~120-200 cm or other at the request of the customer, Глубина ~4 cm, Толщина ~5 cm",
+		  "dimensions": "height ~120-200 cm or other at the request of the customer, depth ~4 cm, thickness ~5 cm",
 		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum profile",
-		  "power": "10 W/м or other at the request of the customer",
+		  "power": "10 W/m or other at the request of the customer",
 		  "lampEquivalent": "60 W or other",
 		  "screenWidth": "16 mm",
 		  "plinth": "",		  
@@ -905,7 +905,7 @@
 		  "material": "solid oak",
 		  "dimensions": "height 60-100 cm, width ~28 cm, depth ~4 cm, Height, width, depth can be different at the request of the customer",
 		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum profile",
-		  "power": "10 W/м or other at the request of the customer",
+		  "power": "10 W/m or other at the request of the customer",
 		  "lampEquivalent": "60 W or other",
 		  "screenWidth": "16 mm",
 		  "plinth": "",		  
@@ -944,7 +944,7 @@
 		  "material": "solid oak",
 		  "dimensions": "height ~30-200 cm, width ~7 cm, depth ~4,5 cm, Height, width, depth can be different at the request of the customer",
 		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum profile",
-		  "power": "10 W/м or other at the request of the customer",
+		  "power": "10 W/m or other at the request of the customer",
 		  "lampEquivalent": "60 W or other",
 		  "screenWidth": "16 mm",
 		  "plinth": "",		  
@@ -971,7 +971,7 @@
 		  "material": "solid oak",
 		  "dimensions": "height 30 cm, diameter 7 cm",
 		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum profile",
-		  "power": "10 W/м or other at the request of the customer",
+		  "power": "10 W/m or other at the request of the customer",
 		  "lampEquivalent": "55 W",
 		  "screenWidth": "",
 		  "plinth": "GU10",		  
@@ -998,7 +998,7 @@
 		  "material": "solid oak",
 		  "dimensions": "diameter 14 cm or other at the request of the customer",
 		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum profile",
-		  "power": "10 W/м or other at the request of the customer",
+		  "power": "10 W/m or other at the request of the customer",
 		  "lampEquivalent": "60 W",
 		  "screenWidth": "",
 		  "plinth": "GU10",		  
@@ -1029,7 +1029,7 @@
 		  "material": "solid oak",
 		  "dimensions": "height 20-40 cm or other at the request of the customer, diameter 7 cm or other at the request of the customer",
 		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum profile",
-		  "power": "10 W/м or other at the request of the customer",
+		  "power": "10 W/m or other at the request of the customer",
 		  "lampEquivalent": "60 W",
 		  "screenWidth": "",
 		  "plinth": "GU10",		  
@@ -1070,7 +1070,7 @@
 		  "plinth": "",		  
 		  "lampInclusion": "yes, LED strip is installed",
 		  "colorTemp": "warm (2700 - 3000 K), neutral (4000 K)",
-		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the back of the lamp. Блок питания от 12 W (сертификат ЕАС, СЕ) находится в задней части светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the rear wall of the lamp. The power supply from 12 W (certificate EAC, CE) is located at the rear of the luminaire. The power of the block is calculated based on the power of the tape plus 20% in order to favorably load the block. All connections are soldered.",
 		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
 		  "fastening": "wall mount on 2 keyhole brackets",
 		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
@@ -1097,7 +1097,7 @@
 		  "plinth": "G9",		  
 		  "lampInclusion": "yes, 2 bulbs of 5 W",
 		  "colorTemp": "warm (2700 - 3000 K), neutral (4000 K)",
-		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the back of the lamp. Блок питания от 12 W (сертификат ЕАС, СЕ) находится в задней части светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the back of the lamp",
 		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
 		  "fastening": "wall mount on 2 keyhole brackets",
 		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
@@ -1124,7 +1124,7 @@
 		  "plinth": "G9",		  
 		  "lampInclusion": "yes, 1 bulb 7W",
 		  "colorTemp": "warm (2700 - 3000 K), neutral (4000 K)",
-		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the back of the lamp. Блок питания от 12 W (сертификат ЕАС, СЕ) находится в задней части светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the back of the lamp",
 		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
 		  "fastening": "wall mount on 2 keyhole brackets",
 		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
@@ -1151,7 +1151,7 @@
 		  "plinth": "G9",		  
 		  "lampInclusion": "yes, 1 bulb 7W",
 		  "colorTemp": "warm (2700 - 3000 K), neutral (4000 K)",
-		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the back of the lamp. Блок питания от 12 W (сертификат ЕАС, СЕ) находится в задней части светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the back of the lamp",
 		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
 		  "fastening": "wall mount on 2 keyhole brackets",
 		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
@@ -1186,7 +1186,7 @@
 		  "plinth": "G9",		  
 		  "lampInclusion": "yes, 1 bulb 7W",
 		  "colorTemp": "warm (2700 - 3000 K), neutral (4000 K)",
-		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the back of the lamp. Блок питания от 12 W (сертификат ЕАС, СЕ) находится в задней части светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the back of the lamp",
 		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
 		  "fastening": "wall mount on 2 keyhole brackets",
 		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
@@ -1217,7 +1217,7 @@
 		  "plinth": "",		  
 		  "lampInclusion": "yes, 1 bulb 7W",
 		  "colorTemp": "warm (3000 K), neutral (4000 K)",
-		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the back of the lamp. Блок питания 12 W (сертификат ЕАС, СЕ) находится в задней части светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the rear wall of the lamp. The 12 W power supply (EAC, CE certified) is located at the back of the luminaire. The power of the block is calculated based on the power of the tape plus 20% in order to favorably load the block. All connections are soldered.",
 		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
 		  "fastening": "wall mount on 2 keyhole brackets",
 		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
@@ -1356,7 +1356,7 @@
 		  "plinth": "",		  
 		  "lampInclusion": "yes, LED strip is installed",
 		  "colorTemp": "warm (3000 K), neutral (4000 K)",
-		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the back of the lamp. Блок питания 12 W (сертификат ЕАС, СЕ) находится в задней части светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the rear wall of the lamp. The 12 W power supply (EAC, CE certified) is located at the back of the luminaire. The power of the block is calculated based on the power of the tape plus 20% in order to favorably load the block. All connections are soldered.",
 		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
 		  "fastening": "wall mount on 2 keyhole brackets",
 		  "options": "It is possible to complete the luminaire with a control panel or a panel with a dimming function"
@@ -1443,7 +1443,7 @@
 		  "lampEquivalent": "50 W or other",
 		  "screenWidth": "",
 		  "plinth": "E14",		  
-		  "lampInclusion": "нет",
+		  "lampInclusion": "no",
 		  "colorTemp": "warm (2700 - 3000 K), neutral (4000 K)",
 		  "powerSupply": "from a network of 100-240 Volts. Suspension wire 2-core black (default) / white / transparent / colored in double insulation, length up to 1 meter, or other size at the request of the customer",
 		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
@@ -1496,7 +1496,7 @@
 		  "power": "7 W or other at the request of the customer",
 		  "lampEquivalent": "50 W or other",
 		  "screenWidth": "",
-		  "plinth": "GX53 (default), E27, Е14",		  
+		  "plinth": "GX53 (default), E27, E14",		  
 		  "lampInclusion": "yes, if GX53. 1 light bulb. no if E27, E14",
 		  "colorTemp": "warm (2700 - 3000 K), neutral (4000 K)",
 		  "powerSupply": "from a network of 100-240 Volts. Suspension wire 2-core black (default) / white / transparent / colored in double insulation, length up to 1 meter, or other size at the request of the customer",
@@ -1737,7 +1737,7 @@
 		  "material": "solid oak",
 		  "dimensions": "height 15 cm or other at the request of the customer, width 12 cm, depth 12 cm",
 		  "lampType": "LED, LED. EAC, CE certificate",
-		  "power": "до 10 W",
+		  "power": "up to 10 W",
 		  "lampEquivalent": "80 W",
 		  "screenWidth": "",
 		  "plinth": "E14",		  
@@ -1960,7 +1960,7 @@
 		  "plinth": "",		  
 		  "lampInclusion": "yes, LED strip is installed",
 		  "colorTemp": "warm (3000 K), neutral (4000 K)",
-		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the back of the lamp. Блок питания 12 W (сертификат ЕАС, СЕ) находится в задней части светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the rear wall of the lamp. The 12 W power supply (EAC, CE certified) is located at the back of the luminaire. The power of the block is calculated based on the power of the tape plus 20% in order to favorably load the block. All connections are soldered.",
 		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
 		  "fastening": "wall mount on 2 keyhole brackets",
 		  "options": ""
@@ -1995,7 +1995,7 @@
 		  "plinth": "",		  
 		  "lampInclusion": "yes, LED strip is installed",
 		  "colorTemp": "warm (3000 K), neutral (4000 K)",
-		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the back of the lamp. Блок питания 12 W (сертификат ЕАС, СЕ) находится в задней части светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the rear wall of the lamp. The 12 W power supply (EAC, CE certified) is located at the back of the luminaire. The power of the block is calculated based on the power of the tape plus 20% in order to favorably load the block. All connections are soldered.",
 		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
 		  "fastening": "wall mount on 2 keyhole brackets",
 		  "options": ""
@@ -2030,7 +2030,7 @@
 		  "plinth": "",		  
 		  "lampInclusion": "yes, LED strip is installed",
 		  "colorTemp": "warm (3000 K), neutral (4000 K)",
-		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the back of the lamp. Блок питания 12 W (сертификат ЕАС, СЕ) находится в задней части светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the rear wall of the lamp. The 12 W power supply (EAC, CE certified) is located at the back of the luminaire. The power of the block is calculated based on the power of the tape plus 20% in order to favorably load the block. All connections are soldered.",
 		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
 		  "fastening": "wall mount on 2 keyhole brackets",
 		  "options": ""
@@ -2065,7 +2065,7 @@
 		  "plinth": "",		  
 		  "lampInclusion": "yes, LED strip is installed",
 		  "colorTemp": "warm (3000 K), neutral (4000 K)",
-		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the back of the lamp. Блок питания 12 W (сертификат ЕАС, СЕ) находится в задней части светильника. Мощность блока рассчитана исходя из мощности ленты плюс 20% в целях благоприятной нагрузки на блок. Все соединения спаяны.",
+		  "powerSupply": "from a network of 100-240 Volts. Connection to the wire in the wall. The connection is hidden in a round cavity on the rear wall of the lamp. The 12 W power supply (EAC, CE certified) is located at the back of the luminaire. The power of the block is calculated based on the power of the tape plus 20% in order to favorably load the block. All connections are soldered.",
 		  "coating": "painting with Sigmar Bio-Oil (Italy). Choice of color according to the customer's wishes. It is possible to choose a color for the customer's interior according to RAL",
 		  "fastening": "wall mount on 2 keyhole brackets",
 		  "options": ""
@@ -2139,7 +2139,7 @@
 		"type": 5,
 		"features": {
 		  "material": "solid oak",
-		  "dimensions": "Размеры: depth 45-65 mm, diameter to choose from",
+		  "dimensions": "depth 45-65 mm, diameter to choose from",
 		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum profile",
 		  "power": "5 W or other at the request of the customer",
 		  "lampEquivalent": "40 W or other",
@@ -2190,8 +2190,8 @@
 		"features": {
 		  "material": "solid oak",
 		  "dimensions": "depth 65 mm, diameter to choose from",
-		  "lampType": "светодиодная лента, LED. Сертификат ЕАС, СЕ. Лента крепится на алюминиевую ленту",
-		  "power": "12 W/м or other at the request of the customer",
+		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the aluminum tape",
+		  "power": "12 W/m or other at the request of the customer",
 		  "lampEquivalent": "90 W and more",
 		  "screenWidth": "40 mm",
 		  "plinth": "",		  
@@ -2237,8 +2237,8 @@
 		  "material": "solid oak",
 		  "dimensions": "Any width and height, depth and width of the frame 45 mm, or at the request of the client",
 		  "lampType": "LED strip, LED. EAC, CE certificate. The tape is attached to the built-in aluminum profile",
-		  "power": "от 10 W or other at the request of the client",
-		  "lampEquivalent": "от 80 W or other",
+		  "power": "up to 10 W or other at the request of the client",
+		  "lampEquivalent": "up to 80 W or other",
 		  "screenWidth": "16 mm",
 		  "plinth": "",		  
 		  "lampInclusion": "yes, LED strip is installed",
