@@ -19,6 +19,7 @@ import TextField from '@mui/material/TextField'
 import MenuItem from '@mui/material/MenuItem'
 import Select from '@mui/material/Select'
 import roboto from '../lib/modules/variableFont.js'
+import CircularProgress from '@mui/material/CircularProgress'
 
 const theme = createTheme({
   palette: {
@@ -48,7 +49,13 @@ function MyApp({ Component, pageProps }) {
 
   const sessionInitiated = useRef(false)                                             
 
+  const [renderState, setRenderState] = useState(false)
+
   useEffect(() => {
+    setRenderState(true)
+  }, [])
+
+ /* useEffect(() => {
     window.addEventListener('storage', (event) => {
       switch (event.key) {
         case 'shopping_cart':
@@ -62,7 +69,7 @@ function MyApp({ Component, pageProps }) {
           }  
       }
     })
-  }, [])
+  }, [])*/
 
   useEffect(() => {
     const storedLocale = window.localStorage.getItem('locale')
@@ -96,6 +103,7 @@ function MyApp({ Component, pageProps }) {
     const cartItems = window.localStorage.getItem('shopping_cart')
     if (!sessionInitiated.current) {
       if (cartItems === null) {
+        console.log(cartItems)
         window.localStorage.setItem('shopping_cart', JSON.stringify([]))
       } else {
         setShoppingCartState(JSON.parse(cartItems))
@@ -114,8 +122,12 @@ function MyApp({ Component, pageProps }) {
       <ShoppingCartContext.Provider value={{ shoppingCartState, setShoppingCartState }}>
         <ThemeProvider theme={theme}>
           <div className={roboto}>
-            <StickyHeader navbarText={navbarTextState}/>
-            <Component {...pageProps} />
+           {!renderState ? <CircularProgress sx={{marginLeft: '50vw', marginTop: '50vh'}}/> :
+            <>
+              <StickyHeader navbarText={navbarTextState}/>
+              <Component {...pageProps} />
+            </>  
+          }
           </div>
         </ThemeProvider>  
       </ShoppingCartContext.Provider>  

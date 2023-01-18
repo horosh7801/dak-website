@@ -14,6 +14,7 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import ToggleButton from '@mui/material/ToggleButton';
 import LocaleContext from '../lib/context/locale.js'
 import currencyFormat from '../lib/modules/currencyFormat.js'
+import CircularProgress from '@mui/material/CircularProgress'
 
 
 const carouselHeight = 600;
@@ -106,7 +107,13 @@ const imageCaptionText = css`
 
 export default function Home({ items, localizedText }) {
 
+  const [renderState, setRenderState] = useState(false)
+  useEffect(() => {
+    setRenderState(true)
+  }, [])
+
   return (
+   //!renderState ? <CircularProgress sx={{marginLeft: '50vw', marginTop: '50vh'}}/> :
     <div className={mainWrapper}>
       <div className={imageSet}>
         <div className={imageSetItem}>
