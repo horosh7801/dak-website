@@ -1,8 +1,0 @@
-[
-	{"name": "Venera", "priceRUB": 19200, "img": "/products/floor/venera.jpg"},
-	{"name": "Venera Lite", "priceRUB": 19200, "img": "/products/floor/venera_lite.jpg"},
-	{"name": "Mercury", "priceRUB": 20100, "img": "/products/floor/mercury.jpg"},
-	{"name": "Parus", "priceRUB": 20100, "img": "/products/floor/parus.jpg"},
-	{"name": "S-Lamp", "priceRUB": 19800, "img": "/products/floor/s_lamp.jpg"},
-	{"name": "Oskar", "priceRUB": 16800, "img": "/products/floor/oskar.jpg"}
-]

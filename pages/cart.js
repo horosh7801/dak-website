@@ -20,7 +20,6 @@ const leftSection = css`
 	justify-content: center;
 	width: 1120px;
 	background-color: #f7f7f7;
-	min-height: calc(100vh - 112px);
 	padding-top: 20px;
 	gap: 10px;
 `
@@ -49,8 +48,6 @@ const itemRow = css`
 	width: 100%;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	justify-content: center;
 	border-bottom: 2px solid white;
 	width: 450px;
 	font-size: 20px;
@@ -166,11 +163,12 @@ export default function ShoppingCart({ localizedText }) {
 						flex-direction: row;
 						flex-wrap: wrap;
 						justify-content: flex-start;
+						align-content: flex-start;
 						width: 910px;
 						gap: 10px;
 					`}>
 						{shoppingCart.shoppingCartState.map((item, index) => (
-							<Paper sx={{height: '221px'}} key={index}>
+							<Paper sx={{}} key={index}>
 								<div className={itemRow}>
 									<div className={css`
 										display: flex;
