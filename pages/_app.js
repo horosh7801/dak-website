@@ -38,10 +38,11 @@ const theme = createTheme({
 
 })
 
+const navbarLocalization = {en: ['CATALOG', 'DELIVERY', 'CONTACTS'], ru: ['КАТАЛОГ', 'ДОСТАВКА', 'КОНТАКТЫ']}
+
 function MyApp({ Component, pageProps }) {
 
   const [shoppingCartState, setShoppingCartState] = useState([])
-  const [navbarTextState, setNavbarTextState] = useState()
 
   const sessionInitiated = useRef(false)                                             
 
@@ -69,11 +70,6 @@ function MyApp({ Component, pageProps }) {
 
   const router = useRouter()
   const firstRender = useRef(true)
-  useEffect(() => {( async () => {
-    const res = await fetch(`/api/getNavbarLocalization?lang=${router.locale}`)
-    const parsedRes = await res.json()
-    setNavbarTextState(parsedRes)
-  })()}, [router.locale])
 
   useEffect(() => {
     const cartItems = window.localStorage.getItem('shopping_cart')
@@ -99,7 +95,7 @@ function MyApp({ Component, pageProps }) {
         <div className={roboto}>
          {!renderState ? <CircularProgress sx={{marginLeft: '50vw', marginTop: '50vh'}}/> :
           <>
-            <StickyHeader navbarText={navbarTextState}/>
+            <StickyHeader/>
             <Component {...pageProps} />
           </>  
         }
@@ -134,7 +130,7 @@ function MenuBarButton({ name }) {
   )
 }
 
-function StickyHeader({ navbarText }) {
+function StickyHeader() {
 
   const shoppingCart = useContext(ShoppingCartContext)
 
@@ -281,9 +277,9 @@ function StickyHeader({ navbarText }) {
       <div className={menuBar}>
         <div className={menuBarFirst}>
           {
-            navbarText && ['catalog', 'delivery', 'contacts'].map((name, i) => {
+            ['catalog', 'delivery', 'contacts'].map((name, i) => {
               return (
-                <MenuBarButton key={i} name={navbarText[name]} />    
+                <MenuBarButton key={i} name={navbarLocalization[router.locale][i]} />    
               )
             })
           }
@@ -314,7 +310,9 @@ function StickyHeader({ navbarText }) {
               sx={{width: 85, height: 30}}
               value={router.locale.toUpperCase()}
               onChange={async (event) => {
-                router.push(router.asPath, router.asPath, {scroll: false, locale: event.target.value.toLowerCase()})
+                setCookie('NEXT_LOCALE', event.target.value.toLowerCase())
+              //  router.push(router.asPath, router.asPath, {scroll: false, locale: event.target.value.toLowerCase()})
+                router.reload()
               }}
             >
               <MenuItem 
