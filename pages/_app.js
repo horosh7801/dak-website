@@ -12,7 +12,6 @@ import IconButton from '@mui/material/IconButton'
 import Badge from '@mui/material/Badge'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import ShoppingCartContext from '../lib/context/shoppingCart.js'
-import LocaleContext from '../lib/context/locale.js'
 import { useState, useContext, useEffect, useRef } from 'react'
 import { setCookie, getCookie, hasCookie, deleteCookie } from 'cookies-next'
 import TextField from '@mui/material/TextField'
@@ -39,11 +38,8 @@ const theme = createTheme({
 
 })
 
-const defaultLocale = {language: 'EN', currency: 'EUR', 'rate': 1}
-
 function MyApp({ Component, pageProps }) {
 
-  const [localeState, setLocaleState] = useState({date: (new Date()).getTime(), ...defaultLocale})
   const [shoppingCartState, setShoppingCartState] = useState([])
   const [navbarTextState, setNavbarTextState] = useState()
 
@@ -71,33 +67,13 @@ function MyApp({ Component, pageProps }) {
     })
   }, [])*/
 
-  useEffect(() => {
-    const storedLocale = window.localStorage.getItem('locale')
-    if (storedLocale !== null) {
-      const parsedStoredLocale = JSON.parse(storedLocale)
-      if ((new Date()).getTime() - parsedStoredLocale.date <= 21600000) {
-        setLocaleState(parsedStoredLocale)
-      } else {(async function() {
-        const res = await fetch(`/api/getLocale?lang=${parsedStoredLocale.language}`)
-        const parsedRes = await res.json()
-        const newLocale = {date: (new Date()).getTime(), language: parsedStoredLocale.language, ...parsedRes}
-        window.localStorage.setItem('locale', JSON.stringify(newLocale))
-        setLocaleState(newLocale)
-      })()}
-    } else {(async function() {
-      window.localStorage.setItem('locale', JSON.stringify(localeState))
-    })()}
-  }, [])
-
   const router = useRouter()
   const firstRender = useRef(true)
   useEffect(() => {( async () => {
-    const res = await fetch(`/api/getNavbarLocalization?lang=${localeState.language}`)
+    const res = await fetch(`/api/getNavbarLocalization?lang=${router.locale}`)
     const parsedRes = await res.json()
     setNavbarTextState(parsedRes)
-    const { pathname, asPath, query } = router
-    router.push({ pathname, query }, asPath, { locale: localeState.language.toLowerCase(), scroll: false })
-  })()}, [localeState])
+  })()}, [router.locale])
 
   useEffect(() => {
     const cartItems = window.localStorage.getItem('shopping_cart')
@@ -118,20 +94,18 @@ function MyApp({ Component, pageProps }) {
   }, [shoppingCartState])
 
   return (
-    <LocaleContext.Provider value={{ localeState, setLocaleState }}>
-      <ShoppingCartContext.Provider value={{ shoppingCartState, setShoppingCartState }}>
-        <ThemeProvider theme={theme}>
-          <div className={roboto}>
-           {!renderState ? <CircularProgress sx={{marginLeft: '50vw', marginTop: '50vh'}}/> :
-            <>
-              <StickyHeader navbarText={navbarTextState}/>
-              <Component {...pageProps} />
-            </>  
-          }
-          </div>
-        </ThemeProvider>  
-      </ShoppingCartContext.Provider>  
-    </LocaleContext.Provider>  
+    <ShoppingCartContext.Provider value={{ shoppingCartState, setShoppingCartState }}>
+      <ThemeProvider theme={theme}>
+        <div className={roboto}>
+         {!renderState ? <CircularProgress sx={{marginLeft: '50vw', marginTop: '50vh'}}/> :
+          <>
+            <StickyHeader navbarText={navbarTextState}/>
+            <Component {...pageProps} />
+          </>  
+        }
+        </div>
+      </ThemeProvider>  
+    </ShoppingCartContext.Provider>  
   )
 }
 
@@ -163,8 +137,6 @@ function MenuBarButton({ name }) {
 function StickyHeader({ navbarText }) {
 
   const shoppingCart = useContext(ShoppingCartContext)
-
-  const locale = useContext(LocaleContext)
 
   const router = useRouter()
 
@@ -340,14 +312,9 @@ function StickyHeader({ navbarText }) {
             <Select
               variant='standard'
               sx={{width: 85, height: 30}}
-              value={locale.localeState.language}
+              value={router.locale.toUpperCase()}
               onChange={async (event) => {
-                const res = await fetch(`/api/getLocale?lang=${event.target.value}`)
-                const parsedRes = await res.json()
-                const newLocale = {date: (new Date()).getTime(), language: event.target.value, ...parsedRes}
-                window.localStorage.setItem('locale', JSON.stringify(newLocale))
-                locale.setLocaleState(newLocale)
-
+                router.push(router.asPath, router.asPath, {scroll: false, locale: event.target.value.toLowerCase()})
               }}
             >
               <MenuItem 

@@ -19,7 +19,6 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import ToggleButton from '@mui/material/ToggleButton';
 import ArrowForwardSharpIcon from '@mui/icons-material/ArrowForwardSharp';
 import { useState, useContext, useEffect } from 'react'
-import LocaleContext from '../../../lib/context/locale.js'
 import ShoppingCartContext from '../../../lib/context/shoppingCart.js'
 import CheckoutForm from '../../../lib/components/CheckoutForm.js'
 import OrderNotification from '../../../lib/components/OrderNotification.js'
@@ -126,8 +125,6 @@ export default function Item({ id, item, itemType, localizedText, imgCount }) {
 
 	const [itemInCartState, setItemInCartState] = useState(false)
 
-	const [lengthState, setLengthState] = useState(120)
-
 	const [priceState, setPriceState] = useState(0)
 
 	const [checkoutState, setCheckoutState] = useState(false)
@@ -137,8 +134,6 @@ export default function Item({ id, item, itemType, localizedText, imgCount }) {
 	const [dialogState, setDialogState] = useState(null)
 
 	const shoppingCart = useContext(ShoppingCartContext)
-
-	const locale = useContext(LocaleContext)
 
 	const router = useRouter()
 
@@ -251,7 +246,7 @@ export default function Item({ id, item, itemType, localizedText, imgCount }) {
 									totalCost={item.price[priceState].price * amountState} 
 									localizedText={localizedText.checkoutPanel}
 									items={[{name: item.name, amount: amountState}]}
-									locale={locale.localeState}
+									locale={router.locale}
 									onSuccess={() => {
 										setDialogState('success')
 										setCheckoutState(false)
@@ -309,7 +304,7 @@ export default function Item({ id, item, itemType, localizedText, imgCount }) {
 																	column-gap: 5px;
 																`}>
 																	<div>
-																		{currencyFormat(Math.round(value.price * locale.localeState.rate), locale.localeState.language)}
+																		{currencyFormat(value.price, router.locale)}
 																	</div>	
 																</div>
 															</div>
@@ -359,7 +354,7 @@ export default function Item({ id, item, itemType, localizedText, imgCount }) {
 										</div>
 									</div>	
 									<div className={price}>
-										{currencyFormat(Math.round(item.price[priceState].price * locale.localeState.rate) * amountState, locale.localeState.language)}
+										{currencyFormat(Math.round(item.price[priceState].price * amountState), router.locale)}
 									</div>
 									<div className={actionButtonSet}>
 									{/* add to cart button */}
@@ -373,9 +368,9 @@ export default function Item({ id, item, itemType, localizedText, imgCount }) {
 													newState.push({
 														name: item.name,
 														type: itemType, 
-														params: item.price[priceState].desc,
-														price: item.price[priceState].price,
+														price: priceState,
 														amount: amountState,
+														id
 													})
 													shoppingCart.setShoppingCartState(newState)
 													setItemInCartState(true)
@@ -417,6 +412,8 @@ export async function getStaticProps({ locale, params }) {
 
 	const itemTypes = JSON.parse(fs.readFileSync('json/product_types.json'))
 
+	const currencyRate = JSON.parse(fs.readFileSync('json/EURCurrencyRates.json'))[locale.toUpperCase()].rate
+
 //	const parsedItems = JSON.parse(fs.readFileSync('json/items.json'))
 
 	let parsedItems
@@ -441,6 +438,9 @@ export async function getStaticProps({ locale, params }) {
 	}
 
 	const item = parsedItems[id]
+	for ( const i in item.price) {
+		item.price[i].price = Math.round(item.price[i].price * currencyRate)
+	}
 
 //count how many images there is for each item
 	let imgCount = 0

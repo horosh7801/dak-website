@@ -9,6 +9,7 @@ import TextField from '@mui/material/TextField'
 import Paper from '@mui/material/Paper'
 import Button from '@mui/material/Button'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import CheckoutForm from '../lib/components/CheckoutForm.js'
 import OrderNotification from '../lib/components/OrderNotification.js'
 import roboto from '../lib/modules/variableFont.js'
@@ -131,13 +132,30 @@ export default function ShoppingCart({ localizedText }) {
 
 	const [dialogState, setDialogState] = useState(null)
 
+	const [itemsState, setItemsState] = useState(null)
+
+	const router = useRouter()
+
 	useEffect(() => {
-		let totalCost = 0
-		for (const element of shoppingCart.shoppingCartState) {
-			totalCost += Math.round(element.price * locale.localeState.rate) * element.amount
-		}
-		setTotalCostState(totalCost)
-	}, [shoppingCart])
+		if (itemsState !== null) {
+			let totalCost = 0
+			for (const index in shoppingCart.shoppingCartState) {
+				totalCost += itemsState[index].price * shoppingCart.shoppingCartState[index].amount
+				console.log(totalCost)
+			}
+			setTotalCostState(totalCost)
+		}	
+	}, [shoppingCart.shoppingCartState])
+
+	useEffect(() => {(async () => {
+		const items = shoppingCart.shoppingCartState.map(({id, price}) => ({id, price}))
+
+		const res = await fetch(`/api/getItemParams?locale=${router.locale}&items=${JSON.stringify(items)}`)
+		const parsedRes = await res.json()
+		console.log(parsedRes)
+
+		setItemsState(parsedRes)
+	})()}, [router.locale])
 
 	return (
 		<div className={css`
@@ -167,7 +185,7 @@ export default function ShoppingCart({ localizedText }) {
 						width: 910px;
 						gap: 10px;
 					`}>
-						{shoppingCart.shoppingCartState.map((item, index) => (
+						{!(itemsState === null)&& shoppingCart.shoppingCartState.map((item, index) => (
 							<Paper sx={{}} key={index}>
 								<div className={itemRow}>
 									<div className={css`
@@ -215,7 +233,7 @@ export default function ShoppingCart({ localizedText }) {
 											</div>
 											<div className={specs}>
 												<div>
-													{`${item.params.toLowerCase()}`}
+													{`${itemsState[index].params.toLowerCase()}`}
 												</div>
 											</div>	
 										</div>
@@ -230,7 +248,7 @@ export default function ShoppingCart({ localizedText }) {
 											{`${item.amount} ${localizedText.units.quantity}.`}
 										</div>										
 										<div className={cost}>
-											{currencyFormat(Math.round(item.price * locale.localeState.rate) *  item.amount, locale.localeState.language)}
+											{currencyFormat(itemsState[index].price * item.amount, router.locale)}
 										</div>		
 									</div>
 								</div>	
@@ -254,7 +272,7 @@ export default function ShoppingCart({ localizedText }) {
 								<CheckoutForm 
 									totalCost={totalCostState} 
 									shoppingCart={shoppingCart}
-									locale={locale.localeState}
+									locale={router.locale}
 									localizedText={localizedText.checkoutPanel}
 									onSuccess={() => {
 										setDialogState('success')

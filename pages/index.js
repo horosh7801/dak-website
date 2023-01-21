@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import lampImage1 from '../public/featured_products/wave.jpg'
 import lampImage2 from '../public/featured_products/venera.jpg'
 import lampImage3 from '../public/featured_products/snake.jpg'
@@ -12,7 +13,6 @@ import FormControl from '@mui/material/FormControl'
 import { useState, useEffect, useContext } from 'react'
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import ToggleButton from '@mui/material/ToggleButton';
-import LocaleContext from '../lib/context/locale.js'
 import currencyFormat from '../lib/modules/currencyFormat.js'
 import CircularProgress from '@mui/material/CircularProgress'
 
@@ -107,11 +107,6 @@ const imageCaptionText = css`
 
 export default function Home({ items, localizedText }) {
 
-  const [renderState, setRenderState] = useState(false)
-  useEffect(() => {
-    setRenderState(true)
-  }, [])
-
   return (
    //!renderState ? <CircularProgress sx={{marginLeft: '50vw', marginTop: '50vh'}}/> :
     <div className={mainWrapper}>
@@ -160,6 +155,9 @@ export default function Home({ items, localizedText }) {
 }
 
 function ProductItem({ itemID, name, price, type, locale}) {
+
+  const router = useRouter()
+
   const productItem = css`
     box-shadow: 0px 0px 4px -1px;
     width: 320px;
@@ -236,7 +234,7 @@ function ProductItem({ itemID, name, price, type, locale}) {
               {name}
             </div>
             <div className={itemPrice}>
-              {currencyFormat(price, locale.language)}
+              {currencyFormat(price, router.locale)}
             </div>
           </div>
         </div>  
@@ -249,7 +247,7 @@ function Catalog ({ items, localizedText }) {
 
   const [catalogState, setCatalogState] = useState('ceiling')
 
-  const locale = useContext(LocaleContext)
+  const router = useRouter()
 
   const catalog = css`
     width: 100vw;
@@ -356,9 +354,9 @@ function Catalog ({ items, localizedText }) {
             itemID={item.id}
             type={catalogState} 
             name={item.name} 
-            price={`${Math.round(item.price[0].price * locale.localeState.rate)} ${locale.localeState.currency}`} 
+            price={item.price[0].price} 
             key={i} 
-            locale={locale.localeState}
+            locale={router.locale}
           /> ))}
         </div>
       </div>     
@@ -372,6 +370,8 @@ export async function getStaticProps({ locale }) {
   const localizedText = JSON.parse(fs.readFileSync(`json/localization/${locale}/index.json`))
 
   const itemTypes = JSON.parse(fs.readFileSync('json/product_types.json'))
+
+  const currencyRate = JSON.parse(fs.readFileSync('json/EURCurrencyRates.json'))[locale.toUpperCase()].rate
 
   const items = {}
   for (const itemType of itemTypes) {
@@ -393,6 +393,9 @@ export async function getStaticProps({ locale }) {
   for (const itemID in parsedItems) {
     const item = parsedItems[itemID]
     const { name, price, img, type } = item
+    for (const i in price) {
+      price[i].price = Math.round(price[i].price * currencyRate)
+    }
     items[itemTypes[type]].push({ id: itemID, name, price })    
   }
 
