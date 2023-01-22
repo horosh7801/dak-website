@@ -242,7 +242,7 @@ export default function Item({ id, item, itemType, localizedText, imgCount }) {
 								<CheckoutForm 
 									totalCost={item.price[priceState].price * amountState} 
 									localizedText={localizedText.checkoutPanel}
-									items={[{name: item.name, amount: amountState}]}
+									items={[{id, amount: amountState, price: priceState}]}
 									locale={router.locale}
 									onSuccess={() => {
 										setDialogState('success')

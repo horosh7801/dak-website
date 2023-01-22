@@ -22,11 +22,11 @@ const schema = yup.object({
 			.email()
 		)),	
 	item: yup.array().of(yup.object({
-		name: yup
-			.string()
-			.matches(/[A-Za-z0-9_]/)
+		id: yup
+			.number()
+			.integer()
 			.required(),
-		length: yup
+		price: yup
 			.number()
 			.integer()
 			.required(),
@@ -39,10 +39,12 @@ const schema = yup.object({
 
 export default async function handler(req, res) {
 	const order = JSON.parse(req.query.order)
-	console.log(order)
 	try {
 		const validatedOrder = schema.validateSync(order, {stripUnknown: true})
-		console.log(validatedOrder)
+		const {id, price, amount} = validatedOrder.item
+
+		const items = JSON.parse(fs.readFileSync('json/itemsEN.json'))
+
 		const resp = await fetch('http://127.0.0.1:1337/api/orders', {
 			method: 'POST', 
 			headers: {
@@ -51,6 +53,13 @@ export default async function handler(req, res) {
 			body: JSON.stringify({
 				data: {					
 					...validatedOrder,
+					item: validatedOrder.item.map(({id, price, amount}) => (
+						{
+							name: items[id].name,
+							price: items[id].price[price].price,
+							amount
+						}
+					)), 
 					date: new Date().getTime(),
 	
 				}
@@ -60,6 +69,7 @@ export default async function handler(req, res) {
 		res.status(resp.status).send()
 	}
 	catch(err) {
+		console.log(err)
 		res.status(500).send()
 	}	
 }

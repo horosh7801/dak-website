@@ -282,7 +282,7 @@ console.log(parsedRes)
 									localizedText={localizedText.checkoutPanel}
 									onSuccess={() => {
 										setDialogState('success')
-										for (i of shoppingCart.shoppingCartState) {
+										for (const i of shoppingCart.shoppingCartState) {
 											removeFromCart(i)
 										}
 										setLocalizedDataState([])
@@ -292,7 +292,7 @@ console.log(parsedRes)
 										setDialogState('failure')
 									}}
 									items={shoppingCart.shoppingCartState.map((item) => (
-										{name: item.name, length: item.length, amount: item.amount}
+										{id: item.id, price: item.price, amount: item.amount}
 									))}
 								/>
 

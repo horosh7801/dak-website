@@ -29,7 +29,7 @@ export function middleware(request) {
     return undefined
   }
 
-console.log(nextUrl.pathname)
+//console.log(nextUrl.pathname)
 
 	if (NEXT_LOCALE) {
 		if (NEXT_LOCALE === locale) {
