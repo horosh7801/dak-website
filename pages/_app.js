@@ -42,7 +42,7 @@ const navbarLocalization = {en: ['CATALOG', 'DELIVERY', 'CONTACTS'], ru: ['КА�
 
 function MyApp({ Component, pageProps }) {
 
-  const [shoppingCartState, setShoppingCartState] = useState([])
+  const [shoppingCartState, setShoppingCartState] = useState(0)
 
   const sessionInitiated = useRef(false)                                             
 
@@ -73,21 +73,13 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     const cartItems = window.localStorage.getItem('shopping_cart')
-    if (!sessionInitiated.current) {
-      if (cartItems === null) {
-        console.log(cartItems)
-        window.localStorage.setItem('shopping_cart', JSON.stringify([]))
-      } else {
-        setShoppingCartState(JSON.parse(cartItems))
-      }
+    if (cartItems === null) {
+      window.localStorage.setItem('shopping_cart', JSON.stringify([]))
     } else {
-      const newCartItems = JSON.stringify(shoppingCartState)
-      if (cartItems !== newCartItems) {
-        window.localStorage.setItem('shopping_cart', newCartItems)
-      }
+
+      setShoppingCartState(JSON.parse(cartItems).length)
     }
-    sessionInitiated.current = true
-  }, [shoppingCartState])
+  }, [])
 
   return (
     <ShoppingCartContext.Provider value={{ shoppingCartState, setShoppingCartState }}>
@@ -286,13 +278,13 @@ function StickyHeader() {
         </div>    
         <div className={menuBarLast}>
           <div className={cartButtonContainer}>
-              {shoppingCart.shoppingCartState.length > 0 && Array(2).fill(1).map((element, index) => (
+              {shoppingCart.shoppingCartState > 0 && Array(2).fill(1).map((element, index) => (
                 <div key={index} className={cx(waveEffect, css`animation-delay: ${waveDelay * index}s`)}>
                 </div>   
               ))}              
               <Link href='/cart'>
-                <IconButton sx={{color: shoppingCart.shoppingCartState.length > 0 ? '#02fd02' : 'none'}} color="primary">
-                  <Badge badgeContent={shoppingCart.shoppingCartState.length} color='secondary'>
+                <IconButton sx={{color: shoppingCart.shoppingCartState > 0 ? '#02fd02' : 'none'}} color="primary">
+                  <Badge badgeContent={shoppingCart.shoppingCartState} color='secondary'>
                     <ShoppingBagSharpIcon />
                   </Badge>   
                 </IconButton>  

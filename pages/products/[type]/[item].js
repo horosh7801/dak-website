@@ -25,6 +25,7 @@ import OrderNotification from '../../../lib/components/OrderNotification.js'
 import { getCookie, hasCookie } from 'cookies-next'
 import roboto from '../../../lib/modules/variableFont.js'
 import currencyFormat from '../../../lib/modules/currencyFormat.js'
+import { addToCart, removeFromCart } from '../../../lib/modules/cartOperations.js'
 
 
 const itemPage = css`
@@ -138,22 +139,19 @@ export default function Item({ id, item, itemType, localizedText, imgCount }) {
 	const router = useRouter()
 
 	useEffect(() => {
-		let itemInCart = false
-		for (const element of shoppingCart.shoppingCartState) {
-			if (element.name === item.name) {
-				itemInCart = true
-				break
+		const shoppingCart = JSON.parse(window.localStorage.getItem('shopping_cart'))
+		for (const element of shoppingCart) {
+			if (element.id === id) {
+				setItemInCartState(true)
 			}
 		}
-		setItemInCartState(itemInCart)
-	}, [shoppingCart.shoppingCartState])
+	}, [])
 
 	return (
 		<div className={itemPage}>
 			<OrderNotification 
 				state={dialogState} 
 				setState={setDialogState} 
-				shoppingCart={shoppingCart.shoppingCartState} 
 				localizedText={localizedText.checkoutPanel.orderConfirmation}					
 			/>		
 			<div className={leftSection}>
@@ -364,16 +362,15 @@ export default function Item({ id, item, itemType, localizedText, imgCount }) {
 											size="large" variant="contained"
 											onClick={() => {
 												if (!itemInCartState) {
-													const	newState = [...shoppingCart.shoppingCartState]
-													newState.push({
+													setItemInCartState(true)
+													addToCart({
 														name: item.name,
 														type: itemType, 
 														price: priceState,
 														amount: amountState,
-														id
-													})
-													shoppingCart.setShoppingCartState(newState)
-													setItemInCartState(true)
+														id														
+													}, shoppingCart)
+													shoppingCart.setShoppingCartState(shoppingCart.shoppingCartState + 1)
 												}	
 											}}
 										>

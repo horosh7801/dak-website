@@ -126,6 +126,8 @@ export default function ShoppingCart({ localizedText }) {
 
 	const shoppingCart = useContext(ShoppingCartContext)
 
+	const [cartItemsState, setCartItemsState] = useState([])
+
 	const locale = useContext(LocaleContext)
 
 	const [totalCostState, setTotalCostState] = useState(0)
@@ -136,26 +138,32 @@ export default function ShoppingCart({ localizedText }) {
 
 	const router = useRouter()
 
-	useEffect(() => {
-		if (itemsState !== null) {
-			let totalCost = 0
-			for (const index in shoppingCart.shoppingCartState) {
-				totalCost += itemsState[index].price * shoppingCart.shoppingCartState[index].amount
-				console.log(totalCost)
-			}
-			setTotalCostState(totalCost)
-		}	
-	}, [shoppingCart.shoppingCartState])
-
 	useEffect(() => {(async () => {
-		const items = shoppingCart.shoppingCartState.map(({id, price}) => ({id, price}))
+		const items = JSON.parse(window.localStorage.getItem('shopping_cart'))
+			.map(({id, price}) => ({id, price}))
 
 		const res = await fetch(`/api/getItemParams?locale=${router.locale}&items=${JSON.stringify(items)}`)
 		const parsedRes = await res.json()
-		console.log(parsedRes)
 
-		setItemsState(parsedRes)
-	})()}, [router.locale])
+		setItemsState(items.map((item, index) => (
+			{
+				name: item.name,
+				amount: item.amount,
+				price: parsedRes.price,
+				params: parsedRes.params
+			}
+		)))
+	})()}, [])
+
+	useEffect(() => {
+		if (itemsState !== null) {
+			let totalCost = 0
+			for (const item of itemsState) {
+				totalCost += item.price * item.amount
+			}
+			setTotalCostState(totalCost)
+		}	
+	}, [itemsState])
 
 	return (
 		<div className={css`
@@ -165,7 +173,6 @@ export default function ShoppingCart({ localizedText }) {
 			<OrderNotification 
 				state={dialogState} 
 				setState={setDialogState} 
-				shoppingCart={shoppingCart.shoppingCartState} 
 				localizedText={localizedText.checkoutPanel.orderConfirmation}					
 			/>
 			<div className={subHeader}>
@@ -185,7 +192,7 @@ export default function ShoppingCart({ localizedText }) {
 						width: 910px;
 						gap: 10px;
 					`}>
-						{!(itemsState === null)&& shoppingCart.shoppingCartState.map((item, index) => (
+						{!(itemsState === null) && itemsState.map((item, index) => (
 							<Paper sx={{}} key={index}>
 								<div className={itemRow}>
 									<div className={css`
@@ -195,9 +202,10 @@ export default function ShoppingCart({ localizedText }) {
 										width: 100%;
 									`}>
 										<IconButton sx={{justifySelf: 'flex-end'}} onClick={() => {
-											const newState = shoppingCart.shoppingCartState.slice(0, index)
-												.concat(shoppingCart.shoppingCartState.slice(index + 1, shoppingCart.shoppingCartState.length))
-											shoppingCart.setShoppingCartState(newState)
+											const newState = itemsState.slice(0, index)
+												.concat(itemsState.slice(index + 1, itemsState.length))
+											setItemsState(newState)
+											shoppingCart.setShoppingCartState(shoppingCart.shoppingCartState + 1)
 										}}>
 											<ClearSharpIcon/>
 										</IconButton>
@@ -258,7 +266,7 @@ export default function ShoppingCart({ localizedText }) {
 				</div>
 				<div className={rightSection}>
 					{
-						shoppingCart.shoppingCartState.length === 0
+						itemsState.length === 0
 							? 
 								<div className={css`
 									display: flex;
@@ -276,7 +284,8 @@ export default function ShoppingCart({ localizedText }) {
 									localizedText={localizedText.checkoutPanel}
 									onSuccess={() => {
 										setDialogState('success')
-										shoppingCart.setShoppingCartState([])
+										setItemsState([])
+										shoppingCart.setShoppingCartState(0)
 									}}
 									onFailure={() => {
 										setDialogState('failure')

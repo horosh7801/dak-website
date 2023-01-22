@@ -1,4 +1,4 @@
-import fetch from 'node-fetch'``
+import fetch from 'node-fetch'
 import * as yup from 'yup'
 const fs = require('fs')
 
@@ -60,7 +60,7 @@ export default async function handler(req, res) {
 		res.status(resp.status).send()
 	}
 	catch(err) {
-
+		res.status(500).send()
 	}	
 }
 
