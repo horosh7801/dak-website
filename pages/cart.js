@@ -14,6 +14,8 @@ import CheckoutForm from '../lib/components/CheckoutForm.js'
 import OrderNotification from '../lib/components/OrderNotification.js'
 import roboto from '../lib/modules/variableFont.js'
 import currencyFormat from '../lib/modules/currencyFormat.js'
+import {addToCart, removeFromCart} from '../lib/modules/cartOperations.js'
+import CircularProgress from '@mui/material/CircularProgress'
 
 const leftSection = css`
 	display: flex;
@@ -126,44 +128,34 @@ export default function ShoppingCart({ localizedText }) {
 
 	const shoppingCart = useContext(ShoppingCartContext)
 
-	const [cartItemsState, setCartItemsState] = useState([])
-
 	const locale = useContext(LocaleContext)
 
 	const [totalCostState, setTotalCostState] = useState(0)
 
 	const [dialogState, setDialogState] = useState(null)
 
-	const [itemsState, setItemsState] = useState(null)
+	const [localizedDataState, setLocalizedDataState] = useState(null)
 
 	const router = useRouter()
 
 	useEffect(() => {(async () => {
-		const items = JSON.parse(window.localStorage.getItem('shopping_cart'))
-			.map(({id, price}) => ({id, price}))
+		const items = shoppingCart.shoppingCartState.map(({id, price}) => ({id, price}))
 
 		const res = await fetch(`/api/getItemParams?locale=${router.locale}&items=${JSON.stringify(items)}`)
 		const parsedRes = await res.json()
-
-		setItemsState(items.map((item, index) => (
-			{
-				name: item.name,
-				amount: item.amount,
-				price: parsedRes.price,
-				params: parsedRes.params
-			}
-		)))
+console.log(parsedRes)
+		setLocalizedDataState(parsedRes)
 	})()}, [])
 
 	useEffect(() => {
-		if (itemsState !== null) {
+		if (localizedDataState !== null) {
 			let totalCost = 0
-			for (const item of itemsState) {
-				totalCost += item.price * item.amount
+			for (const i in shoppingCart.shoppingCartState) {
+				totalCost += localizedDataState[i].price * shoppingCart.shoppingCartState[i].amount
 			}
 			setTotalCostState(totalCost)
 		}	
-	}, [itemsState])
+	}, [localizedDataState])
 
 	return (
 		<div className={css`
@@ -192,7 +184,9 @@ export default function ShoppingCart({ localizedText }) {
 						width: 910px;
 						gap: 10px;
 					`}>
-						{!(itemsState === null) && itemsState.map((item, index) => (
+						{
+							(localizedDataState === null) && <CircularProgress sx={{marginLeft: '50%', marginTop: '25%'}}/> ||
+							!(localizedDataState === null) && shoppingCart.shoppingCartState.map((item, index) => (
 							<Paper sx={{}} key={index}>
 								<div className={itemRow}>
 									<div className={css`
@@ -202,10 +196,14 @@ export default function ShoppingCart({ localizedText }) {
 										width: 100%;
 									`}>
 										<IconButton sx={{justifySelf: 'flex-end'}} onClick={() => {
-											const newState = itemsState.slice(0, index)
-												.concat(itemsState.slice(index + 1, itemsState.length))
-											setItemsState(newState)
-											shoppingCart.setShoppingCartState(shoppingCart.shoppingCartState + 1)
+											const newState = shoppingCart.shoppingCartState.slice(0, index)
+												.concat(shoppingCart.shoppingCartState.slice(index + 1, shoppingCart.shoppingCartState.length))
+											setLocalizedDataState([
+												...localizedDataState.slice(0, index),
+												...localizedDataState.slice(index + 1, localizedDataState.length)
+											])
+											shoppingCart.setShoppingCartState(newState)
+											removeFromCart(item)
 										}}>
 											<ClearSharpIcon/>
 										</IconButton>
@@ -241,7 +239,7 @@ export default function ShoppingCart({ localizedText }) {
 											</div>
 											<div className={specs}>
 												<div>
-													{`${itemsState[index].params.toLowerCase()}`}
+													{`${localizedDataState[index].params.toLowerCase()}`}
 												</div>
 											</div>	
 										</div>
@@ -256,7 +254,7 @@ export default function ShoppingCart({ localizedText }) {
 											{`${item.amount} ${localizedText.units.quantity}.`}
 										</div>										
 										<div className={cost}>
-											{currencyFormat(itemsState[index].price * item.amount, router.locale)}
+											{currencyFormat(localizedDataState[index].price * item.amount, router.locale)}
 										</div>		
 									</div>
 								</div>	
@@ -266,7 +264,7 @@ export default function ShoppingCart({ localizedText }) {
 				</div>
 				<div className={rightSection}>
 					{
-						itemsState.length === 0
+						shoppingCart.shoppingCartState.length === 0
 							? 
 								<div className={css`
 									display: flex;
@@ -284,8 +282,11 @@ export default function ShoppingCart({ localizedText }) {
 									localizedText={localizedText.checkoutPanel}
 									onSuccess={() => {
 										setDialogState('success')
-										setItemsState([])
-										shoppingCart.setShoppingCartState(0)
+										for (i of shoppingCart.shoppingCartState) {
+											removeFromCart(i)
+										}
+										setLocalizedDataState([])
+										shoppingCart.setShoppingCartState([])
 									}}
 									onFailure={() => {
 										setDialogState('failure')

@@ -42,7 +42,7 @@ const navbarLocalization = {en: ['CATALOG', 'DELIVERY', 'CONTACTS'], ru: ['КА�
 
 function MyApp({ Component, pageProps }) {
 
-  const [shoppingCartState, setShoppingCartState] = useState(0)
+  const [shoppingCartState, setShoppingCartState] = useState([])
 
   const sessionInitiated = useRef(false)                                             
 
@@ -77,7 +77,7 @@ function MyApp({ Component, pageProps }) {
       window.localStorage.setItem('shopping_cart', JSON.stringify([]))
     } else {
 
-      setShoppingCartState(JSON.parse(cartItems).length)
+      setShoppingCartState(JSON.parse(cartItems))
     }
   }, [])
 
@@ -278,13 +278,13 @@ function StickyHeader() {
         </div>    
         <div className={menuBarLast}>
           <div className={cartButtonContainer}>
-              {shoppingCart.shoppingCartState > 0 && Array(2).fill(1).map((element, index) => (
+              {shoppingCart.shoppingCartState.length > 0 && Array(2).fill(1).map((element, index) => (
                 <div key={index} className={cx(waveEffect, css`animation-delay: ${waveDelay * index}s`)}>
                 </div>   
               ))}              
               <Link href='/cart'>
-                <IconButton sx={{color: shoppingCart.shoppingCartState > 0 ? '#02fd02' : 'none'}} color="primary">
-                  <Badge badgeContent={shoppingCart.shoppingCartState} color='secondary'>
+                <IconButton sx={{color: shoppingCart.shoppingCartState.length > 0 ? '#02fd02' : 'none'}} color="primary">
+                  <Badge badgeContent={shoppingCart.shoppingCartState.length} color='secondary'>
                     <ShoppingBagSharpIcon />
                   </Badge>   
                 </IconButton>  

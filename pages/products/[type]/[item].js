@@ -139,8 +139,7 @@ export default function Item({ id, item, itemType, localizedText, imgCount }) {
 	const router = useRouter()
 
 	useEffect(() => {
-		const shoppingCart = JSON.parse(window.localStorage.getItem('shopping_cart'))
-		for (const element of shoppingCart) {
+		for (const element of shoppingCart.shoppingCartState) {
 			if (element.id === id) {
 				setItemInCartState(true)
 			}
@@ -362,15 +361,16 @@ export default function Item({ id, item, itemType, localizedText, imgCount }) {
 											size="large" variant="contained"
 											onClick={() => {
 												if (!itemInCartState) {
-													setItemInCartState(true)
-													addToCart({
+													const newItem = {
 														name: item.name,
 														type: itemType, 
 														price: priceState,
 														amount: amountState,
 														id														
-													}, shoppingCart)
-													shoppingCart.setShoppingCartState(shoppingCart.shoppingCartState + 1)
+													}
+													shoppingCart.setShoppingCartState([...shoppingCart.shoppingCartState, newItem])
+													setItemInCartState(true)
+													addToCart(newItem)
 												}	
 											}}
 										>
