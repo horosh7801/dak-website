@@ -10,7 +10,7 @@ import { cx, css } from '@emotion/css'
 import Button from '@mui/material/Button';
 import FormControlLabel from '@mui/material/FormControlLabel'
 import FormControl from '@mui/material/FormControl'
-import { useState, useEffect, useContext } from 'react'
+import { useState, useEffect, useContext, useRef } from 'react'
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import ToggleButton from '@mui/material/ToggleButton';
 import currencyFormat from '../lib/modules/currencyFormat.js'
@@ -105,7 +105,16 @@ const imageCaptionText = css`
   margin-left: 10px;
 `
 
-export default function Home({ items, localizedText }) {
+export default function Home({ items, localizedText, catalogScroll }) {
+
+  const catalogRef = useRef()
+
+  useEffect(() => {
+    if (catalogScroll.state === true) {
+      catalogRef.current.scrollIntoView()
+      catalogScroll.setState(false)
+    }
+  }, [catalogScroll.state])
 
   return (
    //!renderState ? <CircularProgress sx={{marginLeft: '50vw', marginTop: '50vh'}}/> :
@@ -147,9 +156,7 @@ export default function Home({ items, localizedText }) {
           </div>          
         </div>  
       </div>  
-      <Catalog items={items} localizedText={localizedText}/>
-      <div className={css`height: 500px;`}>
-      </div>
+      <Catalog catalogRef={catalogRef} items={items} localizedText={localizedText}/>
     </div>  
   )
 }
@@ -243,7 +250,7 @@ function ProductItem({ itemID, name, price, type, locale}) {
   )
 }
 
-function Catalog ({ items, localizedText }) {
+function Catalog ({ items, localizedText, catalogRef }) {
 
   const [catalogState, setCatalogState] = useState('ceiling')
 
@@ -290,9 +297,9 @@ function Catalog ({ items, localizedText }) {
 
   return (
     <div className={catalog}>
-        <div id='catalog' className={css`
+        <div ref={catalogRef} id='catalog' className={css`
           position: relative;
-          top: -46px;
+          top: -59px;
         `}></div> 
       <div className={title}>
         {

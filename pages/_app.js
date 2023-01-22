@@ -48,6 +48,8 @@ function MyApp({ Component, pageProps }) {
 
   const [renderState, setRenderState] = useState(false)
 
+  const [catalogScrollState, setCatalogScrollState] = useState(false)
+
   useEffect(() => {
     setRenderState(true)
   }, [])
@@ -87,8 +89,8 @@ function MyApp({ Component, pageProps }) {
         <div className={roboto}>
          {!renderState ? <CircularProgress sx={{marginLeft: '50vw', marginTop: '50vh'}}/> :
           <>
-            <StickyHeader/>
-            <Component {...pageProps} />
+            <StickyHeader catalogScroll={{state: catalogScrollState, setState: setCatalogScrollState}} />
+            <Component {...pageProps} catalogScroll={{state: catalogScrollState, setState: setCatalogScrollState}} />
           </>  
         }
         </div>
@@ -97,7 +99,7 @@ function MyApp({ Component, pageProps }) {
   )
 }
 
-function MenuBarButton({ name }) {
+function MenuBarButton({ name, onClick }) {
 
   const menuButton = css`
     display: flex;
@@ -116,13 +118,13 @@ function MenuBarButton({ name }) {
   `
 
   return (
-    <div className={menuButton}>
+    <div onClick={onClick} className={menuButton}>
       {name}
     </div>
   )
 }
 
-function StickyHeader() {
+function StickyHeader({ catalogScroll }) {
 
   const shoppingCart = useContext(ShoppingCartContext)
 
@@ -271,7 +273,15 @@ function StickyHeader() {
           {
             ['catalog', 'delivery', 'contacts'].map((name, i) => {
               return (
-                <MenuBarButton key={i} name={navbarLocalization[router.locale][i]} />    
+                  <MenuBarButton 
+                    key={i} 
+                    name={navbarLocalization[router.locale][i]} 
+                    onClick={() => {
+                      console.log('scroll')
+                      catalogScroll.setState(true)
+                      router.push('/', '/', {scroll: false})
+                    }}
+                  />    
               )
             })
           }
@@ -298,11 +308,13 @@ function StickyHeader() {
             margin-right: 35px;
           `}>
             <Select
+              MenuProps={{ disableScrollLock: true }}
               variant='standard'
               sx={{width: 85, height: 30}}
               value={router.locale.toUpperCase()}
               onChange={async (event) => {
                 setCookie('NEXT_LOCALE', event.target.value.toLowerCase())
+                console.log('selected')
               //  router.push(router.asPath, router.asPath, {scroll: false, locale: event.target.value.toLowerCase()})
                 router.reload()
               }}
