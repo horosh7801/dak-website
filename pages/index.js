@@ -17,6 +17,8 @@ import currencyFormat from '../lib/modules/currencyFormat.js'
 import CircularProgress from '@mui/material/CircularProgress'
 
 
+let count = 0
+
 const carouselHeight = 600;
 
 const mainWrapper = css`
@@ -117,7 +119,6 @@ export default function Home({ items, localizedText, catalogScroll }) {
   }, [catalogScroll.state])
 
   return (
-   //!renderState ? <CircularProgress sx={{marginLeft: '50vw', marginTop: '50vh'}}/> :
     <div className={mainWrapper}>
       <div className={imageSet}>
         <div className={imageSetItem}>
@@ -254,6 +255,12 @@ function Catalog ({ items, localizedText, catalogRef }) {
 
   const [catalogState, setCatalogState] = useState('ceiling')
 
+  const [itemsState, setItemsState] = useState(false)
+
+  useEffect(() => {
+    setItemsState(true)
+  }, [catalogState])
+
   const router = useRouter()
 
   const catalog = css`
@@ -293,6 +300,7 @@ function Catalog ({ items, localizedText, catalogRef }) {
     margin-bottom: 30px;
     gap: 10px;
     padding-top: 10px;
+    min-height: calc(100vh - 59px - 35px);
   `
 
   return (
@@ -320,7 +328,10 @@ function Catalog ({ items, localizedText, catalogRef }) {
         }}
         value={catalogState}  
         onChange={(event) => {
-          setCatalogState(event.target.value)
+          if (event.target.value !== catalogState) {
+            setItemsState(false)
+            setCatalogState(event.target.value)
+          }  
         }}
       >
         <ToggleButton value='ceiling'>
@@ -357,7 +368,7 @@ function Catalog ({ items, localizedText, catalogRef }) {
 
       <div className={productsListWrapper}>
         <div className={productsList}>
-          {items[catalogState].map((item, i) => (<ProductItem
+          {!itemsState && <CircularProgress sx={{marginLeft: '50%', marginTop: 'calc((100vh - (59px + 35px)) / 2 - 48.5px)'}}/> || items[catalogState].map((item, i) => (<ProductItem
             itemID={item.id}
             type={catalogState} 
             name={item.name} 
@@ -373,6 +384,45 @@ function Catalog ({ items, localizedText, catalogRef }) {
 
 export async function getStaticProps({ locale }) {
   const fs = require('fs');
+const http = require('http')
+const cron = require('node-cron')
+
+const appID = '20d4425216194e319ed5940551452cd9'
+const endpoint = 'latest'
+
+const task = cron.schedule(
+  '*/10 * * * * *',
+  function() {
+    count++
+    console.log(count)
+ /*   http.request({
+      host: 'openexchangerates.org',
+      path: `/api/${endpoint}.json?app_id=${appID}`
+    }, (res) => {
+
+      let str = ''
+
+      res.on('data', (chunk) => {
+        str += chunk
+      })
+
+      res.on('end', () => {
+        const data = JSON.parse(str)
+        const USDToEUR = data['rates']['EUR']
+        const newRates = {
+          'EN': {'currency': 'EUR', 'rate': 1}, 
+          'RU': {'currency': 'RUB', 'rate': data['rates']['RUB'] / USDToEUR},
+          'RO': {'currency': 'MDL', 'rate': data['rates']['MDL'] / USDToEUR},
+        }
+        fs.writeFileSync('json/EURCurrencyRates.json', JSON.stringify(newRates)) 
+      })
+    }).end() */
+
+  },
+  {timezone: 'Asia/Tashkent', scheduled: false}
+
+);
+task.start() 
 
   const localizedText = JSON.parse(fs.readFileSync(`json/localization/${locale}/index.json`))
 

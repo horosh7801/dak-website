@@ -2,7 +2,9 @@ import { NextResponse } from 'next/server'
 
 const PUBLIC_FILE = /\.(.*)$/
 
+
 export function middleware(request) {
+
 
 	const { nextUrl, headers, cookies } = request
 
