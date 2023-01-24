@@ -460,15 +460,16 @@ export async function getStaticPaths({ locales }) {
 
 	const fs = require('fs')
 
-	const items = JSON.parse(fs.readFileSync('json/product_types.json', 'utf-8'))
-
 	const types = JSON.parse(fs.readFileSync('json/product_types.json', 'utf-8'))
 
-	const parsedItems = JSON.parse(fs.readFileSync('json/items.json'))
+	const parsedItems = JSON.parse(fs.readFileSync('json/itemsEN.json'))
 
 	const paths = []
 
 	for (const locale of locales) {
+		if (locale === 'default') {
+			continue
+		}
 		for (const itemID in parsedItems) {
 			const item = parsedItems[itemID]
 			paths.push({ 'params': { item: item.name.toLowerCase().replace(/[\s-]/g, '_'), type: types[item.type]}, 'locale': locale })
