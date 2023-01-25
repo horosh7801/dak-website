@@ -318,14 +318,15 @@ export default function Item({ id, item, itemType, localizedText, imgCount }) {
 												{`${localizedText.checkoutPanel.amount}:`}
 											</div>
 											<MuiInput
-												className={roboto}
-												sx={{
-													width: '45px',
-													'.css-1x51dt5-MuiInputBase-input-MuiInput-input': {
-														padding: '0px',
-														textAlign: 'center',
+												className={cx(roboto, css`
+	
+													& .MuiInput-input {
+														padding: 0px;
+														text-align: center;
+														 width: 45px;
 													}
-												}}
+												`)}
+
 												value={amountState}
 												onChange={(event) => {
 													let value
