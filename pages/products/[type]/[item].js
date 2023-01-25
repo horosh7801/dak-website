@@ -269,20 +269,17 @@ export default function Item({ id, item, itemType, localizedText, imgCount }) {
 													orientation='vertical' 
 													exclusive 
 													value={priceState}
-													sx={{
-														alignSelf: 'center	',
-									          '& .css-ueukts-MuiButtonBase-root-MuiToggleButton-root.Mui-selected': {
-									            backgroundColor: 'black',
-									            color: 'white',
-									          },
-									          '& .css-ueukts-MuiButtonBase-root-MuiToggleButton-root': {
-									            borderRadius: 0
-									          },
-									          '.css-ueukts-MuiButtonBase-root-MuiToggleButton-root.Mui-selected:hover': {
-									          									            backgroundColor: 'black',
-									            color: 'white',
-									          }												
-												}}>
+													className={css`
+										        font-weight: 500;
+										        & .Mui-selected, .Mui-selected:hover {
+										          background-color: black;
+										          color: white;
+										        }
+										        & .MuiToggleButton-root {
+										          border-radius: 0;
+										        }
+										      `}													
+												>
 													{item.price.map((value, index) => (
 														<ToggleButton key={index} value={index} onClick={() => {setPriceState(index)}}>
 															<div className={cx(roboto, css`

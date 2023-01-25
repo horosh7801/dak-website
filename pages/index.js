@@ -315,17 +315,18 @@ function Catalog ({ items, localizedText, catalogRef }) {
         }
       </div>
       <ToggleButtonGroup
-        className={css`font-weight: 500;`}
+        className={css`
+        font-weight: 500;
+        & .Mui-selected, .Mui-selected:hover {
+          background-color: black;
+          color: white;
+        }
+        & .MuiToggleButton-root {
+          border-radius: 0;
+        }
+      `}
         exclusive
-        sx={{
-          '& button.MuiButtonBase-root.MuiToggleButton-root.Mui-selected.MuiToggleButton-sizeMedium.MuiToggleButton-standard.MuiToggleButtonGroup-grouped.MuiToggleButtonGroup-groupedHorizontal.css-ueukts-MuiButtonBase-root-MuiToggleButton-root': {
-            backgroundColor: 'black',
-            color: 'white',
-          },
-          '& .css-ueukts-MuiButtonBase-root-MuiToggleButton-root': {
-            borderRadius: 0
-          },
-        }}
+        color='primary'
         value={catalogState}  
         onChange={(event) => {
           if (event.target.value !== catalogState) {
@@ -334,7 +335,9 @@ function Catalog ({ items, localizedText, catalogRef }) {
           }  
         }}
       >
-        <ToggleButton value='ceiling'>
+        <ToggleButton 
+          value='ceiling'
+        >
           {
             localizedText.catalog.ceiling
           }
