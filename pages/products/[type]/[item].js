@@ -419,6 +419,9 @@ export async function getStaticProps({ locale, params }) {
 		case 'ru':
 			parsedItems = JSON.parse(fs.readFileSync('json/itemsRU.json'))
 			break
+		case 'ro':
+			parsedItems = JSON.parse(fs.readFileSync('json/itemsRU.json'))	
+			break
 		default: 
 		parsedItems =	JSON.parse(fs.readFileSync('json/itemsEN.json'))	
 	}

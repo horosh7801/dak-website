@@ -143,7 +143,6 @@ export default function ShoppingCart({ localizedText }) {
 
 		const res = await fetch(`/api/getItemParams?locale=${router.locale}&items=${JSON.stringify(items)}`)
 		const parsedRes = await res.json()
-console.log(parsedRes)
 		setLocalizedDataState(parsedRes)
 	})()}, [])
 

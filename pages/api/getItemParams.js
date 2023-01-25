@@ -15,6 +15,9 @@ export default function handler(req, res) {
 		case 'ru':
 			totalItems = JSON.parse(fs.readFileSync('json/itemsRU.json'))	
 			break
+		case 'ro':
+			totalItems = JSON.parse(fs.readFileSync('json/itemsRU.json'))	
+			break				
 		default:
 			totalItems = JSON.parse(fs.readFileSync('json/itemsEN.json'))
 	}

@@ -1,0 +1,46 @@
+{
+	"characteristics": {
+		"characteristics": "ХАРАКТЕРИСТИКИ",
+		"material": "Материал",
+		"dimensions": "Размеры",
+		"lampType": "Тип используемых ламп",
+		"power": "Мощность",
+		"lampEquivalent": "Аналог лампы накаливания",
+		"screenWidth": "Ширина экрана",
+		"plinth": "Тип цоколя",
+		"lampInclusion": "Комплектация лампочкой",
+		"colorTemp": "Цветовая температура",
+		"powerSupply": "Электропитание",
+		"coating": "Покрытие и цвет",
+		"fastening": "Фиксация",
+		"options": "Опции"
+	},
+	"checkoutPanel": {
+		"length": "ДЛИНА",
+		"power": "МОЩНОСТЬ",
+		"amount": "КОЛИЧЕСТВО",
+		"addToCart": "В КОРЗИНУ",
+		"order": "ЗАКАЗАТЬ",
+		"totalCost": "ИТОГ",
+		"phone": "ТЕЛЕФОН",
+		"name": "ИМЯ",
+		"email": "EMAIL",
+		"submit": "ПОДТВЕРДИТЬ",
+		"label": "ОФОРМЛЕНИЕ ЗАКАЗА",	
+		"formValidation": {
+			"phone": "Введите номер телефона",
+			"phoneChar": "Номер телефона должен содержать только цифры",
+			"name": "Введите имя",
+			"nameChar": "Имя должно содержать только латинские символы",
+			"email": "Введите действительный адрес электронной почты"
+		},
+		"orderConfirmation": {
+			"success": "ЗАКАЗ ОТПРАВЛЕН УСПЕШНО",
+			"failure": "НЕ УДАЛОСЬ ОТПРАВИТЬ ЗАКАЗ"
+		}					
+	},
+	"units": {
+		"length": "см",
+		"power": "Вт"
+	}	
+}

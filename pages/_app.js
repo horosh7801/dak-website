@@ -38,7 +38,7 @@ const theme = createTheme({
 
 })
 
-const navbarLocalization = {en: ['CATALOG', 'DELIVERY', 'CONTACTS'], ru: ['КАТАЛОГ', 'ДОСТАВКА', 'КОНТАКТЫ']}
+const navbarLocalization = {en: ['CATALOG', 'DELIVERY', 'CONTACTS'], ru: ['КАТАЛОГ', 'ДОСТАВКА', 'КОНТАКТЫ'], ro: ['КАТАЛОГ', 'ДОСТАВКА', 'КОНТАКТЫ']}
 
 function MyApp({ Component, pageProps }) {
 
@@ -129,10 +129,6 @@ function StickyHeader({ catalogScroll }) {
   const shoppingCart = useContext(ShoppingCartContext)
 
   const router = useRouter()
-
-  useEffect(() => {(async () => {
-
-  })()}, [])
 
   const stickyHeader = css`
     box-shadow: 0px 1px 3px -2px;
@@ -358,7 +354,27 @@ function StickyHeader({ catalogScroll }) {
                   </div>
                   <Image style={{width: 23, height: 'auto'}} src={ruImg}/>
                 </div>    
-              </MenuItem>                         
+              </MenuItem>             
+              <MenuItem 
+                value={'RO'}
+                disableGutters
+                sx={{
+                  '.css-iz83cf': {
+                  display: 'flex',
+                  justifyContent: 'center',
+                  columnGap: '13px' ,
+                  width: '100%'
+                }}}
+              >
+                <div className={selectItemContainer}>
+                  <div className={css`
+                    padding-top: 6px;
+                  `}>
+                    RO
+                  </div>
+                  <Image style={{width: 23, height: 'auto'}} src={mlImg}/>
+                </div>    
+              </MenuItem>                           
             </Select>
           </div>
         </div>           
