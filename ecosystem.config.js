@@ -8,5 +8,8 @@ module.exports = {
   },{
     name   : "strapi",
     script : "cd backend; yarn develop"
+  },{
+    name   : "start",
+    script : "yarn start"
   }]
 }

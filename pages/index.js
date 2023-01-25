@@ -383,6 +383,13 @@ function Catalog ({ items, localizedText, catalogRef }) {
 }
 
 export async function getStaticProps({ locale }) {
+
+  if (locale === 'default') {
+    return {
+      notFound: true,
+    }
+  }
+
   const fs = require('fs');
 
   const localizedText = JSON.parse(fs.readFileSync(`json/localization/${locale}/index.json`))
