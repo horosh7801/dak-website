@@ -19,6 +19,8 @@ import MenuItem from '@mui/material/MenuItem'
 import Select from '@mui/material/Select'
 import roboto from '../lib/modules/variableFont.js'
 import CircularProgress from '@mui/material/CircularProgress'
+import MenuIcon from '@mui/icons-material/Menu'
+import useMediaQuery from '@mui/material/useMediaQuery'
 
 const theme = createTheme({
   palette: {
@@ -37,6 +39,8 @@ const theme = createTheme({
   },
 
 })
+
+const breakpoints = [890]
 
 const navbarLocalization = {en: ['CATALOG', 'DELIVERY', 'CONTACTS'], ru: ['КАТАЛОГ', 'ДОСТАВКА', 'КОНТАКТЫ'], ro: ['КАТАЛОГ', 'ДОСТАВКА', 'КОНТАКТЫ']}
 
@@ -129,6 +133,8 @@ function StickyHeader({ catalogScroll }) {
   const shoppingCart = useContext(ShoppingCartContext)
 
   const router = useRouter()
+
+  const match0 = useMediaQuery(`(min-width: ${breakpoints[0] + 1}px)`)
 
   const stickyHeader = css`
     box-shadow: 0px 1px 3px -2px;
@@ -265,23 +271,25 @@ function StickyHeader({ catalogScroll }) {
         </div>
       </Link>  
       <div className={menuBar}>
-        <div className={menuBarFirst}>
-          {
-            ['catalog', 'delivery', 'contacts'].map((name, i) => {
-              return (
-                  <MenuBarButton 
-                    key={i} 
-                    name={navbarLocalization[router.locale][i]} 
-                    onClick={() => {
-                      console.log('scroll')
-                      catalogScroll.setState(true)
-                      router.push('/', '/', {scroll: false})
-                    }}
-                  />    
-              )
-            })
-          }
-        </div>    
+        {match0 &&
+          <div className={menuBarFirst}>
+            {
+              ['catalog', 'delivery', 'contacts'].map((name, i) => {
+                return (
+                    <MenuBarButton 
+                      key={i} 
+                      name={navbarLocalization[router.locale][i]} 
+                      onClick={() => {
+                        console.log('scroll')
+                        catalogScroll.setState(true)
+                        router.push('/', '/', {scroll: false})
+                      }}
+                    />    
+                )
+              })
+            }
+          </div>   
+        }
         <div className={menuBarLast}>
           <div className={cartButtonContainer}>
               {shoppingCart.shoppingCartState.length > 0 && Array(2).fill(1).map((element, index) => (

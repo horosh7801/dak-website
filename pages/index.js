@@ -15,11 +15,11 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import ToggleButton from '@mui/material/ToggleButton';
 import currencyFormat from '../lib/modules/currencyFormat.js'
 import CircularProgress from '@mui/material/CircularProgress'
-
-
-let count = 0
+import useMediaQuery from '@mui/material/useMediaQuery'
 
 const carouselHeight = 600;
+
+const breakpoints = [1340, 1030, 890]
 
 const mainWrapper = css`
   display: flex;
@@ -62,6 +62,13 @@ const imageSet = css`
   flex-direction: column;
   align-items: center;
   width: 100vw;
+  @media (max-width: ${breakpoints[1]}px) {
+    transform: scale(0.74);
+    margin-top: -94px;
+  }  
+  @media (max-width: ${breakpoints[2]}px) {
+
+  }
 `
 
 const imageSetItem = css`
@@ -111,6 +118,8 @@ export default function Home({ items, localizedText, catalogScroll }) {
 
   const catalogRef = useRef()
 
+  const matches2 = useMediaQuery(`(min-width: ${breakpoints[2] + 1}px)`)
+
   useEffect(() => {
     if (catalogScroll.state === true) {
       catalogRef.current.scrollIntoView()
@@ -120,43 +129,45 @@ export default function Home({ items, localizedText, catalogScroll }) {
 
   return (
     <div className={mainWrapper}>
-      <div className={imageSet}>
-        <div className={imageSetItem}>
-          <Image style={{width: 1024, height: 'auto', position: 'absolute', top: -48}} src={lampImage1} />
-          <div className={cx(imageCaption, css`height: 160px; top: 230px`)}>
-            <div className={cx(css`font-weight: 700; font-size: 45px;`, imageCaptionText)}>
-              DAK
-            </div>
-            <div className={imageCaptionText}>
-              {
-                localizedText.imageSet.about
-              }
-            </div>
-          </div>
-        </div>
-        <div className={imageSetRow}>
-          <div className={imageSetItem1}>
-            <Image style={{width: 509, height: 'auto',}} src={lampImage2} />
-            <div className={cx(imageCaption, css`height: 110px; top: 228px;`)}>
-              <div className={cx(imageCaptionText, css`font-size: 30px;`)}>
+      {matches2 && 
+        <div className={imageSet}>
+          <div className={imageSetItem}>
+            <Image style={{width: 1024, height: 'auto', position: 'absolute', top: -48}} src={lampImage1} />
+            <div className={cx(imageCaption, css`height: 160px; top: 230px`)}>
+              <div className={cx(css`font-weight: 700; font-size: 45px;`, imageCaptionText)}>
+                DAK
+              </div>
+              <div className={imageCaptionText}>
                 {
-                  localizedText.imageSet.contactInfo
-                }
-              </div>            
-            </div>
-          </div>
-          <div className={css`position: relative; transition: 0.1s; &:hover {opacity: 0.9;}`}>
-            <Image style={{width: 509, height: 'auto',}} src={lampImage3} />
-            <div className={cx(imageCaption, css`height: 110px; top: 228px;`)}>
-              <div className={cx(imageCaptionText, css`font-size: 30px;`)}>
-                {
-                  localizedText.imageSet.paymentDelivery
+                  localizedText.imageSet.about
                 }
               </div>
-            </div>            
-          </div>          
+            </div>
+          </div>
+          <div className={imageSetRow}>
+            <div className={imageSetItem1}>
+              <Image style={{width: 509, height: 'auto',}} src={lampImage2} />
+              <div className={cx(imageCaption, css`height: 110px; top: 228px;`)}>
+                <div className={cx(imageCaptionText, css`font-size: 30px;`)}>
+                  {
+                    localizedText.imageSet.contactInfo
+                  }
+                </div>            
+              </div>
+            </div>
+            <div className={css`position: relative; transition: 0.1s; &:hover {opacity: 0.9;}`}>
+              <Image style={{width: 509, height: 'auto',}} src={lampImage3} />
+              <div className={cx(imageCaption, css`height: 110px; top: 228px;`)}>
+                <div className={cx(imageCaptionText, css`font-size: 30px;`)}>
+                  {
+                    localizedText.imageSet.paymentDelivery
+                  }
+                </div>
+              </div>            
+            </div>          
+          </div>  
         </div>  
-      </div>  
+      }
       <Catalog catalogRef={catalogRef} items={items} localizedText={localizedText}/>
     </div>  
   )
@@ -270,6 +281,12 @@ function Catalog ({ items, localizedText, catalogRef }) {
     justify-content: space-between;
     align-items: center;
     margin-top: 50px;
+    @media (max-width: ${breakpoints[1]}px min-width: ${breakpoints[2]}px + 1) {
+      margin-top: -44px;
+    }
+    @media (max-width: ${breakpoints[2]}px) {
+      margin-top: 0px;
+    }
   `
 
   const title = css`
@@ -297,6 +314,12 @@ function Catalog ({ items, localizedText, catalogRef }) {
     flex-wrap: wrap;
     justify-content: flex-start;
     width: 1310px;
+    @media (max-width: ${breakpoints[0]}px) {
+      width: 980px;
+    }
+    @media (max-width: ${breakpoints[1]}px) {
+      width: 650px;
+    }
     margin-bottom: 30px;
     gap: 10px;
     padding-top: 10px;
@@ -429,7 +452,7 @@ export async function getStaticProps({ locale }) {
     }
     items[itemTypes[type]].push({ id: itemID, name, price })    
   }
-  
+
   return {
     props: { items, localizedText }
   }  
