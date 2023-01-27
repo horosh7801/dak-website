@@ -4,6 +4,9 @@ export default function Document() {
   return (
     <Html>
       <Head />
+        <title>
+          DAK LUMINA
+        </title>
       <body>
         <Main />
         <NextScript />

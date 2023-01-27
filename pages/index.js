@@ -132,7 +132,14 @@ export default function Home({ items, localizedText, catalogScroll }) {
       {matches2 && 
         <div className={imageSet}>
           <div className={imageSetItem}>
-            <Image style={{width: 1024, height: 'auto', position: 'absolute', top: -48}} src={lampImage1} />
+            <Image 
+              style={{width: 1024, height: 'auto', position: 'absolute', top: -48}} 
+              src={lampImage1} 
+              sizes={`
+                (max-width: ${breakpoints[1]}px) 757.76px,
+                1024px
+              `}
+            />
             <div className={cx(imageCaption, css`height: 160px; top: 230px`)}>
               <div className={cx(css`font-weight: 700; font-size: 45px;`, imageCaptionText)}>
                 DAK
@@ -146,7 +153,15 @@ export default function Home({ items, localizedText, catalogScroll }) {
           </div>
           <div className={imageSetRow}>
             <div className={imageSetItem1}>
-              <Image style={{width: 509, height: 'auto',}} src={lampImage2} />
+              <Image 
+                style={{width: 509, height: 'auto',}} 
+                src={lampImage2} 
+                sizes={`
+                  (max-width: ${breakpoints[1]}px) 376.66px,
+                  509px
+                `}                
+              />
+
               <div className={cx(imageCaption, css`height: 110px; top: 228px;`)}>
                 <div className={cx(imageCaptionText, css`font-size: 30px;`)}>
                   {
@@ -156,7 +171,14 @@ export default function Home({ items, localizedText, catalogScroll }) {
               </div>
             </div>
             <div className={css`position: relative; transition: 0.1s; &:hover {opacity: 0.9;}`}>
-              <Image style={{width: 509, height: 'auto',}} src={lampImage3} />
+              <Image 
+                style={{width: 509, height: 'auto',}} 
+                src={lampImage3} 
+                sizes={`
+                  (max-width: ${breakpoints[1]}px) 376.66px,
+                  509px
+                `}                   
+              />
               <div className={cx(imageCaption, css`height: 110px; top: 228px;`)}>
                 <div className={cx(imageCaptionText, css`font-size: 30px;`)}>
                   {
@@ -239,7 +261,9 @@ function ProductItem({ itemID, name, price, type, locale}) {
             <Image 
               style={{objectFit: 'contain'}} 
               src={`/products/${type}/${name.toLowerCase().replace(/[\s-]/g, '_')}/item0.jpg`} 
-              fill={true} />
+              fill={true} 
+              sizes={'280px'}                 
+            />
           </div> 
         </div>  
         <div className={css`
