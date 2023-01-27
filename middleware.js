@@ -31,6 +31,10 @@ export function middleware(request) {
     return undefined
   }
 
+  if (nextUrl.pathname === '/admin') {
+  	return undefined
+  }
+
 //console.log(nextUrl.pathname)
 
 	if (NEXT_LOCALE) {
