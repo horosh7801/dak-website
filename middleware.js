@@ -32,7 +32,7 @@ export function middleware(request) {
   }
 
   if (nextUrl.pathname === '/admin') {
-  	return NextResponse.redirect(new URL(`http://127.0.0.1:1337/admin`))
+  	return NextResponse.redirect(new URL(`http://localhost:1337/admin`))
   }
 
 //console.log(nextUrl.pathname)
