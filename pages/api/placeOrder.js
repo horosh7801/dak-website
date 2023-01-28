@@ -45,7 +45,7 @@ export default async function handler(req, res) {
 
 		const items = JSON.parse(fs.readFileSync('json/itemsEN.json'))
 
-		const resp = await fetch('http://127.0.0.1:1337/api/orders', {
+		const resp = await fetch('http://45.93.138.174:1337/api/orders', {
 			method: 'POST', 
 			headers: {
 				'Content-Type': 'application/json',
