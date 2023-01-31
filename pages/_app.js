@@ -42,7 +42,11 @@ const theme = createTheme({
 
 const breakpoints = [890]
 
-const navbarLocalization = {en: ['CATALOG', 'DELIVERY', 'CONTACTS'], ru: ['КАТАЛОГ', 'ДОСТАВКА', 'КОНТАКТЫ'], ro: ['КАТАЛОГ', 'ДОСТАВКА', 'КОНТАКТЫ']}
+const navbarLocalization = {
+  en: ['CATALOG', 'DELIVERY', 'CONTACTS', 'COLORS'], 
+  ru: ['КАТАЛОГ', 'ДОСТАВКА', 'КОНТАКТЫ', 'ЦВЕТОВАЯ ГАММА'], 
+  ro: ['КАТАЛОГ', 'ДОСТАВКА', 'КОНТАКТЫ', 'ЦВЕТОВАЯ ГАММА']
+}
 
 function MyApp({ Component, pageProps }) {
 
@@ -274,7 +278,7 @@ function StickyHeader({ catalogScroll }) {
         {match0 &&
           <div className={menuBarFirst}>
             {
-              ['catalog', 'delivery', 'contacts'].map((name, i) => {
+              ['catalog', 'delivery', 'contacts', 'colors'].map((name, i) => {
                 return (
                     <MenuBarButton 
                       key={i} 
