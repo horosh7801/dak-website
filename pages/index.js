@@ -62,6 +62,7 @@ const imageSet = css`
   flex-direction: column;
   align-items: center;
   width: 100vw;
+  max-width: 100%;
   @media (max-width: ${breakpoints[1]}px) {
     transform: scale(0.74);
     margin-top: -94px;
@@ -78,6 +79,7 @@ const imageSetItem = css`
   overflow: hidden;
   margin-bottom: 6px;
   transition: 0.1s;
+  cursor: pointer;
   &:hover {
     opacity: 0.9;
   }
@@ -91,6 +93,7 @@ const imageSetRow = css`
 const imageSetItem1 = css`
   margin-right: 6px;
   position: relative;
+  cursor: pointer;
   transition: 0.1s;
   &:hover {
     opacity: 0.9;
@@ -120,6 +123,8 @@ export default function Home({ items, localizedText, catalogScroll }) {
 
   const matches2 = useMediaQuery(`(min-width: ${breakpoints[2] + 1}px)`)
 
+  const router = useRouter()
+
   useEffect(() => {
     if (catalogScroll.state === true) {
       catalogRef.current.scrollIntoView()
@@ -131,7 +136,12 @@ export default function Home({ items, localizedText, catalogScroll }) {
     <div className={mainWrapper}>
       {matches2 && 
         <div className={imageSet}>
-          <div className={imageSetItem}>
+          <div 
+            className={imageSetItem}
+            onClick={() => {
+              router.push('/info/about')
+            }}
+          >
             <Image 
               style={{width: 1024, height: 'auto', position: 'absolute', top: -48}} 
               src={lampImage1} 
@@ -152,7 +162,12 @@ export default function Home({ items, localizedText, catalogScroll }) {
             </div>
           </div>
           <div className={imageSetRow}>
-            <div className={imageSetItem1}>
+            <div
+              className={imageSetItem1}
+              onClick={() => {
+                router.push('/info/contacts')
+              }}
+            >
               <Image 
                 style={{width: 509, height: 'auto',}} 
                 src={lampImage2} 
@@ -170,7 +185,12 @@ export default function Home({ items, localizedText, catalogScroll }) {
                 </div>            
               </div>
             </div>
-            <div className={css`position: relative; transition: 0.1s; &:hover {opacity: 0.9;}`}>
+            <div 
+              className={css`position: relative; transition: 0.1s; &:hover {opacity: 0.9;}; cursor: pointer;`}
+              onClick={() => {
+                router.push('/info/delivery', '/info/delivery')
+              }}
+            >
               <Image 
                 style={{width: 509, height: 'auto',}} 
                 src={lampImage3} 
@@ -300,12 +320,13 @@ function Catalog ({ items, localizedText, catalogRef }) {
 
   const catalog = css`
     width: 100vw;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     margin-top: 50px;
-    @media (max-width: ${breakpoints[1]}px min-width: ${breakpoints[2]}px + 1) {
+    @media (max-width: ${breakpoints[1]}px), (min-width: ${breakpoints[2]}px + 1) {
       margin-top: -44px;
     }
     @media (max-width: ${breakpoints[2]}px) {

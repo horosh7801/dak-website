@@ -280,9 +280,12 @@ function StickyHeader({ catalogScroll }) {
                       key={i} 
                       name={navbarLocalization[router.locale][i]} 
                       onClick={() => {
-                        console.log('scroll')
-                        catalogScroll.setState(true)
-                        router.push('/', '/', {scroll: false})
+                        if (name === 'catalog') {
+                          catalogScroll.setState(true)
+                          router.push('/', '/', {scroll: false})
+                        } else {
+                          router.push(`/info${name}`, `/info/${name}`)
+                        }  
                       }}
                     />    
                 )
