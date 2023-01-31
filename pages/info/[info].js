@@ -70,6 +70,7 @@ export default function Info({ pageIndex, pageNames }) {
 					flex-grow: 1;
 					padding-left: 30px;
 					padding-right: 30px;
+					min-height: calc(100vh - 35px - 59px);
 				`}>
 					{
 						pageIndex === 0 &&

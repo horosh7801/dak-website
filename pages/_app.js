@@ -40,6 +40,19 @@ const theme = createTheme({
 
 })
 
+const footerItem = css`
+  text-underline-offset: 4px;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;  
+`
+
+const footerColumn = css`
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+`
+
 const breakpoints = [890]
 
 const navbarLocalization = {
@@ -99,6 +112,47 @@ function MyApp({ Component, pageProps }) {
           <>
             <StickyHeader catalogScroll={{state: catalogScrollState, setState: setCatalogScrollState}} />
             <Component {...pageProps} catalogScroll={{state: catalogScrollState, setState: setCatalogScrollState}} />
+            <div className={css`
+              height: 200px;
+              background-color: #cdcdcd;
+              display: flex;
+              flex-direction: row;
+              padding-left: 30px;
+              padding-top: 20px;
+              column-gap: 50px;
+              font-size: 15px;
+            `}>
+              <div className={footerColumn}>
+                <div 
+                  className={footerItem}
+                  onClick={() => {
+                    setCatalogScrollState(true)
+                    router.push('/', '/', {scroll: false})
+                  }}                  
+                >
+                  КАТАЛОГ
+                </div>
+                <div className={footerItem}>
+                  ЦВЕТОВАЯ ГАММА
+                </div>                      
+              </div>
+              <div className={footerColumn}>
+                <div className={footerItem}>
+                  ДОСТАВКА И ОПЛАТА
+                </div>                                            
+              </div>
+              <div className={footerColumn}>
+                <div className={footerItem}>
+                  +37368077331
+                </div>
+                <div className={footerItem}>
+                  КОНТАКТНАЯ ИНФОРМАЦИЯ
+                </div>
+                <div className={footerItem}>
+                  О НАС
+                </div>                
+              </div>
+            </div>
           </>  
         }
         </div>
@@ -277,21 +331,23 @@ function StickyHeader({ catalogScroll }) {
       <div className={menuBar}>
         {match0 &&
           <div className={menuBarFirst}>
+            <MenuBarButton
+              key={0}
+              name={navbarLocalization[router.locale][0]}
+              onClick={() => {
+                catalogScroll.setState(true)
+                router.push('/', '/', {scroll: false})
+              }}
+            />
             {
-              ['catalog', 'delivery', 'contacts', 'colors'].map((name, i) => {
+              ['delivery', 'contacts', 'colors'].map((name, i) => {
                 return (
+                  <Link style={{textDecoration: 'none', color: 'black'}} href={`/info/${name}`, `/info/${name}`}>
                     <MenuBarButton 
                       key={i} 
-                      name={navbarLocalization[router.locale][i]} 
-                      onClick={() => {
-                        if (name === 'catalog') {
-                          catalogScroll.setState(true)
-                          router.push('/', '/', {scroll: false})
-                        } else {
-                          router.push(`/info${name}`, `/info/${name}`)
-                        }  
-                      }}
+                      name={navbarLocalization[router.locale][i + 1]} 
                     />    
+                  </Link>  
                 )
               })
             }
