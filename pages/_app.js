@@ -53,7 +53,7 @@ const footerColumn = css`
   row-gap: 15px;
 `
 
-const breakpoints = [890]
+const breakpoints = [950]
 
 const navbarLocalization = {
   en: ['CATALOG', 'DELIVERY', 'CONTACTS', 'COLORS', 'ABOUT'], 
@@ -220,6 +220,7 @@ function StickyHeader({ catalogScroll }) {
     box-shadow: 0px 1px 3px -2px;
     display: flex;
     flex-direction: row;
+    align-items: center;
     position: sticky;
     top: 0px;
     z-index: 10;
@@ -231,6 +232,13 @@ function StickyHeader({ catalogScroll }) {
     margin: 6px;
     margin-left: 40px;
     cursor: pointer;
+    width: 92px;
+    @media (max-width: ${breakpoints[0]}px) {
+      flex-grow: 0;
+      transform: scale(0.9);
+      margin: 0px 0px 0px 0px;
+      margin-left: 0px;
+    } 
   `
 
   const logo = css`
@@ -274,7 +282,11 @@ function StickyHeader({ catalogScroll }) {
     display: flex;
     align-items: center;
     justify-content: end;
+    max-width: 100%;
     column-gap: 40px;
+    @media (max-width: ${breakpoints[0]}px) {
+      flex-grow: 2;
+    }
   `
 
   const localeSelection = css`
@@ -326,19 +338,36 @@ function StickyHeader({ catalogScroll }) {
     justify-content: center;
     align-items: center;
   `
-
-  const selectItemContainer = css`
+  const menuIconContainer = css`
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    margin-left: 20px;
   `
 
   return (
     <div className={stickyHeader}>
+      {!match0 &&
+        <div className={css`
+          flex-grow: 2;
+        `}>
+          <IconButton color="primary" className={css`
+            width: 40px;
+            height: 40px;
+            margin-left: 10px;
+          `}>
+              <MenuIcon sx={{fontSize: '31px'}} />
+          </IconButton> 
+        </div>   
+      }  
       <Link
         className={css`
           text-decoration: none;
+          @media (max-width: ${breakpoints[0]}px) {
+            flex-grow: 1;
+          }
         `} 
         href='/'
       >
@@ -395,85 +424,106 @@ function StickyHeader({ catalogScroll }) {
             display: flex;
             align-items: center;
             margin-right: 35px;
+            @media (max-width: ${breakpoints[0]}px) {
+              display: none;
+            }
           `}>
-            <Select
-              MenuProps={{ disableScrollLock: true }}
-              variant='standard'
-              sx={{width: 85, height: 30}}
-              value={router.locale.toUpperCase()}
-              onChange={async (event) => {
-                setCookie('NEXT_LOCALE', event.target.value.toLowerCase())
-                console.log('selected')
-              //  router.push(router.asPath, router.asPath, {scroll: false, locale: event.target.value.toLowerCase()})
-                router.reload()
-              }}
-            >
-              <MenuItem 
-                value={'EN'}
-                disableGutters
-                sx={{
-                  '.css-iz83cf': {
-                  display: 'flex',
-                  justifyContent: 'center',
-                  columnGap: '13px' ,
-                  width: '100%'
-                }
-              }}>
-                <div className={selectItemContainer}>
-                  <div className={css`
-                    padding-top: 6px;
-                  `}>
-                    EN
-                  </div>
-                  <Image style={{width: 23, height: 'auto'}} src={euImg}/>
-                </div>    
-              </MenuItem>
-              <MenuItem 
-                value={'RU'}
-                disableGutters
-                sx={{
-                  '.css-iz83cf': {
-                  display: 'flex',
-                  justifyContent: 'center',
-                  columnGap: '13px' ,
-                  width: '100%'
-                }}}
-              >
-                <div className={selectItemContainer}>
-                  <div className={css`
-                    padding-top: 6px;
-                  `}>
-                    RU
-                  </div>
-                  <Image style={{width: 23, height: 'auto'}} src={ruImg}/>
-                </div>    
-              </MenuItem>             
-              <MenuItem 
-                value={'RO'}
-                disableGutters
-                sx={{
-                  '.css-iz83cf': {
-                  display: 'flex',
-                  justifyContent: 'center',
-                  columnGap: '13px' ,
-                  width: '100%'
-                }}}
-              >
-                <div className={selectItemContainer}>
-                  <div className={css`
-                    padding-top: 6px;
-                  `}>
-                    RO
-                  </div>
-                  <Image style={{width: 23, height: 'auto'}} src={mlImg}/>
-                </div>    
-              </MenuItem>                           
-            </Select>
+          {match0 && 
+            <LanguageSelection />
+          }
           </div>
         </div>           
       </div> 
     </div>
   )  
+}
+
+function LanguageSelection() {
+
+  const router = useRouter()
+
+  const selectItemContainer = css`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  `
+  
+  return (
+    <Select
+      MenuProps={{ disableScrollLock: true }}
+      variant='standard'
+      sx={{width: 85, height: 30}}
+      value={router.locale.toUpperCase()}
+      onChange={async (event) => {
+        setCookie('NEXT_LOCALE', event.target.value.toLowerCase())
+        console.log('selected')
+      //  router.push(router.asPath, router.asPath, {scroll: false, locale: event.target.value.toLowerCase()})
+        router.reload()
+      }}
+    >
+      <MenuItem 
+        value={'EN'}
+        disableGutters
+        sx={{
+          '.css-iz83cf': {
+          display: 'flex',
+          justifyContent: 'center',
+          columnGap: '13px' ,
+          width: '100%'
+        }
+      }}>
+        <div className={selectItemContainer}>
+          <div className={css`
+            padding-top: 6px;
+          `}>
+            EN
+          </div>
+          <Image style={{width: 23, height: 'auto'}} src={euImg}/>
+        </div>    
+      </MenuItem>
+      <MenuItem 
+        value={'RU'}
+        disableGutters
+        sx={{
+          '.css-iz83cf': {
+          display: 'flex',
+          justifyContent: 'center',
+          columnGap: '13px' ,
+          width: '100%'
+        }}}
+      >
+        <div className={selectItemContainer}>
+          <div className={css`
+            padding-top: 6px;
+          `}>
+            RU
+          </div>
+          <Image style={{width: 23, height: 'auto'}} src={ruImg}/>
+        </div>    
+      </MenuItem>             
+      <MenuItem 
+        value={'RO'}
+        disableGutters
+        sx={{
+          '.css-iz83cf': {
+          display: 'flex',
+          justifyContent: 'center',
+          columnGap: '13px' ,
+          width: '100%'
+        }}}
+      >
+        <div className={selectItemContainer}>
+          <div className={css`
+            padding-top: 6px;
+          `}>
+            RO
+          </div>
+          <Image style={{width: 23, height: 'auto'}} src={mlImg}/>
+        </div>    
+      </MenuItem>                           
+    </Select>
+  )
 }
 
 export default MyApp
