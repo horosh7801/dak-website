@@ -18,8 +18,7 @@ const title = css`
 	z-index: 1;
 `
 
-export default function Info({ pageIndex, pageNames }) {
-
+export default function Info({ pageIndex, pageNames, about, contacts, delivery }) {
 	return (
 		<div className={css`
 			display: flex;
@@ -74,11 +73,11 @@ export default function Info({ pageIndex, pageNames }) {
 				`}>
 					{
 						pageIndex === 0 &&
-							<About />
+							<About localization={about} />
 						|| pageIndex === 1 &&
-							<Contacts />
+							<Contacts localization={contacts} />
 						|| pageIndex === 2 &&
-							<Delivery />	
+							<Delivery localization={delivery} />	
 						|| pageIndex === 3 &&
 							<Colors />		
 					}
@@ -91,8 +90,8 @@ export default function Info({ pageIndex, pageNames }) {
 
 }
 
-function About() {
-
+function About({localization}) {
+console.log(localization)
 	const paragraph = css`
 		margin-bottom: 0px;
 		margin-top: 10px;
@@ -103,19 +102,19 @@ function About() {
 			width: 1100px;
 		`}>
 			<p className={css`margin-top: 0px;`}> DAK LUMINA </p>
-			<p> Компания занимается художественным проектированием и ручным изготовлением настенных, потолочных и напольных светильников высокого класса по мировым стандартам.  </p>
-			<p>  Светильники DAK LUMINA - это изысканный стиль Вашего дома. Они легко и выгодно впишутся в любой интерьер. Добавят уют, колорит и подчеркнут достоинство помещения, не зависимо от его размеров и назначения, будь это квартира, дом, бильярдная, сауна, беседка, служебное помещение, концертный зал или офис.</p>
+			<p> {localization[0]} </p>
+			<p>  {localization[1]} </p>
 			<div>	
-				<p>Каждое наше изделие уникально из-за не повторяющейся текстуры дерева, способов его обработки, а так же самой формы светильника.</p>
-				<p>-  Для обработки поверхности дерева применяются современные европейские технологии с использованием итальянских материалов.</p>
-				<p>-   При изготовлении светильников цветовая гамма обработки дерева Вашего бра, люстры, торшера или зеркала оговаривается заранее. На выбор в каталоге представлены 9 оттенков.</p>
-				<p>Безусловно, цвет изделия и его форма должны гармонировать с дизайном Вашего помещения.</p>
+				<p>{localization[2]}</p>
+				<p>{localization[3]}</p>
+				<p>{localization[4]}</p>
+				<p>{localization[5]}</p>
 			</div>
 		</div>
 	)
 }
 
-function Contacts() {
+function Contacts({localization}) {
 
 	return (
 		<div className={css`
@@ -127,7 +126,7 @@ function Contacts() {
 				display: flex;
 				flex-direction: row;
 			`}>
-				<div className={css`margin-right: 5px;`}> Телефон:</div> <a href='tel:+37368077331' className={css`color: black; text-underline-offset: 4px;`}> +37368077331 </a>
+				<div className={css`margin-right: 5px;`}> {`${localization[0]}:`}</div> <a href='tel:+37368077331' className={css`color: black; text-underline-offset: 4px;`}> +37368077331 </a>
 			</div>	
 			<div>
 				<div className={css`margin-right: 5px;`}> E-mail:</div> <a className={css`color: black; text-underline-offset: 4px;`}>  </a>
@@ -136,19 +135,42 @@ function Contacts() {
 	)
 }
 
-function Delivery() {
+function Delivery({localization}) {
+
+	const regionText = css`
+		margin-left: 20px;
+	`
+
+	const deliveryDescription = css`
+		margin-left: 10px;
+	`
+
+	const rowContainer = css`
+		display: flex;
+		flex-direction: row;
+		margin-top: 20px;
+
+	`
 
 	return (
 		<div className={css`
 			display: flex;
 			flex-direction: column;
+			width: 1100px;
 		`}>
-			<div> ДОСТАВКА </div>
-			<div className={css`margin-left: 20px; margin-top: 15px;`}> Доставка осуществляется из Молдовы по Европе </div>
+			<div> {localization['delivery']} </div>
+			<div className={rowContainer}>
+				<div className={regionText}> {`${localization['russia']}:`} </div>
+				<div className={deliveryDescription}> {localization['russiaDesc']} </div>
+			</div>
+			<div className={rowContainer}>
+				<div className={regionText}> {`${localization['europe']}:`} </div>
+				<div className={deliveryDescription}> {localization['europeDesc']} </div>
+			</div>			
 			<div className={css`
 				margin-top: 40px;
-			`}> ОПЛАТА </div>
-			<div className={css`margin-left: 20px; margin-top: 15px;`}> Оплата осуществляется по карте. Перед оплатой свяжитесь с нами. </div>	
+			`}> {localization['payment']} </div>
+			<div className={css`margin-left: 20px; margin-top: 15px;`}> {localization['paymentDesc']} </div>	
 
 		</div>
 	)

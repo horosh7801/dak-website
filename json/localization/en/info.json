@@ -4,5 +4,25 @@
 		"Contact information",
 		"Payment and delivery",
 		"Colors"
-	]
+	],
+	"about": [
+		"Our company does artistic design and handcraft of high-grade wall, ceiling, and floor wooden lamps.",
+		"DAK LUMINA lamps are guaranteed to bring style and elegance to any interior, of any shape and purpose, be it an apartment, a house, a billiard room, a concert hall, or an office.",
+		"Each of out products is unique due to unrepeatable wood texture, its way of processing, and the shape of the lamp itself.",
+		"- Wood surface treatment is done by modern European technologies using Italian materials.",
+		"- The color of your your sconce, chandelier, floor lamp or mirror is negotiated in advance. There are 9 shades to choose from",
+		"Indeed, product's color and shape must be in harmony with your inetior design."
+	],
+	"contacts": [
+		"Phone"
+	],
+	"delivery": {
+		"delivery": "DELIVERY",
+		"russia": "Russia",
+		"russiaDesc": "Delivery to Moscow (and suburbs), to St. Petersburg to the door ~ 1500-1900 RUB, 2-3 days. The package includes foam packaging and crate (or cardboard box). Delivery to other cities of the Moscow and Leningrad regions is calculated individually, preliminary approximately plus 0-40%. Outside the regions - individual calculation.",
+		"europe": "Europe",
+		"europeDesc": "Individual calculation.",
+		"payment": "PAYMENT",
+		"paymentDesc": "Payment by card. Please contact us to make a payment"
+	}	
 }
