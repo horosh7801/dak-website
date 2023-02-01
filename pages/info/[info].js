@@ -123,8 +123,15 @@ function Contacts() {
 			flex-direction: column;
 			row-gap: 8px;
 		`}>
-			<div className={css`margin-right: 5px;`}> Телефон:</div> <div></div>
-			<div className={css`margin-right: 5px;`}> E-mail:</div> <div></div>
+			<div className={css`
+				display: flex;
+				flex-direction: row;
+			`}>
+				<div className={css`margin-right: 5px;`}> Телефон:</div> <a href='tel:+37368077331' className={css`color: black; text-underline-offset: 4px;`}> +37368077331 </a>
+			</div>	
+			<div>
+				<div className={css`margin-right: 5px;`}> E-mail:</div> <a className={css`color: black; text-underline-offset: 4px;`}>  </a>
+			</div>	
 		</div>
 	)
 }
@@ -156,6 +163,7 @@ function Colors() {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
+			margin-bottom: 100px;
 		`}>
 			<div className={css`
 		    display: flex;

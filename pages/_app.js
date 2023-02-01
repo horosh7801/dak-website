@@ -56,9 +56,15 @@ const footerColumn = css`
 const breakpoints = [890]
 
 const navbarLocalization = {
-  en: ['CATALOG', 'DELIVERY', 'CONTACTS', 'COLORS'], 
-  ru: ['КАТАЛОГ', 'ДОСТАВКА', 'КОНТАКТЫ', 'ЦВЕТОВАЯ ГАММА'], 
-  ro: ['КАТАЛОГ', 'ДОСТАВКА', 'КОНТАКТЫ', 'ЦВЕТОВАЯ ГАММА']
+  en: ['CATALOG', 'DELIVERY', 'CONTACTS', 'COLORS', 'ABOUT'], 
+  ru: ['КАТАЛОГ', 'ДОСТАВКА', 'КОНТАКТЫ', 'ЦВЕТОВАЯ ГАММА', 'О НАС'], 
+  ro: ['КАТАЛОГ', 'ДОСТАВКА', 'КОНТАКТЫ', 'ЦВЕТОВАЯ ГАММА', 'О НАС']
+}
+
+const footerLocalization = {
+  en: ['CATALOG', 'PAYMENT AND DELIVERY', 'CONTACT INFORMATION', 'COLORS', 'ABOUT US'], 
+  ru: ['КАТАЛОГ', 'ДОСТАВКА И ОПЛАТА', 'КОНТАКТНАЯ ИНФОРМАЦИЯ', 'ЦВЕТОВАЯ ГАММА', 'О НАС'], 
+  ro: ['КАТАЛОГ', 'ДОСТАВКА И ОПЛАТА', 'КОНТАКТНАЯ ИНФОРМАЦИЯ', 'ЦВЕТОВАЯ ГАММА', 'О НАС']  
 }
 
 function MyApp({ Component, pageProps }) {
@@ -130,27 +136,43 @@ function MyApp({ Component, pageProps }) {
                     router.push('/', '/', {scroll: false})
                   }}                  
                 >
-                  КАТАЛОГ
+                  {footerLocalization[router.locale][0]}
                 </div>
-                <div className={footerItem}>
-                  ЦВЕТОВАЯ ГАММА
-                </div>                      
+                <Link href='/info/colors' style={{textDecoration: 'none', color: 'black'}}>
+                  <div className={footerItem}>
+                    {footerLocalization[router.locale][3]}
+                  </div>   
+                </Link>                     
+              </div>
+              <div className={footerColumn}>
+                <Link href='/info/delivery' style={{textDecoration: 'none', color: 'black'}}>
+                  <div className={footerItem}>
+                    {footerLocalization[router.locale][1]}
+                  </div>   
+                </Link>                                           
               </div>
               <div className={footerColumn}>
                 <div className={footerItem}>
-                  ДОСТАВКА И ОПЛАТА
-                </div>                                            
-              </div>
-              <div className={footerColumn}>
-                <div className={footerItem}>
-                  +37368077331
+                  <a 
+                    href='tel:+37368077331'
+                    className={css`
+                      text-decoration: none;
+                      color: black;
+                    `}
+                  >
+                    +37368077331
+                  </a>  
                 </div>
-                <div className={footerItem}>
-                  КОНТАКТНАЯ ИНФОРМАЦИЯ
-                </div>
-                <div className={footerItem}>
-                  О НАС
-                </div>                
+                <Link href='/info/contacts' style={{textDecoration: 'none', color: 'black'}}>
+                  <div className={footerItem}>
+                    {footerLocalization[router.locale][2]}
+                  </div>
+                </Link>  
+                <Link href='/info/about' style={{textDecoration: 'none', color: 'black'}}>
+                  <div className={footerItem}>
+                    {footerLocalization[router.locale][4]}
+                  </div>       
+                </Link>           
               </div>
             </div>
           </>  
@@ -234,7 +256,7 @@ function StickyHeader({ catalogScroll }) {
     justify-content: space-between;
     flex-grow: 1;
     align-self: center;
-    font-size: 19px;
+    font-size: 16px;
     font-weight: 418;
     font-variation-settings: "YOPQ" 85;
   `
