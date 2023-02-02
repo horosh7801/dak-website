@@ -20,6 +20,8 @@ import Select from '@mui/material/Select'
 import roboto from '../lib/modules/variableFont.js'
 import CircularProgress from '@mui/material/CircularProgress'
 import MenuIcon from '@mui/icons-material/Menu'
+import CloseSharpIcon from '@mui/icons-material/CloseSharp'
+import Drawer from '@mui/material/Drawer'
 import useMediaQuery from '@mui/material/useMediaQuery'
 
 const theme = createTheme({
@@ -56,9 +58,9 @@ const footerColumn = css`
 const breakpoints = [950]
 
 const navbarLocalization = {
-  en: ['CATALOG', 'DELIVERY', 'CONTACTS', 'COLORS', 'ABOUT'], 
-  ru: ['КАТАЛОГ', 'ДОСТАВКА', 'КОНТАКТЫ', 'ЦВЕТОВАЯ ГАММА', 'О НАС'], 
-  ro: ['КАТАЛОГ', 'ДОСТАВКА', 'КОНТАКТЫ', 'ЦВЕТОВАЯ ГАММА', 'О НАС']
+  en: ['CATALOG', 'DELIVERY', 'CONTACTS', 'COLORS', 'ABOUT US'], 
+  ru: ['КАТАЛОГ', 'ДОСТАВКА', 'КОНТАКТЫ', 'ЦВЕТА', 'О НАС'], 
+  ro: ['КАТАЛОГ', 'ДОСТАВКА', 'КОНТАКТЫ', 'ЦВЕТА', 'О НАС']
 }
 
 const footerLocalization = {
@@ -216,6 +218,8 @@ function StickyHeader({ catalogScroll }) {
 
   const match0 = useMediaQuery(`(min-width: ${breakpoints[0] + 1}px)`)
 
+  const [navbarState, setNavbarState] = useState(false)
+
   const stickyHeader = css`
     box-shadow: 0px 1px 3px -2px;
     display: flex;
@@ -350,14 +354,27 @@ function StickyHeader({ catalogScroll }) {
   return (
     <div className={stickyHeader}>
       {!match0 &&
+        <SideNavbar 
+          open={navbarState} 
+          onClose={() => {setNavbarState(false)}}
+          catalogScroll={catalogScroll}
+        />
+      }
+      {!match0 &&
         <div className={css`
           flex-grow: 2;
         `}>
-          <IconButton color="primary" className={css`
-            width: 40px;
-            height: 40px;
-            margin-left: 10px;
-          `}>
+          <IconButton 
+            color="primary" 
+            className={css`
+              width: 40px;
+              height: 40px;
+              margin-left: 10px;
+            `}
+            onClick={() => {
+              setNavbarState(!navbarState)
+            }}
+          >
               <MenuIcon sx={{fontSize: '31px'}} />
           </IconButton> 
         </div>   
@@ -436,6 +453,84 @@ function StickyHeader({ catalogScroll }) {
       </div> 
     </div>
   )  
+}
+
+function SideNavbar({ open, onClose, catalogScroll }) {
+
+  const router = useRouter()
+
+  return(
+    <Drawer 
+      anchor='left'
+      open={open}
+      onClose={onClose}
+
+    >
+      <div className={css`
+        width: 200px;
+        background-color: white;  
+        display: flex;
+        flex-direction: column;  
+      `}>
+        <div className={css`
+          display: flex;
+          flex-direction: row;
+        `}>
+          <IconButton 
+            color="primary" 
+            className={css`
+              width: 40px;
+              height: 40px;
+              margin-left: 10px;
+              margin-top: 3px;
+              margin-right: 55px;
+            `}
+            onClick={onClose}
+          >
+            <CloseSharpIcon sx={{fontSize: '31px'}} />
+          </IconButton>  
+          <div className={css`
+            align-self: start;
+            margin-top: 7px;
+          `}>
+            <LanguageSelection />
+          </div>  
+        </div>  
+        <div className={cx(roboto, css`
+          display: flex;
+          flex-direction: column;
+          margin-top: 30px;
+          row-gap: 10px;
+          font-size: 20px;
+          align-items: start;
+          margin-left: 20px;
+        `)}>
+          <MenuBarButton
+            key={0}
+            name={navbarLocalization[router.locale][0]}
+            onClick={() => {
+              catalogScroll.setState(true)
+              router.push('/', '/', {scroll: false})
+              onClose()
+            }}
+          />
+          {
+            ['delivery', 'contacts', 'colors','about'].map((name, i) => {
+              return (
+                <Link style={{textDecoration: 'none', color: 'black'}} href={`/info/${name}`, `/info/${name}`}>
+                  <MenuBarButton 
+                    key={i} 
+                    name={navbarLocalization[router.locale][i + 1]} 
+                    onClick={() => {onClose()}}
+                  />    
+                </Link>  
+              )
+            })
+          }        
+        </div>
+      </div>
+    </Drawer>    
+  )
 }
 
 function LanguageSelection() {
