@@ -285,6 +285,7 @@ function ProductItem({ itemID, name, price, type, locale}) {
               style={{objectFit: 'contain'}} 
               src={`/products/${type}/${name.toLowerCase().replace(/[\s-]/g, '_')}/item0.jpg`} 
               fill={true} 
+              priority={true}
               sizes={`
                 (max-width: ${breakpoints[2]}px) 224px, 
                 280px`
@@ -428,6 +429,13 @@ function CatalogToggleButtonGroup({ catalogState, localizedText, setItemsState, 
     <ToggleButtonGroup
       className={css`
       font-weight: 500;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      @media (max-width: ${breakpoints[2]}px) {
+        flex-direction: column;
+        justify-content: start;
+      }
       & .Mui-selected, .Mui-selected:hover {
         background-color: black;
         color: white;
