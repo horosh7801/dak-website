@@ -16,6 +16,7 @@ import ToggleButton from '@mui/material/ToggleButton';
 import currencyFormat from '../lib/modules/currencyFormat.js'
 import CircularProgress from '@mui/material/CircularProgress'
 import useMediaQuery from '@mui/material/useMediaQuery'
+import subHeader from '../lib/modules/styles/subHeader.js'
 
 const carouselHeight = 600;
 
@@ -266,6 +267,10 @@ function ProductItem({ itemID, name, price, type, locale}) {
     <Link 
       style={{textDecoration: 'none'}} 
       href={`/products/${type}/${name.toLowerCase().replace(/[\s-]/g, '_')}`}
+      className={css`
+        @media (max-width: ${breakpoints[2]}px) {
+        }
+      `}
     >
       <div className={productItem}>
         <div className={css`
@@ -280,7 +285,10 @@ function ProductItem({ itemID, name, price, type, locale}) {
               style={{objectFit: 'contain'}} 
               src={`/products/${type}/${name.toLowerCase().replace(/[\s-]/g, '_')}/item0.jpg`} 
               fill={true} 
-              sizes={'280px'}                 
+              sizes={`
+                (max-width: ${breakpoints[2]}px) 224px, 
+                280px`
+              }                 
             />
           </div> 
         </div>  
@@ -332,23 +340,15 @@ function Catalog ({ items, localizedText, catalogRef }) {
     }
   `
 
-  const title = css`
-    width: calc(100% - 10px);
-    display: flex;
-    color: white;
-    background-color: black;
-    height: 35px;
-    align-items: center;
-    padding-left: 10px;
-    font-size: 20px;
-    z-index: 1;
-  `
-
   const productsListWrapper = css`
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    @media (max-width: ${breakpoints[2]}px) {
+      transform: scale(0.8);
+      margin-top: -320px;
+    }
   `
 
   const productsList = css`
@@ -363,6 +363,9 @@ function Catalog ({ items, localizedText, catalogRef }) {
     @media (max-width: ${breakpoints[1]}px) {
       width: 650px;
     }
+    @media (max-width: ${breakpoints[2]}px) {
+
+    }
     margin-bottom: 30px;
     gap: 10px;
     padding-top: 10px;
@@ -374,80 +377,116 @@ function Catalog ({ items, localizedText, catalogRef }) {
         <div ref={catalogRef} id='catalog' className={css`
           position: relative;
           top: -59px;
+          @media (max-width: ${breakpoints[1]}px) {
+            top: -48px;
+          }
         `}></div> 
-      <div className={title}>
+      <div className={subHeader}>
         {
           localizedText.catalog.catalog
         }
       </div>
-      <ToggleButtonGroup
-        className={css`
-        font-weight: 500;
-        & .Mui-selected, .Mui-selected:hover {
-          background-color: black;
-          color: white;
-        }
-        & .MuiToggleButton-root {
-          border-radius: 0;
-        }
-      `}
-        exclusive
-        color='primary'
-        value={catalogState}  
-        onChange={(event) => {
-          if (event.target.value !== catalogState) {
-            setItemsState(false)
-            setCatalogState(event.target.value)
-          }  
-        }}
-      >
-        <ToggleButton 
-          value='ceiling'
-        >
-          {
-            localizedText.catalog.ceiling
-          }
-        </ToggleButton>
-        <ToggleButton value='floor'>
-          {
-            localizedText.catalog.floor
-          }
-        </ToggleButton>
-        <ToggleButton value='wall'>
-          {
-            localizedText.catalog.wall
-          }
-        </ToggleButton>
-        <ToggleButton value='point'>
-          {
-            localizedText.catalog.point
-          }
-        </ToggleButton>
-        <ToggleButton value='wall3d'>
-          {
-            localizedText.catalog.wall3d
-          }
-        </ToggleButton>
-        <ToggleButton value='mirror'>
-          {
-            localizedText.catalog.mirrors
-          }
-        </ToggleButton>                                        
-      </ToggleButtonGroup>
 
-      <div className={productsListWrapper}>
-        <div className={productsList}>
-          {!itemsState && <CircularProgress sx={{marginLeft: '50%', marginTop: 'calc((100vh - (59px + 35px)) / 2 - 48.5px)'}}/> || items[catalogState].map((item, i) => (<ProductItem
-            itemID={item.id}
-            type={catalogState} 
-            name={item.name} 
-            price={item.price[0].price} 
-            key={i} 
-            locale={router.locale}
-          /> ))}
-        </div>
-      </div>     
+      <div className={css`
+        display: flex;
+        flex-direction: column;
+        @media (max-width: ${breakpoints[2]}px) {
+          flex-direction: row;
+        }
+      `}>
+        <CatalogToggleButtonGroup 
+          catalogState={catalogState} 
+          localizedText={localizedText} 
+          setItemsState={setItemsState}
+          setCatalogState={setCatalogState}
+        />
+
+        <div className={productsListWrapper}>
+          <div className={productsList}>
+            {!itemsState && <CircularProgress sx={{marginLeft: '50%', marginTop: 'calc((100vh - (59px + 35px)) / 2 - 48.5px)'}}/> || 
+              items[catalogState].map((item, i) => (<ProductItem
+                itemID={item.id}
+                type={catalogState} 
+                name={item.name} 
+                price={item.price[0].price} 
+                key={i} 
+                locale={router.locale}
+            /> ))}
+          </div>
+        </div>   
+      </div>
+
     </div>
+  )
+}
+
+function CatalogToggleButtonGroup({ catalogState, localizedText, setItemsState, setCatalogState }) {
+
+  const matches2 = useMediaQuery(`(min-width: ${breakpoints[2] + 1}px)`)
+
+  return (
+    <ToggleButtonGroup
+      className={css`
+      font-weight: 500;
+      & .Mui-selected, .Mui-selected:hover {
+        background-color: black;
+        color: white;
+      }
+      & .MuiToggleButton-root {
+        border-radius: 0;
+        @media (max-width: ${breakpoints[2]}px) {
+          font-size: 14px;
+          padding-left: 0px;
+          padding-right: 0px;
+          width: 130px;
+          margin-top: 20px;
+        }
+      }
+    `}
+      exclusive
+      color='primary'
+      value={catalogState}  
+      orientation={!matches2 ? 'vertical' : 'horizontal'}
+      onChange={(event) => {
+        if (event.target.value !== catalogState) {
+          setItemsState(false)
+          setCatalogState(event.target.value)
+        }  
+      }}
+    >
+      <ToggleButton 
+        value='ceiling'
+      >
+        {
+          localizedText.catalog.ceiling
+        }
+      </ToggleButton>
+      <ToggleButton value='floor'>
+        {
+          localizedText.catalog.floor
+        }
+      </ToggleButton>
+      <ToggleButton value='wall'>
+        {
+          localizedText.catalog.wall
+        }
+      </ToggleButton>
+      <ToggleButton value='point'>
+        {
+          localizedText.catalog.point
+        }
+      </ToggleButton>
+      <ToggleButton value='wall3d'>
+        {
+          localizedText.catalog.wall3d
+        }
+      </ToggleButton>
+      <ToggleButton value='mirror'>
+        {
+          localizedText.catalog.mirrors
+        }
+      </ToggleButton>                                        
+    </ToggleButtonGroup>
   )
 }
 

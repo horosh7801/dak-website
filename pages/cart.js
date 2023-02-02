@@ -11,6 +11,7 @@ import Button from '@mui/material/Button'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import CheckoutForm from '../lib/components/CheckoutForm.js'
+import subHeader from '../lib/modules/styles/subHeader.js'
 import OrderNotification from '../lib/components/OrderNotification.js'
 import roboto from '../lib/modules/variableFont.js'
 import currencyFormat from '../lib/modules/currencyFormat.js'
@@ -111,19 +112,6 @@ const phoneContainer = css`
 	align-items: center;
 `
 
-const subHeader = css`
-	position: sticky;
-	top: 59px;
-	display: flex;
-	color: white;
-	background-color: black;
-	height: 33px;
-	align-items: center;
-	padding-left: 10px;
-	font-size: 20px;
-	z-index: 1;
-`
-
 export default function ShoppingCart({ localizedText }) {
 
 	const shoppingCart = useContext(ShoppingCartContext)
@@ -166,7 +154,13 @@ export default function ShoppingCart({ localizedText }) {
 				setState={setDialogState} 
 				localizedText={localizedText.checkoutPanel.orderConfirmation}					
 			/>
-			<div className={subHeader}>
+			<div className={cx(subHeader, css`
+				position: sticky;
+				top: 59px;
+				@media (max-width: 950px) {
+					top: 47px;
+				}
+			`)}>
 				{localizedText.pageLabel}
 			</div>
 			<div className={css`
