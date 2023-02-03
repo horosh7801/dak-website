@@ -26,7 +26,12 @@ import { getCookie, hasCookie } from 'cookies-next'
 import roboto from '../../../lib/modules/variableFont.js'
 import currencyFormat from '../../../lib/modules/currencyFormat.js'
 import { addToCart, removeFromCart } from '../../../lib/modules/cartOperations.js'
+import useMediaQuery from '@mui/material/useMediaQuery'
 
+const breakpoints = [1612, 1149]
+
+const maxImageWidth = 1024
+const maxImageHeight = 768
 
 const itemPage = css`
 	display: flex;
@@ -35,8 +40,13 @@ const itemPage = css`
 
 const itemImageSet = css`
 	width: 1120px;
-	height: 840px;
-	margin-bottom: 111px;
+
+	@media (max-width: ${breakpoints[0]}px) {
+		width: 730px;
+	}
+	@media (max-width: ${breakpoints[1]}px) {
+	 width: 534px;
+	}
 `
 
 const actionButtonSet = css`
@@ -79,7 +89,7 @@ const leftSection = css`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	width: 1120px;
+	flex-grow: 1;
 	background-color: #f7f7f7;
 `
 
@@ -146,6 +156,8 @@ export default function Item({ id, item, itemType, localizedText, imgCount }) {
 		}
 	}, [])
 
+	const matches = useMediaQuery(`(max-width: 950px)`)
+
 	return (
 		<div className={itemPage}>
 			<OrderNotification 
@@ -157,6 +169,7 @@ export default function Item({ id, item, itemType, localizedText, imgCount }) {
 				<div className={itemImageSet}>
 					<Carousel						
 						showStatus={false}
+						showThumbs={true}
 						showIndicators={false}
 						renderThumbs={(children) => (children.map((element, index) => (
 							<div key={index} className={css`width: 70px; height: 70px; position: relative;`}>
@@ -165,17 +178,35 @@ export default function Item({ id, item, itemType, localizedText, imgCount }) {
 						)))}
 					>
 						{Array(imgCount).fill(1).map((element, index) => (
-							<div key={index} className={css`width: 1024px; height: 768px; position: relative;`}>
-								<Image src={`/products/${itemType}/${item.name.toLowerCase().replace(/[\s-]/g, '_')}/item${index}.jpg`} fill={true} style={{objectFit: 'contain'}} />
+							<div key={index} className={css`
+								width: 1024px; 
+								height: 768px; 
+								position: relative;
+								@media (max-width: ${breakpoints[0]}px) {
+									width: 730px;
+									height: ${730 / maxImageWidth * maxImageHeight}px;
+								}
+								@media (max-width: ${breakpoints[1]}px) {
+									width: 534px;
+									height: ${534 / maxImageWidth * maxImageHeight}px;
+								}
+							`}>
+								<Image 
+									src={`/products/${itemType}/${item.name.toLowerCase().replace(/[\s-]/g, '_')}/item${index}.jpg`} 
+									fill={true} 
+									style={{objectFit: 'contain'}} />
 							</div>
 						))}	
 					</Carousel>		
 				</div>
-				<div>
+				<div className={css`
+					padding-left: 20px;
+					padding-right: 20px;
+				`}>
 					<div className={tableTitle}>
 						{localizedText.characteristics.characteristics}
 					</div>
-					<TableContainer sx={{width: '1000px'}} component={Paper}>
+					<TableContainer component={Paper}>
 						<Table>
 							<TableBody>
 								{Object.keys(item.features).map((value, index) => (
@@ -201,198 +232,204 @@ export default function Item({ id, item, itemType, localizedText, imgCount }) {
 					</TableContainer>
 				</div>	
 
-			</div>		
-			<div className={css`
-				position: sticky;
-				top: 59px;
-				display: flex;
-				flex-direction: column;
-				flex-grow: 1;
-				height: calc(100vh - 59px);
-			`}>
-				{
-					checkoutState
-						?
-							<>
-								<div className={css`
-									height: 33px;
-									background-color: black;
-									color: white;
-									display: flex;
-									align-items: center;
-									padding-left: 10px;
-									font-size: 20px;
-								`}>
-									{localizedText.checkoutPanel.label}
+			</div>
+			{!matches &&
+				<div className={css`
+					position: sticky;
+					top: 59px;
+					display: flex;
+					flex-direction: column;
+					flex-grow: 1;
+					height: calc(100vh - 59px);
+					width: 416px;
+					min-width: 416px;
+				`}>
+					{
+						checkoutState
+							?
+								<>
 									<div className={css`
-										flex-grow: 1;
+										height: 33px;
+										background-color: black;
+										color: white;
 										display: flex;
-										justify-content: flex-end;
+										align-items: center;
+										padding-left: 10px;
+										font-size: 20px;
 									`}>
-										<IconButton 
-											disableRipple
-											onClick={() => {
-												setCheckoutState(!checkoutState)
-											}}
-										>
-											<ArrowForwardSharpIcon sx={{color: 'white', fontSize: '35px', fontWeight: 100}}/>
-										</IconButton>	
-									</div>	
-								</div>
-								<CheckoutForm 
-									totalCost={item.price[priceState].price * amountState} 
-									localizedText={localizedText.checkoutPanel}
-									items={[{id, amount: amountState, price: priceState}]}
-									locale={router.locale}
-									onSuccess={() => {
-										setDialogState('success')
-										setCheckoutState(false)
-									}}
-									onFailure={() => {
-										setDialogState('failure')
-									}}
-								/>
-							</>	
-						:	
-							<div className={rightSection}>
-								<div className={stickyPanel}>
-									<div className={productName}>
-										{item.name}
+										{localizedText.checkoutPanel.label}
+										<div className={css`
+											flex-grow: 1;
+											display: flex;
+											justify-content: flex-end;
+										`}>
+											<IconButton 
+												disableRipple
+												onClick={() => {
+													setCheckoutState(!checkoutState)
+												}}
+											>
+												<ArrowForwardSharpIcon sx={{color: 'white', fontSize: '35px', fontWeight: 100}}/>
+											</IconButton>	
+										</div>	
 									</div>
-									<div className={lengthSlider}>	
-										{item.price.length > 1 &&
-											<div className={css`
-												overflow: scroll;
-												height: 200px;
-											`}>
-												<ToggleButtonGroup 
-													orientation='vertical' 
-													exclusive 
-													value={priceState}
-													className={css`
-										        font-weight: 500;
-										        & .Mui-selected, .Mui-selected:hover {
-										          background-color: black;
-										          color: white;
-										        }
-										        & .MuiToggleButton-root {
-										          border-radius: 0;
-										        }
-										      `}													
-												>
-													{item.price.map((value, index) => (
-														<ToggleButton key={index} value={index} onClick={() => {setPriceState(index)}}>
-															<div className={cx(roboto, css`
-																display: flex;
-																column-gap: 5px;
-																align-items: center;
-
-															`)}>
-																<div>
-																	{value.desc}
-																</div>	
-																<div className={css`
-																	font-size: 20px;
-																	font-weight: 550;
+									<CheckoutForm 
+										totalCost={item.price[priceState].price * amountState} 
+										localizedText={localizedText.checkoutPanel}
+										items={[{id, amount: amountState, price: priceState}]}
+										locale={router.locale}
+										onSuccess={() => {
+											setDialogState('success')
+											setCheckoutState(false)
+										}}
+										onFailure={() => {
+											setDialogState('failure')
+										}}
+									/>
+								</>	
+							:	
+								<div className={rightSection}>
+									<div className={stickyPanel}>
+										<div className={productName}>
+											{item.name}
+										</div>
+										<div className={lengthSlider}>	
+											{item.price.length > 1 &&
+												<div className={css`
+													overflow: scroll;
+													height: 200px;
+													outline: 1px solid #e0e0e0;
+												`}>
+													<ToggleButtonGroup 
+														orientation='vertical' 
+														exclusive 
+														value={priceState}
+														className={css`
+											        font-weight: 500;
+											        & .Mui-selected, .Mui-selected:hover {
+											          background-color: black;
+											          color: white;
+											        }
+											        & .MuiToggleButton-root {
+											          border-radius: 0;
+											        }
+											      `}													
+													>
+														{item.price.map((value, index) => (
+															<ToggleButton key={index} value={index} onClick={() => {setPriceState(index)}}>
+																<div className={cx(roboto, css`
 																	display: flex;
 																	column-gap: 5px;
-																`}>
-																	<div>
-																		{currencyFormat(value.price, router.locale)}
-																	</div>	
-																</div>
-															</div>
-														</ToggleButton>
-													)) }
-												</ToggleButtonGroup>	
-											</div>						
-										}				
-										<div className={css`
-											margin-top: 10px;
-											display: flex;
-											flex-direction: row;
-											align-items: center;
-											column-gap: 5px;
-										`}>
-											<div>
-												{`${localizedText.checkoutPanel.amount}:`}
-											</div>
-											<MuiInput
-												className={cx(roboto, css`
-	
-													& .MuiInput-input {
-														padding: 0px;
-														text-align: center;
-														 width: 45px;
-													}
-												`)}
+																	align-items: center;
 
-												value={amountState}
-												onChange={(event) => {
-													let value
-													if (event.target.value < 1) {
-														value = 1
-													} else if (event.target.value > 99) {
-														value = 99
-													} else {
-														value = event.target.value
-													}
-													setAmountState(value)
+																`)}>
+																	<div>
+																		{value.desc}
+																	</div>	
+																	<div className={css`
+																		font-size: 20px;
+																		font-weight: 550;
+																		display: flex;
+																		column-gap: 5px;
+																	`}>
+																		<div>
+																			{currencyFormat(value.price, router.locale)}
+																		</div>	
+																	</div>
+																</div>
+															</ToggleButton>
+														)) }
+													</ToggleButtonGroup>	
+												</div>						
+											}				
+											<div className={css`
+												margin-top: 10px;
+												display: flex;
+												flex-direction: row;
+												align-items: center;
+												column-gap: 5px;
+											`}>
+												<div>
+													{`${localizedText.checkoutPanel.amount}:`}
+												</div>
+												<MuiInput
+													className={cx(roboto, css`
+		
+														& .MuiInput-input {
+															padding: 0px;
+															text-align: center;
+															 width: 45px;
+														}
+													`)}
+
+													value={amountState}
+													onChange={(event) => {
+														let value
+														if (event.target.value < 1) {
+															value = 1
+														} else if (event.target.value > 99) {
+															value = 99
+														} else {
+															value = event.target.value
+														}
+														setAmountState(value)
+													}}
+													inputProps={{
+														type: 'number',
+														min: 1,
+														step: 1,
+														max: 99
+													}}
+												/>
+											</div>
+										</div>	
+										<div className={price}>
+											{currencyFormat(Math.round(item.price[priceState].price * amountState), router.locale)}
+										</div>
+										<div className={actionButtonSet}>
+										{/* add to cart button */}
+											<Button 
+												disabled={itemInCartState}
+												sx={{width: '216px', height: '50px', fontSize: '18px'}} 
+												size="large" variant="contained"
+												onClick={() => {
+													if (!itemInCartState) {
+														const newItem = {
+															name: item.name,
+															type: itemType, 
+															price: priceState,
+															amount: amountState,
+															id														
+														}
+														shoppingCart.setShoppingCartState([...shoppingCart.shoppingCartState, newItem])
+														setItemInCartState(true)
+														addToCart(newItem)
+													}	
 												}}
-												inputProps={{
-													type: 'number',
-													min: 1,
-													step: 1,
-													max: 99
+											>
+												{
+													localizedText.checkoutPanel.addToCart
+												}
+											</Button>
+											<Button
+												sx={{width: '216px', height: '50px', fontSize: '18px'}} 
+												size='large' 
+												variant="contained"
+												onClick={() => {
+												 	setCheckoutState(!checkoutState)
 												}}
-											/>
+											>
+												{
+													localizedText.checkoutPanel.order
+												}
+											</Button>
 										</div>
 									</div>	
-									<div className={price}>
-										{currencyFormat(Math.round(item.price[priceState].price * amountState), router.locale)}
-									</div>
-									<div className={actionButtonSet}>
-									{/* add to cart button */}
-										<Button 
-											disabled={itemInCartState}
-											sx={{width: '216px', height: '50px', fontSize: '18px'}} 
-											size="large" variant="contained"
-											onClick={() => {
-												if (!itemInCartState) {
-													const newItem = {
-														name: item.name,
-														type: itemType, 
-														price: priceState,
-														amount: amountState,
-														id														
-													}
-													shoppingCart.setShoppingCartState([...shoppingCart.shoppingCartState, newItem])
-													setItemInCartState(true)
-													addToCart(newItem)
-												}	
-											}}
-										>
-											{
-												localizedText.checkoutPanel.addToCart
-											}
-										</Button>
-										<Button
-											sx={{width: '216px', height: '50px', fontSize: '18px'}} 
-											size='large' 
-											variant="contained"
-											onClick={() => {
-											 	setCheckoutState(!checkoutState)
-											}}
-										>
-											{
-												localizedText.checkoutPanel.order
-											}
-										</Button>
-									</div>
 								</div>	
-							</div>	
-						}
+							}
 					</div>	
+				}	
+
 		</div>
 	)
 }
