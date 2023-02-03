@@ -11,6 +11,6 @@
 		"wall": "WALL",
 		"point": "POINT",
 		"wall3d": "WALL 3D",
-		"mirrors": "MIRRORS"
+		"mirror": "MIRRORS"
 	}
 }

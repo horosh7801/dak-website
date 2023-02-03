@@ -13,6 +13,8 @@ import FormControl from '@mui/material/FormControl'
 import { useState, useEffect, useContext, useRef } from 'react'
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import ToggleButton from '@mui/material/ToggleButton';
+import MenuItem from '@mui/material/MenuItem'
+import Select from '@mui/material/Select'
 import currencyFormat from '../lib/modules/currencyFormat.js'
 import CircularProgress from '@mui/material/CircularProgress'
 import useMediaQuery from '@mui/material/useMediaQuery'
@@ -20,7 +22,7 @@ import subHeader from '../lib/modules/styles/subHeader.js'
 
 const carouselHeight = 600;
 
-const breakpoints = [1340, 1030, 890]
+const breakpoints = [1340, 1030, 890, 820, 555]
 
 const mainWrapper = css`
   display: flex;
@@ -218,10 +220,15 @@ function ProductItem({ itemID, name, price, type, locale}) {
 
   const router = useRouter()
 
+  const baseWidth = 320
+  const baseHeight = 400
+
+  const scaleRate = 0.8
+
   const productItem = css`
     box-shadow: 0px 0px 4px -1px;
-    width: 320px;
-    height: 400px;
+    width: ${baseWidth}px;
+    height: ${baseHeight}px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -234,43 +241,61 @@ function ProductItem({ itemID, name, price, type, locale}) {
       transition: 0.1s;
       z-index: 1;
       cursor: pointer;
-    }      
+    }  
+    @media(max-width: ${breakpoints[2]}px) {
+      width: ${baseWidth * scaleRate}px;
+      height: ${baseHeight * scaleRate}px;
+    }       
   `
+
+  const imgBaseWidth = 280
+  const imgBaseHeight = 280
 
   const imageWrapper = css`
     position: relative;
-    width: 280px;
-    height: 280px;   
+    width: ${imgBaseWidth}px;
+    height: ${imgBaseHeight}px;  
+    @media (max-width: ${breakpoints[2]}px) {
+      width: ${imgBaseWidth * scaleRate}px;
+      height: ${imgBaseHeight * scaleRate}px;
+    } 
   `
 
   const itemName = css`
   `
 
+  const priceBaseSize = 30
+
   const itemPrice = css`
-    font-size: 30px;
+    font-size: ${priceBaseSize}px;
     font-weight: 500;
+    @media (max-width: ${breakpoints[2]}px) {
+      font-size: ${priceBaseSize * scaleRate}px;
+    } 
+
   `
+
+  const textBaseSize = 24
 
   const textWrapper = css`
     border-top: 2px solid black;
     width: 160px;
-    font-size: 24px;
+    font-size: ${textBaseSize}px;
     font-weight: 441;
     font-stretch: 35%;   
     display: flex;
     flex-direction: column;
     align-items: center;
     color: white;
+    @media (max-width: ${breakpoints[2]}px) {
+      font-size: ${textBaseSize * scaleRate}px;
+    }    
   `
 
   return (
     <Link 
       style={{textDecoration: 'none'}} 
       href={`/products/${type}/${name.toLowerCase().replace(/[\s-]/g, '_')}`}
-      className={css`
-        @media (max-width: ${breakpoints[2]}px) {
-        }
-      `}
     >
       <div className={productItem}>
         <div className={css`
@@ -285,10 +310,9 @@ function ProductItem({ itemID, name, price, type, locale}) {
               style={{objectFit: 'contain'}} 
               src={`/products/${type}/${name.toLowerCase().replace(/[\s-]/g, '_')}/item0.jpg`} 
               fill={true} 
-              priority={true}
               sizes={`
-                (max-width: ${breakpoints[2]}px) 224px, 
-                280px`
+                (max-width: ${breakpoints[2]}px) ${imgBaseWidth * scaleRate}px, 
+                ${imgBaseWidth}px`
               }                 
             />
           </div> 
@@ -319,6 +343,8 @@ function Catalog ({ items, localizedText, catalogRef }) {
 
   const [itemsState, setItemsState] = useState(false)
 
+  const matches = useMediaQuery(`(min-width: ${breakpoints[2] + 1}px)`)
+
   useEffect(() => {
     setItemsState(true)
   }, [catalogState])
@@ -347,8 +373,9 @@ function Catalog ({ items, localizedText, catalogRef }) {
     flex-direction: row;
     justify-content: center;
     @media (max-width: ${breakpoints[2]}px) {
-      transform: scale(0.8);
-      margin-top: -320px;
+    }
+    @media (max-width: ${breakpoints[3]}px) {
+
     }
   `
 
@@ -365,8 +392,14 @@ function Catalog ({ items, localizedText, catalogRef }) {
       width: 650px;
     }
     @media (max-width: ${breakpoints[2]}px) {
-
+      width: 788px;
     }
+    @media (max-width: ${breakpoints[3]}px) {
+      width: 523px;
+    }
+    @media (max-width: ${breakpoints[4]}px) {
+      width: 257px;
+    }    
     margin-bottom: 30px;
     gap: 10px;
     padding-top: 10px;
@@ -392,16 +425,58 @@ function Catalog ({ items, localizedText, catalogRef }) {
         display: flex;
         flex-direction: column;
         @media (max-width: ${breakpoints[2]}px) {
-          flex-direction: row;
+          width: 100%
         }
       `}>
-        <CatalogToggleButtonGroup 
-          catalogState={catalogState} 
-          localizedText={localizedText} 
-          setItemsState={setItemsState}
-          setCatalogState={setCatalogState}
-        />
+        {matches &&
+          <CatalogToggleButtonGroup 
+            catalogState={catalogState} 
+            localizedText={localizedText} 
+            setItemsState={setItemsState}
+            setCatalogState={setCatalogState}
+          />
+        }
 
+        {!matches &&
+          <div className={css`
+            margin-top: 20px;
+            margin-bottom: 10px;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+
+          `}>
+            <Select
+              MenuProps={{ disableScrollLock: true }}
+              sx={{width: '200px'}}
+              value={catalogState}
+              variant='standard'
+              onChange={(event) => {
+                if (event.target.value !== catalogState) {
+                  setItemsState(false)
+                  setCatalogState(event.target.value)
+                }  
+              }}              
+            >
+              {['ceiling', 'floor', 'wall', 'point', 'wall3d', 'mirror'].map((item, i) => (
+                <MenuItem
+                  value={item}
+                >
+                
+                    <div className={css`
+                      display: flex;
+                      flex-direction: row;
+                      justify-content: center;
+                    `}>
+                      {localizedText.catalog[item]}
+                    </div>
+                </MenuItem>
+              ))}
+            </Select>
+          </div>  
+
+        }
         <div className={productsListWrapper}>
           <div className={productsList}>
             {!itemsState && <CircularProgress sx={{marginLeft: '50%', marginTop: 'calc((100vh - (59px + 35px)) / 2 - 48.5px)'}}/> || 
@@ -432,29 +507,18 @@ function CatalogToggleButtonGroup({ catalogState, localizedText, setItemsState, 
       display: flex;
       flex-direction: row;
       justify-content: center;
-      @media (max-width: ${breakpoints[2]}px) {
-        flex-direction: column;
-        justify-content: start;
-      }
       & .Mui-selected, .Mui-selected:hover {
         background-color: black;
         color: white;
       }
       & .MuiToggleButton-root {
         border-radius: 0;
-        @media (max-width: ${breakpoints[2]}px) {
-          font-size: 14px;
-          padding-left: 0px;
-          padding-right: 0px;
-          width: 130px;
-          margin-top: 20px;
-        }
       }
     `}
       exclusive
       color='primary'
       value={catalogState}  
-      orientation={!matches2 ? 'vertical' : 'horizontal'}
+      orientation='horizontal'
       onChange={(event) => {
         if (event.target.value !== catalogState) {
           setItemsState(false)
@@ -491,7 +555,7 @@ function CatalogToggleButtonGroup({ catalogState, localizedText, setItemsState, 
       </ToggleButton>
       <ToggleButton value='mirror'>
         {
-          localizedText.catalog.mirrors
+          localizedText.catalog.mirror
         }
       </ToggleButton>                                        
     </ToggleButtonGroup>

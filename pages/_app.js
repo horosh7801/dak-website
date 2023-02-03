@@ -53,6 +53,7 @@ const footerColumn = css`
   display: flex;
   flex-direction: column;
   row-gap: 15px;
+  margin-bottom: 40px;
 `
 
 const breakpoints = [950]
@@ -121,7 +122,7 @@ function MyApp({ Component, pageProps }) {
             <StickyHeader catalogScroll={{state: catalogScrollState, setState: setCatalogScrollState}} />
             <Component {...pageProps} catalogScroll={{state: catalogScrollState, setState: setCatalogScrollState}} />
             <div className={css`
-              height: 200px;
+              min-height: 200px;
               background-color: #cdcdcd;
               display: flex;
               flex-direction: row;
@@ -129,6 +130,7 @@ function MyApp({ Component, pageProps }) {
               padding-top: 20px;
               column-gap: 50px;
               font-size: 15px;
+              flex-wrap: wrap;
             `}>
               <div className={footerColumn}>
                 <div 
@@ -574,7 +576,7 @@ function LanguageSelection() {
           `}>
             EN
           </div>
-          <Image style={{width: 23, height: 'auto'}} src={euImg}/>
+          <Image style={{width: 23, height: 'auto'}} priority={true} src={euImg}/>
         </div>    
       </MenuItem>
       <MenuItem 
@@ -594,7 +596,7 @@ function LanguageSelection() {
           `}>
             RU
           </div>
-          <Image style={{width: 23, height: 'auto'}} src={ruImg}/>
+          <Image style={{width: 23, height: 'auto'}} priority={true} src={ruImg}/>
         </div>    
       </MenuItem>             
       <MenuItem 
@@ -614,7 +616,7 @@ function LanguageSelection() {
           `}>
             RO
           </div>
-          <Image style={{width: 23, height: 'auto'}} src={mlImg}/>
+          <Image style={{width: 23, height: 'auto'}} priority={true} src={mlImg}/>
         </div>    
       </MenuItem>                           
     </Select>
