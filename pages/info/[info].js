@@ -3,8 +3,11 @@ import { useState, useContext, useEffect } from 'react'
 import roboto from '../../lib/modules/variableFont.js'
 import Link from 'next/link'
 import Image from 'next/image'
+import useMediaQuery from '@mui/material/useMediaQuery'
 
 const pages = ['about', 'contacts', 'delivery', 'colors']
+
+const breakpoints = [1374, 555]
 
 const title = css`
   width: calc(100% - 10px);
@@ -19,6 +22,9 @@ const title = css`
 `
 
 export default function Info({ pageIndex, pageNames, about, contacts, delivery }) {
+
+	const matches = useMediaQuery(`(min-width: ${breakpoints[1]}px)`)
+
 	return (
 		<div className={css`
 			display: flex;
@@ -33,36 +39,37 @@ export default function Info({ pageIndex, pageNames, about, contacts, delivery }
 				display: flex;
 				flex-direction: row;
 			`}>
+				{matches &&
+					<div className={css`
+						margin-top: 20px;
+						width: 200px;
+						min-width: 200px;
+						border-right: 2px solid black;
+						height: 150px;
+						padding-left: 15px;
+						padding-top: 10px;
+					`}>
+						{pages.map((page, index) => (
+							<div key={index} className={css`
+								text-decoration: ${pageIndex === index ? 'underline' : 'none'};
+								text-underline-offset: 4px;
+								margin-bottom: 20px;
+								cursor: pointer;
+								&:hover {
+									text-decoration: underline;
 
-				<div className={css`
-					margin-top: 20px;
-					width: 200px;
-					min-width: 200px;
-					border-right: 2px solid black;
-					height: 150px;
-					padding-left: 15px;
-					padding-top: 10px;
-				`}>
-					{pages.map((page, index) => (
-						<div key={index} className={css`
-							text-decoration: ${pageIndex === index ? 'underline' : 'none'};
-							text-underline-offset: 4px;
-							margin-bottom: 20px;
-							cursor: pointer;
-							&:hover {
-								text-decoration: underline;
-
-							}
-						`}>
-							<Link href={`/info/${pages[index]}`} className={css`
-								text-decoration: none;
-								color: black;
+								}
 							`}>
-								{pageNames[index]}
-							</Link>	
-						</div>
-					))}
-				</div>
+								<Link href={`/info/${pages[index]}`} className={css`
+									text-decoration: none;
+									color: black;
+								`}>
+									{pageNames[index]}
+								</Link>	
+							</div>
+						))}
+					</div>
+				}	
 
 				<div className={css`
 					margin-top: 30px;
@@ -99,7 +106,7 @@ console.log(localization)
 
 	return (
 		<div className={css`
-			width: 1100px;
+			max-width: 1100px;
 		`}>
 			<p className={css`margin-top: 0px;`}> DAK LUMINA </p>
 			<p> {localization[0]} </p>
@@ -156,7 +163,7 @@ function Delivery({localization}) {
 		<div className={css`
 			display: flex;
 			flex-direction: column;
-			width: 1100px;
+			max-width: 1100px;
 		`}>
 			<div> {localization['delivery']} </div>
 			<div className={rowContainer}>
@@ -180,6 +187,12 @@ function Colors() {
 
 	const colors = ['Peanut', 'Smoke', 'Black_charcoal', 'Natural', 'Dark_chocolate', 'Caramel', 'Honey', 'Brown', 'Walnut']
 
+	const scaleRate = 0.8
+	const imgBaseWidth = 280
+	const imgBaseHeight = 280
+
+	const imgSize = 500
+
 	return (
 		<div className={css`
 			display: flex;
@@ -195,6 +208,18 @@ function Colors() {
 		    gap: 20px;
 		    width: 1180px;
 		    justify-self: center;
+		    @media (max-width: 1457px) {
+		    	width: 880px;
+		    }
+		    @media (max-width: 1157px) {
+		    	width: 580px;
+		    }
+		    @media (max-width: 857px) {
+		    	width: 468px;
+		    }
+		    @media (max-width: 745px) {
+		    	width: 224px;
+		    }
 			`}>
 				{colors.map((color, index) => (
 					<div className={css`
@@ -205,15 +230,19 @@ function Colors() {
 					`}>
 						<div className={css`
 							position: relative;
-							width: 280px;
-							height: 280px;
+							width: ${imgBaseWidth}px;
+							height: ${imgBaseHeight}px;
 							overflow: hidden;
+							@media (max-width: 857px) {
+								width: ${imgBaseWidth * scaleRate}px;
+								height: ${imgBaseHeight * scaleRate}px;
+							}
 						`}>
 							<Image    	
 		           	style={{objectFit: 'cover'}} 
 	              src={`/colors/${color}.jpg`} 
 	              fill={true}
-	              sizes={'500px'}
+	              sizes={`(max-width: 857px) ${imgSize * scaleRate}`, `${imgSize}px`}
 	              quality={100}
 	            />
 						</div>	
