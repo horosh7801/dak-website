@@ -127,7 +127,7 @@ function MyApp({ Component, pageProps }) {
               display: flex;
               flex-direction: row;
               padding-left: 30px;
-              padding-top: 20px;
+              padding-top: 60px;
               column-gap: 50px;
               font-size: 15px;
               flex-wrap: wrap;

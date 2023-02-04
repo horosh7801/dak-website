@@ -14,6 +14,10 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import IconButton from '@mui/material/IconButton'
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import ToggleButton from '@mui/material/ToggleButton';
@@ -22,13 +26,14 @@ import { useState, useContext, useEffect } from 'react'
 import ShoppingCartContext from '../../../lib/context/shoppingCart.js'
 import CheckoutForm from '../../../lib/components/CheckoutForm.js'
 import OrderNotification from '../../../lib/components/OrderNotification.js'
+import AmountInput from '../../../lib/components/AmountInput.jsx'
 import { getCookie, hasCookie } from 'cookies-next'
 import roboto from '../../../lib/modules/variableFont.js'
 import currencyFormat from '../../../lib/modules/currencyFormat.js'
 import { addToCart, removeFromCart } from '../../../lib/modules/cartOperations.js'
 import useMediaQuery from '@mui/material/useMediaQuery'
 
-const breakpoints = [1612, 1149]
+const breakpoints = [1612, 1149, 550]
 
 const maxImageWidth = 1024
 const maxImageHeight = 768
@@ -47,6 +52,9 @@ const itemImageSet = css`
 	@media (max-width: ${breakpoints[1]}px) {
 	 width: 534px;
 	}
+	@media (max-width: ${breakpoints[2]}px) {
+		width: 280px;
+	}
 `
 
 const actionButtonSet = css`
@@ -59,7 +67,6 @@ const productName = css`
 	display: flex;
 	width: 100%;
 	font-size: 40px;
-  font-weight: 441;
   font-stretch: 35%;
   margin-bottom: 20px;
 `
@@ -74,6 +81,7 @@ const lengthSlider = css`
 const price = css`
 	margin-bottom: 20px;
 	font-size: 30px;
+	font-weight: 550;
 `
 
 const stickyPanel = css`
@@ -81,7 +89,8 @@ const stickyPanel = css`
 	flex-direction: column;
 	align-items: center;
 	position: sticky;
-	top: 47px;
+	top: 59px;
+	height: 100%;
 
 `
 
@@ -158,6 +167,8 @@ export default function Item({ id, item, itemType, localizedText, imgCount }) {
 
 	const matches = useMediaQuery(`(max-width: 950px)`)
 
+	const matches1 = useMediaQuery(`(max-width: 550px)`)
+
 	return (
 		<div className={itemPage}>
 			<OrderNotification 
@@ -190,6 +201,10 @@ export default function Item({ id, item, itemType, localizedText, imgCount }) {
 									width: 534px;
 									height: ${534 / maxImageWidth * maxImageHeight}px;
 								}
+								@media (max-width: ${breakpoints[2]}px) {
+									width: 280px;
+									height: ${280 / maxImageWidth * maxImageHeight}px;
+								}
 							`}>
 								<Image 
 									src={`/products/${itemType}/${item.name.toLowerCase().replace(/[\s-]/g, '_')}/item${index}.jpg`} 
@@ -199,40 +214,145 @@ export default function Item({ id, item, itemType, localizedText, imgCount }) {
 						))}	
 					</Carousel>		
 				</div>
+				{matches &&
+
+					<div className={css`
+						background-color: white;
+						display: flex;
+						flex-direction: column;
+						width: 100%;
+						padding-bottom: 20px;
+						padding-top: 10px;
+					`}>
+						<div className={css`
+							padding-left: 38px;
+							padding-right: 38px;
+							display: flex;
+							flex-direction: column;
+						`}>
+							<div className={css`
+								font-size: 40px;
+								font-weight: 441;
+								font-stretch: 35%;
+								align-self: start;
+							`}>
+								{item.name}
+							</div>
+							<div className={css`
+								max-width: 400px;
+							`}>
+		            <Select
+		              sx={{
+		              	fontSize: '13px', 
+		              	'.MuiOutlinedInput-input.MuiInputBase-input': {
+		              		whiteSpace: 'unset'
+		              	},
+		              	width: '100%',
+		              }}
+		              className={cx(roboto, css`white-space: unset;`)}
+		              value={priceState}
+		              variant='outlined'
+		              onChange={(event) => {
+		     						setPriceState(event.target.value)
+		              }}              
+		            >
+		              {item.price.map((element, i) => (
+		                <MenuItem
+		                  value={i}
+		                  sx={{fontSize: '13px', whiteSpace: 'unset', width: '400px'}}
+		                >
+		                	<div className={css`
+		                		display: flex;
+		                		flex-direction: column;
+		                	`}>
+		                    <div className={css`
+		                    	font-size: 20px;
+		                    	font-weight: 500;
+		                    `}>
+		                    	{currencyFormat(element.price, router.locale)}
+		                    </div>	                	
+		                    <div className={css`
+		                      text-align: left;
+		                    `}>
+		                      {element.desc}
+		                    </div>
+		                  </div>  
+		                </MenuItem>
+		              ))}
+		            </Select>	
+		            <AmountInput 
+		            	localization={localizedText.checkoutPanel.amount} 
+		            	state={amountState}
+		            	setState={setAmountState}
+		            />						
+							</div>
+							<div className={cx(price, css`
+								margin-top: 30px;
+							`)}>
+								{currencyFormat(Math.round(item.price[priceState].price * amountState), router.locale)}
+							</div>			
+
+						</div>
+
+						<div className={css`
+							width: 100%;
+							max-width: 100%;
+							display: flex;
+							flex-direction: row;
+							justify-content: center;
+						`}>
+							<Button 
+								disabled={itemInCartState}
+								sx={{
+									flexGrow: 1,
+									maxWidth: '436px', 
+									height: '50px', 
+									fontSize: '18px', 
+								}} 
+								size="large" variant="contained"
+								onClick={() => {
+									if (!itemInCartState) {
+										const newItem = {
+											name: item.name,
+											type: itemType, 
+											price: priceState,
+											amount: amountState,
+											id														
+										}
+										shoppingCart.setShoppingCartState([...shoppingCart.shoppingCartState, newItem])
+										setItemInCartState(true)
+										addToCart(newItem)
+									}	
+								}}
+							>
+								{
+									localizedText.checkoutPanel.addToCart
+								}
+							</Button>			
+						</div>							
+					</div>
+
+				}
 				<div className={css`
+					margin-top: 40px;
+					margin-bottom: 40px;
 					padding-left: 20px;
 					padding-right: 20px;
 				`}>
-					<div className={tableTitle}>
-						{localizedText.characteristics.characteristics}
-					</div>
-					<TableContainer component={Paper}>
-						<Table>
-							<TableBody>
-								{Object.keys(item.features).map((value, index) => (
-									<TableRow
-										key={index}
-									>
-										<TableCell
-											sx={{fontSize: '18px', fontWeight: '600'}}
-											align="left"
-										>
-											{localizedText.characteristics[value]}
-										</TableCell>
-										<TableCell
-											sx={{fontSize: '17px'}}
-											align="left"
-										>
-											{item.features[value]}
-										</TableCell>
-									</TableRow>
-								))}
-							</TableBody>
-						</Table>
-					</TableContainer>
+					<Accordion>
+		        <AccordionSummary
+		          expandIcon={<ExpandMoreIcon />}
+		        >
+		        	{localizedText.characteristics.characteristics}
+		        </AccordionSummary>
+		        <AccordionDetails sx={{padding: '0px 0px 0px 0px'}}>
+		        	<Characteristicstable item={item} localizedText={localizedText} />
+		        </AccordionDetails>
+		      </Accordion>				
 				</div>	
 
 			</div>
+
 			{!matches &&
 				<div className={css`
 					position: sticky;
@@ -299,6 +419,9 @@ export default function Item({ id, item, itemType, localizedText, imgCount }) {
 													overflow: scroll;
 													height: 200px;
 													outline: 1px solid #e0e0e0;
+													display: flex;
+													flex-direction: column;
+													align-items: center;
 												`}>
 													<ToggleButtonGroup 
 														orientation='vertical' 
@@ -342,46 +465,11 @@ export default function Item({ id, item, itemType, localizedText, imgCount }) {
 													</ToggleButtonGroup>	
 												</div>						
 											}				
-											<div className={css`
-												margin-top: 10px;
-												display: flex;
-												flex-direction: row;
-												align-items: center;
-												column-gap: 5px;
-											`}>
-												<div>
-													{`${localizedText.checkoutPanel.amount}:`}
-												</div>
-												<MuiInput
-													className={cx(roboto, css`
-		
-														& .MuiInput-input {
-															padding: 0px;
-															text-align: center;
-															 width: 45px;
-														}
-													`)}
-
-													value={amountState}
-													onChange={(event) => {
-														let value
-														if (event.target.value < 1) {
-															value = 1
-														} else if (event.target.value > 99) {
-															value = 99
-														} else {
-															value = event.target.value
-														}
-														setAmountState(value)
-													}}
-													inputProps={{
-														type: 'number',
-														min: 1,
-														step: 1,
-														max: 99
-													}}
-												/>
-											</div>
+					            <AmountInput 
+					            	localization={localizedText.checkoutPanel.amount} 
+					            	state={amountState}
+					            	setState={setAmountState}
+					            />												
 										</div>	
 										<div className={price}>
 											{currencyFormat(Math.round(item.price[priceState].price * amountState), router.locale)}
@@ -432,6 +520,36 @@ export default function Item({ id, item, itemType, localizedText, imgCount }) {
 
 		</div>
 	)
+}
+
+function Characteristicstable({ item, localizedText }) {
+	const matches = useMediaQuery(`(max-width: 377px)`)
+	return (
+		<TableContainer component={Paper}>
+			<Table>
+				<TableBody>
+					{Object.keys(item.features).map((value, index) => (
+						<TableRow
+							key={index}
+						>
+							<TableCell
+								sx={{fontSize: matches ? '14px' : '18px', fontWeight: '600'}}
+								align="left"
+							>
+								{localizedText.characteristics[value]}
+							</TableCell>
+							<TableCell
+								sx={{fontSize: matches ? '14px' : '17px'}}
+								align="left"
+							>
+								{item.features[value]}
+							</TableCell>
+						</TableRow>
+					))}
+				</TableBody>
+			</Table>
+		</TableContainer>
+	)	
 }
 
 export async function getStaticProps({ locale, params }) {
