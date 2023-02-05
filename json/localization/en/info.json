@@ -14,7 +14,9 @@
 		"Indeed, product's color and shape must be in harmony with your inetior design."
 	],
 	"contacts": [
-		"Phone"
+		"Phone",
+		"Address",
+		"Strada Alba Iulia 21, Chișinău"
 	],
 	"delivery": {
 		"delivery": "DELIVERY",

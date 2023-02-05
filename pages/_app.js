@@ -1,4 +1,7 @@
 import '../styles/globals.css'
+import contactIcon from '../public/contactIcon.svg'
+import deliveryIcon from '../public/deliveryIcon.svg'
+import aboutIcon from '../public/aboutIcon.svg'
 import { css, cx, keyframes } from '@emotion/css'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -52,8 +55,7 @@ const footerItem = css`
 const footerColumn = css`
   display: flex;
   flex-direction: column;
-  row-gap: 15px;
-  margin-bottom: 40px;
+  row-gap: 15px; 
 `
 
 const breakpoints = [950]
@@ -113,72 +115,226 @@ function MyApp({ Component, pageProps }) {
     }
   }, [])
 
+  const footerTextColor = 'white'
+
   return (
     <ShoppingCartContext.Provider value={{ shoppingCartState, setShoppingCartState }}>
       <ThemeProvider theme={theme}>
         <div className={roboto}>
          {!renderState ? <CircularProgress sx={{marginLeft: '50vw', marginTop: '50vh'}}/> :
           <>
+            <div className={css`
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+              align-items: center;
+              height: 100px; 
+              width: 100vw; 
+              background-color: white;`
+            }>
+              <div className={css`
+                width: 33%
+              `}>
+              </div>
+              <div className={css`
+                font-weight: 500;
+                font-size: 35px;
+                align-self: center;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+              `}>
+                DAK LUMINA
+              </div> 
+              <div className={css`
+                width: 33%;
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-end;
+              `}>
+                <LanguageSelection />    
+                <div className={css`width: 20px;`}>
+                </div>  
+              </div>     
+            </div>
             <StickyHeader catalogScroll={{state: catalogScrollState, setState: setCatalogScrollState}} />
             <Component {...pageProps} catalogScroll={{state: catalogScrollState, setState: setCatalogScrollState}} />
             <div className={css`
-              min-height: 200px;
-              background-color: #cdcdcd;
               display: flex;
-              flex-direction: row;
-              padding-left: 30px;
-              padding-top: 60px;
-              column-gap: 50px;
-              font-size: 15px;
-              flex-wrap: wrap;
+              flex-direction: column;
+              background-color: #333;              
+              align-items: center;
+              width: 100vw;
+              height: 300px;
+              padding-top: 50px;
+              color: white;
             `}>
-              <div className={footerColumn}>
-                <div 
-                  className={footerItem}
-                  onClick={() => {
-                    setCatalogScrollState(true)
-                    router.push('/', '/', {scroll: false})
-                  }}                  
-                >
-                  {footerLocalization[router.locale][0]}
-                </div>
-                <Link href='/info/colors' style={{textDecoration: 'none', color: 'black'}}>
-                  <div className={footerItem}>
-                    {footerLocalization[router.locale][3]}
+              <div>
+                <div className={css`
+                  display: flex;
+                  flex-direction: row;
+                  column-gap: 50px;
+                  font-size: 15px;
+                  flex-wrap: wrap;
+                  justify-content: center;
+                  border-bottom: 1px solid grey;
+                  
+                `}>
+
+                  <div className={css`
+                    display: flex;
+                    flex-direction: row;
+                    margin-bottom: 35px;
+                  `}>
+                    <Image className={css`margin-right: 15px;`} style={{width: 48, height: 48}} src={contactIcon}/>
+                    <div className={css`
+                      display: flex;
+                      flex-direction: column;
+                    `}>
+                      <div className={css`
+                        font-weight: 480;
+                        margin-bottom: 9px;
+                      `}>
+                        Контакты
+                      </div>  
+                      <a 
+                        className={css`
+                          font-size: 13px;
+                          font-weight: 400;
+                          text-decoration: none; 
+                          color: #a7a7a7;
+                          margin-bottom: 5px;
+                        `
+
+                        } 
+                        href='tel: +37368077331'
+                      >
+                        +37368077331 
+                      </a>  
+                      <a 
+                        className={css`
+                          font-size: 13px;
+                          text-decoration: none; 
+                          color: #a7a7a7`
+                        } 
+                        href='mailto: daklumina@gmail.com'
+                      >
+                        daklumina@gmail.com 
+                      </a>                                        
+                    </div>
+                  </div>  
+
+                  <div className={css`
+                    display: flex;
+                    flex-direction: row;
+                    margin-bottom: 35px;
+                  `}>
+                    <Image className={css`margin-right: 15px;`} style={{width: 48, height: 48}} src={deliveryIcon}/>
+                    <div className={css`
+                      display: flex;
+                      flex-direction: column;
+                    `}>
+                      <div className={css`
+                        font-weight: 480;
+                        margin-bottom: 9px;
+                      `}>
+                        Доставка
+                      </div>  
+                      <div
+                        className={css`
+                          font-size: 13px;
+                          font-weight: 400;
+                          text-decoration: none; 
+                          color: #a7a7a7;
+                          margin-bottom: 5px;
+                          width: 155px;
+                          line-height: 1.5;
+                        `
+
+                        } 
+                      >
+                        Мы доставляем в страны СНГ и Европу.
+                      </div>                                         
+                    </div>
+                  </div>             
+
+                  <div className={css`
+                    display: flex;
+                    flex-direction: row;
+                    margin-bottom: 35px;
+                  `}>
+                    <Image className={css`margin-right: 15px;`} style={{width: 48, height: 48}} src={aboutIcon}/>
+                    <div className={css`
+                      display: flex;
+                      flex-direction: column;
+                    `}>
+                      <div className={css`
+                        font-weight: 480;
+                        margin-bottom: 9px;
+                      `}>
+                        О нас
+                      </div>  
+                      <div
+                        className={css`
+                          font-size: 13px;
+                          font-weight: 400;
+                          text-decoration: none; 
+                          color: #a7a7a7;
+                          margin-bottom: 5px;
+                          width: 155px;
+                          line-height: 1.5;
+                        `
+
+                        } 
+                      >
+                        Компания занимается ручным изготовлением светильников высокого класса по мировым стандартам.
+                      </div>                                         
+                    </div>
                   </div>   
-                </Link>                     
-              </div>
-              <div className={footerColumn}>
-                <Link href='/info/delivery' style={{textDecoration: 'none', color: 'black'}}>
-                  <div className={footerItem}>
-                    {footerLocalization[router.locale][1]}
-                  </div>   
-                </Link>                                           
-              </div>
-              <div className={footerColumn}>
-                <div className={footerItem}>
-                  <a 
-                    href='tel:+37368077331'
-                    className={css`
-                      text-decoration: none;
-                      color: black;
-                    `}
-                  >
-                    +37368077331
-                  </a>  
-                </div>
-                <Link href='/info/contacts' style={{textDecoration: 'none', color: 'black'}}>
-                  <div className={footerItem}>
-                    {footerLocalization[router.locale][2]}
+
+                </div>  
+                <div className={css`
+                  display: flex;
+                  flex-direction: row;
+                  margin-top: 35px;                  
+                `}>
+                  <div className={css`
+                    font-weight: 500;
+                    font-size: 35px;
+                    align-self: start;
+                    margin-right: 20px;
+                  `}>
+                    DAK LUMINA
                   </div>
-                </Link>  
-                <Link href='/info/about' style={{textDecoration: 'none', color: 'black'}}>
-                  <div className={footerItem}>
-                    {footerLocalization[router.locale][4]}
-                  </div>       
-                </Link>           
-              </div>
-            </div>
+                  <div className={css`
+                    display: flex;
+                    flex-direction: column;
+                    padding-top: 2px;
+                  `}>  
+                    <div className={css`
+                      font-size: 13px;
+                      font-weight: 400;
+                      text-decoration: none; 
+                      color: #a7a7a7;
+                      margin-bottom: 5px;
+                      line-height: 1.1;
+                    `}>
+                      ©2023 Dak Lumina. All rights reserved. 
+                    </div>
+                    <div className={css`
+                      font-size: 13px;
+                      font-weight: 400;
+                      text-decoration: none; 
+                      color: #a7a7a7;
+                      margin-bottom: 5px;
+                      line-height: 1.1;
+                    `}>
+                      If you are having problems using this website, please email daklumina@gmail.com for assistance. 
+                    </div>                    
+                  </div>  
+                </div>  
+              </div>  
+            </div>            
           </>  
         }
         </div>
@@ -193,15 +349,11 @@ function MenuBarButton({ name, onClick }) {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-left: 5px white solid;
-    border-right: 5px white solid;
-    height: 41px;
     cursor: pointer;
+    border-bottom: 2px solid white;
+    padding-bottom: 2px;
     &:hover {
-      border-left: 5px black solid;
-      border-right: 5px black solid;
-      background-color: black;
-      color: white;
+      border-bottom: 2px solid #222222;
     }
   `
 
@@ -278,21 +430,18 @@ function StickyHeader({ catalogScroll }) {
   const menuBarFirst = css`
     display: flex;
     column-gap: 50px;
-    flex-grow: 1;
-    padding-left: 20px;
-    margin-left: 40px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    padding-top: 3px;
   `
 
   const menuBarLast = css`
-    flex-grow: 1.5;
     display: flex;
     align-items: center;
     justify-content: end;
-    max-width: 100%;
-    column-gap: 40px;
-    @media (max-width: ${breakpoints[0]}px) {
-      flex-grow: 2;
-    }
+    width: 10%;
   `
 
   const localeSelection = css`
@@ -381,48 +530,34 @@ function StickyHeader({ catalogScroll }) {
           </IconButton> 
         </div>   
       }  
-      <Link
-        className={css`
-          text-decoration: none;
-          @media (max-width: ${breakpoints[0]}px) {
-            flex-grow: 1;
-          }
-        `} 
-        href='/'
-      >
-        <div className={logoWrapper}>
-          <div className={logo}>
-            <div className={logoText}>
-              DAK
-            </div>  
-          </div>
-        </div>
-      </Link>  
       <div className={menuBar}>
-        {match0 &&
-          <div className={menuBarFirst}>
-            <MenuBarButton
-              key={0}
-              name={navbarLocalization[router.locale][0]}
-              onClick={() => {
-                catalogScroll.setState(true)
-                router.push('/', '/', {scroll: false})
-              }}
-            />
-            {
-              ['delivery', 'contacts', 'colors'].map((name, i) => {
-                return (
-                  <Link style={{textDecoration: 'none', color: 'black'}} href={`/info/${name}`, `/info/${name}`}>
-                    <MenuBarButton 
-                      key={i} 
-                      name={navbarLocalization[router.locale][i + 1]} 
-                    />    
-                  </Link>  
-                )
-              })
-            }
-          </div>   
-        }
+        <div className={css`
+          width: 10%;
+        `}>
+        </div>
+        <div className={menuBarFirst}>
+          <MenuBarButton
+            key={0}
+            name={navbarLocalization[router.locale][0]}
+            onClick={() => {
+              catalogScroll.setState(true)
+              router.push('/', '/', {scroll: false})
+            }}
+          />
+          {
+            ['delivery', 'contacts', 'colors'].map((name, i) => {
+              return (
+                <Link style={{textDecoration: 'none', color: 'black'}} href={`/info/${name}`, `/info/${name}`}>
+                  <MenuBarButton 
+                    key={i} 
+                    name={navbarLocalization[router.locale][i + 1]} 
+                  />    
+                </Link>  
+              )
+            })
+          }
+        </div>  
+
         <div className={menuBarLast}>
           <div className={cartButtonContainer}>
               {shoppingCart.shoppingCartState.length > 0 && Array(2).fill(1).map((element, index) => (
@@ -442,14 +577,7 @@ function StickyHeader({ catalogScroll }) {
             height: 45px;
             display: flex;
             align-items: center;
-            margin-right: 35px;
-            @media (max-width: ${breakpoints[0]}px) {
-              display: none;
-            }
           `}>
-          {match0 && 
-            <LanguageSelection />
-          }
           </div>
         </div>           
       </div> 
@@ -495,7 +623,6 @@ function SideNavbar({ open, onClose, catalogScroll }) {
             align-self: start;
             margin-top: 7px;
           `}>
-            <LanguageSelection />
           </div>  
         </div>  
         <div className={cx(roboto, css`
@@ -504,7 +631,7 @@ function SideNavbar({ open, onClose, catalogScroll }) {
           margin-top: 30px;
           row-gap: 10px;
           font-size: 20px;
-          align-items: start;
+          align-items: center;
           margin-left: 20px;
         `)}>
           <MenuBarButton

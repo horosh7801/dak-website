@@ -2,6 +2,7 @@ import { css, cx } from '@emotion/css'
 import { useState, useContext, useEffect } from 'react'
 import roboto from '../../lib/modules/variableFont.js'
 import Link from 'next/link'
+import subHeader from '../../lib/modules/styles/subHeader.js'
 import Image from 'next/image'
 import useMediaQuery from '@mui/material/useMediaQuery'
 
@@ -31,7 +32,7 @@ export default function Info({ pageIndex, pageNames, about, contacts, delivery }
 			flex-direction: column;
 		`}>
 
-			<div className={title}>
+			<div className={subHeader}>
 				{pageNames[pageIndex].toUpperCase()}
 			</div>
 
@@ -41,12 +42,12 @@ export default function Info({ pageIndex, pageNames, about, contacts, delivery }
 			`}>
 				{matches &&
 					<div className={css`
-						margin-top: 20px;
+						margin-top: 31px;
 						width: 200px;
 						min-width: 200px;
 						border-right: 2px solid black;
 						height: 150px;
-						padding-left: 15px;
+						padding-left: 112px;
 						padding-top: 10px;
 					`}>
 						{pages.map((page, index) => (
@@ -127,17 +128,32 @@ function Contacts({localization}) {
 		<div className={css`
 			display: flex;
 			flex-direction: column;
-			row-gap: 8px;
+			row-gap: 15px;
+			margin-top: 31px;
+			padding-left: 148px;
 		`}>
 			<div className={css`
 				display: flex;
 				flex-direction: row;
 			`}>
-				<div className={css`margin-right: 5px;`}> {`${localization[0]}:`}</div> <a href='tel:+37368077331' className={css`color: black; text-underline-offset: 4px;`}> +37368077331 </a>
+				<div className={css`margin-right: 5px;`}> {`${localization[0]}:`} </div> <a href='tel:+37368077331' className={css`color: black; text-underline-offset: 4px;`}> +37368077331 </a>
 			</div>	
-			<div>
-				<div className={css`margin-right: 5px;`}> E-mail:</div> <a className={css`color: black; text-underline-offset: 4px;`}>  </a>
+			<div className={css`
+				display: flex; 
+				flex-direction: row;
+			`}>
+				<div className={css`
+					margin-right: 5px;`
+				}> E-mail:</div> <a href='mailto: daklumina@gmail.com' className={css`color: black; text-underline-offset: 4px;`}> daklumina@gmail.com </a>
 			</div>	
+			<div className={css`
+				display: flex; 
+				flex-direction: row;
+			`}>
+				<div className={css`
+					margin-right: 5px;`
+				}> {`${localization[1]}: ${localization[2]}`} </div>
+			</div>				
 		</div>
 	)
 }

@@ -5,6 +5,12 @@ import { useRouter } from 'next/router'
 import lampImage1 from '../public/featured_products/wave.jpg'
 import lampImage2 from '../public/featured_products/venera.jpg'
 import lampImage3 from '../public/featured_products/snake.jpg'
+import ceilingType from '../public/ceilingType.png'
+import floorType from '../public/floorType.png'
+import wallType from '../public/wallType.png'
+import wall3dType from '../public/wall3dType.png'
+import mirrorType from '../public/mirrorType.png'
+import pointType from '../public/pointType.png'
 import { cx, css } from '@emotion/css'
 //import Button from '../lib/components/Button.js'
 import Button from '@mui/material/Button';
@@ -138,6 +144,9 @@ export default function Home({ items, localizedText, catalogScroll }) {
 
   return (
     <div className={mainWrapper}>
+      <div className={subHeader}>
+        MAIN
+      </div>      
       {matches2 && 
         <div className={imageSet}>
           <Link href={'/info/about'}>
@@ -226,7 +235,7 @@ function ProductItem({ itemID, name, price, type, locale}) {
   const scaleRate = 0.8
 
   const productItem = css`
-    box-shadow: 0px 0px 4px -1px;
+    box-shadow: 0px 0px 3px -2px;
     width: ${baseWidth}px;
     height: ${baseHeight}px;
     display: flex;
@@ -319,7 +328,7 @@ function ProductItem({ itemID, name, price, type, locale}) {
         </div>  
         <div className={css`
           width: 100%;
-          background-color: black;
+          background-color: #222222;
           display: flex;
           justify-content: center;
         `}>
@@ -410,7 +419,7 @@ function Catalog ({ items, localizedText, catalogRef }) {
     <div className={catalog}>
         <div ref={catalogRef} id='catalog' className={css`
           position: relative;
-          top: -59px;
+          top: -45px;
           @media (max-width: ${breakpoints[1]}px) {
             top: -48px;
           }
@@ -507,8 +516,9 @@ function CatalogToggleButtonGroup({ catalogState, localizedText, setItemsState, 
       display: flex;
       flex-direction: row;
       justify-content: center;
+      margin-bottom: 50px;
       & .Mui-selected, .Mui-selected:hover {
-        background-color: black;
+        background-color: #222222;
         color: white;
       }
       & .MuiToggleButton-root {
@@ -526,28 +536,48 @@ function CatalogToggleButtonGroup({ catalogState, localizedText, setItemsState, 
         }  
       }}
     >
-      <ToggleButton 
-        value='ceiling'
-      >
-        {
-          localizedText.catalog.ceiling
-        }
-      </ToggleButton>
-      <ToggleButton value='floor'>
-        {
-          localizedText.catalog.floor
-        }
-      </ToggleButton>
+      <div className={css`
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      `}>
+        <Image src={ceilingType} />
+        <ToggleButton 
+          value='ceiling'
+        >
+          {
+            localizedText.catalog.ceiling
+          }
+        </ToggleButton>
+      </div>  
+
+      <div className={css`
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      `}>
+        <Image src={floorType} />
+        <ToggleButton 
+          value='floor'
+        >
+          {
+            localizedText.catalog.floor
+          }
+        </ToggleButton>
+      </div>  
+
       <ToggleButton value='wall'>
         {
           localizedText.catalog.wall
         }
       </ToggleButton>
+
       <ToggleButton value='point'>
         {
           localizedText.catalog.point
         }
       </ToggleButton>
+      
       <ToggleButton value='wall3d'>
         {
           localizedText.catalog.wall3d
