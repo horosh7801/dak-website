@@ -124,254 +124,269 @@ function MyApp({ Component, pageProps }) {
     <ShoppingCartContext.Provider value={{ shoppingCartState, setShoppingCartState }}>
       <ThemeProvider theme={theme}>
         <div className={roboto}>
-         {!renderState ? <CircularProgress sx={{marginLeft: '50vw', marginTop: '50vh'}}/> :
-          <>
+         {!renderState 
+          ? 
             <div className={css`
+              width: 100vw;
+              height: 100vh;
               display: flex;
               flex-direction: row;
-              justify-content: space-between;
+              justify-content: center;
               align-items: center;
-              height: 100px; 
-              width: 100vw; 
-              background-color: white;
-              @media (max-width: 690px) {
-                justify-content: center;
-                height: 80px;
-              }
-            `
-            }>
-              {!matches1 &&
-                <div className={css`
-                  width: 33%
-                `}>
-                </div>
-              }  
+            `}>
+              <CircularProgress /> 
+            </div>  
+          :
+            <>
               <div className={css`
-                font-weight: 500;
-                font-size: 35px;
-                align-self: center;
                 display: flex;
                 flex-direction: row;
-                justify-content: center;
-              `}>
-                <Link style={{textDecoration: 'none', color: 'black'}} href='/'>
-                  DAK LUMINA
-                </Link>  
-              </div> 
-              {!matches1 &&
+                justify-content: space-between;
+                align-items: center;
+                height: 100px; 
+                width: 100vw; 
+                background-color: white;
+                @media (max-width: 690px) {
+                  justify-content: center;
+                  height: 60px;
+                }
+              `
+              }>
+                {!matches1 &&
+                  <div className={css`
+                    width: 33%
+                  `}>
+                  </div>
+                }  
                 <div className={css`
-                  width: 33%;
+                  font-weight: 500;
+                  font-size: 35px;
+                  align-self: center;
                   display: flex;
                   flex-direction: row;
-                  justify-content: flex-end;
+                  justify-content: center;
+                  @media (max-width: 690px) {
+                    font-size: 30px;
+                  }
                 `}>
-                  <LanguageSelection /> 
-                  <div className={css`width: 20px;`}>
-                  </div>
-                </div>     
-              }  
-            </div>
-            <StickyHeader catalogScroll={{state: catalogScrollState, setState: setCatalogScrollState}} />
-            <Component {...pageProps} catalogScroll={{state: catalogScrollState, setState: setCatalogScrollState}} />
-            <div className={css`
-              display: flex;
-              flex-direction: column;
-              background-color: #333;              
-              align-items: center;
-              width: 100vw;
-              min-height: 300px;
-              padding-top: 50px;
-              color: white;
-              @media (max-width: 850px) {
-                min-height: 144px;
-              }
-            `}>
+                  <Link style={{textDecoration: 'none', color: 'black'}} href='/'>
+                    DAK LUMINA
+                  </Link>  
+                </div> 
+                {!matches1 &&
+                  <div className={css`
+                    width: 33%;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: flex-end;
+                  `}>
+                    <LanguageSelection /> 
+                    <div className={css`width: 20px;`}>
+                    </div>
+                  </div>     
+                }  
+              </div>
+              <StickyHeader catalogScroll={{state: catalogScrollState, setState: setCatalogScrollState}} />
+              <Component {...pageProps} catalogScroll={{state: catalogScrollState, setState: setCatalogScrollState}} />
               <div className={css`
+                display: flex;
+                flex-direction: column;
+                background-color: #333;              
+                align-items: center;
+                width: 100vw;
+                min-height: 300px;
+                padding-top: 50px;
+                color: white;
                 @media (max-width: 850px) {
-                  width: 100%;
+                  min-height: 144px;
                 }
               `}>
-                {!matches &&
+                <div className={css`
+                  @media (max-width: 850px) {
+                    width: 100%;
+                  }
+                `}>
+                  {!matches &&
+                    <div className={css`
+                      display: flex;
+                      flex-direction: row;
+                      column-gap: 50px;
+                      font-size: 15px;
+                      flex-wrap: wrap;
+                      justify-content: center;
+                      border-bottom: 1px solid grey;
+                      
+                    `}>
+
+                      <div className={css`
+                        display: flex;
+                        flex-direction: row;
+                        margin-bottom: 35px;
+                      `}>
+                        <Image className={css`margin-right: 15px;`} style={{width: 48, height: 48}} src={contactIcon}/>
+                        <div className={css`
+                          display: flex;
+                          flex-direction: column;
+                        `}>
+                          <div className={css`
+                            font-weight: 480;
+                            margin-bottom: 9px;
+                          `}>
+                            {footerLocalization[router.locale][0]}
+                          </div>  
+                          <a 
+                            className={css`
+                              font-size: 13px;
+                              font-weight: 400;
+                              text-decoration: none; 
+                              color: #a7a7a7;
+                              margin-bottom: 5px;
+                            `
+
+                            } 
+                            href='tel: +37368077331'
+                          >
+                            +37368077331 
+                          </a>  
+                          <a 
+                            className={css`
+                              font-size: 13px;
+                              text-decoration: none; 
+                              color: #a7a7a7`
+                            } 
+                            href='mailto: daklumina@gmail.com'
+                          >
+                            daklumina@gmail.com 
+                          </a>                                        
+                        </div>
+                      </div>  
+
+                      <div className={css`
+                        display: flex;
+                        flex-direction: row;
+                        margin-bottom: 35px;
+                      `}>
+                        <Image className={css`margin-right: 15px;`} style={{width: 48, height: 48}} src={deliveryIcon}/>
+                        <div className={css`
+                          display: flex;
+                          flex-direction: column;
+                        `}>
+                          <div className={css`
+                            font-weight: 480;
+                            margin-bottom: 9px;
+                          `}>
+                            {footerLocalization[router.locale][1]}
+                          </div>  
+                          <div
+                            className={css`
+                              font-size: 13px;
+                              font-weight: 400;
+                              text-decoration: none; 
+                              color: #a7a7a7;
+                              margin-bottom: 5px;
+                              width: 155px;
+                              line-height: 1.5;
+                            `
+
+                            } 
+                          >
+                            {footerLocalization[router.locale][2]}
+                          </div>                                         
+                        </div>
+                      </div>             
+
+                      <div className={css`
+                        display: flex;
+                        flex-direction: row;
+                        margin-bottom: 35px;
+                      `}>
+                        <Image className={css`margin-right: 15px;`} style={{width: 48, height: 48}} src={aboutIcon}/>
+                        <div className={css`
+                          display: flex;
+                          flex-direction: column;
+                        `}>
+                          <div className={css`
+                            font-weight: 480;
+                            margin-bottom: 9px;
+                          `}>
+                            {footerLocalization[router.locale][3]}
+                          </div>  
+                          <div
+                            className={css`
+                              font-size: 13px;
+                              font-weight: 400;
+                              text-decoration: none; 
+                              color: #a7a7a7;
+                              margin-bottom: 5px;
+                              width: 155px;
+                              line-height: 1.5;
+                            `
+
+                            } 
+                          >
+                            {footerLocalization[router.locale][4]}
+                          </div>                                         
+                        </div>
+                      </div>   
+
+                    </div>  
+                  }  
                   <div className={css`
                     display: flex;
                     flex-direction: row;
-                    column-gap: 50px;
-                    font-size: 15px;
-                    flex-wrap: wrap;
-                    justify-content: center;
-                    border-bottom: 1px solid grey;
-                    
+                    margin-top: 35px;  
+                    width: calc(100% - 20px);
+                    padding-left: 10px;
+                    padding-right: 10px;                
                   `}>
-
                     <div className={css`
-                      display: flex;
-                      flex-direction: row;
-                      margin-bottom: 35px;
+                      font-weight: 500;
+                      font-size: 35px;
+
+                      margin-right: 20px;
+                      @media (max-width: 850px) {
+                        font-size: 26px;
+                        width: 153.75px;
+                        flex-shrink: 0;
+                      }
                     `}>
-                      <Image className={css`margin-right: 15px;`} style={{width: 48, height: 48}} src={contactIcon}/>
-                      <div className={css`
-                        display: flex;
-                        flex-direction: column;
-                      `}>
-                        <div className={css`
-                          font-weight: 480;
-                          margin-bottom: 9px;
-                        `}>
-                          {footerLocalization[router.locale][0]}
-                        </div>  
-                        <a 
-                          className={css`
-                            font-size: 13px;
-                            font-weight: 400;
-                            text-decoration: none; 
-                            color: #a7a7a7;
-                            margin-bottom: 5px;
-                          `
-
-                          } 
-                          href='tel: +37368077331'
-                        >
-                          +37368077331 
-                        </a>  
-                        <a 
-                          className={css`
-                            font-size: 13px;
-                            text-decoration: none; 
-                            color: #a7a7a7`
-                          } 
-                          href='mailto: daklumina@gmail.com'
-                        >
-                          daklumina@gmail.com 
-                        </a>                                        
-                      </div>
-                    </div>  
-
-                    <div className={css`
-                      display: flex;
-                      flex-direction: row;
-                      margin-bottom: 35px;
-                    `}>
-                      <Image className={css`margin-right: 15px;`} style={{width: 48, height: 48}} src={deliveryIcon}/>
-                      <div className={css`
-                        display: flex;
-                        flex-direction: column;
-                      `}>
-                        <div className={css`
-                          font-weight: 480;
-                          margin-bottom: 9px;
-                        `}>
-                          {footerLocalization[router.locale][1]}
-                        </div>  
-                        <div
-                          className={css`
-                            font-size: 13px;
-                            font-weight: 400;
-                            text-decoration: none; 
-                            color: #a7a7a7;
-                            margin-bottom: 5px;
-                            width: 155px;
-                            line-height: 1.5;
-                          `
-
-                          } 
-                        >
-                          {footerLocalization[router.locale][2]}
-                        </div>                                         
-                      </div>
-                    </div>             
-
-                    <div className={css`
-                      display: flex;
-                      flex-direction: row;
-                      margin-bottom: 35px;
-                    `}>
-                      <Image className={css`margin-right: 15px;`} style={{width: 48, height: 48}} src={aboutIcon}/>
-                      <div className={css`
-                        display: flex;
-                        flex-direction: column;
-                      `}>
-                        <div className={css`
-                          font-weight: 480;
-                          margin-bottom: 9px;
-                        `}>
-                          {footerLocalization[router.locale][3]}
-                        </div>  
-                        <div
-                          className={css`
-                            font-size: 13px;
-                            font-weight: 400;
-                            text-decoration: none; 
-                            color: #a7a7a7;
-                            margin-bottom: 5px;
-                            width: 155px;
-                            line-height: 1.5;
-                          `
-
-                          } 
-                        >
-                          {footerLocalization[router.locale][4]}
-                        </div>                                         
-                      </div>
-                    </div>   
-
-                  </div>  
-                }  
-                <div className={css`
-                  display: flex;
-                  flex-direction: row;
-                  margin-top: 35px;  
-                  width: calc(100% - 20px);
-                  padding-left: 10px;
-                  padding-right: 10px;                
-                `}>
-                  <div className={css`
-                    font-weight: 500;
-                    font-size: 35px;
-
-                    margin-right: 20px;
-                    @media (max-width: 850px) {
-                      font-size: 26px;
-                      width: 153.75px;
-                      flex-shrink: 0;
-                    }
-                  `}>
-                    DAK LUMINA
-                  </div>
-                  <div className={css`
-                    display: flex;
-                    flex-direction: column;
-                    padding-top: 2px;
-                    max-width: 568px;
-                    font-size: 13px;
-                    @media (max-width: 850px) {
-                      max-width: 588px;
-                    }
-                  `}>  
-                    <div className={css`
-                      font-weight: 400;
-                      text-decoration: none; 
-                      color: #a7a7a7;
-                      margin-bottom: 5px;
-                      line-height: 1.1;
-                    `}>
-                      {`
-                        ©2023 Dak Lumina. ${footerLocalization[router.locale][5]}
-                      `}
+                      DAK LUMINA
                     </div>
                     <div className={css`
-                      font-weight: 400;
-                      text-decoration: none; 
-                      color: #a7a7a7;
-                      margin-bottom: 5px;
-                      line-height: 1.1;
-                    `}>
-                      {footerLocalization[router.locale][6]}
-                    </div>                    
+                      display: flex;
+                      flex-direction: column;
+                      padding-top: 2px;
+                      max-width: 568px;
+                      font-size: 13px;
+                      @media (max-width: 850px) {
+                        max-width: 588px;
+                      }
+                    `}>  
+                      <div className={css`
+                        font-weight: 400;
+                        text-decoration: none; 
+                        color: #a7a7a7;
+                        margin-bottom: 5px;
+                        line-height: 1.1;
+                      `}>
+                        {`
+                          ©2023 Dak Lumina. ${footerLocalization[router.locale][5]}
+                        `}
+                      </div>
+                      <div className={css`
+                        font-weight: 400;
+                        text-decoration: none; 
+                        color: #a7a7a7;
+                        margin-bottom: 5px;
+                        line-height: 1.1;
+                      `}>
+                        {footerLocalization[router.locale][6]}
+                      </div>                    
+                    </div>  
                   </div>  
                 </div>  
-              </div>  
-            </div>            
-          </>  
+              </div>            
+            </>  
         }
         </div>
       </ThemeProvider>  

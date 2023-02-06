@@ -181,6 +181,8 @@ export default function ShoppingCart({ localizedText }) {
 
 	const matches = useMediaQuery(`(max-width: 480px)`)
 
+	const [fadeState, setFadeState] = useState(false)
+
 	return (
 		<div className={css`
 			display: flex;
@@ -222,7 +224,18 @@ export default function ShoppingCart({ localizedText }) {
 						}
 					`}>
 						{
-							(localizedDataState === null) && <CircularProgress sx={{marginLeft: '50%', marginTop: '25%'}}/> ||
+							(localizedDataState === null) &&
+								<div className={css`
+									display: flex;
+									flex-direction: row;
+									justify-content: center;
+									align-items: center;
+									width: 100%;
+									height: 100%;
+								`}>
+								 <CircularProgress /> 
+								</div> 
+							||
 							!(localizedDataState === null) && shoppingCart.shoppingCartState.map((item, index) => (
 							<Paper sx={{}} key={index}>
 								<div className={itemRow}>
@@ -320,10 +333,12 @@ export default function ShoppingCart({ localizedText }) {
 								</div>
 							:
 								<CheckoutForm 
+									setFadeState={setFadeState}
 									totalCost={totalCostState} 
 									shoppingCart={shoppingCart}
 									locale={router.locale}
 									localizedText={localizedText.checkoutPanel}
+									setDialogState={setDialogState}
 									onSuccess={() => {
 										setDialogState('success')
 										for (const i of shoppingCart.shoppingCartState) {

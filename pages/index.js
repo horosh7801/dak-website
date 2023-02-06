@@ -424,9 +424,6 @@ function Catalog ({ items, localizedText, catalogRef }) {
         <div ref={catalogRef} id='catalog' className={css`
           position: relative;
           top: -45px;
-          @media (max-width: ${breakpoints[1]}px) {
-            top: -48px;
-          }
         `}></div> 
       <div className={subHeader}>
         {
@@ -514,6 +511,7 @@ function Catalog ({ items, localizedText, catalogRef }) {
                       display: flex;
                       flex-direction: row;
                       justify-content: center;
+                      padding-left: 24px;
                     `}>
                       {localizedText.catalog[item]}
                     </div>
@@ -523,19 +521,35 @@ function Catalog ({ items, localizedText, catalogRef }) {
           </div>  
 
         }
-        <div className={productsListWrapper}>
-          <div className={productsList}>
-            {!itemsState && <CircularProgress sx={{marginLeft: '50%', marginTop: 'calc((100vh - (59px + 35px)) / 2 - 48.5px)'}}/> || 
-              items[catalogState].map((item, i) => (<ProductItem
-                itemID={item.id}
-                type={catalogState} 
-                name={item.name} 
-                price={item.price[0].price} 
-                key={i} 
-                locale={router.locale}
-            /> ))}
+        {!itemsState &&
+          <div className={css`
+            width: 100%;
+            height: 100%;
+            height: 350px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          `}>
+            <CircularProgress/>
           </div>
-        </div>   
+        }  
+        {itemsState &&
+          <div className={productsListWrapper}>
+            <div className={productsList}>
+              {
+                items[catalogState].map((item, i) => (<ProductItem
+                  itemID={item.id}
+                  type={catalogState} 
+                  name={item.name} 
+                  price={item.price[0].price} 
+                  key={i} 
+                  locale={router.locale}
+              
+                />))
+              }
+            </div>
+          </div>  
+        } 
       </div>
 
     </div>
