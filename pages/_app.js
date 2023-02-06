@@ -126,16 +126,7 @@ function MyApp({ Component, pageProps }) {
         <div className={roboto}>
          {!renderState 
           ? 
-            <div className={css`
-              width: 100vw;
-              height: 100vh;
-              display: flex;
-              flex-direction: row;
-              justify-content: center;
-              align-items: center;
-            `}>
-              <CircularProgress /> 
-            </div>  
+              <CircularProgress sx={{marginLeft: 'calc(50vw - 20px)', marginTop: 'calc(50vh - 20px)'}}/> 
           :
             <>
               <div className={css`
@@ -187,7 +178,11 @@ function MyApp({ Component, pageProps }) {
                 }  
               </div>
               <StickyHeader catalogScroll={{state: catalogScrollState, setState: setCatalogScrollState}} />
-              <Component {...pageProps} catalogScroll={{state: catalogScrollState, setState: setCatalogScrollState}} />
+              <div className={css`
+                min-height: 100vh;
+              `}>
+                <Component {...pageProps} catalogScroll={{state: catalogScrollState, setState: setCatalogScrollState}} />
+              </div>  
               <div className={css`
                 display: flex;
                 flex-direction: column;

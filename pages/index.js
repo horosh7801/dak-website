@@ -529,6 +529,7 @@ function Catalog ({ items, localizedText, catalogRef }) {
             display: flex;
             justify-content: center;
             align-items: center;
+
           `}>
             <CircularProgress/>
           </div>
