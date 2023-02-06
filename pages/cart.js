@@ -17,15 +17,22 @@ import roboto from '../lib/modules/variableFont.js'
 import currencyFormat from '../lib/modules/currencyFormat.js'
 import {addToCart, removeFromCart} from '../lib/modules/cartOperations.js'
 import CircularProgress from '@mui/material/CircularProgress'
+import useMediaQuery from '@mui/material/useMediaQuery'
+
+const scaleRate = 0.75
 
 const leftSection = css`
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
-	width: 1120px;
 	background-color: #f7f7f7;
 	padding-top: 20px;
+	padding-bottom: 20px;
+	flex-grow: 1;
 	gap: 10px;
+	@media (max-width: 770px) {
+		border-bottom: 6px solid #222;
+	}
 `
 
 const rightSection = css`
@@ -34,9 +41,18 @@ const rightSection = css`
 	align-items: left;
 	flex-grow: 1;
 	position: sticky;
-	top: 92px;
-	height: calc(100vh - 92px);
+	top: 45px;
+	height: calc(100vh - 45px);
+	width: 300px;
+	min-width: 300px;
+	max-width: 300px;
 	row-gap: 20px;
+	@media (max-width: 770px) {
+		margin-bottom: 20px;
+
+		height: auto;
+		align-self: center;
+	}
 	
 `
 
@@ -46,6 +62,12 @@ const imgContainer = css`
 	height: 150px;
 	margin-left: 10px;
 	top: -8px;
+	@media (max-width) {
+		width: ${150 * scaleRate}px;
+		height: ${150 * scaleRate}px;
+		margin-left: ${10 * scaleRate}px;
+		top: -${8 * scaleRate}px
+	}
 `
 
 const itemRow = css`
@@ -55,6 +77,10 @@ const itemRow = css`
 	border-bottom: 2px solid white;
 	width: 450px;
 	font-size: 20px;
+	@media (max-width: 480px) {
+		width: ${450 * scaleRate}px;
+		font-size: ${20 * scaleRate}px;
+	}
 `
 
 const itemName = css`
@@ -62,6 +88,10 @@ const itemName = css`
 	justify-content: center;
 	font-size: 21px;
 	margin-top: 15px;
+	@media (max-width: 480px) {
+		font-size: ${21 * scaleRate}px;
+		margin-top: ${15 * scaleRate}px;
+	}
 `
 
 const specs = css`
@@ -72,6 +102,9 @@ const specs = css`
 	font-weight: 200;
 	font-size: 17px;
 	flex-grow: 1;
+	@media (max-width: 480px) {
+		font-size: ${17 * scaleRate}px;
+	}
 `
 
 const cost = css`
@@ -80,6 +113,10 @@ const cost = css`
 	font-weight: 550;
 	font-size: 21px;
 	margin-right: 5px;
+	@media (max-width: 480px) {
+		font-size: ${21 * scaleRate}px;
+		margin-right: ${5 * scaleRate}px;
+	}
 `
 
 const amount = css`
@@ -91,19 +128,17 @@ const amount = css`
 	font-weight: 300;
 	width: 65px;
 	margin-bottom: 5px;
+	@media (max-width: 480px) {
+		margin-left: ${5 * scaleRate}px;
+		width: ${65 * scaleRate}px;
+		margin-bottom: ${5 * scaleRate}px;
+	}
 `
 
 const clearIcon = css`
 	display: flex;
 	align-self: start;
 	height: 100%;
-`
-
-const totalCostContainer = css`
-	font-size: 30px;
-	align-self: flex-start;
-	margin-top: 20px;
-	margin-left: 38px;
 `
 
 const phoneContainer = css`
@@ -144,6 +179,8 @@ export default function ShoppingCart({ localizedText }) {
 		}	
 	}, [localizedDataState])
 
+	const matches = useMediaQuery(`(max-width: 480px)`)
+
 	return (
 		<div className={css`
 			display: flex;
@@ -154,18 +191,15 @@ export default function ShoppingCart({ localizedText }) {
 				setState={setDialogState} 
 				localizedText={localizedText.checkoutPanel.orderConfirmation}					
 			/>
-			<div className={cx(subHeader, css`
-				position: sticky;
-				top: 59px;
-				@media (max-width: 950px) {
-					top: 47px;
-				}
-			`)}>
+			<div className={subHeader}>
 				{localizedText.pageLabel}
 			</div>
 			<div className={css`
 				display: flex;
 				flex-direction: row;
+				@media (max-width: 770px) {
+					flex-direction: column;
+				}
 			`}>
 				<div className={leftSection}>
 					<div className={css`
@@ -176,6 +210,16 @@ export default function ShoppingCart({ localizedText }) {
 						align-content: flex-start;
 						width: 910px;
 						gap: 10px;
+						@media (max-width: 1265px) {
+							width: 451px;
+						}
+						@media (max-width: 770px) {
+							overflow: scroll;
+							height: 60vh;
+						}
+						@media (max-width: 480px) {
+							width: 340px;
+						}
 					`}>
 						{
 							(localizedDataState === null) && <CircularProgress sx={{marginLeft: '50%', marginTop: '25%'}}/> ||
@@ -207,6 +251,9 @@ export default function ShoppingCart({ localizedText }) {
 										flex-direction: row;
 										width: 100%;
 										column-gap: 10px;
+										@media (max-width: 480px) {
+											column-gap: ${10 * scaleRate}px;
+										}
 									`}>												
 										<div className={imgContainer}>
 											<Link href={`/products/${item.type}/${item.name.toLowerCase().replace(/[\s-]/g, '_')}`}>
@@ -214,6 +261,7 @@ export default function ShoppingCart({ localizedText }) {
 													src={`/products/${item.type}/${item.name.toLowerCase().replace(/[\s-]/g, '_')}/item0.jpg`} 
 													fill={true} 
 													style={{objectFit: 'contain'}}
+													sizes={`(max-width: 480px) ${143 * scaleRate}px, 143px`}
 												/>
 											</Link>	
 										</div>	
@@ -221,6 +269,9 @@ export default function ShoppingCart({ localizedText }) {
 											display: flex;
 											flex-direction: column;
 											width: calc(100% - 150px);
+											@media (max-width: 480px) {
+												width: calc((100% - 150px) * ${scaleRate});
+											}
 										`}>
 											<div className={css`
 												display: flex;
