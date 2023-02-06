@@ -58,7 +58,7 @@ const footerColumn = css`
   row-gap: 15px; 
 `
 
-const breakpoints = [950]
+const breakpoints = [690] //950
 
 const navbarLocalization = {
   en: ['CATALOG', 'DELIVERY', 'CONTACTS', 'COLORS', 'ABOUT US'], 
@@ -67,9 +67,9 @@ const navbarLocalization = {
 }
 
 const footerLocalization = {
-  en: ['CATALOG', 'PAYMENT AND DELIVERY', 'CONTACT INFORMATION', 'COLORS', 'ABOUT US'], 
-  ru: ['КАТАЛОГ', 'ДОСТАВКА И ОПЛАТА', 'КОНТАКТНАЯ ИНФОРМАЦИЯ', 'ЦВЕТОВАЯ ГАММА', 'О НАС'], 
-  ro: ['КАТАЛОГ', 'ДОСТАВКА И ОПЛАТА', 'КОНТАКТНАЯ ИНФОРМАЦИЯ', 'ЦВЕТОВАЯ ГАММА', 'О НАС']  
+  en: ['Contacts', 'Delivery', 'We deliver to Europe and CIS.', 'About us', 'Our company does artistic design and handcraft of high-grade wooden lamps.', 'All rights reserved.', 'If you are having problems using this website, please email daklumina@gmail.com for assistance.'], 
+  ru: ['Контакты', 'Доставка', 'Мы доставляем в страны СНГ и Европу.', 'О нас', 'Компания занимается ручным изготовлением светильников высокого класса по мировым стандартам.', 'Все права защищены.', 'Если вы столкнулись с проблемой при пользовании данным вебсайтом, пожалуйста напишите на почту daklumina@gmail.com.'], 
+  ro: ['Контакты', 'Доставка', 'Мы доставляем в страны СНГ и Европу.', 'О нас', 'Компания занимается ручным изготовлением светильников высокого класса по мировым стандартам.', 'Все права защищены.', 'Если вы столкнулись с проблемой при пользовании данным вебсайтом, пожалуйста напишите на почту daklumina@gmail.com.']  
 }
 
 function MyApp({ Component, pageProps }) {
@@ -117,6 +117,9 @@ function MyApp({ Component, pageProps }) {
 
   const footerTextColor = 'white'
 
+  const matches = useMediaQuery(`(max-width: 850px)`)
+  const matches1 = useMediaQuery(`(max-width: 690px)`)
+
   return (
     <ShoppingCartContext.Provider value={{ shoppingCartState, setShoppingCartState }}>
       <ThemeProvider theme={theme}>
@@ -130,12 +133,19 @@ function MyApp({ Component, pageProps }) {
               align-items: center;
               height: 100px; 
               width: 100vw; 
-              background-color: white;`
+              background-color: white;
+              @media (max-width: 690px) {
+                justify-content: center;
+                height: 80px;
+              }
+            `
             }>
-              <div className={css`
-                width: 33%
-              `}>
-              </div>
+              {!matches1 &&
+                <div className={css`
+                  width: 33%
+                `}>
+                </div>
+              }  
               <div className={css`
                 font-weight: 500;
                 font-size: 35px;
@@ -146,16 +156,18 @@ function MyApp({ Component, pageProps }) {
               `}>
                 DAK LUMINA
               </div> 
-              <div className={css`
-                width: 33%;
-                display: flex;
-                flex-direction: row;
-                justify-content: flex-end;
-              `}>
-                <LanguageSelection />    
-                <div className={css`width: 20px;`}>
-                </div>  
-              </div>     
+              {!matches1 &&
+                <div className={css`
+                  width: 33%;
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: flex-end;
+                `}>
+                  <LanguageSelection /> 
+                  <div className={css`width: 20px;`}>
+                  </div>
+                </div>     
+              }  
             </div>
             <StickyHeader catalogScroll={{state: catalogScrollState, setState: setCatalogScrollState}} />
             <Component {...pageProps} catalogScroll={{state: catalogScrollState, setState: setCatalogScrollState}} />
@@ -165,144 +177,161 @@ function MyApp({ Component, pageProps }) {
               background-color: #333;              
               align-items: center;
               width: 100vw;
-              height: 300px;
+              min-height: 300px;
               padding-top: 50px;
               color: white;
+              @media (max-width: 850px) {
+                min-height: 144px;
+              }
             `}>
-              <div>
-                <div className={css`
-                  display: flex;
-                  flex-direction: row;
-                  column-gap: 50px;
-                  font-size: 15px;
-                  flex-wrap: wrap;
-                  justify-content: center;
-                  border-bottom: 1px solid grey;
-                  
-                `}>
-
+              <div className={css`
+                @media (max-width: 850px) {
+                  width: 100%;
+                }
+              `}>
+                {!matches &&
                   <div className={css`
                     display: flex;
                     flex-direction: row;
-                    margin-bottom: 35px;
+                    column-gap: 50px;
+                    font-size: 15px;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    border-bottom: 1px solid grey;
+                    
                   `}>
-                    <Image className={css`margin-right: 15px;`} style={{width: 48, height: 48}} src={contactIcon}/>
+
                     <div className={css`
                       display: flex;
-                      flex-direction: column;
+                      flex-direction: row;
+                      margin-bottom: 35px;
                     `}>
+                      <Image className={css`margin-right: 15px;`} style={{width: 48, height: 48}} src={contactIcon}/>
                       <div className={css`
-                        font-weight: 480;
-                        margin-bottom: 9px;
+                        display: flex;
+                        flex-direction: column;
                       `}>
-                        Контакты
-                      </div>  
-                      <a 
-                        className={css`
-                          font-size: 13px;
-                          font-weight: 400;
-                          text-decoration: none; 
-                          color: #a7a7a7;
-                          margin-bottom: 5px;
-                        `
+                        <div className={css`
+                          font-weight: 480;
+                          margin-bottom: 9px;
+                        `}>
+                          {footerLocalization[router.locale][0]}
+                        </div>  
+                        <a 
+                          className={css`
+                            font-size: 13px;
+                            font-weight: 400;
+                            text-decoration: none; 
+                            color: #a7a7a7;
+                            margin-bottom: 5px;
+                          `
 
-                        } 
-                        href='tel: +37368077331'
-                      >
-                        +37368077331 
-                      </a>  
-                      <a 
-                        className={css`
-                          font-size: 13px;
-                          text-decoration: none; 
-                          color: #a7a7a7`
-                        } 
-                        href='mailto: daklumina@gmail.com'
-                      >
-                        daklumina@gmail.com 
-                      </a>                                        
-                    </div>
+                          } 
+                          href='tel: +37368077331'
+                        >
+                          +37368077331 
+                        </a>  
+                        <a 
+                          className={css`
+                            font-size: 13px;
+                            text-decoration: none; 
+                            color: #a7a7a7`
+                          } 
+                          href='mailto: daklumina@gmail.com'
+                        >
+                          daklumina@gmail.com 
+                        </a>                                        
+                      </div>
+                    </div>  
+
+                    <div className={css`
+                      display: flex;
+                      flex-direction: row;
+                      margin-bottom: 35px;
+                    `}>
+                      <Image className={css`margin-right: 15px;`} style={{width: 48, height: 48}} src={deliveryIcon}/>
+                      <div className={css`
+                        display: flex;
+                        flex-direction: column;
+                      `}>
+                        <div className={css`
+                          font-weight: 480;
+                          margin-bottom: 9px;
+                        `}>
+                          {footerLocalization[router.locale][1]}
+                        </div>  
+                        <div
+                          className={css`
+                            font-size: 13px;
+                            font-weight: 400;
+                            text-decoration: none; 
+                            color: #a7a7a7;
+                            margin-bottom: 5px;
+                            width: 155px;
+                            line-height: 1.5;
+                          `
+
+                          } 
+                        >
+                          {footerLocalization[router.locale][2]}
+                        </div>                                         
+                      </div>
+                    </div>             
+
+                    <div className={css`
+                      display: flex;
+                      flex-direction: row;
+                      margin-bottom: 35px;
+                    `}>
+                      <Image className={css`margin-right: 15px;`} style={{width: 48, height: 48}} src={aboutIcon}/>
+                      <div className={css`
+                        display: flex;
+                        flex-direction: column;
+                      `}>
+                        <div className={css`
+                          font-weight: 480;
+                          margin-bottom: 9px;
+                        `}>
+                          {footerLocalization[router.locale][3]}
+                        </div>  
+                        <div
+                          className={css`
+                            font-size: 13px;
+                            font-weight: 400;
+                            text-decoration: none; 
+                            color: #a7a7a7;
+                            margin-bottom: 5px;
+                            width: 155px;
+                            line-height: 1.5;
+                          `
+
+                          } 
+                        >
+                          {footerLocalization[router.locale][4]}
+                        </div>                                         
+                      </div>
+                    </div>   
+
                   </div>  
-
-                  <div className={css`
-                    display: flex;
-                    flex-direction: row;
-                    margin-bottom: 35px;
-                  `}>
-                    <Image className={css`margin-right: 15px;`} style={{width: 48, height: 48}} src={deliveryIcon}/>
-                    <div className={css`
-                      display: flex;
-                      flex-direction: column;
-                    `}>
-                      <div className={css`
-                        font-weight: 480;
-                        margin-bottom: 9px;
-                      `}>
-                        Доставка
-                      </div>  
-                      <div
-                        className={css`
-                          font-size: 13px;
-                          font-weight: 400;
-                          text-decoration: none; 
-                          color: #a7a7a7;
-                          margin-bottom: 5px;
-                          width: 155px;
-                          line-height: 1.5;
-                        `
-
-                        } 
-                      >
-                        Мы доставляем в страны СНГ и Европу.
-                      </div>                                         
-                    </div>
-                  </div>             
-
-                  <div className={css`
-                    display: flex;
-                    flex-direction: row;
-                    margin-bottom: 35px;
-                  `}>
-                    <Image className={css`margin-right: 15px;`} style={{width: 48, height: 48}} src={aboutIcon}/>
-                    <div className={css`
-                      display: flex;
-                      flex-direction: column;
-                    `}>
-                      <div className={css`
-                        font-weight: 480;
-                        margin-bottom: 9px;
-                      `}>
-                        О нас
-                      </div>  
-                      <div
-                        className={css`
-                          font-size: 13px;
-                          font-weight: 400;
-                          text-decoration: none; 
-                          color: #a7a7a7;
-                          margin-bottom: 5px;
-                          width: 155px;
-                          line-height: 1.5;
-                        `
-
-                        } 
-                      >
-                        Компания занимается ручным изготовлением светильников высокого класса по мировым стандартам.
-                      </div>                                         
-                    </div>
-                  </div>   
-
-                </div>  
+                }  
                 <div className={css`
                   display: flex;
                   flex-direction: row;
-                  margin-top: 35px;                  
+                  margin-top: 35px;  
+                  width: calc(100% - 20px);
+                  padding-left: 10px;
+                  padding-right: 10px;                
                 `}>
                   <div className={css`
                     font-weight: 500;
                     font-size: 35px;
-                    align-self: start;
+
                     margin-right: 20px;
+                    @media (max-width: 850px) {
+                      font-size: 26px;
+                      width: 153.75px;
+                      flex-shrink: 0;
+                    }
                   `}>
                     DAK LUMINA
                   </div>
@@ -310,26 +339,31 @@ function MyApp({ Component, pageProps }) {
                     display: flex;
                     flex-direction: column;
                     padding-top: 2px;
+                    max-width: 568px;
+                    font-size: 13px;
+                    @media (max-width: 850px) {
+                      max-width: 588px;
+                    }
                   `}>  
                     <div className={css`
-                      font-size: 13px;
                       font-weight: 400;
                       text-decoration: none; 
                       color: #a7a7a7;
                       margin-bottom: 5px;
                       line-height: 1.1;
                     `}>
-                      ©2023 Dak Lumina. All rights reserved. 
+                      {`
+                        ©2023 Dak Lumina. ${footerLocalization[router.locale][5]}
+                      `}
                     </div>
                     <div className={css`
-                      font-size: 13px;
                       font-weight: 400;
                       text-decoration: none; 
                       color: #a7a7a7;
                       margin-bottom: 5px;
                       line-height: 1.1;
                     `}>
-                      If you are having problems using this website, please email daklumina@gmail.com for assistance. 
+                      {footerLocalization[router.locale][6]}
                     </div>                    
                   </div>  
                 </div>  
@@ -425,6 +459,10 @@ function StickyHeader({ catalogScroll }) {
     font-size: 16px;
     font-weight: 418;
     font-variation-settings: "YOPQ" 85;
+    @media (max-width: 690px) {
+      justify-content: flex-end;
+      padding-right: 20px;
+    }
   `
 
   const menuBarFirst = css`
@@ -530,33 +568,39 @@ function StickyHeader({ catalogScroll }) {
           </IconButton> 
         </div>   
       }  
+
+
       <div className={menuBar}>
-        <div className={css`
-          width: 10%;
-        `}>
-        </div>
-        <div className={menuBarFirst}>
-          <MenuBarButton
-            key={0}
-            name={navbarLocalization[router.locale][0]}
-            onClick={() => {
-              catalogScroll.setState(true)
-              router.push('/', '/', {scroll: false})
-            }}
-          />
-          {
-            ['delivery', 'contacts', 'colors'].map((name, i) => {
-              return (
-                <Link style={{textDecoration: 'none', color: 'black'}} href={`/info/${name}`, `/info/${name}`}>
-                  <MenuBarButton 
-                    key={i} 
-                    name={navbarLocalization[router.locale][i + 1]} 
-                  />    
-                </Link>  
-              )
-            })
-          }
-        </div>  
+        {match0&&
+          <div className={css`
+            width: 10%;
+          `}>
+          </div>
+        }  
+        {match0 &&
+          <div className={menuBarFirst}>
+            <MenuBarButton
+              key={0}
+              name={navbarLocalization[router.locale][0]}
+              onClick={() => {
+                catalogScroll.setState(true)
+                router.push('/', '/', {scroll: false})
+              }}
+            />
+            {
+              ['delivery', 'contacts', 'colors'].map((name, i) => {
+                return (
+                  <Link style={{textDecoration: 'none', color: 'black'}} href={`/info/${name}`, `/info/${name}`}>
+                    <MenuBarButton 
+                      key={i} 
+                      name={navbarLocalization[router.locale][i + 1]} 
+                    />    
+                  </Link>  
+                )
+              })
+            }
+          </div>  
+        }
 
         <div className={menuBarLast}>
           <div className={cartButtonContainer}>
@@ -623,6 +667,7 @@ function SideNavbar({ open, onClose, catalogScroll }) {
             align-self: start;
             margin-top: 7px;
           `}>
+          <LanguageSelection />
           </div>  
         </div>  
         <div className={cx(roboto, css`
@@ -633,6 +678,9 @@ function SideNavbar({ open, onClose, catalogScroll }) {
           font-size: 20px;
           align-items: center;
           margin-left: 20px;
+          @media (max-width: 690px) {
+            align-items: start;
+          }
         `)}>
           <MenuBarButton
             key={0}

@@ -29,6 +29,7 @@ import subHeader from '../lib/modules/styles/subHeader.js'
 const carouselHeight = 600;
 
 const breakpoints = [1340, 1030, 890, 820, 555]
+const mobileBreakpoint = 690
 
 const mainWrapper = css`
   display: flex;
@@ -75,7 +76,7 @@ const imageSet = css`
   max-width: 100%;
   @media (max-width: ${breakpoints[1]}px) {
     transform: scale(0.74);
-    margin-top: -94px;
+    margin-top: -95px;
   }  
   @media (max-width: ${breakpoints[2]}px) {
 
@@ -144,9 +145,11 @@ export default function Home({ items, localizedText, catalogScroll }) {
 
   return (
     <div className={mainWrapper}>
-      <div className={subHeader}>
-        MAIN
-      </div>      
+      {matches2 &&
+        <div className={subHeader}>
+          MAIN
+        </div>      
+      }
       {matches2 && 
         <div className={imageSet}>
           <Link href={'/info/about'}>
@@ -287,7 +290,6 @@ function ProductItem({ itemID, name, price, type, locale}) {
   const textBaseSize = 24
 
   const textWrapper = css`
-    border-top: 2px solid black;
     width: 160px;
     font-size: ${textBaseSize}px;
     font-weight: 441;
@@ -352,7 +354,7 @@ function Catalog ({ items, localizedText, catalogRef }) {
 
   const [itemsState, setItemsState] = useState(false)
 
-  const matches = useMediaQuery(`(min-width: ${breakpoints[2] + 1}px)`)
+  const matches = useMediaQuery(`(min-width: 691px)`)
 
   useEffect(() => {
     setItemsState(true)
@@ -415,6 +417,8 @@ function Catalog ({ items, localizedText, catalogRef }) {
     min-height: calc(100vh - 59px - 35px);
   `
 
+  const buttonScaleRate = 0.85
+
   return (
     <div className={catalog}>
         <div ref={catalogRef} id='catalog' className={css`
@@ -433,17 +437,50 @@ function Catalog ({ items, localizedText, catalogRef }) {
       <div className={css`
         display: flex;
         flex-direction: column;
+        align-items: center;
         @media (max-width: ${breakpoints[2]}px) {
           width: 100%
         }
       `}>
         {matches &&
-          <CatalogToggleButtonGroup 
-            catalogState={catalogState} 
-            localizedText={localizedText} 
-            setItemsState={setItemsState}
-            setCatalogState={setCatalogState}
-          />
+
+          <div className={css`
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 30px;
+            margin-top: 30px;
+            column-gap: 20px;
+          `}>
+           {['ceiling', 'wall', 'floor', 'wall3d', 'point', 'mirror'].map((type, index) => (
+              <div className={css`
+                opacity: ${catalogState === type ? 1 : 0.4};
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                transition: opacity 0.2s, border-bottom 0s;
+                cursor: pointer;
+                padding-bottom: 2px;
+                border-bottom: 2px solid ${catalogState === type ? 'black' : 'white'};
+                &:hover {
+                  opacity: 1;
+                }
+              `} onClick={() => {
+                if (type !== catalogState) {
+                  setCatalogState(type)
+                  setItemsState(false)
+                }  
+              }}>
+                <Image src={`/${type}Type.png`} width='70' height='70' />
+                <div className={css`
+                  font-size: 15px;
+                  margin-top: 8px;
+                `}>
+                  {localizedText.catalog[type]}
+                </div>
+              </div>
+            ))}
+          </div>
+
         }
 
         {!matches &&
@@ -458,7 +495,7 @@ function Catalog ({ items, localizedText, catalogRef }) {
           `}>
             <Select
               MenuProps={{ disableScrollLock: true }}
-              sx={{width: '200px'}}
+              sx={{width: 'calc(100% - 100px)'}}
               value={catalogState}
               variant='standard'
               onChange={(event) => {
@@ -541,7 +578,6 @@ function CatalogToggleButtonGroup({ catalogState, localizedText, setItemsState, 
         flex-direction: column;
         align-items: center;
       `}>
-        <Image src={ceilingType} />
         <ToggleButton 
           value='ceiling'
         >
@@ -556,7 +592,6 @@ function CatalogToggleButtonGroup({ catalogState, localizedText, setItemsState, 
         flex-direction: column;
         align-items: center;
       `}>
-        <Image src={floorType} />
         <ToggleButton 
           value='floor'
         >
