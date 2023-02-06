@@ -49,6 +49,9 @@ export default function Info({ pageIndex, pageNames, about, contacts, delivery }
 						height: 150px;
 						padding-left: 112px;
 						padding-top: 10px;
+						@media (max-width: 787px) {
+							padding-left: 56px;
+						}
 					`}>
 						{pages.map((page, index) => (
 							<div key={index} className={css`
@@ -131,6 +134,9 @@ function Contacts({localization}) {
 			row-gap: 15px;
 			margin-top: 31px;
 			padding-left: 148px;
+			@media (max-width: 787px) {
+				padding-left: 0px;			
+			}
 		`}>
 			<div className={css`
 				display: flex;
@@ -203,7 +209,7 @@ function Colors() {
 
 	const colors = ['Peanut', 'Smoke', 'Black_charcoal', 'Natural', 'Dark_chocolate', 'Caramel', 'Honey', 'Brown', 'Walnut']
 
-	const scaleRate = 0.8
+	const scaleRate = 0.7
 	const imgBaseWidth = 280
 	const imgBaseHeight = 280
 
@@ -224,17 +230,17 @@ function Colors() {
 		    gap: 20px;
 		    width: 1180px;
 		    justify-self: center;
-		    @media (max-width: 1457px) {
+		    @media (max-width: 1555px) {
 		    	width: 880px;
 		    }
-		    @media (max-width: 1157px) {
+		    @media (max-width: 1254px) {
 		    	width: 580px;
 		    }
-		    @media (max-width: 857px) {
-		    	width: 468px;
+		    @media (max-width: 954px) {
+		    	width: 413px;
 		    }
-		    @media (max-width: 745px) {
-		    	width: 224px;
+		    @media (max-width: 787px) {
+		    	width: 197px;
 		    }
 			`}>
 				{colors.map((color, index) => (
@@ -249,7 +255,7 @@ function Colors() {
 							width: ${imgBaseWidth}px;
 							height: ${imgBaseHeight}px;
 							overflow: hidden;
-							@media (max-width: 857px) {
+							@media (max-width: 954px) {
 								width: ${imgBaseWidth * scaleRate}px;
 								height: ${imgBaseHeight * scaleRate}px;
 							}
@@ -258,7 +264,7 @@ function Colors() {
 		           	style={{objectFit: 'cover'}} 
 	              src={`/colors/${color}.jpg`} 
 	              fill={true}
-	              sizes={`(max-width: 857px) ${imgSize * scaleRate}`, `${imgSize}px`}
+	              sizes={`(max-width: 954px) ${imgSize * scaleRate}`, `${imgSize}px`}
 	              quality={100}
 	            />
 						</div>	

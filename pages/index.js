@@ -147,7 +147,7 @@ export default function Home({ items, localizedText, catalogScroll }) {
     <div className={mainWrapper}>
       {matches2 &&
         <div className={subHeader}>
-          MAIN
+          {localizedText.main}
         </div>      
       }
       {matches2 && 

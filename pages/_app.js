@@ -154,7 +154,9 @@ function MyApp({ Component, pageProps }) {
                 flex-direction: row;
                 justify-content: center;
               `}>
-                DAK LUMINA
+                <Link style={{textDecoration: 'none', color: 'black'}} href='/'>
+                  DAK LUMINA
+                </Link>  
               </div> 
               {!matches1 &&
                 <div className={css`
