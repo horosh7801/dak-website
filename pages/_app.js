@@ -138,6 +138,7 @@ function MyApp({ Component, pageProps }) {
                 align-items: center;
                 height: 100px; 
                 width: 100vw; 
+                max-width: 100%;
                 background-color: white;
                 @media (max-width: 690px) {
                   justify-content: center;
@@ -190,6 +191,7 @@ function MyApp({ Component, pageProps }) {
                   width: 100vw;
                   min-height: 300px;
                   padding-top: 50px;
+                  max-width: 100%;
                   color: white;
                   @media (max-width: 850px) {
                     min-height: 144px;
@@ -604,7 +606,7 @@ function StickyHeader({ catalogScroll }) {
                 return (
                   <Link style={{textDecoration: 'none', color: 'black'}} href={`/info/${name}`, `/info/${name}`}>
                     <MenuBarButton 
-                      key={i} 
+                      key={i + 1} 
                       name={navbarLocalization[router.locale][i + 1]} 
                     />    
                   </Link>  
@@ -708,7 +710,7 @@ function SideNavbar({ open, onClose, catalogScroll }) {
               return (
                 <Link style={{textDecoration: 'none', color: 'black'}} href={`/info/${name}`, `/info/${name}`}>
                   <MenuBarButton 
-                    key={i} 
+                    key={i + 1} 
                     name={navbarLocalization[router.locale][i + 1]} 
                     onClick={() => {onClose()}}
                   />    
