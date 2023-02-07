@@ -762,7 +762,7 @@ function LanguageSelection() {
           <div className={css`
             padding-top: 6px;
           `}>
-            EN
+            EUR
           </div>
           <Image style={{width: 23, height: 'auto'}} priority={true} src={euImg}/>
         </div>    
@@ -782,7 +782,7 @@ function LanguageSelection() {
           <div className={css`
             padding-top: 6px;
           `}>
-            RU
+            RUB
           </div>
           <Image style={{width: 23, height: 'auto'}} priority={true} src={ruImg}/>
         </div>    
@@ -802,7 +802,7 @@ function LanguageSelection() {
           <div className={css`
             padding-top: 6px;
           `}>
-            RO
+            MDL
           </div>
           <Image style={{width: 23, height: 'auto'}} priority={true} src={mlImg}/>
         </div>    
