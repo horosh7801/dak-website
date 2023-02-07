@@ -128,13 +128,17 @@ const imageCaptionText = css`
   margin-left: 10px;
 `
 
-export default function Home({ items, localizedText, catalogScroll }) {
+export default function Home({ items, localizedText, catalogScroll, setFooterState }) {
 
   const catalogRef = useRef()
 
   const matches2 = useMediaQuery(`(min-width: ${breakpoints[2] + 1}px)`)
 
   const router = useRouter()
+
+  useEffect(() => {
+    setFooterState(true)
+  }, [])
 
   useEffect(() => {
     if (catalogScroll.state === true) {

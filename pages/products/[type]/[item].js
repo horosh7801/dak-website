@@ -141,7 +141,11 @@ const tableTitle = css`
 const shortWHRatio = 1024 / 683
 const longWHRatio = 513 / 768
 
-export default function Item({ id, item, itemType, localizedText, imgCount }) {
+export default function Item({ id, item, itemType, localizedText, imgCount, setFooterState }) {
+
+  useEffect(() => {
+    setFooterState(true)
+  }, [])
 
 	const [itemInCartState, setItemInCartState] = useState(false)
 

@@ -147,7 +147,11 @@ const phoneContainer = css`
 	align-items: center;
 `
 
-export default function ShoppingCart({ localizedText }) {
+export default function ShoppingCart({ localizedText, setFooterState }) {
+
+  useEffect(() => {
+    setFooterState(true)
+  }, [])
 
 	const shoppingCart = useContext(ShoppingCartContext)
 

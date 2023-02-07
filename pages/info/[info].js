@@ -22,7 +22,11 @@ const title = css`
 	z-index: 1;
 `
 
-export default function Info({ pageIndex, pageNames, about, contacts, delivery }) {
+export default function Info({ pageIndex, pageNames, about, contacts, delivery, setFooterState }) {
+
+  useEffect(() => {
+    setFooterState(true)
+  }, [])
 
 	const matches = useMediaQuery(`(min-width: ${breakpoints[1]}px)`)
 
@@ -102,7 +106,6 @@ export default function Info({ pageIndex, pageNames, about, contacts, delivery }
 }
 
 function About({localization}) {
-console.log(localization)
 	const paragraph = css`
 		margin-bottom: 0px;
 		margin-top: 10px;
