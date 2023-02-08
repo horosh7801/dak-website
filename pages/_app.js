@@ -219,7 +219,7 @@ function MyApp({ Component, pageProps }) {
                           flex-direction: row;
                           margin-bottom: 35px;
                         `}>
-                          <Image className={css`margin-right: 15px;`} style={{width: 48, height: 48}} src={contactIcon}/>
+                          <Image unoptimized={true} className={css`margin-right: 15px;`} style={{width: 48, height: 48}} src={contactIcon}/>
                           <div className={css`
                             display: flex;
                             flex-direction: column;
@@ -262,7 +262,7 @@ function MyApp({ Component, pageProps }) {
                           flex-direction: row;
                           margin-bottom: 35px;
                         `}>
-                          <Image className={css`margin-right: 15px;`} style={{width: 48, height: 48}} src={deliveryIcon}/>
+                          <Image unoptimized={true} className={css`margin-right: 15px;`} style={{width: 48, height: 48}} src={deliveryIcon}/>
                           <div className={css`
                             display: flex;
                             flex-direction: column;
@@ -296,7 +296,7 @@ function MyApp({ Component, pageProps }) {
                           flex-direction: row;
                           margin-bottom: 35px;
                         `}>
-                          <Image className={css`margin-right: 15px;`} style={{width: 48, height: 48}} src={aboutIcon}/>
+                          <Image unoptimized={true} className={css`margin-right: 15px;`} style={{width: 48, height: 48}} src={aboutIcon}/>
                           <div className={css`
                             display: flex;
                             flex-direction: column;
@@ -764,7 +764,7 @@ function LanguageSelection() {
           `}>
             EUR
           </div>
-          <Image style={{width: 23, height: 'auto'}} priority={true} src={euImg}/>
+          <Image unoptimized={true} style={{width: 23, height: 'auto'}} priority={true} src={euImg}/>
         </div>    
       </MenuItem>
       <MenuItem 
@@ -784,7 +784,7 @@ function LanguageSelection() {
           `}>
             RUB
           </div>
-          <Image style={{width: 23, height: 'auto'}} priority={true} src={ruImg}/>
+          <Image unoptimized={true} style={{width: 23, height: 'auto'}} priority={true} src={ruImg}/>
         </div>    
       </MenuItem>             
       <MenuItem 
@@ -804,7 +804,7 @@ function LanguageSelection() {
           `}>
             MDL
           </div>
-          <Image style={{width: 23, height: 'auto'}} priority={true} src={mlImg}/>
+          <Image unoptimized={true} style={{width: 23, height: 'auto'}} priority={true} src={mlImg}/>
         </div>    
       </MenuItem>                           
     </Select>

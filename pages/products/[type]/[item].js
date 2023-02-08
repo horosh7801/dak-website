@@ -189,6 +189,7 @@ export default function Item({ id, item, itemType, localizedText, imgCount, setF
 						renderThumbs={(children) => (children.map((element, index) => (
 							<div key={index} className={css`width: 70px; height: 70px; position: relative;`}>
 								<Image 
+									unoptimized={true}
 									src={`/products/${itemType}/${item.name.toLowerCase().replace(/[\s-]/g, '_')}/item${index}.jpg`} 
 									fill={true} 
 									style={{objectFit: 'contain'}}
@@ -216,6 +217,7 @@ export default function Item({ id, item, itemType, localizedText, imgCount, setF
 								}
 							`}>
 								<Image 
+									unoptimized={true}
 									src={`/products/${itemType}/${item.name.toLowerCase().replace(/[\s-]/g, '_')}/item${index}.jpg`} 
 									fill={true} 
 									style={{objectFit: 'contain'}} 
