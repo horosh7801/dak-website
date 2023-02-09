@@ -275,7 +275,6 @@ export default function ShoppingCart({ localizedText, setFooterState }) {
 										<div className={imgContainer}>
 											<Link href={`/products/${item.type}/${item.name.toLowerCase().replace(/[\s-]/g, '_')}`}>
 												<Image
-													unoptimized={true}
 													src={`/products/${item.type}/${item.name.toLowerCase().replace(/[\s-]/g, '_')}/item0.jpg`} 
 													fill={true} 
 													style={{objectFit: 'contain'}}

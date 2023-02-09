@@ -161,7 +161,6 @@ export default function Home({ items, localizedText, catalogScroll, setFooterSta
               className={imageSetItem}
             >
               <Image 
-                unoptimized={true}
                 style={{width: 1024, height: 'auto', position: 'absolute', top: -48}} 
                 src={lampImage1} 
                 sizes={`
@@ -187,7 +186,6 @@ export default function Home({ items, localizedText, catalogScroll, setFooterSta
                 className={imageSetItem1}
               >
                 <Image 
-                  unoptimized={true}
                   style={{width: 509, height: 'auto',}} 
                   src={lampImage2} 
                   sizes={`
@@ -210,7 +208,6 @@ export default function Home({ items, localizedText, catalogScroll, setFooterSta
                 className={css`position: relative; transition: 0.1s; &:hover {opacity: 0.9;}; cursor: pointer;`}
               >
                 <Image 
-                  unoptimized={true}
                   style={{width: 509, height: 'auto',}} 
                   src={lampImage3} 
                   sizes={`
@@ -325,7 +322,6 @@ function ProductItem({ itemID, name, price, type, locale}) {
         `}>
           <div className={imageWrapper}>
             <Image 
-              unoptimized={true}
               style={{objectFit: 'contain'}} 
               src={`/products/${type}/${name.toLowerCase().replace(/[\s-]/g, '_')}/item0.jpg`} 
               fill={true} 
@@ -475,7 +471,7 @@ function Catalog ({ items, localizedText, catalogRef }) {
                   setItemsState(false)
                 }  
               }}>
-                <Image unoptimized={true} src={`/${type}Type.png`} width='70' height='70' />
+                <Image src={`/${type}Type.png`} width='70' height='70' />
                 <div className={css`
                   font-size: 15px;
                   margin-top: 8px;
