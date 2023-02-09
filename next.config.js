@@ -8,7 +8,8 @@ const nextConfig = {
     localeDetection: true,
   },
   images: {
-//      minimumCacheTTL: 31536000
+ //     minimumCacheTTL: 31536000
+
     },  
 }
 
