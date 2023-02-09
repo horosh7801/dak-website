@@ -171,7 +171,7 @@ export default function ShoppingCart({ localizedText, setFooterState }) {
 		const res = await fetch(`/api/getItemParams?locale=${router.locale}&items=${JSON.stringify(items)}`)
 		const parsedRes = await res.json()
 		setLocalizedDataState(parsedRes)
-	})()}, [])
+	})()}, [router.locale])
 
 	useEffect(() => {
 		if (localizedDataState !== null) {

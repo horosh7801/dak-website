@@ -743,8 +743,8 @@ function LanguageSelection() {
       value={router.locale.toUpperCase()}
       onChange={async (event) => {
         setCookie('NEXT_LOCALE', event.target.value.toLowerCase())
-      //  router.push(router.asPath, router.asPath, {scroll: false, locale: event.target.value.toLowerCase()})
-        router.reload()
+        router.push(router.asPath, router.asPath, {scroll: false, locale: event.target.value.toLowerCase()})
+      //  router.reload()
       }}
     >
       <MenuItem 

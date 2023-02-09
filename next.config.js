@@ -3,12 +3,12 @@
 const nextConfig = {
   reactStrictMode: true,
   i18n: {
-    locales: ['default', 'en', 'ru', 'ro'],
-    defaultLocale: 'default',
-    localeDetection: false,
+    locales: ['en', 'ru', 'ro'],
+    defaultLocale: 'en',
+    localeDetection: true,
   },
   images: {
-      minimumCacheTTL: 31536000
+//      minimumCacheTTL: 31536000
     },  
 }
 
