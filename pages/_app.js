@@ -2,6 +2,7 @@ import '../styles/globals.css'
 import contactIcon from '../public/contactIcon.svg'
 import deliveryIcon from '../public/deliveryIcon.svg'
 import aboutIcon from '../public/aboutIcon.svg'
+import logo from '../public/logo.png'
 import { css, cx, keyframes } from '@emotion/css'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -26,7 +27,7 @@ import MenuIcon from '@mui/icons-material/Menu'
 import CloseSharpIcon from '@mui/icons-material/CloseSharp'
 import Drawer from '@mui/material/Drawer'
 import useMediaQuery from '@mui/material/useMediaQuery'
-import ErrorBoundary from '../lib/components/ErrorBoundary.js'
+import Head from 'next/head'
 
 const theme = createTheme({
   palette: {
@@ -121,10 +122,11 @@ function MyApp({ Component, pageProps }) {
   const matches = useMediaQuery(`(max-width: 850px)`)
   const matches1 = useMediaQuery(`(max-width: 690px)`)
 
+  const matches2 = useMediaQuery(`(max-width: 796px)`)
+
   const [footerState, setFooterState] = useState(false)
 
   return (
-    <ErrorBoundary>
       <ShoppingCartContext.Provider value={{ shoppingCartState, setShoppingCartState }}>
         <ThemeProvider theme={theme}>
           <div className={roboto}>
@@ -142,7 +144,7 @@ function MyApp({ Component, pageProps }) {
                   width: 100vw; 
                   max-width: 100%;
                   background-color: white;
-                  @media (max-width: 690px) {
+                  @media (max-width: 796px) {
                     justify-content: center;
                     height: 60px;
                   }
@@ -162,12 +164,29 @@ function MyApp({ Component, pageProps }) {
                     display: flex;
                     flex-direction: row;
                     justify-content: center;
-                    @media (max-width: 690px) {
+                    @media (max-width: 796px) {
                       font-size: 30px;
                     }
                   `}>
                     <Link style={{textDecoration: 'none', color: 'black'}} href='/'>
-                      DAK LUMINA
+                      <div className={css`
+                        display: flex;
+                        flex-direction: row;
+                      `}>
+                        <div className={css`
+                          width: 64px;
+                          position: relative;
+                          @media (max-width: 796px) {
+                            width: 54px;
+                          }
+                        `}>
+                          <Image style={{position: 'absolute', top: matches2 ? '-9px' : '-11px', width: 'auto', height: matches2 ? '49px' : '58px'}} src={logo} />
+                        </div>                      
+                        <div>
+                          DAK LUMINA
+                        </div>  
+        
+                      </div>  
                     </Link>  
                   </div> 
                   {!matches1 &&
@@ -184,6 +203,11 @@ function MyApp({ Component, pageProps }) {
                   }  
                 </div>
                 <StickyHeader catalogScroll={{state: catalogScrollState, setState: setCatalogScrollState}} />
+                <Head>
+                  <title>
+                    DAK LUMINA
+                  </title>
+                </Head>
                 <Component {...pageProps} catalogScroll={{state: catalogScrollState, setState: setCatalogScrollState}} setFooterState={setFooterState} />
                 {footerState &&
                   <div className={css`
@@ -391,7 +415,6 @@ function MyApp({ Component, pageProps }) {
           </div>
         </ThemeProvider>  
       </ShoppingCartContext.Provider>  
-    </ErrorBoundary>  
   )
 }
 

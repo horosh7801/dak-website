@@ -11,7 +11,7 @@ import wallType from '../public/wallType.png'
 import wall3dType from '../public/wall3dType.png'
 import mirrorType from '../public/mirrorType.png'
 import pointType from '../public/pointType.png'
-import { cx, css } from '@emotion/css'
+import { cx, css, keyframes } from '@emotion/css'
 //import Button from '../lib/components/Button.js'
 import Button from '@mui/material/Button';
 import FormControlLabel from '@mui/material/FormControlLabel'
@@ -91,9 +91,6 @@ const imageSetItem = css`
   margin-bottom: 6px;
   transition: 0.1s;
   cursor: pointer;
-  &:hover {
-    opacity: 0.9;
-  }
 ` 
 
 const imageSetRow = css`
@@ -106,9 +103,6 @@ const imageSetItem1 = css`
   position: relative;
   cursor: pointer;
   transition: 0.1s;
-  &:hover {
-    opacity: 0.9;
-  }
 `
 
 const imageCaption = css`
@@ -126,6 +120,20 @@ const imageCaption = css`
 
 const imageCaptionText = css`
   margin-left: 10px;
+`
+
+const imageFadeScreen = css`
+  position: absolute;
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  opacity: 0;
+  z-index: 1;
+  transition: 0.1s;
+  &:hover {
+    opacity: 0.2;
+  };
 `
 
 export default function Home({ items, localizedText, catalogScroll, setFooterState }) {
@@ -160,6 +168,8 @@ export default function Home({ items, localizedText, catalogScroll, setFooterSta
             <div 
               className={imageSetItem}
             >
+              <div className={imageFadeScreen}>
+              </div>              
               <Image 
                 style={{width: 1024, height: 'auto', position: 'absolute', top: -48}} 
                 src={lampImage1} 
@@ -185,6 +195,8 @@ export default function Home({ items, localizedText, catalogScroll, setFooterSta
               <div
                 className={imageSetItem1}
               >
+                <div className={imageFadeScreen}>
+                </div>                
                 <Image 
                   style={{width: 509, height: 'auto',}} 
                   src={lampImage2} 
@@ -205,8 +217,10 @@ export default function Home({ items, localizedText, catalogScroll, setFooterSta
             </Link>  
             <Link href='/info/delivery'>
               <div 
-                className={css`position: relative; transition: 0.1s; &:hover {opacity: 0.9;}; cursor: pointer;`}
+                className={css`position: relative; transition: 0.1s; cursor: pointer;`}
               >
+                <div className={imageFadeScreen}>
+                </div>                
                 <Image 
                   style={{width: 509, height: 'auto',}} 
                   src={lampImage3} 
@@ -241,6 +255,8 @@ function ProductItem({ itemID, name, price, type, locale}) {
 
   const scaleRate = 0.8
 
+  const [hoverState, setHoverState] = useState(false)
+
   const productItem = css`
     box-shadow: 0px 0px 3px -2px;
     width: ${baseWidth}px;
@@ -252,12 +268,6 @@ function ProductItem({ itemID, name, price, type, locale}) {
     background-color: white;
     color: black;
     border-radius: 2px;
-    &:hover {
-      transform: scale(1.06, 1.06);
-      transition: 0.1s;
-      z-index: 1;
-      cursor: pointer;
-    }  
     @media(max-width: ${breakpoints[2]}px) {
       width: ${baseWidth * scaleRate}px;
       height: ${baseHeight * scaleRate}px;
@@ -278,13 +288,40 @@ function ProductItem({ itemID, name, price, type, locale}) {
   `
 
   const itemName = css`
+    position: relative;
+    top: -29%
+
   `
 
-  const priceBaseSize = 30
+  const priceBaseSize = 19
+
+  const onHoverOpacity = 0.01
+  const onHoverTransition = 0.1
 
   const itemPrice = css`
     font-size: ${priceBaseSize}px;
-    font-weight: 500;
+    font-weight: 330;
+    position: relative;
+    background-color: white;
+    margin-right: 5px;
+    margin-top: 5px;
+    padding: 3px;ё
+    padding-left: 6px;
+    padding-right: 6px;
+    color: #222;
+    border-radius: 20px;
+    align-self: end;
+    animation-name: ${ hoverState ? keyframes`
+      to {
+        background-color: #222;
+        color: white;
+      }
+    ` : ''};
+    animation-duration: ${onHoverTransition}s;
+    animation-fill-mode: forwards;
+
+
+
     @media (max-width: ${breakpoints[2]}px) {
       font-size: ${priceBaseSize * scaleRate}px;
     } 
@@ -294,7 +331,7 @@ function ProductItem({ itemID, name, price, type, locale}) {
   const textBaseSize = 24
 
   const textWrapper = css`
-    width: 160px;
+    width: 100%;
     font-size: ${textBaseSize}px;
     font-weight: 441;
     font-stretch: 35%;   
@@ -302,6 +339,14 @@ function ProductItem({ itemID, name, price, type, locale}) {
     flex-direction: column;
     align-items: center;
     color: white;
+    animation-name: ${hoverState ? keyframes`
+      to {
+        color: #222;
+      }
+    ` : ''};
+    animation-duration: ${onHoverTransition}s;
+    animation-delay: ${onHoverTransition}s;
+    animation-fill-mode: forwards;
     @media (max-width: ${breakpoints[2]}px) {
       font-size: ${textBaseSize * scaleRate}px;
     }    
@@ -312,14 +357,34 @@ function ProductItem({ itemID, name, price, type, locale}) {
       style={{textDecoration: 'none'}} 
       href={`/products/${type}/${name.toLowerCase().replace(/[\s-]/g, '_')}`}
     >
-      <div className={productItem}>
+      <div 
+        onMouseEnter={() => {
+          setHoverState(true)
+        }}
+        onMouseLeave={() => {
+          setHoverState(false)
+        }}
+        className={productItem}
+      >           
         <div className={css`
           width: 100%;
           height: 100%;
           display: flex;
           justify-content: center;
           padding-top: 10px;
+          position: relative;
         `}>
+          <div className={css`
+            position: absolute;
+            background-color: black;
+            width: 100%;
+            height: 100%;
+            transition: ${onHoverTransition}s;
+            opacity: ${hoverState ? 0.2 : 0};
+            top: 0px;
+            z-index: 1;
+          `}>
+          </div>           
           <div className={imageWrapper}>
             <Image 
               style={{objectFit: 'contain'}} 
@@ -337,14 +402,23 @@ function ProductItem({ itemID, name, price, type, locale}) {
           background-color: #222222;
           display: flex;
           justify-content: center;
+          animation-name: ${hoverState ? keyframes`
+            to {
+              background-color: white; 
+              color: black;
+            }
+          ` : ''};
+          animation-fill-mode: forwards;
+          animation-duration: ${onHoverTransition}s;   
+          animation-delay: ${onHoverTransition}s;       
         `}>
           <div className={textWrapper}>
-            <div className={itemName}>
-              {name}
-            </div>
             <div className={itemPrice}>
               {currencyFormat(price, router.locale)}
-            </div>
+            </div>          
+            <div className={itemName}>
+              {name}
+            </div>              
           </div>
         </div>  
       </div>  
@@ -687,6 +761,9 @@ export async function getStaticProps({ locale }) {
     const { name, price, img, type } = item
     for (const i in price) {
       price[i].price = Math.round(price[i].price * currencyRate)
+      if (name === 'Snake') {
+        console.log(`${price[i].price} ${locale}`)
+      }
     }
     items[itemTypes[type]].push({ id: itemID, name, price })    
   }
