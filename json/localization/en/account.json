@@ -1,0 +1,19 @@
+{
+	"pageNames": [
+		"Orders",
+		"Personal Information"
+	],
+	"orders": [
+		"Our company does artistic design and handcraft of high-grade wall, ceiling, and floor wooden lamps.",
+		"DAK LUMINA lamps are guaranteed to bring style and elegance to any interior, of any shape and purpose, be it an apartment, a house, a billiard room, a concert hall, or an office.",
+		"Each of out products is unique due to unrepeatable wood texture, its way of processing, and the shape of the lamp itself.",
+		"- Wood surface treatment is done by modern European technologies using Italian materials.",
+		"- The color of your your sconce, chandelier, floor lamp or mirror is negotiated in advance. There are 9 shades to choose from",
+		"Indeed, product's color and shape must be in harmony with your inetior design."
+	],
+	"info": [
+		"Phone",
+		"Address",
+		"Strada Alba Iulia 21, Chișinău"
+	]
+}
