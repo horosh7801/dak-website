@@ -12,6 +12,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useRouter } from 'next/router'
 import currencyFormat from '../../lib/modules/currencyFormat.js'
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline'	
 
 const pages = ['orders', 'info']
 
@@ -77,19 +78,19 @@ export default function Account({ pageIndex, pageNames, orders, info, setFooterS
     setFooterState(true)
   }, [])
 
+	const [ordersState, setOrdersState] = useState(null)
+
   const router = useRouter()
 
   const date = new Date()
 
-  const ordersList = [
-  	{
-  	//	date: `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
-  		date: date.toLocaleDateString(),
-  		cost: currencyFormat(1000, router.locale),
-  		items: ['Snake', "Sota"],
-  		status: 'PENDING'
-  	}
-  ]
+  const jwt = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjc2ODI0ODMwLCJleHAiOjE2Nzk0MTY4MzB9.mT58Jp5DPxdV242tRnNrN3V75L9nzUBh9DjMZ1hwWpg'
+
+	useEffect(() => {(async () => {
+		const res = await fetch(`/api/getOrders?locale=${router.locale}&token=${jwt}`)
+		const parsedRest = await res.json()
+		setOrdersState(parsedRes)
+	})()}, [router.locale])
 
 	const matches = useMediaQuery(`(min-width: ${breakpoints[1]}px)`)
 
@@ -150,8 +151,8 @@ export default function Account({ pageIndex, pageNames, orders, info, setFooterS
 					min-height: calc(100vh - 35px - 59px);
 				`}>
 					{
-						pageIndex === 0 &&
-							<Orders localization={orders} ordersList={ordersList} />
+						pageIndex === 0 && ordersState &&
+							<Orders localization={orders} ordersList={ordersState} />
 						|| pageIndex === 1 &&
 							<Info localization={info} />	
 					}
@@ -248,7 +249,7 @@ function Orders({localization, ordersList}) {
 											</div>
 											<div className={specs}>
 												<div>
-													{`${localizedDataState[index].params.toLowerCase()}`}
+													{`${ordersState[index].desc.toLowerCase()}`}
 												</div>
 											</div>	
 										</div>
@@ -263,7 +264,7 @@ function Orders({localization, ordersList}) {
 											{`${item.amount} ${localizedText.units.quantity}.`}
 										</div>										
 										<div className={cost}>
-											{currencyFormat(localizedDataState[index].price * item.amount, router.locale)}
+											{ordersState[index].price}
 										</div>		
 									</div>
 								</div>	

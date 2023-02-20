@@ -43,7 +43,7 @@ export default async function handler(req, res) {
 
 		const items = JSON.parse(fs.readFileSync('json/itemsEN.json'))
 
-		const resp = await fetch('http://45.93.138.174:1337/api/orders', {
+		const resp = await fetch(`${process.env.STRAPI}/api/orders?populate=*`, {
 			method: 'POST', 
 			headers: {
 				'Content-Type': 'application/json',
@@ -51,11 +51,14 @@ export default async function handler(req, res) {
 			body: JSON.stringify({
 				data: {					
 					...validatedOrder,
+					user: 'olegk',
 					item: validatedOrder.item.map(({id, price, amount}) => (
 						{
 							name: items[id].name,
 							price: items[id].price[price].price,
-							amount
+							amount,
+							params: price,
+							id
 						}
 					)), 
 					date: new Date().getTime(),
