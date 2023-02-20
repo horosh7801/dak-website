@@ -72,7 +72,46 @@ const specs = css`
 	}
 `
 
-export default function Account({ pageIndex, pageNames, orders, info, setFooterState }) {
+const itemName = css`
+	display: flex;
+	justify-content: center;
+	font-size: 21px;
+	margin-top: 15px;
+	@media (max-width: 480px) {
+		font-size: ${21 * scaleRate}px;
+		margin-top: ${15 * scaleRate}px;
+	}
+`
+
+const amount = css`
+	display: flex;
+	justify-content: flex-start;
+	flex-direction: row;
+	align-self: end;
+	margin-left: 5px;
+	font-weight: 300;
+	width: 65px;
+	margin-bottom: 5px;
+	@media (max-width: 480px) {
+		margin-left: ${5 * scaleRate}px;
+		width: ${65 * scaleRate}px;
+		margin-bottom: ${5 * scaleRate}px;
+	}
+`	
+
+const cost = css`
+	display: flex;
+	justify-content: flex-end;
+	font-weight: 550;
+	font-size: 21px;
+	margin-right: 5px;
+	@media (max-width: 480px) {
+		font-size: ${21 * scaleRate}px;
+		margin-right: ${5 * scaleRate}px;
+	}
+`
+
+export default function Account({ pageIndex, pageNames, orders, info, setFooterState, localizedText }) {
 
   useEffect(() => {
     setFooterState(true)
@@ -88,7 +127,7 @@ export default function Account({ pageIndex, pageNames, orders, info, setFooterS
 
 	useEffect(() => {(async () => {
 		const res = await fetch(`/api/getOrders?locale=${router.locale}&token=${jwt}`)
-		const parsedRest = await res.json()
+		const parsedRes = await res.json()
 		setOrdersState(parsedRes)
 	})()}, [router.locale])
 
@@ -152,7 +191,7 @@ export default function Account({ pageIndex, pageNames, orders, info, setFooterS
 				`}>
 					{
 						pageIndex === 0 && ordersState &&
-							<Orders localization={orders} ordersList={ordersState} />
+							<Orders localization={localizedText} ordersList={ordersState} />
 						|| pageIndex === 1 &&
 							<Info localization={info} />	
 					}
@@ -190,10 +229,10 @@ function Orders({localization, ordersList}) {
 	        			{order.date}
 	        		</div>
 	        		<div>
-	        			{order.items.join(', ')}
+	        			
 	        		</div>       
 	        		<div>
-	        			{order.cost}
+	        			{1000}
 	        		</div>    	  
 	        		<div>
 	        			{order.status}
@@ -249,7 +288,7 @@ function Orders({localization, ordersList}) {
 											</div>
 											<div className={specs}>
 												<div>
-													{`${ordersState[index].desc.toLowerCase()}`}
+													{`${item.desc.toLowerCase()}`}
 												</div>
 											</div>	
 										</div>
@@ -261,10 +300,10 @@ function Orders({localization, ordersList}) {
 										justify-content: space-between;
 									`}>
 										<div className={amount}>
-											{`${item.amount} ${localizedText.units.quantity}.`}
+											{item.amount}
 										</div>										
 										<div className={cost}>
-											{ordersState[index].price}
+											{item.price}
 										</div>		
 									</div>
 								</div>	
