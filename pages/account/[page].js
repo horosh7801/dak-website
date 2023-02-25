@@ -12,7 +12,9 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useRouter } from 'next/router'
 import currencyFormat from '../../lib/modules/currencyFormat.js'
-import PersonOutlineIcon from '@mui/icons-material/PersonOutline'	
+import { setCookie, getCookie, hasCookie, deleteCookie } from 'cookies-next'
+import CircularProgress from '@mui/material/CircularProgress'
+import AuthenticationForm from '../../lib/components/AuthenticationForm.js'
 
 const pages = ['orders', 'info']
 
@@ -119,17 +121,33 @@ export default function Account({ pageIndex, pageNames, orders, info, setFooterS
 
 	const [ordersState, setOrdersState] = useState(null)
 
+	const [userTokenState, setUserTokenState] = useState(null)
+
   const router = useRouter()
 
   const date = new Date()
 
-  const jwt = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjc2ODI0ODMwLCJleHAiOjE2Nzk0MTY4MzB9.mT58Jp5DPxdV242tRnNrN3V75L9nzUBh9DjMZ1hwWpg'
+  const jwt = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjc3MTgwOTQwLCJleHAiOjE2NzcxODEwMDB9.Akm-wuALBjuE2iZXX-iQJCfWaSPt7twQD3FlPbhGe4M'
+
+  useEffect(() => {
+  	const userToken = getCookie('user_token')
+  	if (userToken === undefined) {
+  		setUserTokenState('')
+  	} else {
+  		setUserTokenState(userToken)
+  	}
+  }, [])
 
 	useEffect(() => {(async () => {
-		const res = await fetch(`/api/getOrders?locale=${router.locale}&token=${jwt}`)
+
+		if (userTokenState === null || userTokenState === '') {
+			return
+		}
+
+		const res = await fetch(`/api/getOrders?locale=${router.locale}`)
 		const parsedRes = await res.json()
 		setOrdersState(parsedRes)
-	})()}, [router.locale])
+	})()}, [router.locale, userTokenState])
 
 	const matches = useMediaQuery(`(min-width: ${breakpoints[1]}px)`)
 
@@ -143,61 +161,83 @@ export default function Account({ pageIndex, pageNames, orders, info, setFooterS
 				{pageNames[pageIndex].toUpperCase()}
 			</div>
 
-			<div className={css`
-				display: flex;
-				flex-direction: row;
-			`}>
-				{matches &&
-					<div className={css`
-						margin-top: 31px;
-						width: 200px;
-						min-width: 200px;
-						border-right: 2px solid black;
-						height: 150px;
-						padding-left: 112px;
-						padding-top: 10px;
-						@media (max-width: 787px) {
-							padding-left: 56px;
-						}
-					`}>
-						{pages.map((page, index) => (
-							<div key={index} className={css`
-								text-decoration: ${pageIndex === index ? 'underline' : 'none'};
-								text-underline-offset: 4px;
-								margin-bottom: 20px;
-								cursor: pointer;
-								&:hover {
-									text-decoration: underline;
-
-								}
-							`}>
-								<Link href={`/info/${pages[index]}`} className={css`
-									text-decoration: none;
-									color: black;
-								`}>
-									{pageNames[index]}
-								</Link>	
-							</div>
-						))}
-					</div>
-				}	
+			{userTokenState === null &&
 
 				<div className={css`
-					margin-top: 30px;
-					flex-grow: 1;
-					padding-left: 30px;
-					padding-right: 30px;
-					min-height: calc(100vh - 35px - 59px);
+					width: 100%;
+					height: 100%;
+					display: flex;
+					justify-content: center;
+					align-items: center;
 				`}>
-					{
-						pageIndex === 0 && ordersState &&
-							<Orders localization={localizedText} ordersList={ordersState} />
-						|| pageIndex === 1 &&
-							<Info localization={info} />	
-					}
+					<CircularProgress />
 				</div>
 
-			</div>
+			|| userTokenState === '' &&
+
+				<div className={css`
+
+				`}>
+					<AuthenticationForm setToken={setUserToken} />
+				</div>
+
+			||	
+				<div className={css`
+					display: flex;
+					flex-direction: row;
+				`}>
+					{matches &&
+						<div className={css`
+							margin-top: 31px;
+							width: 200px;
+							min-width: 200px;
+							border-right: 2px solid black;
+							height: 150px;
+							padding-left: 112px;
+							padding-top: 10px;
+							@media (max-width: 787px) {
+								padding-left: 56px;
+							}
+						`}>
+							{pages.map((page, index) => (
+								<div key={index} className={css`
+									text-decoration: ${pageIndex === index ? 'underline' : 'none'};
+									text-underline-offset: 4px;
+									margin-bottom: 20px;
+									cursor: pointer;
+									&:hover {
+										text-decoration: underline;
+
+									}
+								`}>
+									<Link href={`/info/${pages[index]}`} className={css`
+										text-decoration: none;
+										color: black;
+									`}>
+										{pageNames[index]}
+									</Link>	
+								</div>
+							))}
+						</div>
+					}	
+
+					<div className={css`
+						margin-top: 30px;
+						flex-grow: 1;
+						padding-left: 30px;
+						padding-right: 30px;
+						min-height: calc(100vh - 35px - 59px);
+					`}>
+						{
+							pageIndex === 0 && ordersState &&
+								<Orders localization={localizedText} ordersList={ordersState} />
+							|| pageIndex === 1 &&
+								<Info localization={info} />	
+						}
+					</div>
+
+				</div>
+			}	
 
 		</div>	
 	)
@@ -205,113 +245,191 @@ export default function Account({ pageIndex, pageNames, orders, info, setFooterS
 }
 
 function Orders({localization, ordersList}) {
+
 	const paragraph = css`
 		margin-bottom: 0px;
 		margin-top: 10px;
 	`
 
+	const column = css`
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		flex-basis: 0;
+		margin: auto;
+	`
+
 	return (
 		<div className={css`
-			max-width: 1100px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			width: 100%;
+			max-width: 100%;
 		`}>
-			{ordersList.map((order, index) => (
-				<Accordion>
-	        <AccordionSummary
-	          expandIcon={<ExpandMoreIcon />}
-	        >
-	        	<div className={css`
-	        		display: flex;
-	        		flex-direction: row;
-	        		justify-content: space-around;
-	        		width: 100%;
-	        	`}>
-	        		<div>
-	        			{order.date}
-	        		</div>
-	        		<div>
-	        			
-	        		</div>       
-	        		<div>
-	        			{1000}
-	        		</div>    	  
-	        		<div>
-	        			{order.status}
-	        		</div>    	        		      		 		
-	        	</div>
-	        </AccordionSummary>
-	        <AccordionDetails sx={{padding: '0px 0px 0px 0px'}}>
-	        	{order.items.map((item, index) => (
-							<Paper key={index}>
-								<div className={itemRow}>
-									<div className={css`
-										display: flex;
-										flex-direction: row;
-										justify-content: flex-end;
-										width: 100%;
-									`}>
-									</div>
+			<div className={css`
+				max-width: 1100px;
 
-									<div className={css`
-										display: flex;
-										flex-direction: row;
-										width: 100%;
-										column-gap: 10px;
-										@media (max-width: 480px) {
-											column-gap: ${10 * scaleRate}px;
-										}
-									`}>												
-										<div className={imgContainer}>
-											<Link href={`/products/${item.type}/${item.name.toLowerCase().replace(/[\s-]/g, '_')}`}>
-												<Image
-													src={`/products/${item.type}/${item.name.toLowerCase().replace(/[\s-]/g, '_')}/item0.jpg`} 
-													fill={true} 
-													style={{objectFit: 'contain'}}
-													sizes={`(max-width: 480px) ${143 * scaleRate}px, 143px`}
-												/>
-											</Link>	
-										</div>	
-										<div className={css`
-											display: flex;
-											flex-direction: column;
-											width: calc(100% - 150px);
-											@media (max-width: 480px) {
-												width: calc((100% - 150px) * ${scaleRate});
-											}
-										`}>
+			`}>
+				<div className={css`
+					width: 100%;
+					display: flex;
+					flex-direction: row;
+					margin-bottom: 20px;
+				`}>
+					<div className={css`
+						width: 16px;
+					`}>
+					</div>
+					<div className={cx(column, css`
+						flex-grow: 1;
+					`)}>
+						DATE
+					</div>
+					<div className={cx(column, css`
+						flex-grow: 1;
+					`)}>
+						ITEMS
+					</div>
+					<div className={cx(column, css`
+						flex-grow: 1;
+					`)}>
+						COST
+					</div>
+					<div className={cx(column, css`
+						flex-grow: 1;
+					`)}>
+					 STATUS
+					</div>	
+					<div className={css`
+						width: 24px;
+					`}>
+					</div>
+					<div className={css`
+						width: 16px;
+					`}>
+					</div>																			
+				</div>
+				{ordersList.map((order, index) => (
+					<Accordion>
+		        <AccordionSummary
+		          expandIcon={<ExpandMoreIcon />}
+		        >
+		        	<div className={css`
+		        		display: flex;
+		        		flex-direction: row;
+		        		justify-content: space-around;
+		        		width: 100%;
+		        	`}>
+		        		<div className={cx(column, css`flex-grow: 1;`)}>
+		        			{new Date(order.date).toLocaleDateString()}
+		        		</div>
+		        		<div className={cx(column, css`flex-grow: 1;`)}>
+		        			{order.totalAmount}
+		        		</div>       
+		        		<div className={cx(column, css`flex-grow: 1;`)}>
+		        			{order.totalPrice}
+		        		</div>    	  
+		        		<div className={cx(column, css`flex-grow: 1;`)}>
+		        			{order.status}
+		        		</div>    	        		      		 		
+		        	</div>
+		        </AccordionSummary>
+		        <AccordionDetails sx={{padding: '10px 5px 10px 5px', backgroundColor: '#f7f7f7', display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
+		        	<div className={css`
+		        		display: flex;
+								flex-direction: row;
+								flex-wrap: wrap;
+								justify-content: flex-start;
+								align-content: flex-start;
+								width: 910px;
+								gap: 10px;
+								@media (max-width: 1265px) {
+									width: 451px;
+								}
+								@media (max-width: 770px) {
+									overflow: scroll;
+									height: 60vh;
+								}
+								@media (max-width: 480px) {
+									width: 340px;
+								}
+							`}>
+			        	{order.items.map((item, index) => (
+									<Paper key={index}>
+										<div className={itemRow}>
 											<div className={css`
 												display: flex;
 												flex-direction: row;
+												justify-content: flex-end;
+												width: 100%;
+												height: 40px;
 											`}>
-												<div className={itemName}>
-													{item.name}	
-												</div>
 											</div>
-											<div className={specs}>
-												<div>
-													{`${item.desc.toLowerCase()}`}
+
+											<div className={css`
+												display: flex;
+												flex-direction: row;
+												width: 100%;
+												column-gap: 10px;
+												@media (max-width: 480px) {
+													column-gap: ${10 * scaleRate}px;
+												}
+											`}>												
+												<div className={imgContainer}>
+													<Link href={`/products/${item.type}/${item.name.toLowerCase().replace(/[\s-]/g, '_')}`}>
+														<Image
+															src={`/products/${item.type}/${item.name.toLowerCase().replace(/[\s-]/g, '_')}/item0.jpg`} 
+															fill={true} 
+															style={{objectFit: 'contain'}}
+															sizes={`(max-width: 480px) ${143 * scaleRate}px, 143px`}
+														/>
+													</Link>	
+												</div>	
+												<div className={css`
+													display: flex;
+													flex-direction: column;
+													width: calc(100% - 150px);
+													@media (max-width: 480px) {
+														width: calc((100% - 150px) * ${scaleRate});
+													}
+												`}>
+													<div className={css`
+														display: flex;
+														flex-direction: row;
+													`}>
+														<div className={itemName}>
+															{item.name}	
+														</div>
+													</div>
+													<div className={specs}>
+														<div>
+															{`${item.desc.toLowerCase()}`}
+														</div>
+													</div>	
 												</div>
-											</div>	
-										</div>
-									</div>								
-									<div className={css`
-										display: flex;
-										flex-direction: row;
-										width: 100%;
-										justify-content: space-between;
-									`}>
-										<div className={amount}>
-											{item.amount}
-										</div>										
-										<div className={cost}>
-											{item.price}
-										</div>		
-									</div>
-								</div>	
-							</Paper>	   
-						))}	     
-	        </AccordionDetails>
-	      </Accordion>	
-	    ))}
+											</div>								
+											<div className={css`
+												display: flex;
+												flex-direction: row;
+												width: 100%;
+												justify-content: space-between;
+											`}>
+												<div className={amount}>
+													{item.amount}
+												</div>										
+												<div className={cost}>
+													{item.price}
+												</div>		
+											</div>
+										</div>	
+									</Paper>	   
+								))}	  
+							</div>   
+		        </AccordionDetails>
+		      </Accordion>	
+		    ))}
+			</div>
 		</div>
 	)
 }

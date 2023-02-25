@@ -12,10 +12,12 @@ import euImg from '../public/locale/european-union.png'
 import ruImg from '../public/locale/russia.png'
 import mlImg from '../public/locale/moldova.png'
 import ShoppingBagSharpIcon from '@mui/icons-material/ShoppingBagSharp';
+import PersonIcon from '@mui/icons-material/Person';
 import IconButton from '@mui/material/IconButton'
 import Badge from '@mui/material/Badge'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import ShoppingCartContext from '../lib/context/shoppingCart.js'
+import UserTokenContext from '../lib/context/userToken.js'
 import { useState, useContext, useEffect, useRef } from 'react'
 import { setCookie, getCookie, hasCookie, deleteCookie } from 'cookies-next'
 import TextField from '@mui/material/TextField'
@@ -78,6 +80,8 @@ function MyApp({ Component, pageProps }) {
 
   const [shoppingCartState, setShoppingCartState] = useState([])
 
+  const [userTokenState, setUserTokenState] = useState('')
+
   const sessionInitiated = useRef(false)                                             
 
   const [renderState, setRenderState] = useState(false)
@@ -127,6 +131,7 @@ function MyApp({ Component, pageProps }) {
   const [footerState, setFooterState] = useState(false)
 
   return (
+    <UserTokenContext.Provider value={{ userTokenState, setUserTokenState }}>
       <ShoppingCartContext.Provider value={{ shoppingCartState, setShoppingCartState }}>
         <ThemeProvider theme={theme}>
           <div className={roboto}>
@@ -415,6 +420,7 @@ function MyApp({ Component, pageProps }) {
           </div>
         </ThemeProvider>  
       </ShoppingCartContext.Provider>  
+    </UserTokenContext.Provider>  
   )
 }
 
@@ -442,6 +448,8 @@ function MenuBarButton({ name, onClick }) {
 function StickyHeader({ catalogScroll }) {
 
   const shoppingCart = useContext(ShoppingCartContext)
+
+  const userToken = useContext(UserTokenContext)
 
   const router = useRouter()
 
@@ -655,10 +663,15 @@ function StickyHeader({ catalogScroll }) {
                     <ShoppingBagSharpIcon />
                   </Badge>   
                 </IconButton>  
-              </Link>    
+              </Link>                  
           </div>
+            <Link href='/account/orders' >
+              <IconButton color="primary">
+                <PersonIcon /> 
+              </IconButton>  
+            </Link>    
           <div className={css`
-            width: 100px;
+            width: 50px;
             height: 45px;
             display: flex;
             align-items: center;
