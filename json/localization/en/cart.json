@@ -17,7 +17,9 @@
 			"phoneChar": "Only digits allowed",
 			"name": "Name is required",
 			"nameChar": "Only latin characters allowed",
-			"email": "Enter a valid email"
+			"emailChar": "Enter a valid email",
+			"email": "Email is required"
+
 		},
 		"orderConfirmation": {
 			"success": "ORDER SUCCESSFULLY SUBMITTED",

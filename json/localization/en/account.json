@@ -5,6 +5,26 @@
 	],
 	"orders": [
 	],
+	"authForm": {
+		"phone": "PHONE",
+		"name": "NAME",
+		"email": "EMAIL",
+		"submit": "SUBMIT",		
+		"password": "PASSWORD",
+		"confirm_password": "CONFIRM PASSWORD",
+		"register": "REGISTER",
+		"login": "LOGIN",
+		"validation": {
+			"phone": "Phone number is required",
+			"phoneChar": "Only digits allowed",
+			"name": "Name is required",
+			"nameChar": "Only latin characters allowed",
+			"emailChar": "Enter a valid email",
+			"email": "Email is required",
+			"password": "Password is required",
+			"confirm_password": "Passwords must match"	
+		}				
+	},
 	"info": [
 		"Phone",
 		"Address",

@@ -113,7 +113,7 @@ const cost = css`
 	}
 `
 
-export default function Account({ pageIndex, pageNames, orders, info, setFooterState, localizedText }) {
+export default function Account({ pageIndex, pageNames, authForm, orders, info, setFooterState }) {
 
   useEffect(() => {
     setFooterState(true)
@@ -176,9 +176,13 @@ export default function Account({ pageIndex, pageNames, orders, info, setFooterS
 			|| userTokenState === '' &&
 
 				<div className={css`
-
+					display: flex;
+					flex-direction: column;
+					justify-content: flex-start;
+					min-height: calc(100vh - 35px - 59px);
+					align-items: center;
 				`}>
-					<AuthenticationForm setToken={setUserToken} />
+					<AuthenticationForm localizedText={authForm} />
 				</div>
 
 			||	
