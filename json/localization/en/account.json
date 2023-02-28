@@ -17,6 +17,7 @@
 		"login": "LOGIN",
 		"error1": "Invalid credentials",
 		"error2": "An error occurred. Try again",
+		"error3": "Email is already taken",
 		"validation": {
 			"phone": "Phone number is required",
 			"phoneChar": "Only digits allowed",

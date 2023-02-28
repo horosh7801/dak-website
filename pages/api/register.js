@@ -53,9 +53,8 @@ export default async function handler(req, res) {
 			setCookie('user_token', data.jwt, {req, res, maxAge: 3600*24*30 - 60})
 			res.status(200).send()				
 		} else {
-			console.log(data)
-			console.log(data.error.details)
 			res.status(response.status).send()
+		//	res.status(500).send()
 		}
 		
 	} catch (err) {

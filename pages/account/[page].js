@@ -15,6 +15,7 @@ import currencyFormat from '../../lib/modules/currencyFormat.js'
 import { setCookie, getCookie, hasCookie, deleteCookie } from 'cookies-next'
 import CircularProgress from '@mui/material/CircularProgress'
 import AuthenticationForm from '../../lib/components/AuthenticationForm.js'
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const pages = ['orders', 'info']
 
@@ -113,7 +114,7 @@ const cost = css`
 	}
 `
 
-export default function Account({ pageIndex, pageNames, authForm, orders, info, setFooterState }) {
+export default function Account({ pageIndex, pageNames, authForm, orders, info, setFooterState, localizedText }) {
 
   useEffect(() => {
     setFooterState(true)
@@ -127,20 +128,18 @@ export default function Account({ pageIndex, pageNames, authForm, orders, info, 
 
   const date = new Date()
 
-  const jwt = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjc3MTgwOTQwLCJleHAiOjE2NzcxODEwMDB9.Akm-wuALBjuE2iZXX-iQJCfWaSPt7twQD3FlPbhGe4M'
-
   useEffect(() => {
   	const userToken = getCookie('user_token')
   	if (userToken === undefined) {
-  		setUserTokenState('')
+  		setUserTokenState(false)
   	} else {
-  		setUserTokenState(userToken)
+  		setUserTokenState(true)
   	}
   }, [])
 
 	useEffect(() => {(async () => {
 
-		if (userTokenState === null || userTokenState === '') {
+		if (userTokenState === null || !userTokenState) {
 			return
 		}
 
@@ -173,7 +172,7 @@ export default function Account({ pageIndex, pageNames, authForm, orders, info, 
 					<CircularProgress />
 				</div>
 
-			|| userTokenState === '' &&
+			|| !userTokenState &&
 
 				<div className={css`
 					display: flex;
@@ -182,7 +181,12 @@ export default function Account({ pageIndex, pageNames, authForm, orders, info, 
 					min-height: calc(100vh - 35px - 59px);
 					align-items: center;
 				`}>
-					<AuthenticationForm localizedText={authForm} />
+					<AuthenticationForm 
+						localizedText={authForm} 
+						onSuccess={() => {
+							setUserTokenState(true)
+						}} 
+					/>
 				</div>
 
 			||	
@@ -199,10 +203,44 @@ export default function Account({ pageIndex, pageNames, authForm, orders, info, 
 							height: 150px;
 							padding-left: 112px;
 							padding-top: 10px;
+							display: flex;
+							flex-direction: column;
 							@media (max-width: 787px) {
 								padding-left: 56px;
 							}
 						`}>
+							{userTokenState && 
+								<div className={css`
+									display: flex;
+									flex-direction: column;
+									margin-bottom: 20px;
+									align-items: center;
+								`}>
+									<div 
+										className={css`
+											display: flex;
+											flex-direction: row;
+											align-items: center;
+											text-underline-offset: 4px;
+											cursor: pointer;
+											&:hover {
+												text-decoration: underline;
+											}
+										`}
+										onClick={() => {
+											deleteCookie('user_token')
+											setUserTokenState(false)
+										}}
+									>
+										<LogoutIcon sx={{fontSize: '26px'}}/>
+										<div className={css`
+											
+										`}>
+											LOGOUT
+										</div>
+									</div>	
+								</div>
+							}
 							{pages.map((page, index) => (
 								<div key={index} className={css`
 									text-decoration: ${pageIndex === index ? 'underline' : 'none'};
@@ -271,169 +309,171 @@ function Orders({localization, ordersList}) {
 			width: 100%;
 			max-width: 100%;
 		`}>
-			<div className={css`
-				max-width: 1100px;
-
-			`}>
+			{ordersList.length > 0 &&		
 				<div className={css`
-					width: 100%;
-					display: flex;
-					flex-direction: row;
-					margin-bottom: 20px;
+					max-width: 1100px;
+
 				`}>
 					<div className={css`
-						width: 16px;
+						width: 100%;
+						display: flex;
+						flex-direction: row;
+						margin-bottom: 20px;
 					`}>
+						<div className={css`
+							width: 16px;
+						`}>
+						</div>
+						<div className={cx(column, css`
+							flex-grow: 1;
+						`)}>
+							DATE
+						</div>
+						<div className={cx(column, css`
+							flex-grow: 1;
+						`)}>
+							ITEMS
+						</div>
+						<div className={cx(column, css`
+							flex-grow: 1;
+						`)}>
+							COST
+						</div>
+						<div className={cx(column, css`
+							flex-grow: 1;
+						`)}>
+						 STATUS
+						</div>	
+						<div className={css`
+							width: 24px;
+						`}>
+						</div>
+						<div className={css`
+							width: 16px;
+						`}>
+						</div>																			
 					</div>
-					<div className={cx(column, css`
-						flex-grow: 1;
-					`)}>
-						DATE
-					</div>
-					<div className={cx(column, css`
-						flex-grow: 1;
-					`)}>
-						ITEMS
-					</div>
-					<div className={cx(column, css`
-						flex-grow: 1;
-					`)}>
-						COST
-					</div>
-					<div className={cx(column, css`
-						flex-grow: 1;
-					`)}>
-					 STATUS
-					</div>	
-					<div className={css`
-						width: 24px;
-					`}>
-					</div>
-					<div className={css`
-						width: 16px;
-					`}>
-					</div>																			
-				</div>
-				{ordersList.map((order, index) => (
-					<Accordion>
-		        <AccordionSummary
-		          expandIcon={<ExpandMoreIcon />}
-		        >
-		        	<div className={css`
-		        		display: flex;
-		        		flex-direction: row;
-		        		justify-content: space-around;
-		        		width: 100%;
-		        	`}>
-		        		<div className={cx(column, css`flex-grow: 1;`)}>
-		        			{new Date(order.date).toLocaleDateString()}
-		        		</div>
-		        		<div className={cx(column, css`flex-grow: 1;`)}>
-		        			{order.totalAmount}
-		        		</div>       
-		        		<div className={cx(column, css`flex-grow: 1;`)}>
-		        			{order.totalPrice}
-		        		</div>    	  
-		        		<div className={cx(column, css`flex-grow: 1;`)}>
-		        			{order.status}
-		        		</div>    	        		      		 		
-		        	</div>
-		        </AccordionSummary>
-		        <AccordionDetails sx={{padding: '10px 5px 10px 5px', backgroundColor: '#f7f7f7', display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
-		        	<div className={css`
-		        		display: flex;
-								flex-direction: row;
-								flex-wrap: wrap;
-								justify-content: flex-start;
-								align-content: flex-start;
-								width: 910px;
-								gap: 10px;
-								@media (max-width: 1265px) {
-									width: 451px;
-								}
-								@media (max-width: 770px) {
-									overflow: scroll;
-									height: 60vh;
-								}
-								@media (max-width: 480px) {
-									width: 340px;
-								}
-							`}>
-			        	{order.items.map((item, index) => (
-									<Paper key={index}>
-										<div className={itemRow}>
-											<div className={css`
-												display: flex;
-												flex-direction: row;
-												justify-content: flex-end;
-												width: 100%;
-												height: 40px;
-											`}>
-											</div>
-
-											<div className={css`
-												display: flex;
-												flex-direction: row;
-												width: 100%;
-												column-gap: 10px;
-												@media (max-width: 480px) {
-													column-gap: ${10 * scaleRate}px;
-												}
-											`}>												
-												<div className={imgContainer}>
-													<Link href={`/products/${item.type}/${item.name.toLowerCase().replace(/[\s-]/g, '_')}`}>
-														<Image
-															src={`/products/${item.type}/${item.name.toLowerCase().replace(/[\s-]/g, '_')}/item0.jpg`} 
-															fill={true} 
-															style={{objectFit: 'contain'}}
-															sizes={`(max-width: 480px) ${143 * scaleRate}px, 143px`}
-														/>
-													</Link>	
-												</div>	
+					{ordersList.map((order, index) => (
+						<Accordion>
+			        <AccordionSummary
+			          expandIcon={<ExpandMoreIcon />}
+			        >
+			        	<div className={css`
+			        		display: flex;
+			        		flex-direction: row;
+			        		justify-content: space-around;
+			        		width: 100%;
+			        	`}>
+			        		<div className={cx(column, css`flex-grow: 1;`)}>
+			        			{new Date(order.date).toLocaleDateString()}
+			        		</div>
+			        		<div className={cx(column, css`flex-grow: 1;`)}>
+			        			{order.totalAmount}
+			        		</div>       
+			        		<div className={cx(column, css`flex-grow: 1;`)}>
+			        			{order.totalPrice}
+			        		</div>    	  
+			        		<div className={cx(column, css`flex-grow: 1;`)}>
+			        			{order.status}
+			        		</div>    	        		      		 		
+			        	</div>
+			        </AccordionSummary>
+			        <AccordionDetails sx={{padding: '10px 5px 10px 5px', backgroundColor: '#f7f7f7', display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
+			        	<div className={css`
+			        		display: flex;
+									flex-direction: row;
+									flex-wrap: wrap;
+									justify-content: flex-start;
+									align-content: flex-start;
+									width: 910px;
+									gap: 10px;
+									@media (max-width: 1265px) {
+										width: 451px;
+									}
+									@media (max-width: 770px) {
+										overflow: scroll;
+										height: 60vh;
+									}
+									@media (max-width: 480px) {
+										width: 340px;
+									}
+								`}>
+				        	{order.items.map((item, index) => (
+										<Paper key={index}>
+											<div className={itemRow}>
 												<div className={css`
 													display: flex;
-													flex-direction: column;
-													width: calc(100% - 150px);
-													@media (max-width: 480px) {
-														width: calc((100% - 150px) * ${scaleRate});
-													}
+													flex-direction: row;
+													justify-content: flex-end;
+													width: 100%;
+													height: 40px;
 												`}>
+												</div>
+
+												<div className={css`
+													display: flex;
+													flex-direction: row;
+													width: 100%;
+													column-gap: 10px;
+													@media (max-width: 480px) {
+														column-gap: ${10 * scaleRate}px;
+													}
+												`}>												
+													<div className={imgContainer}>
+														<Link href={`/products/${item.type}/${item.name.toLowerCase().replace(/[\s-]/g, '_')}`}>
+															<Image
+																src={`/products/${item.type}/${item.name.toLowerCase().replace(/[\s-]/g, '_')}/item0.jpg`} 
+																fill={true} 
+																style={{objectFit: 'contain'}}
+																sizes={`(max-width: 480px) ${143 * scaleRate}px, 143px`}
+															/>
+														</Link>	
+													</div>	
 													<div className={css`
 														display: flex;
-														flex-direction: row;
+														flex-direction: column;
+														width: calc(100% - 150px);
+														@media (max-width: 480px) {
+															width: calc((100% - 150px) * ${scaleRate});
+														}
 													`}>
-														<div className={itemName}>
-															{item.name}	
+														<div className={css`
+															display: flex;
+															flex-direction: row;
+														`}>
+															<div className={itemName}>
+																{item.name}	
+															</div>
 														</div>
+														<div className={specs}>
+															<div>
+																{`${item.desc.toLowerCase()}`}
+															</div>
+														</div>	
 													</div>
-													<div className={specs}>
-														<div>
-															{`${item.desc.toLowerCase()}`}
-														</div>
-													</div>	
+												</div>								
+												<div className={css`
+													display: flex;
+													flex-direction: row;
+													width: 100%;
+													justify-content: space-between;
+												`}>
+													<div className={amount}>
+														{item.amount}
+													</div>										
+													<div className={cost}>
+														{item.price}
+													</div>		
 												</div>
-											</div>								
-											<div className={css`
-												display: flex;
-												flex-direction: row;
-												width: 100%;
-												justify-content: space-between;
-											`}>
-												<div className={amount}>
-													{item.amount}
-												</div>										
-												<div className={cost}>
-													{item.price}
-												</div>		
-											</div>
-										</div>	
-									</Paper>	   
-								))}	  
-							</div>   
-		        </AccordionDetails>
-		      </Accordion>	
-		    ))}
-			</div>
+											</div>	
+										</Paper>	   
+									))}	  
+								</div>   
+			        </AccordionDetails>
+			      </Accordion>	
+			    ))}
+				</div>
+			}	
 		</div>
 	)
 }
