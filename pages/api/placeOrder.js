@@ -47,7 +47,7 @@ export default async function handler(req, res) {
 			method: 'POST', 
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `bearer ${process.env.ORDER_TOKEN}`}, 
+				'Authorization': `bearer http://127.0.0.1:1337`}, 
 			body: JSON.stringify({
 				data: {					
 					...validatedOrder,

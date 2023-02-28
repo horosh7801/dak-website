@@ -4,11 +4,12 @@ import * as yup from 'yup'
 import YupPassword from 'yup-password'
 YupPassword(yup) // extend yup
 
-const url = 'http://127.0.0.1:1337/auth/local/register'
+const url = 'http://127.0.0.1:1337/api/auth/local/register'
 
 const schema = yup.object({
 	email: yup
 		.string()
+		.min(6)
 		.email()
 		.required(),
   phone: yup
@@ -17,45 +18,48 @@ const schema = yup.object({
     .required(),
   name: yup
   	.string()
-  	.matches(/[A-Za-z]/)    
+  	.matches(/[A-Za-z]/),    
 	password: yup
 		.string()
-		.password()
+    .min(8)
+    .minLowercase(1)
+    .minUppercase(1)
+    .minNumbers(1)
+    .minSymbols(1)
 		.required(),			
 })
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
 
 	const { credentials } = req.query
-	(async () => {
-		try{
-			const validatedCredentials = schema.validateSync(credentials, {stripUnknown: true})
-			const token = getCookie('user_token', {req, res})
-			const response = await fetch(url, {
-				method: 'post',
-				body: JSON.stringify({
-					email: credentials.email, 
-					username: credentials.email, 
-					password: credentials.password
-				}),
-				headers: {
-						'Content-Type': 'application/json',
-						'Authorization': `bearer ${process.env.AUTH_TOKEN}`,
-					},
+	try{
+		const validatedCredentials = schema.validateSync(credentials, {stripUnknown: true})
+		console.log(validatedCredentials)
+		const response = await fetch(url, {
+			method: 'POST',
+			body: JSON.stringify({
+					email: validatedCredentials.email, 
+					username: validatedCredentials.email, 
+					password: validatedCredentials.password
+			}),
+			headers: {
+					'Content-Type': 'application/json',
+					'Authorization': `bearer ${process.env.AUTH_TOKEN}`,
+				},
 
-			});
-
-			if (response.status === 200) {
-				const data = await response.json();
-				setCookie('user_token', data.jwt, {req, res, maxAge: 3600*24*30 - 60})
-				res.status(200).send()				
-			} else {
-				res.status(response.status).send()
-			}
-			
-		} catch (err) {
-			console.log(err)
-			res.status(500).send()
-		}	
-	})()	
+		});
+		const data = await response.json();
+		if (response.status === 200) {
+			setCookie('user_token', data.jwt, {req, res, maxAge: 3600*24*30 - 60})
+			res.status(200).send()				
+		} else {
+			console.log(data)
+			console.log(data.error.details)
+			res.status(response.status).send()
+		}
+		
+	} catch (err) {
+		console.log(err)
+		res.status(500).send()
+	}	
 }

@@ -16,33 +16,30 @@ const schema = yup.object({
 		.required(),	
 })
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
 
 	const { credentials } = req.query;
-	(async () => {
-		try{
-			const validatedCredentials = schema.validateSync(credentials, {stripUnknown: true})
-			const response = await fetch(url, {
-				method: 'post',
-				body: JSON.stringify({identifier: credentials.email, password: credentials.password}),
-				headers: {
-						'Content-Type': 'application/json',
-						'Authorization': `bearer ${process.env.AUTH_TOKEN}`,
-					},
+	try {
+		const validatedCredentials = schema.validateSync(credentials, {stripUnknown: true})
+		const response = await fetch(url, {
+			method: 'POST',
+			body: JSON.stringify({identifier: validatedCredentials.email, password: validatedCredentials.password}),
+			headers: {
+					'Content-Type': 'application/json',
+					'Authorization': `bearer ${process.env.AUTH_TOKEN}`,
+				},
 
-			});
+		});
+		if (response.status === 200) {
+			const data = await response.json();
+			setCookie('user_token', data.jwt, {req, res, maxAge: 3600*24*30 - 60})
+			res.status(200).send('OK')				
+		} else {
+			res.status(response.status).send('bad request')
+		}			
 
-			if (response.status === 200) {
-				const data = await response.json();
-				setCookie('user_token', data.jwt, {req, res, maxAge: 3600*24*30 - 60})
-				res.status(200).send()				
-			} else {
-				res.status(response.status).send()
-			}			
-
-		} catch (err) {
-			console.log(err)
-			res.status(500).send()
-		}	
-	})()	
+	} catch (err) {
+		console.log(err)
+		res.status(500).send()
+	}	
 }

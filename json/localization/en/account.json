@@ -9,11 +9,14 @@
 		"phone": "PHONE",
 		"name": "NAME",
 		"email": "EMAIL",
+		"emailMin": "Email must be at least 6 characters long",
 		"submit": "SUBMIT",		
 		"password": "PASSWORD",
 		"confirm_password": "CONFIRM PASSWORD",
 		"register": "REGISTER",
 		"login": "LOGIN",
+		"error1": "Invalid credentials",
+		"error2": "An error occurred. Try again",
 		"validation": {
 			"phone": "Phone number is required",
 			"phoneChar": "Only digits allowed",
@@ -22,6 +25,11 @@
 			"emailChar": "Enter a valid email",
 			"email": "Email is required",
 			"password": "Password is required",
+			"min": "Password must be at least 8 characters long",
+			"minLowercase": "Password must include at least 1 lowercase character",
+			"minUppercase": "Password must include at least 1 uppercase character",
+			"minNumbers": "Password must include at least 1 number",
+			"minSymbols": "Password must include at least 1 special symbol",
 			"confirm_password": "Passwords must match"	
 		}				
 	},
