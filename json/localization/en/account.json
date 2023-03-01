@@ -1,11 +1,14 @@
 {
+	"logout": "LOGOUT",
 	"pageNames": [
 		"Orders",
 		"Personal Information"
 	],
 	"orders": [
+		"DATE", "ITEMS", "COST", "STATUS"
 	],
 	"authForm": {
+		"title": "AUTHENTICATION",
 		"phone": "PHONE",
 		"name": "NAME",
 		"email": "EMAIL",

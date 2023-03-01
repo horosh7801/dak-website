@@ -1,6 +1,8 @@
 const fs = require('fs')
 import currencyFormat from '../../lib/modules/currencyFormat.js'
 
+const defaultStatus = ['PENDING', 'ACCEPTED', 'FULFILLED']
+
 export default async function handler(req, res) {
 	const { locale } = req.query
 
@@ -11,25 +13,30 @@ export default async function handler(req, res) {
 	let totalItems
 	let localizedTypes
 	let units
+	let status
 	switch (locale) {
 		case 'en':
 			totalItems = JSON.parse(fs.readFileSync('json/itemsEN.json'))
 			localizedTypes = JSON.parse(fs.readFileSync('json/localization/en/productTypes.json'))
 			units = "pcs."
+			status = ['PENDING', 'ACCEPTED', 'FULFILLED']
 			break
 		case 'ru':
 			totalItems = JSON.parse(fs.readFileSync('json/itemsRU.json'))	
 			localizedTypes = JSON.parse(fs.readFileSync('json/localization/ru/productTypes.json'))
 			units = 'шт.'
+			status = ['В ОЖИДАНИИ', 'ПРИНЯТ', 'ЗАВЕРШЁН']
 			break
 		case 'ro':
 			localizedTypes = JSON.parse(fs.readFileSync('json/localization/ro/productTypes.json'))
 			units = 'шт.'
+			status = ['В ОЖИДАНИИ', 'ПРИНЯТ', 'ЗАВЕРШЁН']
 			break				
 		default:
 			totalItems = JSON.parse(fs.readFileSync('json/itemsEN.json'))
 			localizedTypes = JSON.parse(fs.readFileSync('json/localization/en/productTypes.json'))
 			units = "pcs."
+			status = ['PENDING', 'ACCEPTED', 'FULFILLED']
 	}
 
 	try {
@@ -40,12 +47,13 @@ export default async function handler(req, res) {
 			},
 		});
 		const data = await response.json()
-		console.log(`order: ${data.orders}`)
+		console.log(data)
 
 
 		const orders =  data.orders.map((order) => {
 			let totalPrice = 0
-			let totalAmount = 0			
+			let totalAmount = 0
+			const statusIndex = defaultStatus.indexOf(order.status.toUpperCase())			
 			return {
 				items: order.item.map((item, index) => {
 					totalAmount++
@@ -53,18 +61,18 @@ export default async function handler(req, res) {
 					return {
 						name: item.name,
 						price: currencyFormat(Math.round(totalItems[item.id].price[item.params].price * currencyRate), locale),
-						type: localizedTypes[totalItems[item.id].type].toLowerCase(),
+						type: JSON.parse(fs.readFileSync('json/product_types.json'))[totalItems[item.id].type].toLowerCase(),
 						desc: totalItems[item.id].price[item.params].desc,
 						amount: `${item.amount} ${units}`
 					}
 				}),
 				date: order.date,
-				status: order.status,
+				status: status[statusIndex],
 				totalPrice: currencyFormat(totalPrice, locale),
 				totalAmount
 		}})
 		console.log(orders)
-		res.status(200).json(orders)		
+		res.status(200).json({username: data.username, orders})		
 	}
 	catch (err) {
 		console.log(err)

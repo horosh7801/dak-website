@@ -18,7 +18,9 @@ const schema = yup.object({
     .required(),
   name: yup
   	.string()
-  	.matches(/[A-Za-z]/),    
+  	.transform(value => !value ? null : value)
+  	.matches(/[A-Za-z]/)
+  	.nullable(),    
 	password: yup
 		.string()
     .min(8)

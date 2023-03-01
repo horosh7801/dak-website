@@ -17,7 +17,7 @@ import CircularProgress from '@mui/material/CircularProgress'
 import AuthenticationForm from '../../lib/components/AuthenticationForm.js'
 import LogoutIcon from '@mui/icons-material/Logout';
 
-const pages = ['orders', 'info']
+const pages = ['orders']
 
 const breakpoints = [1374, 555]
 
@@ -114,7 +114,7 @@ const cost = css`
 	}
 `
 
-export default function Account({ pageIndex, pageNames, authForm, orders, info, setFooterState, localizedText }) {
+export default function Account({ pageIndex, pageNames, authForm, orders, info, setFooterState, logout }) {
 
   useEffect(() => {
     setFooterState(true)
@@ -157,7 +157,7 @@ export default function Account({ pageIndex, pageNames, authForm, orders, info, 
 		`}>
 
 			<div className={subHeader}>
-				{pageNames[pageIndex].toUpperCase()}
+				{userTokenState === null || userTokenState === false ? authForm.title : pageNames[pageIndex].toUpperCase()}
 			</div>
 
 			{userTokenState === null &&
@@ -180,6 +180,7 @@ export default function Account({ pageIndex, pageNames, authForm, orders, info, 
 					justify-content: flex-start;
 					min-height: calc(100vh - 35px - 59px);
 					align-items: center;
+					padding-top: 50px;
 				`}>
 					<AuthenticationForm 
 						localizedText={authForm} 
@@ -209,38 +210,6 @@ export default function Account({ pageIndex, pageNames, authForm, orders, info, 
 								padding-left: 56px;
 							}
 						`}>
-							{userTokenState && 
-								<div className={css`
-									display: flex;
-									flex-direction: column;
-									margin-bottom: 20px;
-									align-items: center;
-								`}>
-									<div 
-										className={css`
-											display: flex;
-											flex-direction: row;
-											align-items: center;
-											text-underline-offset: 4px;
-											cursor: pointer;
-											&:hover {
-												text-decoration: underline;
-											}
-										`}
-										onClick={() => {
-											deleteCookie('user_token')
-											setUserTokenState(false)
-										}}
-									>
-										<LogoutIcon sx={{fontSize: '26px'}}/>
-										<div className={css`
-											
-										`}>
-											LOGOUT
-										</div>
-									</div>	
-								</div>
-							}
 							{pages.map((page, index) => (
 								<div key={index} className={css`
 									text-decoration: ${pageIndex === index ? 'underline' : 'none'};
@@ -260,6 +229,44 @@ export default function Account({ pageIndex, pageNames, authForm, orders, info, 
 									</Link>	
 								</div>
 							))}
+							{userTokenState && 
+								<div className={css`
+									display: flex;
+									flex-direction: column;
+									margin-bottom: 20px;
+									align-items: flex-end;
+									margin-right: 10px;
+								`}>
+									<div className={css`
+										margin-bottom: 10px
+									`}>
+										{ordersState && ordersState.username}
+									</div>
+									<div 
+										className={css`
+											display: flex;
+											flex-direction: row;
+											align-items: center;
+											text-underline-offset: 4px;
+											cursor: pointer;
+											&:hover {
+												text-decoration: underline;
+											}
+										`}
+										onClick={() => {
+											deleteCookie('user_token')
+											setUserTokenState(false)
+										}}
+									>
+										<LogoutIcon sx={{fontSize: '17px'}}/>
+										<div className={css`
+											font-size: 14px;
+										`}>
+											{logout}
+										</div>
+									</div>	
+								</div>
+							}							
 						</div>
 					}	
 
@@ -272,7 +279,7 @@ export default function Account({ pageIndex, pageNames, authForm, orders, info, 
 					`}>
 						{
 							pageIndex === 0 && ordersState &&
-								<Orders localization={localizedText} ordersList={ordersState} />
+								<Orders localization={orders} ordersList={ordersState.orders} />
 							|| pageIndex === 1 &&
 								<Info localization={info} />	
 						}
@@ -286,7 +293,7 @@ export default function Account({ pageIndex, pageNames, authForm, orders, info, 
 
 }
 
-function Orders({localization, ordersList}) {
+function Orders({localization, ordersList, username}) {
 
 	const paragraph = css`
 		margin-bottom: 0px;
@@ -327,22 +334,22 @@ function Orders({localization, ordersList}) {
 						<div className={cx(column, css`
 							flex-grow: 1;
 						`)}>
-							DATE
+							{localization[0]}
 						</div>
 						<div className={cx(column, css`
 							flex-grow: 1;
 						`)}>
-							ITEMS
+							{localization[1]}
 						</div>
 						<div className={cx(column, css`
 							flex-grow: 1;
 						`)}>
-							COST
+							{localization[2]}
 						</div>
 						<div className={cx(column, css`
 							flex-grow: 1;
 						`)}>
-						 STATUS
+						 {localization[3]}
 						</div>	
 						<div className={css`
 							width: 24px;

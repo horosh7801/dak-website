@@ -12,24 +12,12 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
-      "type": "string",
-      "required": true
-    },
-    "email": {
-      "type": "email",
-      "required": false
-    },
     "date": {
       "type": "datetime",
       "required": true
     },
     "item": {
       "type": "json",
-      "required": true
-    },
-    "phone": {
-      "type": "string",
       "required": true
     },
     "status": {

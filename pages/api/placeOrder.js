@@ -2,57 +2,49 @@ import fetch from 'node-fetch'
 import * as yup from 'yup'
 const fs = require('fs')
 
-const schema = yup.object({
-	phone: yup
-		.string()
-		.matches(/[0-9]/)
+const schema = yup.array().of(yup.object({
+	id: yup
+		.number()
+		.integer()
 		.required(),
-	name: yup
-		.string()
-		.matches(/[A-Za-z]/)
+	price: yup
+		.number()
+		.integer()
 		.required(),
-	email: yup.lazy((value => value === '' 
-		? yup 
-			.string()
-			.strip() 
-		: yup
-			.string()
-			.email()
-		)),	
-	item: yup.array().of(yup.object({
-		id: yup
-			.number()
-			.integer()
-			.required(),
-		price: yup
-			.number()
-			.integer()
-			.required(),
-		amount: yup
-			.number()
-			.integer()
-			.required()		
-	})).min(1)		
-})
+	amount: yup
+		.number()
+		.integer()
+		.required()				
+})).min(1)
 
 export default async function handler(req, res) {
 	const order = JSON.parse(req.query.order)
+
+	const { user_token } = req.cookies
 	try {
 		const validatedOrder = schema.validateSync(order, {stripUnknown: true})
-		const {id, price, amount} = validatedOrder.item
+		const {id, price, amount} = validatedOrder
 
 		const items = JSON.parse(fs.readFileSync('json/itemsEN.json'))
+		const response = await fetch('http://127.0.0.1:1337/api/users/me', {
+			method: 'GET',
+			headers: {
+//				'Content-Type': 'application/json',				
+				'Authorization': `bearer ${user_token}`,
+			},			
+		})
+		const userData = await response.json()
+		const userID = userData.id
 
-		const resp = await fetch(`${process.env.STRAPI}/api/orders`, {
+		const resp = await fetch(`http://127.0.0.1:1337/api/orders`, {
 			method: 'POST', 
 			headers: {
 				'Content-Type': 'application/json',
-				'Authorization': `bearer ${process.env.AUTH_TOKEN}`}, 
+				'Authorization': `bearer ${process.env.ORDER_TOKEN}`}, 
 			body: JSON.stringify({
 				data: {					
-					...validatedOrder,
-					user: "2",
-					item: validatedOrder.item.map(({id, price, amount}) => (
+					user: userID,
+					item: validatedOrder.map(({id, price, amount}) => (
 						{
 							name: items[id].name,
 							price: items[id].price[price].price,
