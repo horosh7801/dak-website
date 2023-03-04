@@ -67,6 +67,12 @@
       "relation": "oneToMany",
       "target": "api::order.order",
       "mappedBy": "user"
+    },
+    "name": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "integer"
     }
   }
 }

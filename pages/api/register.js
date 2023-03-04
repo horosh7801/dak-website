@@ -42,7 +42,9 @@ export default async function handler(req, res) {
 			body: JSON.stringify({
 					email: validatedCredentials.email, 
 					username: validatedCredentials.email, 
-					password: validatedCredentials.password
+					password: validatedCredentials.password,
+					name: validatedCredentials.name,
+					phone: validatedCredentials.phone
 			}),
 			headers: {
 					'Content-Type': 'application/json',
