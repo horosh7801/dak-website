@@ -134,7 +134,7 @@ function MyApp({ Component, pageProps }) {
     <UserTokenContext.Provider value={{ userTokenState, setUserTokenState }}>
       <ShoppingCartContext.Provider value={{ shoppingCartState, setShoppingCartState }}>
         <ThemeProvider theme={theme}>
-          <div className={roboto}>
+          <div className={cx(css`display: flex; flex-direction: column;`, roboto)}>
            {!renderState 
             ? 
                 <CircularProgress sx={{marginLeft: 'calc(50vw - 20px)', marginTop: 'calc(50vh - 20px)'}}/> 
@@ -214,7 +214,7 @@ function MyApp({ Component, pageProps }) {
                   </title>
                 </Head>
                 <Component {...pageProps} catalogScroll={{state: catalogScrollState, setState: setCatalogScrollState}} setFooterState={setFooterState} />
-                {footerState &&
+                
                   <div className={css`
                     display: flex;
                     flex-direction: column;
@@ -414,7 +414,7 @@ function MyApp({ Component, pageProps }) {
                       </div>  
                     </div>  
                   </div>       
-                }       
+                       
               </>  
           }
           </div>

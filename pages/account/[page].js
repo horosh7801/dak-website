@@ -154,6 +154,8 @@ export default function Account({ pageIndex, pageNames, authForm, orders, info, 
 		<div className={css`
 			display: flex;
 			flex-direction: column;
+			min-height: 100vh;
+			padding-bottom: 20px;
 		`}>
 
 			<div className={subHeader}>

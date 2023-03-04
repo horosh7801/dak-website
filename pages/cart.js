@@ -330,7 +330,7 @@ export default function ShoppingCart({ localizedText, setFooterState }) {
 								<div className={css`
 									display: flex;
 									justify-content: center;
-									font-size: 30px;
+									font-size: 20px;
 									margin-top: 20px;	
 								`}>
 									{localizedText.emptyCart}

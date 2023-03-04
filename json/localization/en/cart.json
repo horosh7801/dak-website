@@ -21,9 +21,11 @@
 			"email": "Email is required"
 
 		},
+		"delivery": "PAYMENT AND DELIVERY",		
 		"orderConfirmation": {
 			"success": "ORDER SUCCESSFULLY SUBMITTED",
-			"failure": "FAILED TO SUBMIT ORDER"
+			"failure": "FAILED TO SUBMIT ORDER",
+			"orderLink": "ORDER STATUS"
 		},
 		"authForm": {
 			"phone": "PHONE",
