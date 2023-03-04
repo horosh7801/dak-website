@@ -527,7 +527,7 @@ function Catalog ({ items, localizedText, catalogRef }) {
             column-gap: 20px;
           `}>
            {['ceiling', 'wall', 'floor', 'wall3d', 'point', 'mirror'].map((type, index) => (
-              <div className={css`
+              <div key={index} className={css`
                 opacity: ${catalogState === type ? 1 : 0.4};
                 display: flex;
                 flex-direction: column;
@@ -583,6 +583,7 @@ function Catalog ({ items, localizedText, catalogRef }) {
               {['ceiling', 'floor', 'wall', 'point', 'wall3d', 'mirror'].map((item, i) => (
                 <MenuItem
                   value={item}
+                  key={i}
                 >
                 
                     <div className={css`

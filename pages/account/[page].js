@@ -407,7 +407,7 @@ function Orders({localization, ordersList, ordersState, logout}) {
 						</div>																			
 					</div>
 					{ordersList.map((order, index) => (
-						<Accordion>
+						<Accordion key={index}>
 			        <AccordionSummary
 			          expandIcon={<ExpandMoreIcon />}
 			        >

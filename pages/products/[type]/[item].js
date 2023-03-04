@@ -269,6 +269,7 @@ export default function Item({ id, item, itemType, localizedText, imgCount, setF
 		            >
 		              {item.price.map((element, i) => (
 		                <MenuItem
+		                	key={i}
 		                  value={i}
 		                  sx={{fontSize: '13px', whiteSpace: 'unset', width: '400px'}}
 		                >

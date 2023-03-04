@@ -212,6 +212,7 @@ function MyApp({ Component, pageProps }) {
                   <title>
                     DAK LUMINA
                   </title>
+                  <link rel='icon' href='logo.png' />
                 </Head>
                 <Component {...pageProps} catalogScroll={{state: catalogScrollState, setState: setCatalogScrollState}} setFooterState={setFooterState} />
                 
@@ -639,9 +640,8 @@ function StickyHeader({ catalogScroll }) {
             {
               ['delivery', 'contacts', 'colors'].map((name, i) => {
                 return (
-                  <Link style={{textDecoration: 'none', color: 'black'}} href={`/info/${name}`, `/info/${name}`}>
+                  <Link key={i + 1}  style={{textDecoration: 'none', color: 'black'}} href={`/info/${name}`, `/info/${name}`}>
                     <MenuBarButton 
-                      key={i + 1} 
                       name={navbarLocalization[router.locale][i + 1]} 
                     />    
                   </Link>  
@@ -748,9 +748,8 @@ function SideNavbar({ open, onClose, catalogScroll }) {
           {
             ['delivery', 'contacts', 'colors','about'].map((name, i) => {
               return (
-                <Link style={{textDecoration: 'none', color: 'black'}} href={`/info/${name}`, `/info/${name}`}>
-                  <MenuBarButton 
-                    key={i + 1} 
+                <Link key={i + 1} style={{textDecoration: 'none', color: 'black'}} href={`/info/${name}`, `/info/${name}`}>
+                  <MenuBarButton  
                     name={navbarLocalization[router.locale][i + 1]} 
                     onClick={() => {onClose()}}
                   />    

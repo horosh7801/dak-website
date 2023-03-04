@@ -247,7 +247,7 @@ function Colors() {
 		    }
 			`}>
 				{colors.map((color, index) => (
-					<div className={css`
+					<div key={index} className={css`
 						display: flex;
 						flex-direction: column;
 						align-items: center;
