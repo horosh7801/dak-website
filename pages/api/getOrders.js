@@ -47,7 +47,7 @@ export default async function handler(req, res) {
 			},
 		});
 		const data = await response.json()
-		console.log(data)
+		//console.log(data)
 
 
 		const orders =  data.orders.map((order) => {
@@ -71,7 +71,7 @@ export default async function handler(req, res) {
 				totalPrice: currencyFormat(totalPrice, locale),
 				totalAmount
 		}})
-		console.log(orders)
+		//console.log(orders)
 		res.status(200).json({username: data.username, orders})		
 	}
 	catch (err) {

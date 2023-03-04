@@ -36,7 +36,7 @@ export default async function handler(req, res) {
 	const { credentials } = req.query
 	try{
 		const validatedCredentials = schema.validateSync(credentials, {stripUnknown: true})
-		console.log(validatedCredentials)
+		//console.log(validatedCredentials)
 		const response = await fetch(url, {
 			method: 'POST',
 			body: JSON.stringify({

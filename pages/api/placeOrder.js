@@ -35,7 +35,7 @@ export default async function handler(req, res) {
 		})
 		const userData = await response.json()
 		const userID = userData.id
-
+		console.log(`userData: ${userData}`)
 		const resp = await fetch(`http://127.0.0.1:1337/api/orders`, {
 			method: 'POST', 
 			headers: {
@@ -59,7 +59,8 @@ export default async function handler(req, res) {
 			})
 		})
 		const parsedRes = await resp.json()
-		console.log(resp)
+		//console.log(resp)
+		console.log(`placeorder res: ${parsedRes}`)
 		res.status(resp.status).send()
 	}
 	catch(err) {

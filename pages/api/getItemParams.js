@@ -26,6 +26,6 @@ export default function handler(req, res) {
 		price: Math.round(totalItems[id].price[price].price * currencyRate),
 		params: totalItems[id].price[price].desc
 	}))
-	console.log(localizedParams)
+	//console.log(localizedParams)
 	res.status(200).json(localizedParams)
 }
