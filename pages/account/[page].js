@@ -19,7 +19,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 
 const pages = ['orders']
 
-const breakpoints = [1374, 555]
+const breakpoints = [1374, 785]
 
 const title = css`
   width: calc(100% - 10px);
@@ -206,7 +206,7 @@ export default function Account({ pageIndex, pageNames, authForm, orders, info, 
 							padding-top: 10px;
 							display: flex;
 							flex-direction: column;
-							@media (max-width: 787px) {
+							@media (max-width: 1299px) {
 								padding-left: 56px;
 							}
 						`}>
@@ -249,9 +249,7 @@ export default function Account({ pageIndex, pageNames, authForm, orders, info, 
 											align-items: center;
 											text-underline-offset: 4px;
 											cursor: pointer;
-											&:hover {
-												text-decoration: underline;
-											}
+											text-decoration: underline;
 										`}
 										onClick={() => {
 											deleteCookie('user_token')
@@ -276,10 +274,14 @@ export default function Account({ pageIndex, pageNames, authForm, orders, info, 
 						padding-left: 30px;
 						padding-right: 30px;
 						min-height: calc(100vh - 35px - 59px);
+						@media (max-width: 525px) {
+							padding-left: 0px;
+							padding-right: 0px;
+						}						
 					`}>
 						{
 							pageIndex === 0 && ordersState &&
-								<Orders localization={orders} ordersList={ordersState.orders} />
+								<Orders localization={orders} ordersList={ordersState.orders} ordersState={ordersState} logout={logout} />
 							|| pageIndex === 1 &&
 								<Info localization={info} />	
 						}
@@ -293,7 +295,7 @@ export default function Account({ pageIndex, pageNames, authForm, orders, info, 
 
 }
 
-function Orders({localization, ordersList, username}) {
+function Orders({localization, ordersList, ordersState, logout}) {
 
 	const paragraph = css`
 		margin-bottom: 0px;
@@ -308,6 +310,8 @@ function Orders({localization, ordersList, username}) {
 		margin: auto;
 	`
 
+	const matches = useMediaQuery(`(max-width: ${breakpoints[1]}px)`)
+
 	return (
 		<div className={css`
 			display: flex;
@@ -316,6 +320,43 @@ function Orders({localization, ordersList, username}) {
 			width: 100%;
 			max-width: 100%;
 		`}>
+			{matches &&
+				<div className={css`
+					display: flex;
+					flex-direction: column;
+					margin-bottom: 30px;
+					align-items: flex-end;
+					margin-right: 10px;
+					align-self: flex-end;
+				`}>
+					<div className={css`
+						margin-bottom: 10px
+					`}>
+						{ordersState && ordersState.username}
+					</div>
+					<div 
+						className={css`
+							display: flex;
+							flex-direction: row;
+							align-items: center;
+							text-underline-offset: 4px;
+							cursor: pointer;
+							text-decoration: underline;
+						`}
+						onClick={() => {
+							deleteCookie('user_token')
+							setUserTokenState(false)
+						}}
+					>
+						<LogoutIcon sx={{fontSize: '17px'}}/>
+						<div className={css`
+							font-size: 14px;
+						`}>
+							{logout}
+						</div>
+					</div>	
+				</div>
+			}
 			{ordersList.length > 0 &&		
 				<div className={css`
 					max-width: 1100px;
@@ -326,6 +367,9 @@ function Orders({localization, ordersList, username}) {
 						display: flex;
 						flex-direction: row;
 						margin-bottom: 20px;
+						@media (max-width: 525px) {
+							font-size: 13px;
+						}								
 					`}>
 						<div className={css`
 							width: 16px;
@@ -370,6 +414,12 @@ function Orders({localization, ordersList, username}) {
 			        		flex-direction: row;
 			        		justify-content: space-around;
 			        		width: 100%;
+									@media (max-width: 1299px) {
+										font-size: 15px;
+									}			
+									@media (max-width: 525px) {
+										font-size: 13px;
+									}					        		
 			        	`}>
 			        		<div className={cx(column, css`flex-grow: 1;`)}>
 			        			{new Date(order.date).toLocaleDateString()}
@@ -394,14 +444,14 @@ function Orders({localization, ordersList, username}) {
 									align-content: flex-start;
 									width: 910px;
 									gap: 10px;
-									@media (max-width: 1265px) {
+									@media (max-width: 1299px) {
 										width: 451px;
 									}
 									@media (max-width: 770px) {
 										overflow: scroll;
 										height: 60vh;
 									}
-									@media (max-width: 480px) {
+									@media (max-width: 525px) {
 										width: 340px;
 									}
 								`}>
@@ -422,7 +472,7 @@ function Orders({localization, ordersList, username}) {
 													flex-direction: row;
 													width: 100%;
 													column-gap: 10px;
-													@media (max-width: 480px) {
+													@media (max-width: 525px) {
 														column-gap: ${10 * scaleRate}px;
 													}
 												`}>												
@@ -432,7 +482,7 @@ function Orders({localization, ordersList, username}) {
 																src={`/products/${item.type}/${item.name.toLowerCase().replace(/[\s-]/g, '_')}/item0.jpg`} 
 																fill={true} 
 																style={{objectFit: 'contain'}}
-																sizes={`(max-width: 480px) ${143 * scaleRate}px, 143px`}
+																sizes={`(max-width: 525px) ${143 * scaleRate}px, 143px`}
 															/>
 														</Link>	
 													</div>	
@@ -440,7 +490,7 @@ function Orders({localization, ordersList, username}) {
 														display: flex;
 														flex-direction: column;
 														width: calc(100% - 150px);
-														@media (max-width: 480px) {
+														@media (max-width: 525px) {
 															width: calc((100% - 150px) * ${scaleRate});
 														}
 													`}>
@@ -488,38 +538,7 @@ function Orders({localization, ordersList, username}) {
 function Info({localization}) {
 
 	return (
-		<div className={css`
-			display: flex;
-			flex-direction: column;
-			row-gap: 15px;
-			margin-top: 31px;
-			padding-left: 148px;
-			@media (max-width: 787px) {
-				padding-left: 0px;			
-			}
-		`}>
-			<div className={css`
-				display: flex;
-				flex-direction: row;
-			`}>
-				<div className={css`margin-right: 5px;`}> {`${localization[0]}:`} </div> <a href='tel:+37368077331' className={css`color: black; text-underline-offset: 4px;`}> +37368077331 </a>
-			</div>	
-			<div className={css`
-				display: flex; 
-				flex-direction: row;
-			`}>
-				<div className={css`
-					margin-right: 5px;`
-				}> E-mail:</div> <a href='mailto: daklumina@gmail.com' className={css`color: black; text-underline-offset: 4px;`}> daklumina@gmail.com </a>
-			</div>	
-			<div className={css`
-				display: flex; 
-				flex-direction: row;
-			`}>
-				<div className={css`
-					margin-right: 5px;`
-				}> {`${localization[1]}: ${localization[2]}`} </div>
-			</div>				
+		<div>
 		</div>
 	)
 }
