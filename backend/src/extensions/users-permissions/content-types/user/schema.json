@@ -60,19 +60,8 @@
     "password": {
       "type": "password",
       "minLength": 6,
-      "private": true
-    },
-    "orders": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::order.order",
-      "mappedBy": "user"
-    },
-    "name": {
-      "type": "string"
-    },
-    "phone": {
-      "type": "integer"
+      "private": true,
+      "configurable": false
     }
   }
 }

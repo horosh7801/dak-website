@@ -30,11 +30,17 @@
       "required": true,
       "default": "PENDING"
     },
-    "user": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "orders"
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "phone": {
+      "type": "integer",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
     }
   }
 }

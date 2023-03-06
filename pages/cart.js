@@ -187,6 +187,8 @@ export default function ShoppingCart({ localizedText, setFooterState }) {
 
 	const [fadeState, setFadeState] = useState(false)
 
+	const [isCheckingOut, setIsCheckingOut] = useState(false)
+
 	return (
 		<div className={css`
 			display: flex;
@@ -320,7 +322,7 @@ export default function ShoppingCart({ localizedText, setFooterState }) {
 				</div>
 				<div className={rightSection}>
 					{
-						shoppingCart.shoppingCartState.length === 0
+						shoppingCart.shoppingCartState.length === 0 && !isCheckingOut
 							? 
 								<div className={css`
 									display: flex;
@@ -337,6 +339,7 @@ export default function ShoppingCart({ localizedText, setFooterState }) {
 									shoppingCart={shoppingCart}
 									locale={router.locale}
 									localizedText={localizedText.checkoutPanel}
+									setIsCheckingOut={setIsCheckingOut}
 									onSuccess={() => {
 										for (const i of shoppingCart.shoppingCartState) {
 											removeFromCart(i)
