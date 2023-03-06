@@ -34,7 +34,7 @@ import Head from 'next/head'
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#000'
+      main: '#222222'
     },
     secondary: {
       main: '#ececec'
@@ -664,12 +664,7 @@ function StickyHeader({ catalogScroll }) {
                   </Badge>   
                 </IconButton>  
               </Link>                  
-          </div>
-            <Link href='/account/orders' >
-              <IconButton color="primary">
-                <PersonIcon /> 
-              </IconButton>  
-            </Link>    
+          </div> 
           <div className={css`
             width: 50px;
             height: 45px;

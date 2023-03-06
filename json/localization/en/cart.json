@@ -24,10 +24,12 @@
 		"delivery": "PAYMENT AND DELIVERY",		
 		"orderConfirmation": {
 			"success": "ORDER SUCCESSFULLY SUBMITTED",
+			"successDetails": "WE'LL GET IN TOUCH SOON TO DISCUSS ORDER DETAILS",
 			"failure": "FAILED TO SUBMIT ORDER",
 			"orderLink": "ORDER STATUS"
 		},
 		"authForm": {
+			"title": "ORDER CONFIRMATION",
 			"phone": "PHONE",
 			"name": "NAME",
 			"email": "EMAIL",
@@ -54,7 +56,13 @@
 				"minNumbers": "Password must include at least 1 number",
 				"minSymbols": "Password must include at least 1 special symbol",
 				"confirm_password": "Passwords must match"	
-			}				
+			},
+			"orderConfirmation": {
+				"success": "ORDER SUCCESSFULLY SUBMITTED",
+				"successDetails": "We'll get in touch soon to discuss order details",
+				"failure": "FAILED TO SUBMIT ORDER",
+				"orderLink": "ORDER STATUS"
+			}							
 		}			
 	}
 }

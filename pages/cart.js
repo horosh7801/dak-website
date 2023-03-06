@@ -192,11 +192,6 @@ export default function ShoppingCart({ localizedText, setFooterState }) {
 			display: flex;
 			flex-direction: column;
 		`}>
-			<OrderNotification 
-				state={dialogState} 
-				setState={setDialogState} 
-				localizedText={localizedText.checkoutPanel.orderConfirmation}					
-			/>
 			<div className={subHeader}>
 				{localizedText.pageLabel}
 			</div>
@@ -342,9 +337,7 @@ export default function ShoppingCart({ localizedText, setFooterState }) {
 									shoppingCart={shoppingCart}
 									locale={router.locale}
 									localizedText={localizedText.checkoutPanel}
-									setDialogState={setDialogState}
 									onSuccess={() => {
-										setDialogState('success')
 										for (const i of shoppingCart.shoppingCartState) {
 											removeFromCart(i)
 										}
@@ -352,7 +345,6 @@ export default function ShoppingCart({ localizedText, setFooterState }) {
 										shoppingCart.setShoppingCartState([])
 									}}
 									onFailure={() => {
-										setDialogState('failure')
 									}}
 									items={shoppingCart.shoppingCartState.map((item) => (
 										{id: item.id, price: item.price, amount: item.amount}
