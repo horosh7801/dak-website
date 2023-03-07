@@ -32,6 +32,9 @@ import roboto from '../../../lib/modules/variableFont.js'
 import currencyFormat from '../../../lib/modules/currencyFormat.js'
 import { addToCart, removeFromCart } from '../../../lib/modules/cartOperations.js'
 import useMediaQuery from '@mui/material/useMediaQuery'
+import Dialog from '@mui/material/Dialog'
+import DialogTitle from '@mui/material/DialogTitle';
+import ClearSharpIcon from '@mui/icons-material/ClearSharp';
 
 const breakpoints = [1612, 1149, 550]
 
@@ -174,12 +177,7 @@ export default function Item({ id, item, itemType, localizedText, imgCount, setF
 	const matches1 = useMediaQuery(`(max-width: 550px)`)
 
 	return (
-		<div className={itemPage}>
-			<OrderNotification 
-				state={dialogState} 
-				setState={setDialogState} 
-				localizedText={localizedText.checkoutPanel.orderConfirmation}					
-			/>		
+		<div className={itemPage}>	
 			<div className={leftSection}>
 				<div className={itemImageSet}>
 					<Carousel						
@@ -198,23 +196,82 @@ export default function Item({ id, item, itemType, localizedText, imgCount, setF
 						)))}
 					>
 						{Array(imgCount).fill(1).map((element, index) => (
-							<div key={index} className={css`
-								width: 1024px; 
-								height: 768px; 
-								position: relative;
-								@media (max-width: ${breakpoints[0]}px) {
-									width: 730px;
-									height: ${730 / maxImageWidth * maxImageHeight}px;
-								}
-								@media (max-width: ${breakpoints[1]}px) {
-									width: 534px;
-									height: ${534 / maxImageWidth * maxImageHeight}px;
-								}
-								@media (max-width: ${breakpoints[2]}px) {
-									width: 280px;
-									height: ${280 / maxImageWidth * maxImageHeight}px;
-								}
+							<div 
+								key={index} 
+								onClick={() => {
+									if (index === dialogState) {
+										return
+									}
+									setDialogState(index)
+								}}
+								className={css`
+									width: 1024px; 
+									height: 768px; 
+									position: relative;
+									cursor: pointer;
+									@media (max-width: ${breakpoints[0]}px) {
+										width: 730px;
+										height: ${730 / maxImageWidth * maxImageHeight}px;
+									}
+									@media (max-width: ${breakpoints[1]}px) {
+										width: 534px;
+										height: ${534 / maxImageWidth * maxImageHeight}px;
+									}
+									@media (max-width: ${breakpoints[2]}px) {
+										width: 280px;
+										height: ${280 / maxImageWidth * maxImageHeight}px;
+									}
 							`}>
+								<Dialog
+									fullScreen
+									open={dialogState === index}
+									sx={{
+							      "& .MuiDialog-container": {
+							        "& .MuiPaper-root": {
+							          width: "100%",
+							          backgroundColor: "rgb(0, 0, 0, 0)",
+							          boxShadow: 'none',
+							          margin: '0px'
+							        },
+							      },
+							    }}
+									PaperProps={{
+										backgroundColor: 'rgb(0, 0, 0, 0)',
+
+									}}
+									onClose={() => {
+										setDialogState(null)
+									}}
+								>
+										<div className={css`
+											position: absolute;
+											width: 100%;
+											display: flex;
+											flex-direction: row;
+											justify-content: flex-end;
+											z-index: 10;
+										`}>
+											<IconButton
+												onClick={() => {
+													setDialogState(null)
+												}}
+											>
+												<ClearSharpIcon sx={{fontSize: '30px'}} />
+											</IconButton>	
+										</div>
+									<div className={css`
+										position: relative;
+										width: 100vw;
+										height: 100vh;
+									`}>
+										<Image
+											src={`/products/${itemType}/${item.name.toLowerCase().replace(/[\s-]/g, '_')}/item${index}.jpg`}
+											fill={true}
+											style={{objectFit: 'contain'}}
+											sizes={`1024px`}
+										/>
+									</div>	
+								</Dialog>
 								<Image 
 									src={`/products/${itemType}/${item.name.toLowerCase().replace(/[\s-]/g, '_')}/item${index}.jpg`} 
 									fill={true} 
@@ -276,6 +333,7 @@ export default function Item({ id, item, itemType, localizedText, imgCount, setF
 		                	<div className={css`
 		                		display: flex;
 		                		flex-direction: column;
+
 		                	`}>
 		                    <div className={css`
 		                    	font-size: 20px;
@@ -393,6 +451,7 @@ export default function Item({ id, item, itemType, localizedText, imgCount, setF
 										align-items: center;
 									`}>
 										<ToggleButtonGroup 
+											sx={{width: '100%'}}
 											orientation='vertical' 
 											exclusive 
 											value={priceState}
@@ -408,12 +467,17 @@ export default function Item({ id, item, itemType, localizedText, imgCount, setF
 								      `}													
 										>
 											{item.price.map((value, index) => (
-												<ToggleButton key={index} value={index} onClick={() => {setPriceState(index)}}>
+												<ToggleButton 
+													key={index} 
+													value={index} 
+													onClick={() => {setPriceState(index)}}
+												>
 													<div className={cx(roboto, css`
 														display: flex;
 														column-gap: 5px;
 														align-items: center;
-
+														width: 100%;
+														justify-content: space-between;
 													`)}>
 														<div>
 															{value.desc}
