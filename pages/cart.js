@@ -201,7 +201,8 @@ export default function ShoppingCart({ localizedText, setFooterState }) {
 
 	return (
 		<>
-			<Dialog 			
+			<Dialog 	
+				PaperProps={{sx: {margin: '0px 0px 0px 0px'}}}		
 				onClose={async function closeConfirmationForm() {
 					if (isFetching === true) {
 						return
@@ -211,7 +212,9 @@ export default function ShoppingCart({ localizedText, setFooterState }) {
 					setIsCheckingOut(false)
 				}}
 				open={confirmationFormOpen}
-				sx={{paddingTop: '-100px'}}		
+				sx={{
+						paddingTop: '-100px',
+					}}		
 			>	
 				<ConfirmationForm 
 					localizedText={localizedText.checkoutPanel.authForm}

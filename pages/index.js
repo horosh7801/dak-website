@@ -338,7 +338,7 @@ function ProductItem({ itemID, name, price, type, locale}) {
     font-stretch: 35%;   
     display: flex;
     flex-direction: column;
-    align-items: end;
+    align-items: flex-end;
     color: white;
     animation-name: ${hoverState ? keyframes`
       to {
