@@ -212,7 +212,7 @@ function MyApp({ Component, pageProps }) {
                   <title>
                     DAK LUMINA
                   </title>
-                  <link rel='icon' href='logo.png' />
+                  <link rel='icon' href='logo.ico' />
                 </Head>
                 <Component {...pageProps} catalogScroll={{state: catalogScrollState, setState: setCatalogScrollState}} setFooterState={setFooterState} />
                 

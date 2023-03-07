@@ -18,6 +18,8 @@ import currencyFormat from '../lib/modules/currencyFormat.js'
 import {addToCart, removeFromCart} from '../lib/modules/cartOperations.js'
 import CircularProgress from '@mui/material/CircularProgress'
 import useMediaQuery from '@mui/material/useMediaQuery'
+import Dialog from '@mui/material/Dialog'
+import ConfirmationForm from '../lib/components/ConfirmationForm.js'
 
 const scaleRate = 0.75
 
@@ -189,176 +191,243 @@ export default function ShoppingCart({ localizedText, setFooterState }) {
 
 	const [isCheckingOut, setIsCheckingOut] = useState(false)
 
+	const [confirmationFormOpen, setConfirmationFormOpen] = useState(false)
+
+	const [isFetching, setIsFetching] = useState(null)
+
+	const [errorState, setErrorState] = useState(null)
+
+	const [buttonDisabled, setButtonDisabled] = useState(false)
+
 	return (
-		<div className={css`
-			display: flex;
-			flex-direction: column;
-		`}>
-			<div className={subHeader}>
-				{localizedText.pageLabel}
-			</div>
+		<>
+			<Dialog 			
+				onClose={async function closeConfirmationForm() {
+					if (isFetching === true) {
+						return
+					}
+					setConfirmationFormOpen(false)
+					setButtonDisabled(false)
+					setIsCheckingOut(false)
+				}}
+				open={confirmationFormOpen}
+				sx={{paddingTop: '-100px'}}		
+			>	
+				<ConfirmationForm 
+					localizedText={localizedText.checkoutPanel.authForm}
+					errorState={errorState}
+					isFetching={isFetching}
+					placeOrder={async (credentials) => {
+						const items = shoppingCart.shoppingCartState.map((item) => (
+							{id: item.id, price: item.price, amount: item.amount}
+						))
+						setIsFetching(true)
+						try {
+							console.log('fetch')
+							const res = await fetch(`/api/placeOrder?order=${JSON.stringify({items, ...credentials})}`)	
+							console.log(res.ok)
+							if (res.ok) {
+
+								for (const i of shoppingCart.shoppingCartState) {
+									removeFromCart(i)
+								}
+								setLocalizedDataState([])
+								shoppingCart.setShoppingCartState([])
+										
+								setErrorState(false)
+							} else {
+								setErrorState(true)
+							}
+							setIsFetching(false)
+						} catch (err) {
+							setErrorState(true)
+							console.log(err)
+						}
+					}}
+				/>
+			</Dialog>		
 			<div className={css`
 				display: flex;
-				flex-direction: row;
-				@media (max-width: 770px) {
-					flex-direction: column;
-				}
+				flex-direction: column;
 			`}>
-				<div className={leftSection}>
-					<div className={css`
-						display: flex;
-						flex-direction: row;
-						flex-wrap: wrap;
-						justify-content: flex-start;
-						align-content: flex-start;
-						width: 910px;
-						gap: 10px;
-						@media (max-width: 1265px) {
-							width: 451px;
-						}
-						@media (max-width: 770px) {
-							overflow: scroll;
-							height: 60vh;
-						}
-						@media (max-width: 480px) {
-							width: 340px;
-						}
-					`}>
-						{
-							(localizedDataState === null) &&
-								<div className={css`
-									display: flex;
-									flex-direction: row;
-									justify-content: center;
-									align-items: center;
-									width: 100%;
-									height: 100%;
-								`}>
-								 <CircularProgress /> 
-								</div> 
-							||
-							!(localizedDataState === null) && shoppingCart.shoppingCartState.map((item, index) => (
-							<Paper sx={{}} key={index}>
-								<div className={itemRow}>
+				<div className={subHeader}>
+					{localizedText.pageLabel}
+				</div>
+				<div className={css`
+					display: flex;
+					flex-direction: row;
+					@media (max-width: 770px) {
+						flex-direction: column;
+					}
+				`}>
+					<div className={leftSection}>
+						<div className={css`
+							display: flex;
+							flex-direction: row;
+							flex-wrap: wrap;
+							justify-content: flex-start;
+							align-content: flex-start;
+							width: 910px;
+							gap: 10px;
+							@media (max-width: 1265px) {
+								width: 451px;
+							}
+							@media (max-width: 770px) {
+								overflow: scroll;
+								height: 60vh;
+							}
+							@media (max-width: 480px) {
+								width: 340px;
+							}
+						`}>
+							{
+								(localizedDataState === null) &&
 									<div className={css`
 										display: flex;
 										flex-direction: row;
-										justify-content: flex-end;
+										justify-content: center;
+										align-items: center;
 										width: 100%;
+										height: 100%;
 									`}>
-										<IconButton sx={{justifySelf: 'flex-end'}} onClick={() => {
-											const newState = shoppingCart.shoppingCartState.slice(0, index)
-												.concat(shoppingCart.shoppingCartState.slice(index + 1, shoppingCart.shoppingCartState.length))
-											setLocalizedDataState([
-												...localizedDataState.slice(0, index),
-												...localizedDataState.slice(index + 1, localizedDataState.length)
-											])
-											shoppingCart.setShoppingCartState(newState)
-											removeFromCart(item)
-										}}>
-											<ClearSharpIcon/>
-										</IconButton>
-									</div>
-
-									<div className={css`
-										display: flex;
-										flex-direction: row;
-										width: 100%;
-										column-gap: 10px;
-										@media (max-width: 480px) {
-											column-gap: ${10 * scaleRate}px;
-										}
-									`}>												
-										<div className={imgContainer}>
-											<Link href={`/products/${item.type}/${item.name.toLowerCase().replace(/[\s-]/g, '_')}`}>
-												<Image
-													src={`/products/${item.type}/${item.name.toLowerCase().replace(/[\s-]/g, '_')}/item0.jpg`} 
-													fill={true} 
-													style={{objectFit: 'contain'}}
-													sizes={`(max-width: 480px) ${143 * scaleRate}px, 143px`}
-												/>
-											</Link>	
-										</div>	
+									 <CircularProgress /> 
+									</div> 
+								||
+								!(localizedDataState === null) && shoppingCart.shoppingCartState.map((item, index) => (
+								<Paper sx={{}} key={index}>
+									<div className={itemRow}>
 										<div className={css`
 											display: flex;
-											flex-direction: column;
-											width: calc(100% - 150px);
-											@media (max-width: 480px) {
-												width: calc((100% - 150px) * ${scaleRate});
-											}
+											flex-direction: row;
+											justify-content: flex-end;
+											width: 100%;
 										`}>
+											<IconButton sx={{justifySelf: 'flex-end'}} onClick={() => {
+												const newState = shoppingCart.shoppingCartState.slice(0, index)
+													.concat(shoppingCart.shoppingCartState.slice(index + 1, shoppingCart.shoppingCartState.length))
+												setLocalizedDataState([
+													...localizedDataState.slice(0, index),
+													...localizedDataState.slice(index + 1, localizedDataState.length)
+												])
+												shoppingCart.setShoppingCartState(newState)
+												removeFromCart(item)
+											}}>
+												<ClearSharpIcon/>
+											</IconButton>
+										</div>
+
+										<div className={css`
+											display: flex;
+											flex-direction: row;
+											width: 100%;
+											column-gap: 10px;
+											@media (max-width: 480px) {
+												column-gap: ${10 * scaleRate}px;
+											}
+										`}>												
+											<div className={imgContainer}>
+												<Link href={`/products/${item.type}/${item.name.toLowerCase().replace(/[\s-]/g, '_')}`}>
+													<Image
+														src={`/products/${item.type}/${item.name.toLowerCase().replace(/[\s-]/g, '_')}/item0.jpg`} 
+														fill={true} 
+														style={{objectFit: 'contain'}}
+														sizes={`(max-width: 480px) ${143 * scaleRate}px, 143px`}
+													/>
+												</Link>	
+											</div>	
 											<div className={css`
 												display: flex;
-												flex-direction: row;
+												flex-direction: column;
+												width: calc(100% - 150px);
+												@media (max-width: 480px) {
+													width: calc((100% - 150px) * ${scaleRate});
+												}
 											`}>
-												<div className={itemName}>
-													{item.name}	
+												<div className={css`
+													display: flex;
+													flex-direction: row;
+												`}>
+													<div className={itemName}>
+														{item.name}	
+													</div>
 												</div>
+												<div className={specs}>
+													<div>
+														{`${localizedDataState[index].params.toLowerCase()}`}
+													</div>
+												</div>	
 											</div>
-											<div className={specs}>
-												<div>
-													{`${localizedDataState[index].params.toLowerCase()}`}
-												</div>
-											</div>	
+										</div>								
+										<div className={css`
+											display: flex;
+											flex-direction: row;
+											width: 100%;
+											justify-content: space-between;
+										`}>
+											<div className={amount}>
+												{`${item.amount} ${localizedText.units.quantity}.`}
+											</div>										
+											<div className={cost}>
+												{currencyFormat(localizedDataState[index].price * item.amount, router.locale)}
+											</div>		
 										</div>
-									</div>								
+									</div>	
+								</Paper>	
+							))}
+						</div>	
+					</div>
+					<div className={rightSection}>
+						{
+							shoppingCart.shoppingCartState.length === 0
+								? 
 									<div className={css`
 										display: flex;
-										flex-direction: row;
-										width: 100%;
-										justify-content: space-between;
+										justify-content: center;
+										font-size: 20px;
+										margin-top: 20px;	
 									`}>
-										<div className={amount}>
-											{`${item.amount} ${localizedText.units.quantity}.`}
-										</div>										
-										<div className={cost}>
-											{currencyFormat(localizedDataState[index].price * item.amount, router.locale)}
-										</div>		
+										{localizedText.emptyCart}
 									</div>
-								</div>	
-							</Paper>	
-						))}
-					</div>	
-				</div>
-				<div className={rightSection}>
-					{
-						shoppingCart.shoppingCartState.length === 0 && !isCheckingOut
-							? 
-								<div className={css`
-									display: flex;
-									justify-content: center;
-									font-size: 20px;
-									margin-top: 20px;	
-								`}>
-									{localizedText.emptyCart}
-								</div>
-							:
-								<CheckoutForm 
-									setFadeState={setFadeState}
-									totalCost={totalCostState} 
-									shoppingCart={shoppingCart}
-									locale={router.locale}
-									localizedText={localizedText.checkoutPanel}
-									setIsCheckingOut={setIsCheckingOut}
-									onSuccess={() => {
-										for (const i of shoppingCart.shoppingCartState) {
-											removeFromCart(i)
-										}
-										setLocalizedDataState([])
-										shoppingCart.setShoppingCartState([])
-									}}
-									onFailure={() => {
-									}}
-									items={shoppingCart.shoppingCartState.map((item) => (
-										{id: item.id, price: item.price, amount: item.amount}
-									))}
-								/>
+								:
+									<CheckoutForm 
+										setFadeState={setFadeState}
+										totalCost={totalCostState} 
+										openConfirmationForm={() => {
 
-								
-					}			
+											setButtonDisabled(true)
+
+											setIsCheckingOut(true)
+
+											setErrorState(null)
+											setIsFetching(null)
+
+											setConfirmationFormOpen(true)
+
+										}}
+										shoppingCart={shoppingCart}
+										locale={router.locale}
+										localizedText={localizedText.checkoutPanel}
+										setIsCheckingOut={setIsCheckingOut}
+										onSuccess={() => {
+											for (const i of shoppingCart.shoppingCartState) {
+												removeFromCart(i)
+											}
+											setLocalizedDataState([])
+											shoppingCart.setShoppingCartState([])
+										}}
+										onFailure={() => {
+										}}
+										items={shoppingCart.shoppingCartState.map((item) => (
+											{id: item.id, price: item.price, amount: item.amount}
+										))}
+									/>
+
+									
+						}			
+					</div>
 				</div>
 			</div>
-		</div>	
+		</>		
 	)
 }
 

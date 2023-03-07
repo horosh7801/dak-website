@@ -375,6 +375,7 @@ export default function Item({ id, item, itemType, localizedText, imgCount, setF
 					height: calc(100vh - 59px);
 					width: 416px;
 					min-width: 416px;
+					overflow: scroll;
 				`}>
 					<div className={rightSection}>
 						<div className={stickyPanel}>
