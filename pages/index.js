@@ -289,6 +289,7 @@ function ProductItem({ itemID, name, price, type, locale}) {
 
   const itemName = css`
     position: relative;
+    align-self: center;
     top: -29%
 
   `
@@ -337,7 +338,7 @@ function ProductItem({ itemID, name, price, type, locale}) {
     font-stretch: 35%;   
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: end;
     color: white;
     animation-name: ${hoverState ? keyframes`
       to {
