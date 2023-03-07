@@ -311,7 +311,6 @@ function ProductItem({ itemID, name, price, type, locale}) {
     padding-right: 6px;
     color: #222;
     border-radius: 20px;
-    align-self: end;
     animation-name: ${ hoverState ? keyframes`
       to {
         background-color: #222;
