@@ -157,6 +157,9 @@ export default function Home({ items, localizedText, catalogScroll, setFooterSta
 
   return (
     <div className={mainWrapper}>
+      <Head>
+        <meta name="google-site-verification" content="-0eGFyxqEOfFRTsJgb8qpR3LwLbY9-_mnwgZSbRvmp0" />
+      </Head>
       {matches2 &&
         <div className={subHeader}>
           {localizedText.main}
