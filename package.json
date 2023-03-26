@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "next lint"
   },
@@ -20,6 +21,7 @@
     "geoip-lite": "^1.4.6",
     "n": "^9.0.1",
     "next": "13.0.2",
+    "next-sitemap": "^4.0.6",
     "node-cron": "^3.0.2",
     "node-fetch": "^3.3.0",
     "react": "18.2.0",
