@@ -160,7 +160,6 @@ export default function Home({ items, localizedText, catalogScroll, setFooterSta
     <div className={mainWrapper}>
       <Head>
         <meta name="google-site-verification" content="-0eGFyxqEOfFRTsJgb8qpR3LwLbY9-_mnwgZSbRvmp0" />
-        <!-- Global site tag (gtag.js) - Google Analytics -->
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-PF3PDR0WMX"
           strategy="afterInteractive"
