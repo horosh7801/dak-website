@@ -30,6 +30,7 @@ import CloseSharpIcon from '@mui/icons-material/CloseSharp'
 import Drawer from '@mui/material/Drawer'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import Head from 'next/head'
+import { GoogleAnalytics } from "nextjs-google-analytics"
 
 const theme = createTheme({
   palette: {
@@ -214,6 +215,7 @@ function MyApp({ Component, pageProps }) {
                   </title>
                   <link rel='icon' href='logo.ico' />
                 </Head>
+                <GoogleAnalytics trackPageViews gaMeasurementId="G-PF3PDR0WMX" />
                 <Component {...pageProps} catalogScroll={{state: catalogScrollState, setState: setCatalogScrollState}} setFooterState={setFooterState} />
                 
                   <div className={css`
