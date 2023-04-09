@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Script from 'next/script'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -159,16 +160,20 @@ export default function Home({ items, localizedText, catalogScroll, setFooterSta
     <div className={mainWrapper}>
       <Head>
         <meta name="google-site-verification" content="-0eGFyxqEOfFRTsJgb8qpR3LwLbY9-_mnwgZSbRvmp0" />
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-PF3PDR0WMX">
-        </script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-PF3PDR0WMX"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){window.dataLayer.push(arguments);}
+            gtag('js', new Date());
 
-          gtag('config', 'G-PF3PDR0WMX');
-        </script>        
+            gtag('config', 'G-PF3PDR0WMX');
+          `}
+        </Script>       
       </Head>
       {matches2 &&
         <div className={subHeader}>
